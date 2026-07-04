@@ -4,120 +4,401 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NOISE</title>
+
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #777777;
+      --line: #dddddd;
+      --soft-line: #eeeeee;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: #fff;
-      color: #111;
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    }
-
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 72px 24px;
-    }
-
-    header {
-      margin-bottom: 96px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 48px;
-      font-weight: 600;
-      letter-spacing: -0.04em;
-    }
-
-    nav {
-      margin-top: 24px;
-      display: flex;
-      gap: 24px;
-      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: #111;
+      color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid #111;
     }
 
-    .intro {
-      font-size: 20px;
-      line-height: 1.7;
-      letter-spacing: -0.01em;
-      margin-bottom: 88px;
+    .page {
+      width: 100%;
     }
 
-    .section-title {
-      font-size: 12px;
-      font-weight: 400;
-      color: #777;
-      margin-bottom: 28px;
-      text-transform: uppercase;
+    .section {
+      min-height: 100vh;
+      padding: 88px 24px;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .inner {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .cover {
+      align-items: center;
+    }
+
+    .site-title {
+      font-size: clamp(64px, 15vw, 168px);
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: -0.08em;
+      margin: 0 0 48px;
+    }
+
+    .issue {
+      font-size: 13px;
+      color: var(--muted);
       letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
-    .article {
-      padding: 28px 0;
-      border-top: 1px solid #ddd;
+    .tagline {
+      font-size: clamp(20px, 3vw, 32px);
+      line-height: 1.55;
+      letter-spacing: -0.04em;
+      max-width: 620px;
+      margin: 0;
     }
 
-    .article-title {
-      font-size: 24px;
-      line-height: 1.4;
-      margin: 0 0 8px;
-      font-weight: 500;
+    .contents {
+      margin-top: 96px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contents a {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .contents-number {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contents-title {
+      font-size: 18px;
       letter-spacing: -0.03em;
+    }
+
+    .contents-category {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .article-header {
+      margin-bottom: 72px;
+    }
+
+    .number {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      margin: 0 0 24px;
     }
 
     .meta {
       font-size: 13px;
-      color: #777;
+      color: var(--muted);
+      letter-spacing: 0.02em;
     }
 
-    footer {
+    .body {
+      font-size: 17px;
+      line-height: 2.05;
+      letter-spacing: 0.01em;
+    }
+
+    .body p {
+      margin: 0 0 32px;
+    }
+
+    .body .lead {
+      font-size: 22px;
+      line-height: 1.8;
+      letter-spacing: -0.03em;
+      margin-bottom: 56px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      line-height: 1.9;
+      max-width: 620px;
+    }
+
+    .footer-small {
       margin-top: 96px;
       padding-top: 24px;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid var(--line);
       font-size: 13px;
-      color: #777;
+      color: var(--muted);
+    }
+
+    .side-nav {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .side-nav a {
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .side-nav a:hover {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    .top-mark {
+      position: fixed;
+      left: 24px;
+      top: 20px;
+      z-index: 10;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    @media (max-width: 820px) {
+      .section {
+        padding: 72px 20px 96px;
+      }
+
+      .top-mark {
+        left: 20px;
+        top: 16px;
+      }
+
+      .side-nav {
+        right: auto;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        transform: none;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 0;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.94);
+        border-top: 1px solid var(--line);
+        backdrop-filter: blur(12px);
+      }
+
+      .side-nav a {
+        padding: 6px 8px;
+      }
+
+      .contents a {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .contents-category {
+        grid-column: 2;
+      }
+
+      .body {
+        font-size: 16px;
+        line-height: 2;
+      }
+
+      .body .lead {
+        font-size: 19px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <header>
-      <h1>NOISE</h1>
-      <nav>
-        <a href="#articles">Articles</a>
-        <a href="#about">About</a>
-      </nav>
-    </header>
+  <a class="top-mark" href="#cover">NOISE</a>
 
-    <p class="intro">
-      音楽、映画、メディア、批評。<br>
-      作品を、時間と関係の中で読むための場所。
-    </p>
+  <nav class="side-nav" aria-label="Issue navigation">
+    <a href="#cover">TOP</a>
+    <a href="#article-01">01</a>
+    <a href="#article-02">02</a>
+    <a href="#article-03">03</a>
+    <a href="#about">ABOUT</a>
+  </nav>
 
-    <section id="articles">
-      <div class="section-title">Latest</div>
+  <main class="page">
+    <section id="cover" class="section cover">
+      <div class="inner">
+        <div class="issue">Issue 001</div>
+        <h1 class="site-title">NOISE</h1>
 
-      <article class="article">
-        <h2 class="article-title">D’Angelo『Voodoo』をどう聴くか</h2>
-        <div class="meta">2026.07.04 / Music</div>
-      </article>
+        <p class="tagline">
+          音楽、映画、メディア、批評。<br>
+          作品を、時間と関係の中で読むための一冊。
+        </p>
 
-      <article class="article">
-        <h2 class="article-title">Prince以後のR&Bについて</h2>
-        <div class="meta">2026.07.04 / Music</div>
+        <div class="contents">
+          <a href="#article-01">
+            <span class="contents-number">01</span>
+            <span class="contents-title">D’Angelo『Voodoo』をどう聴くか</span>
+            <span class="contents-category">Music</span>
+          </a>
+
+          <a href="#article-02">
+            <span class="contents-number">02</span>
+            <span class="contents-title">Prince以後のR&Bについて</span>
+            <span class="contents-category">Music</span>
+          </a>
+
+          <a href="#article-03">
+            <span class="contents-number">03</span>
+            <span class="contents-title">影響関係ではなく、配置として聴く</span>
+            <span class="contents-category">Essay</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="article-01" class="section">
+      <article class="inner">
+        <header class="article-header">
+          <div class="number">01 / Music</div>
+          <h1>D’Angelo『Voodoo』をどう聴くか</h1>
+          <div class="meta">2026.07.04</div>
+        </header>
+
+        <div class="body">
+          <p class="lead">
+            『Voodoo』は、過去のソウル・ミュージックを再現したアルバムではない。
+            むしろ、過去の身体性を、ヒップホップ以後の時間感覚の中で再配置した作品である。
+          </p>
+
+          <p>
+            この作品を聴くとき、まず耳に入るのは演奏のゆるさである。だが、そのゆるさは単なるラフさではない。ドラムは正確さからわずかに外れ、ベースは拍の中心を避けるように動く。歌は前に出すぎず、楽器の一部として沈み込む。
+          </p>
+
+          <p>
+            ここで重要なのは、70年代ソウルへの敬意ではなく、その敬意が一度ヒップホップの耳を通過していることだ。生演奏でありながら、ループのように聴こえる。人間が演奏しているのに、サンプルのように反復する。
+          </p>
+
+          <p>
+            『Voodoo』は、過去へ戻る作品ではない。過去を素材として、2000年のR&Bがどこまで遅く、重く、曖昧になれるかを試した作品である。
+          </p>
+        </div>
       </article>
     </section>
 
-    <footer id="about">
-      NOISE is an independent web magazine.
-    </footer>
+    <section id="article-02" class="section">
+      <article class="inner">
+        <header class="article-header">
+          <div class="number">02 / Music</div>
+          <h1>Prince以後のR&Bについて</h1>
+          <div class="meta">2026.07.04</div>
+        </header>
+
+        <div class="body">
+          <p class="lead">
+            Princeの音楽は、ジャンルの融合というより、ジャンルが一人の身体に集まりすぎた状態として聴こえる。
+          </p>
+
+          <p>
+            ファンク、ロック、ポップ、ゴスペル、ジャズ、R&B。それらはPrinceの作品の中で整理されるのではなく、しばしば過剰なまま同居する。だからPrince以後のR&Bを考えることは、単に影響源をたどることではない。
+          </p>
+
+          <p>
+            重要なのは、R&Bが歌唱のジャンルであると同時に、身体、信仰、性、録音技術、ステージングを含む総合的な表現形式になっていくことだ。
+          </p>
+
+          <p>
+            『Lovesexy』と『The Rainbow Children』を同じ線で結ぶ必要はない。むしろ、それらは同じ人物の中で別々の時点に現れた、似ているが同一ではない問いとして置かれるべきである。
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="article-03" class="section">
+      <article class="inner">
+        <header class="article-header">
+          <div class="number">03 / Essay</div>
+          <h1>影響関係ではなく、配置として聴く</h1>
+          <div class="meta">2026.07.04</div>
+        </header>
+
+        <div class="body">
+          <p class="lead">
+            作品は単独で存在しているように見える。しかし実際には、他の作品、時代、メディア、聴き手の記憶の中に置かれている。
+          </p>
+
+          <p>
+            あるアルバムが別のアルバムに影響を与えた、と言うことは簡単である。だが、その線はしばしば強すぎる。影響という言葉は、作品同士の関係を原因と結果に押し込めてしまう。
+          </p>
+
+          <p>
+            だから、ここでは作品を「配置」として扱う。ある作品がどの時代に現れ、どの作品と近く、どの作品とは遠いのか。どの線は明確で、どの線はまだ仮説にすぎないのか。
+          </p>
+
+          <p>
+            NOISEは、作品を評価する場所というより、作品の位置を考える場所である。
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="about" class="section">
+      <div class="inner">
+        <div class="number">About</div>
+        <h1>NOISEについて</h1>
+
+        <div class="about-text">
+          <p>
+            NOISEは、音楽、映画、メディア、批評を扱う個人編集のWebマガジンです。
+          </p>
+
+          <p>
+            記事をページごとに分けるのではなく、ひとつの号を縦に読む形式で構成します。雑誌の連続性と、スマートフォンの縦スクロール感を両立させるための形式です。
+          </p>
+        </div>
+
+        <div class="footer-small">
+          © NOISE
+        </div>
+      </div>
+    </section>
   </main>
 </body>
 </html>
