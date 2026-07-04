@@ -101,8 +101,14 @@
     }
 
     .section {
-      padding: 20px;
+      padding: 96px 20px;
       border-bottom: 2px solid var(--black);
+    }
+
+    .section:not(.cover) {
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.035), rgba(0,0,0,0) 120px),
+        var(--bg);
     }
 
     .sheet {
@@ -540,7 +546,7 @@
       }
 
       .section {
-        padding: 10px;
+        padding: 64px 10px;
       }
 
       .cover-main,
