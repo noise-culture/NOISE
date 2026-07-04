@@ -546,7 +546,7 @@
 
     .article-grid {
       display: grid;
-      grid-template-columns: 168px 1fr 320px;
+      grid-template-columns: 168px 320px 1fr;
       min-height: 700px;
     }
 
@@ -598,9 +598,15 @@
       box-shadow: 5px 5px 0 var(--black);
     }
 
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      background: #efe7d8;
+      border-right: 3px solid var(--black);
+    }
+
     .article-main {
       padding: 20px 24px 28px;
-      border-right: 3px solid var(--black);
       background:
         radial-gradient(circle at 96% 8%, rgba(132,215,231,0.28), transparent 24%),
         rgba(248,242,231,0.88);
@@ -660,12 +666,6 @@
       font-weight: 900;
       letter-spacing: -0.06em;
       box-shadow: 5px 5px 0 rgba(0,0,0,0.12);
-    }
-
-    .side-panel {
-      display: flex;
-      flex-direction: column;
-      background: #efe7d8;
     }
 
     .mini-cover {
@@ -928,11 +928,15 @@
 
       .cover-main,
       .article-rail,
-      .article-main,
+      .side-panel,
       .about-title,
       .about-card {
         border-right: none;
         border-bottom: 3px solid var(--black);
+      }
+
+      .article-main {
+        border-right: none;
       }
 
       .cover-art {
@@ -1193,6 +1197,22 @@
             <div class="rail-sticker">sweet</div>
           </aside>
 
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-one"></div>
+              <div class="mini-cover-sticker">soft<br>loop</div>
+              <div class="mini-cover-title">Voodoo & Loop</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / cd jacket logic / texture only / no copyrighted photo assets.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / CDジャケットの黒帯、ステッカー、バーコード感を使った抽象ビジュアル。
+            </div>
+          </aside>
+
           <div class="article-main">
             <div class="article-label">Feature / Soft Critical</div>
             <h1>D’Angelo『Voodoo』をどう聴くか</h1>
@@ -1232,22 +1252,6 @@
               </p>
             </div>
           </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-one"></div>
-              <div class="mini-cover-sticker">soft<br>loop</div>
-              <div class="mini-cover-title">Voodoo & Loop</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">sample visual / cd jacket logic / texture only / no copyrighted photo assets.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / CDジャケットの黒帯、ステッカー、バーコード感を使った抽象ビジュアル。
-            </div>
-          </aside>
         </article>
       </div>
     </section>
@@ -1270,6 +1274,22 @@
               2026.07.04
             </div>
             <div class="rail-sticker">bubble</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-two"></div>
+              <div class="mini-cover-sticker">body<br>pop</div>
+              <div class="mini-cover-title">Prince & Body</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / compact editorial grid / artificial sleeve texture.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / 音楽誌のサイド図版を、ポップなCDスリーブ風に再構成。
+            </div>
           </aside>
 
           <div class="article-main">
@@ -1311,22 +1331,6 @@
               </p>
             </div>
           </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-two"></div>
-              <div class="mini-cover-sticker">body<br>pop</div>
-              <div class="mini-cover-title">Prince & Body</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">sample visual / compact editorial grid / artificial sleeve texture.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / 音楽誌のサイド図版を、ポップなCDスリーブ風に再構成。
-            </div>
-          </aside>
         </article>
       </div>
     </section>
@@ -1349,6 +1353,22 @@
               2026.07.04
             </div>
             <div class="rail-sticker">map</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-three"></div>
+              <div class="mini-cover-sticker">map<br>issue</div>
+              <div class="mini-cover-title">Archive & Map</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / no external image / relation as sleeve design.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / 関係性をジャケット、帯、バーコード、クレジットとして見せる仮ビジュアル。
+            </div>
           </aside>
 
           <div class="article-main">
@@ -1390,22 +1410,6 @@
               </p>
             </div>
           </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-three"></div>
-              <div class="mini-cover-sticker">map<br>issue</div>
-              <div class="mini-cover-title">Archive & Map</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">sample visual / no external image / relation as sleeve design.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / 関係性をジャケット、帯、バーコード、クレジットとして見せる仮ビジュアル。
-            </div>
-          </aside>
         </article>
       </div>
     </section>
@@ -1428,6 +1432,22 @@
               2026.07.04
             </div>
             <div class="rail-sticker">pack</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-four"></div>
+              <div class="mini-cover-sticker">pop<br>pack</div>
+              <div class="mini-cover-title">Pop Package</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">package as interface / color, barcode, object, sticker, credit, sleeve.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / パッケージ、帯、ステッカーをWeb画面に翻訳するための仮ビジュアル。
+            </div>
           </aside>
 
           <div class="article-main">
@@ -1469,22 +1489,6 @@
               </p>
             </div>
           </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-four"></div>
-              <div class="mini-cover-sticker">pop<br>pack</div>
-              <div class="mini-cover-title">Pop Package</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">package as interface / color, barcode, object, sticker, credit, sleeve.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / パッケージ、帯、ステッカーをWeb画面に翻訳するための仮ビジュアル。
-            </div>
-          </aside>
         </article>
       </div>
     </section>
@@ -1507,6 +1511,22 @@
               2026.07.04
             </div>
             <div class="rail-sticker">film</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-five"></div>
+              <div class="mini-cover-sticker">gaze<br>cut</div>
+              <div class="mini-cover-title">Gaze & Cut</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">film note / gaze, edit, reaction, silence, frame, point of view.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / 映画のフレームとカット割りを、CDスリーブ風に置き換えた仮ビジュアル。
+            </div>
           </aside>
 
           <div class="article-main">
@@ -1548,22 +1568,6 @@
               </p>
             </div>
           </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-five"></div>
-              <div class="mini-cover-sticker">gaze<br>cut</div>
-              <div class="mini-cover-title">Gaze & Cut</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">film note / gaze, edit, reaction, silence, frame, point of view.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / 映画のフレームとカット割りを、CDスリーブ風に置き換えた仮ビジュアル。
-            </div>
-          </aside>
         </article>
       </div>
     </section>
