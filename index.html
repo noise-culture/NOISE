@@ -147,8 +147,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 68px;
-      padding: 12px 13px;
+      min-width: 58px;
+      padding: 12px 12px;
       border-right: 1px solid rgba(255,248,232,0.3);
       font-size: 11px;
       font-weight: 900;
@@ -495,18 +495,20 @@
 
     .contents {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       background: var(--cream);
+      border-top: 3px solid var(--black);
     }
 
     .contents a {
-      min-height: 148px;
+      min-height: 150px;
       padding: 16px;
       border-right: 3px solid var(--black);
+      border-bottom: 3px solid var(--black);
       transition: background 0.16s ease, color 0.16s ease;
     }
 
-    .contents a:last-child {
+    .contents a:nth-child(4n) {
       border-right: none;
     }
 
@@ -528,7 +530,7 @@
     .contents-title {
       display: block;
       margin-bottom: 10px;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.25;
       font-weight: 900;
       letter-spacing: -0.05em;
@@ -741,6 +743,37 @@
         radial-gradient(circle at 76% 58%, rgba(255,90,67,0.88), transparent 28%),
         radial-gradient(circle at 52% 20%, rgba(30,211,139,0.9), transparent 22%),
         linear-gradient(135deg, #faf2e4, #435b87);
+    }
+
+    .mini-four {
+      background:
+        radial-gradient(circle at 22% 24%, rgba(132,215,231,0.95), transparent 26%),
+        radial-gradient(circle at 76% 62%, rgba(255,90,67,0.9), transparent 28%),
+        linear-gradient(135deg, #f8eedf, #314046);
+    }
+
+    .mini-five {
+      background:
+        radial-gradient(circle at 22% 70%, rgba(30,211,139,0.9), transparent 28%),
+        radial-gradient(circle at 74% 26%, rgba(255,227,110,0.94), transparent 25%),
+        radial-gradient(circle at 52% 58%, rgba(255,90,67,0.8), transparent 24%),
+        linear-gradient(135deg, #f5eadb, #243b48);
+    }
+
+    .mini-six {
+      background:
+        radial-gradient(circle at 18% 28%, rgba(255,122,61,0.9), transparent 26%),
+        radial-gradient(circle at 74% 52%, rgba(132,215,231,0.94), transparent 29%),
+        radial-gradient(circle at 48% 78%, rgba(30,211,139,0.78), transparent 24%),
+        linear-gradient(135deg, #f7efe2, #2d3f5f);
+    }
+
+    .mini-seven {
+      background:
+        radial-gradient(circle at 24% 38%, rgba(5,5,5,0.86), transparent 25%),
+        radial-gradient(circle at 78% 28%, rgba(255,90,67,0.88), transparent 26%),
+        radial-gradient(circle at 52% 72%, rgba(255,227,110,0.9), transparent 26%),
+        linear-gradient(135deg, #fbf3e5, #345a59);
     }
 
     .mini-cover-title {
@@ -974,7 +1007,7 @@
       }
 
       .nav-links a {
-        min-width: 64px;
+        min-width: 58px;
         padding: 10px 10px;
         font-size: 10px;
       }
@@ -1088,6 +1121,10 @@
       <a href="#article-01">01</a>
       <a href="#article-02">02</a>
       <a href="#article-03">03</a>
+      <a href="#article-04">04</a>
+      <a href="#article-05">05</a>
+      <a href="#article-06">06</a>
+      <a href="#article-07">07</a>
       <a href="#about">About</a>
     </nav>
   </header>
@@ -1130,7 +1167,7 @@
             <div class="album-footer">
               <div class="barcode"></div>
               <div class="microcopy">
-                NOISE FIRST ISSUE OF 2026. FEATURES THREE TEXTS: VOODOO, PRINCE, AND LISTENING AS MAPPING. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
+                NOISE FIRST ISSUE OF 2026. FEATURES SEVEN TEXTS: VOODOO, PRINCE, LISTENING AS MAPPING, POP PACKAGE, CINEMA, INTERNET MEMORY, AND EDITORIAL METHOD. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
               </div>
               <div class="nj-box">N<br>J</div>
             </div>
@@ -1154,6 +1191,30 @@
             <span class="contents-number">03</span>
             <span class="contents-title">影響関係ではなく、配置として聴く</span>
             <span class="contents-category">Essay / Column</span>
+          </a>
+
+          <a href="#article-04">
+            <span class="contents-number">04</span>
+            <span class="contents-title">ポップはパッケージとして届く</span>
+            <span class="contents-category">Pop / Media</span>
+          </a>
+
+          <a href="#article-05">
+            <span class="contents-number">05</span>
+            <span class="contents-title">映画における視線と編集</span>
+            <span class="contents-category">Film / Essay</span>
+          </a>
+
+          <a href="#article-06">
+            <span class="contents-number">06</span>
+            <span class="contents-title">インターネットの記憶はなぜ淡いのか</span>
+            <span class="contents-category">Internet / Memory</span>
+          </a>
+
+          <a href="#article-07">
+            <span class="contents-number">07</span>
+            <span class="contents-title">個人編集のための方法</span>
+            <span class="contents-category">Editorial / Note</span>
           </a>
         </div>
       </div>
@@ -1357,6 +1418,270 @@
       </div>
     </section>
 
+    <section id="article-04" class="section">
+      <div class="section-marker">
+        <span>Article 04 / Pop Package</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">04</div>
+            <div class="rail-meta">
+              <strong>Pop</strong><br>
+              Media<br>
+              Package<br>
+              Jacket<br>
+              Object<br>
+              2026.07.04
+            </div>
+            <div class="rail-sticker">pack</div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Pop / Package</div>
+            <h1>ポップはパッケージとして届く</h1>
+            <div class="meta">Pop / Design / CD Jacket / Media Object</div>
+
+            <div class="body">
+              <p class="lead">
+                ポップ・ミュージックは音だけで届くわけではない。ジャケット、フォント、色、写真、ステッカー、開封体験まで含めて、ひとつの作品として受け取られる。
+              </p>
+
+              <p>
+                配信時代になっても、パッケージの感覚は消えていない。むしろ、物理的なCDやレコードの役割が弱まったぶん、画面の中でパッケージ性をどう作るかが重要になっている。
+              </p>
+
+              <p>
+                黒い帯、過剰なロゴ、細かいクレジット、バーコードのような記号は、情報であると同時に質感でもある。それらは作品を説明するのではなく、作品に触れたという感覚を作る。
+              </p>
+
+              <p>
+                ポップは曲として聴かれる前に、まずパッケージとして見られる。NOISEの画面もまた、記事の容器であると同時に、読む前の気分を作るジャケットである。
+              </p>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-four"></div>
+              <div class="mini-cover-sticker">pop<br>pack</div>
+              <div class="mini-cover-title">Pop Package</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">package as interface / color, barcode, object, sticker, credit, sleeve.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / パッケージ、帯、ステッカーをWeb画面に翻訳するための仮ビジュアル。
+            </div>
+            <div class="pullquote">
+              曲は、音より先にパッケージとして届く。
+            </div>
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-05" class="section">
+      <div class="section-marker">
+        <span>Article 05 / Film</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">05</div>
+            <div class="rail-meta">
+              <strong>Film</strong><br>
+              Essay<br>
+              Gaze<br>
+              Editing<br>
+              Frame<br>
+              2026.07.04
+            </div>
+            <div class="rail-sticker">film</div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Film / Gaze</div>
+            <h1>映画における視線と編集</h1>
+            <div class="meta">Film / Gaze / Editing / Frame</div>
+
+            <div class="body">
+              <p class="lead">
+                映画の中で、誰が誰を見るのか。その視線の順番は、物語の説明以上に強く、観客の感情を組み立てている。
+              </p>
+
+              <p>
+                カメラが顔を映す。次に、その人物が見ているものを映す。さらに、その対象が見返す。こうした単純な切り返しの中で、観客は関係性を理解する。言葉より先に、視線が人物の距離を決める。
+              </p>
+
+              <p>
+                編集とは、出来事を短くする作業ではない。視線の向き、反応の間、沈黙の長さを並べ替え、観客が何を信じるかを決める作業である。
+              </p>
+
+              <p>
+                だから映画を見ることは、誰が画面の中心にいるかを見ることだけではない。誰が見られ、誰が見返し、誰の視線だけが切り落とされているのかを読むことでもある。
+              </p>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-five"></div>
+              <div class="mini-cover-sticker">gaze<br>cut</div>
+              <div class="mini-cover-title">Gaze & Cut</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">film note / gaze, edit, reaction, silence, frame, point of view.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / 映画のフレームとカット割りを、CDスリーブ風に置き換えた仮ビジュアル。
+            </div>
+            <div class="pullquote">
+              編集とは、視線の順番を組み替える作業である。
+            </div>
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-06" class="section">
+      <div class="section-marker">
+        <span>Article 06 / Internet Memory</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">06</div>
+            <div class="rail-meta">
+              <strong>Internet</strong><br>
+              Memory<br>
+              Archive<br>
+              Feed<br>
+              Image<br>
+              2026.07.04
+            </div>
+            <div class="rail-sticker">feed</div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Internet / Memory</div>
+            <h1>インターネットの記憶はなぜ淡いのか</h1>
+            <div class="meta">Internet / Memory / Archive / Feed</div>
+
+            <div class="body">
+              <p class="lead">
+                インターネット上の記憶は、はっきり保存されているようで、実際にはいつも少しだけ薄い。見たことは覚えているのに、どこで見たのかを思い出せない。
+              </p>
+
+              <p>
+                フィードは出来事を時系列に並べるが、体験としては時系列を壊す。昨日の投稿、数年前の画像、誰かの引用、広告、保存したまま見返していないリンク。それらが同じ平面に置かれる。
+              </p>
+
+              <p>
+                その結果、記憶は情報ではなく質感として残る。特定の文章よりも、色味、画質、スクリーンショットの余白、サムネイルの並び方の方が長く残る。
+              </p>
+
+              <p>
+                インターネットの記憶が淡いのは、忘れているからではない。むしろ、多すぎる断片が重なりすぎて、ひとつの像として輪郭を失っているからである。
+              </p>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-six"></div>
+              <div class="mini-cover-sticker">net<br>fog</div>
+              <div class="mini-cover-title">Internet Fog</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">memory as texture / feed, screenshot, archive, soft image, saved link.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / フィード、スクリーンショット、保存された画像の淡さを意識した仮ビジュアル。
+            </div>
+            <div class="pullquote">
+              記憶は、情報ではなく質感として残る。
+            </div>
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-07" class="section">
+      <div class="section-marker">
+        <span>Article 07 / Editorial Note</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">07</div>
+            <div class="rail-meta">
+              <strong>Editorial</strong><br>
+              Note<br>
+              Method<br>
+              Personal<br>
+              Magazine<br>
+              2026.07.04
+            </div>
+            <div class="rail-sticker">edit</div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Editorial / Method</div>
+            <h1>個人編集のための方法</h1>
+            <div class="meta">Editorial / Personal Magazine / Method</div>
+
+            <div class="body">
+              <p class="lead">
+                個人で雑誌を作ることは、巨大なメディアを小さく模倣することではない。むしろ、自分の関心の速度に合わせて、記事、配置、デザインを同時に動かすことである。
+              </p>
+
+              <p>
+                編集とは、文章を並べることだけではない。何を一番上に置くのか。どの言葉を大きくするのか。どの記事の隣にどの図版を置くのか。そうした判断の積み重ねが、媒体の人格を作る。
+              </p>
+
+              <p>
+                個人編集の強さは、規模の小ささにある。すべてを説明しなくていい。毎回同じ読者を想定しなくていい。未完成な関心を、そのまま号として出すことができる。
+              </p>
+
+              <p>
+                NOISEは、完成されたメディアではなく、編集の実験場である。記事を書くこと、配置すること、画面を作ること。それらを分けずに扱うための場所である。
+              </p>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-seven"></div>
+              <div class="mini-cover-sticker">edit<br>note</div>
+              <div class="mini-cover-title">Edit Method</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">personal publishing / layout, text, design, issue, method, unfinished magazine.</div>
+              </div>
+            </div>
+            <div class="caption">
+              SAMPLE VISUAL / 個人編集、誌面設計、未完成な媒体性を示すための仮ビジュアル。
+            </div>
+            <div class="pullquote">
+              媒体の人格は、配置の判断から生まれる。
+            </div>
+          </aside>
+        </article>
+      </div>
+    </section>
+
     <section id="about" class="section">
       <div class="section-marker">
         <span>About / Colophon</span>
@@ -1384,7 +1709,7 @@
         </div>
 
         <div class="footer">
-          © NOISE / Independent Web Magazine / Issue 001 / Snoozer × How Sweet Study
+          © NOISE / Independent Web Magazine / Issue 001 / Seven Article Test
         </div>
       </div>
     </section>
