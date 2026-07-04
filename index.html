@@ -974,12 +974,18 @@
 
       .nav-links {
         border-left: none;
+        display: grid;
+        grid-template-columns: 1fr repeat(5, 0.72fr) 1.55fr;
+        width: 100%;
+        overflow: hidden;
       }
 
       .nav-links a {
-        min-width: 58px;
-        padding: 10px 10px;
-        font-size: 10px;
+        min-width: 0;
+        padding: 10px 0;
+        font-size: clamp(8px, 2.4vw, 10px);
+        letter-spacing: 0.05em;
+        border-right: 1px solid rgba(255,248,232,0.3);
       }
 
       .section {
