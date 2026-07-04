@@ -7,24 +7,24 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #e9e6df;
-      --paper: #fdfbf4;
-      --text: #0f0f0f;
-      --muted: #66625b;
-      --black: #080808;
-      --line: #191919;
-      --soft-line: #c9c3b8;
-      --accent: #c40016;
-      --mint: #bfffd8;
-      --pink: #ffd7ef;
-      --lavender: #e7ddff;
-      --blue: #dbe8ff;
-      --yellow: #fff0a8;
-      --cream: #f5f0e5;
+      --bg: #e9e4d8;
+      --paper: #f8f2e7;
+      --cream: #fff8e8;
+      --text: #070707;
+      --muted: #6b665d;
+      --black: #050505;
+      --line: #050505;
+      --coral: #ff5a43;
+      --orange: #ff7a3d;
+      --green: #1ed38b;
+      --cyan: #84d7e7;
+      --blue: #244c9a;
+      --yellow: #ffe36e;
+      --soft: #e7dfcf;
     }
 
     * {
@@ -39,15 +39,14 @@
       margin: 0;
       color: var(--text);
       font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,90,67,0.24), transparent 26%),
+        radial-gradient(circle at 82% 10%, rgba(132,215,231,0.32), transparent 28%),
+        radial-gradient(circle at 74% 76%, rgba(30,211,139,0.24), transparent 30%),
+        linear-gradient(135deg, #e9e4d8 0%, #f3eddf 42%, #e3f1eb 100%);
+      background-attachment: fixed;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      background:
-        radial-gradient(circle at 14% 10%, rgba(191,255,216,0.55), transparent 28%),
-        radial-gradient(circle at 86% 8%, rgba(255,215,239,0.52), transparent 27%),
-        radial-gradient(circle at 48% 48%, rgba(219,232,255,0.36), transparent 35%),
-        radial-gradient(circle at 86% 88%, rgba(231,221,255,0.48), transparent 30%),
-        linear-gradient(135deg, #e9e6df 0%, #f4f0e7 45%, #eef8f0 100%);
-      background-attachment: fixed;
       overflow-x: hidden;
     }
 
@@ -57,11 +56,11 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      opacity: 0.16;
+      opacity: 0.13;
       background:
-        linear-gradient(to right, rgba(0,0,0,0.22) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.22) 1px, transparent 1px);
-      background-size: 28px 28px;
+        linear-gradient(to right, rgba(0,0,0,0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.45) 1px, transparent 1px);
+      background-size: 26px 26px;
       mix-blend-mode: multiply;
     }
 
@@ -71,10 +70,16 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.16;
+      opacity: 0.14;
       background:
-        repeating-radial-gradient(circle at 20% 20%, rgba(0,0,0,0.38) 0 1px, transparent 1px 4px);
-      mix-blend-mode: multiply;
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.3) 0px,
+          rgba(255,255,255,0.3) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: screen;
     }
 
     a {
@@ -82,210 +87,210 @@
       text-decoration: none;
     }
 
-    .left-nav {
-      position: fixed;
-      left: 0;
+    .top-nav {
+      position: sticky;
       top: 0;
       z-index: 100;
-      width: 82px;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: rgba(253, 251, 244, 0.92);
-      border-right: 2px solid var(--black);
-      backdrop-filter: blur(14px) saturate(1.2);
-      box-shadow: 10px 0 32px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: 172px 1fr auto;
+      align-items: stretch;
+      background: var(--black);
+      color: var(--cream);
+      border-bottom: 3px solid var(--black);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
 
-    .left-nav a {
-      writing-mode: horizontal-tb;
-      text-orientation: initial;
+    .top-logo {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 58px;
-      padding: 8px 6px;
-      border-bottom: 1px solid var(--soft-line);
+      padding: 12px 14px;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: 34px;
+      line-height: 0.82;
+      font-weight: 900;
+      letter-spacing: -0.12em;
+      color: var(--coral);
+      background: var(--black);
+      border-right: 2px solid var(--cream);
+      text-transform: lowercase;
+    }
+
+    .top-copy {
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      font-size: 10px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,248,232,0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      border-left: 2px solid var(--cream);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      padding: 12px 13px;
+      border-right: 1px solid rgba(255,248,232,0.3);
       font-size: 11px;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+      transition: background 0.16s ease, color 0.16s ease;
     }
 
-    .left-nav a:hover {
-      background: var(--mint);
+    .nav-links a:hover {
+      background: var(--coral);
       color: var(--black);
-      box-shadow: inset 0 0 22px rgba(255,255,255,0.88);
-    }
-
-    .left-nav .nav-logo {
-      min-height: 82px;
-      font-size: 17px;
-      letter-spacing: -0.08em;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,215,239,0.8), transparent 42%),
-        radial-gradient(circle at 80% 80%, rgba(191,255,216,0.9), transparent 45%),
-        var(--paper);
-      border-bottom: 2px solid var(--black);
-    }
-
-    .left-nav .nav-issue {
-      margin-top: auto;
-      min-height: 82px;
-      font-size: 10px;
-      line-height: 1.3;
-      color: var(--muted);
-      background: rgba(255,255,255,0.34);
     }
 
     .page {
       width: 100%;
-      padding-left: 82px;
     }
 
     .section {
       position: relative;
-      padding: 112px 24px;
-      border-bottom: 2px solid var(--black);
-    }
-
-    .section::before {
-      content: "✦";
-      position: absolute;
-      top: 34px;
-      left: 108px;
-      font-size: 30px;
-      line-height: 1;
-      color: rgba(255,255,255,0.78);
-      text-shadow: 0 0 18px rgba(191,255,216,0.9);
-      pointer-events: none;
-    }
-
-    .section:nth-child(odd)::before {
-      content: "♡";
-      color: rgba(255,255,255,0.82);
-      text-shadow: 0 0 18px rgba(255,215,239,0.95);
-    }
-
-    .sheet {
-      max-width: 1220px;
-      margin: 0 auto;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.46), rgba(255,255,255,0.12)),
-        var(--paper);
-      border: 2px solid var(--black);
-      box-shadow:
-        0 24px 56px rgba(0,0,0,0.10),
-        inset 0 1px 0 rgba(255,255,255,0.72);
-      overflow: hidden;
+      padding: 112px 20px;
+      border-bottom: 3px solid var(--black);
     }
 
     .section-marker {
-      max-width: 1220px;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto 16px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       gap: 10px;
-      font-size: 11px;
+      align-items: center;
+      font-size: 10px;
       font-weight: 900;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(15,15,15,0.6);
+    }
+
+    .section-marker::before,
+    .section-marker::after {
+      content: "";
+      height: 2px;
+      background: var(--black);
     }
 
     .section-marker span {
-      display: inline-block;
       padding: 6px 9px;
+      background: var(--cream);
       border: 2px solid var(--black);
-      background: rgba(253,251,244,0.82);
-      box-shadow: 0 0 22px rgba(191,255,216,0.26);
+    }
+
+    .sheet {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 3px solid var(--black);
+      box-shadow: 0 24px 54px rgba(0,0,0,0.16);
+      overflow: hidden;
     }
 
     .cover {
-      padding-top: 42px;
+      padding-top: 36px;
     }
 
     .cover-grid {
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      border-bottom: 2px solid var(--black);
+      grid-template-columns: 1fr 0.92fr;
+      border-bottom: 3px solid var(--black);
     }
 
     .cover-main {
-      padding: 24px;
-      border-right: 2px solid var(--black);
+      padding: 22px;
+      border-right: 3px solid var(--black);
       background:
-        radial-gradient(circle at 92% 12%, rgba(255,215,239,0.38), transparent 26%),
-        radial-gradient(circle at 8% 88%, rgba(191,255,216,0.36), transparent 28%),
-        rgba(253,251,244,0.62);
+        radial-gradient(circle at 88% 10%, rgba(132,215,231,0.34), transparent 30%),
+        linear-gradient(135deg, rgba(255,248,232,0.9), rgba(237,228,211,0.82));
     }
 
     .kicker {
       display: inline-block;
       margin-bottom: 14px;
       padding: 5px 8px;
-      background: var(--black);
-      color: white;
+      background: var(--coral);
+      color: var(--black);
+      border: 2px solid var(--black);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-    }
-
-    .kicker.soft {
-      background: var(--mint);
-      color: var(--black);
-      border: 2px solid var(--black);
-      box-shadow: 0 0 22px rgba(191,255,216,0.76);
+      box-shadow: 4px 4px 0 var(--black);
     }
 
     .site-title {
       margin: 0;
-      font-size: clamp(76px, 15vw, 182px);
-      line-height: 0.78;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(82px, 16vw, 190px);
+      line-height: 0.76;
       font-weight: 900;
-      letter-spacing: -0.12em;
-      text-transform: uppercase;
+      letter-spacing: -0.14em;
+      text-transform: lowercase;
+      color: var(--coral);
+      text-shadow:
+        3px 3px 0 var(--black),
+        6px 6px 0 rgba(0,0,0,0.1);
     }
 
     .deck {
       max-width: 720px;
-      margin: 20px 0 0;
-      font-size: clamp(18px, 2.1vw, 28px);
-      line-height: 1.42;
+      margin: 22px 0 0;
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.34;
       font-weight: 900;
       letter-spacing: -0.06em;
     }
 
     .deck-small {
-      max-width: 680px;
+      max-width: 720px;
       margin: 14px 0 0;
-      font-size: 12px;
-      line-height: 1.75;
-      font-weight: 800;
       color: var(--muted);
-      letter-spacing: 0.04em;
+      font-size: 11px;
+      line-height: 1.75;
+      font-weight: 900;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .issue-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-top: 2px solid var(--black);
       margin-top: 24px;
-      background: rgba(255,255,255,0.42);
+      border: 2px solid var(--black);
+      background: var(--cream);
     }
 
     .issue-cell {
-      padding: 10px 12px;
-      border-right: 1px solid var(--soft-line);
-      font-size: 11px;
-      line-height: 1.45;
-      text-transform: uppercase;
+      min-height: 66px;
+      padding: 10px;
+      border-right: 1px solid var(--black);
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 900;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--muted);
-      font-weight: 800;
     }
 
     .issue-cell:last-child {
@@ -294,110 +299,211 @@
 
     .issue-cell strong {
       display: block;
-      color: var(--text);
+      margin-bottom: 4px;
+      color: var(--black);
       font-size: 13px;
-      letter-spacing: 0;
+      letter-spacing: -0.02em;
       text-transform: none;
-      margin-bottom: 3px;
     }
 
-    .cover-visual {
-      min-height: 430px;
+    .cover-art {
+      min-height: 472px;
       position: relative;
+      background: var(--black);
       overflow: hidden;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(196,0,22,0.82), transparent 20%),
-        radial-gradient(circle at 78% 28%, rgba(191,255,216,0.95), transparent 28%),
-        radial-gradient(circle at 44% 74%, rgba(255,215,239,0.92), transparent 30%),
-        radial-gradient(circle at 72% 76%, rgba(231,221,255,0.92), transparent 24%),
-        linear-gradient(135deg, #f8f1e3 0%, #e6dfd1 100%);
     }
 
-    .cover-visual::before {
+    .album-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      padding: 6px 18px 0;
+      background: var(--black);
+      z-index: 5;
+    }
+
+    .album-header span {
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(58px, 8vw, 92px);
+      line-height: 0.7;
+      font-weight: 900;
+      letter-spacing: -0.13em;
+      color: var(--coral);
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    .album-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 78px;
+      bottom: 72px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,90,67,0.88), transparent 20%),
+        radial-gradient(circle at 76% 34%, rgba(30,211,139,0.9), transparent 25%),
+        radial-gradient(circle at 52% 66%, rgba(132,215,231,0.9), transparent 27%),
+        linear-gradient(135deg, #f7f2e5 0%, #e1d5c4 48%, #243b48 100%);
+      border-top: 3px solid var(--black);
+      border-bottom: 3px solid var(--black);
+    }
+
+    .album-image::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
         linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
-      background-size: 22px 22px;
+      background-size: 20px 20px;
       mix-blend-mode: multiply;
-      opacity: 0.35;
+      opacity: 0.45;
     }
 
-    .cover-visual::after {
-      content: "SNOOZER × WISHCORE / TEXTURE ISSUE";
+    .album-image::after {
+      content: "";
       position: absolute;
-      left: 18px;
-      bottom: 18px;
-      padding: 7px 9px;
-      background: rgba(253,251,244,0.88);
-      border: 2px solid var(--black);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      box-shadow: 0 0 24px rgba(255,255,255,0.68);
+      inset: 24px;
+      border: 3px solid rgba(255,255,255,0.72);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.46), rgba(255,255,255,0.05));
+      box-shadow:
+        inset 0 0 60px rgba(255,255,255,0.42),
+        0 18px 40px rgba(0,0,0,0.16);
+      transform: rotate(-2.5deg);
     }
 
     .sticker {
       position: absolute;
-      z-index: 2;
+      z-index: 8;
       display: grid;
       place-items: center;
-      border: 2px solid var(--black);
-      background: rgba(255,255,255,0.62);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
-      backdrop-filter: blur(10px);
+      border: 3px solid var(--black);
       font-weight: 900;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.82);
     }
 
-    .sticker.star {
-      width: 84px;
-      height: 84px;
-      top: 54px;
-      left: 42px;
-      border-radius: 26px;
-      font-size: 42px;
+    .sticker.circle {
+      width: 92px;
+      height: 92px;
+      right: 30px;
+      top: 122px;
+      border-radius: 999px;
+      background: var(--orange);
+      font-family: "Outfit", sans-serif;
+      font-size: 17px;
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      text-align: center;
+      transform: rotate(-12deg);
+    }
+
+    .sticker.green {
+      width: 78px;
+      height: 78px;
+      left: 34px;
+      bottom: 94px;
+      border-radius: 999px;
+      background: var(--green);
+      font-size: 28px;
       transform: rotate(8deg);
     }
 
-    .sticker.heart {
-      width: 70px;
-      height: 70px;
-      right: 48px;
-      top: 138px;
-      border-radius: 999px;
-      font-size: 32px;
-      transform: rotate(-7deg);
-      background: rgba(255,215,239,0.76);
+    .album-title-line {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 84px;
+      z-index: 10;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(28px, 4.8vw, 54px);
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      color: var(--cream);
+      text-shadow: 3px 3px 0 var(--black);
+      white-space: nowrap;
     }
 
-    .sticker.label {
-      left: 56px;
-      bottom: 116px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 10px;
-      letter-spacing: 0.12em;
+    .album-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 120px 1fr 96px;
+      background: var(--black);
+      color: var(--cream);
+      border-top: 3px solid var(--black);
+    }
+
+    .barcode {
+      margin: 8px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #fff 0 2px,
+          #000 2px 4px,
+          #fff 4px 7px,
+          #000 7px 9px,
+          #fff 9px 13px
+        );
+      border: 2px solid var(--cream);
+      position: relative;
+    }
+
+    .barcode::after {
+      content: "5 220722 221029";
+      position: absolute;
+      left: 6px;
+      bottom: 3px;
+      padding: 1px 2px;
+      background: var(--cream);
+      color: var(--black);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    .microcopy {
+      padding: 8px 8px 6px;
+      font-size: 8px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: rgba(191,255,216,0.78);
-      transform: rotate(4deg);
+      color: rgba(255,248,232,0.82);
+      overflow: hidden;
+    }
+
+    .nj-box {
+      margin: 8px;
+      border: 2px solid var(--cream);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      line-height: 0.8;
+      font-weight: 900;
+      color: var(--coral);
     }
 
     .contents {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--cream);
     }
 
     .contents a {
-      min-height: 154px;
+      min-height: 148px;
       padding: 16px;
-      border-right: 2px solid var(--black);
-      transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
-      background:
-        radial-gradient(circle at 92% 18%, rgba(255,215,239,0.26), transparent 30%),
-        rgba(253,251,244,0.62);
+      border-right: 3px solid var(--black);
+      transition: background 0.16s ease, color 0.16s ease;
     }
 
     .contents a:last-child {
@@ -405,107 +511,111 @@
     }
 
     .contents a:hover {
-      background:
-        radial-gradient(circle at 86% 20%, rgba(255,255,255,0.86), transparent 24%),
-        var(--mint);
-      box-shadow: inset 0 0 28px rgba(255,255,255,0.82);
+      background: var(--cyan);
     }
 
     .contents-number {
       display: block;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       font-size: 42px;
       line-height: 0.8;
       font-weight: 900;
       letter-spacing: -0.08em;
+      color: var(--coral);
+      text-shadow: 2px 2px 0 var(--black);
     }
 
     .contents-title {
       display: block;
+      margin-bottom: 10px;
       font-size: 19px;
       line-height: 1.25;
       font-weight: 900;
       letter-spacing: -0.05em;
-      margin-bottom: 10px;
     }
 
     .contents-category {
       display: block;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(15,15,15,0.52);
+      color: var(--muted);
     }
 
     .article-grid {
       display: grid;
-      grid-template-columns: 170px 1fr 310px;
-      min-height: 690px;
+      grid-template-columns: 168px 1fr 320px;
+      min-height: 700px;
     }
 
     .article-rail {
       padding: 16px;
-      border-right: 2px solid var(--black);
-      background:
-        radial-gradient(circle at 15% 12%, rgba(191,255,216,0.42), transparent 30%),
-        var(--cream);
+      border-right: 3px solid var(--black);
+      background: var(--cream);
     }
 
     .article-number {
-      font-size: 72px;
-      line-height: 0.8;
+      font-size: 74px;
+      line-height: 0.78;
       font-weight: 900;
       letter-spacing: -0.1em;
-      color: var(--accent);
+      color: var(--coral);
+      text-shadow: 3px 3px 0 var(--black);
       margin-bottom: 18px;
-      text-shadow: 0 0 20px rgba(255,215,239,0.58);
     }
 
     .rail-meta {
-      border-top: 2px solid var(--black);
       padding-top: 12px;
-      font-size: 11px;
+      border-top: 3px solid var(--black);
+      font-size: 10px;
       line-height: 1.7;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     .rail-meta strong {
-      color: var(--text);
+      color: var(--black);
     }
 
-    .rail-symbol {
+    .rail-sticker {
       margin-top: 22px;
-      min-height: 120px;
+      min-height: 118px;
       display: grid;
       place-items: center;
-      border: 2px solid var(--black);
+      border: 3px solid var(--black);
       background:
-        radial-gradient(circle, rgba(255,255,255,0.9), rgba(191,255,216,0.55));
-      font-size: 42px;
-      box-shadow: 0 0 24px rgba(191,255,216,0.44);
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.72), transparent 34%),
+        var(--green);
+      font-family: "Outfit", sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      transform: rotate(-2deg);
+      box-shadow: 5px 5px 0 var(--black);
     }
 
     .article-main {
-      padding: 18px 22px 26px;
-      border-right: 2px solid var(--black);
-      background: rgba(253,251,244,0.76);
+      padding: 20px 24px 28px;
+      border-right: 3px solid var(--black);
+      background:
+        radial-gradient(circle at 96% 8%, rgba(132,215,231,0.28), transparent 24%),
+        rgba(248,242,231,0.88);
     }
 
     .article-label {
       display: inline-block;
       margin-bottom: 14px;
-      padding: 4px 7px;
+      padding: 5px 8px;
       border: 2px solid var(--black);
-      background: var(--mint);
+      background: var(--yellow);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      box-shadow: 0 0 20px rgba(191,255,216,0.52);
+      box-shadow: 3px 3px 0 var(--black);
     }
 
     .article-main h1 {
@@ -518,11 +628,11 @@
 
     .meta {
       margin-bottom: 16px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .body {
@@ -540,96 +650,190 @@
 
     .body .lead {
       column-span: all;
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 3px solid var(--black);
+      background: var(--cream);
       font-size: 22px;
       line-height: 1.45;
       font-weight: 900;
       letter-spacing: -0.06em;
-      margin-bottom: 18px;
-      padding: 14px;
-      border: 2px solid var(--black);
-      background:
-        radial-gradient(circle at 92% 16%, rgba(255,215,239,0.42), transparent 34%),
-        rgba(255,255,255,0.58);
-      box-shadow: inset 0 0 22px rgba(255,255,255,0.78);
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.12);
     }
 
     .side-panel {
       display: flex;
       flex-direction: column;
-      background: #f1ece2;
+      background: #efe7d8;
     }
 
-    .visual {
-      min-height: 280px;
-      border-bottom: 2px solid var(--black);
+    .mini-cover {
+      min-height: 300px;
       position: relative;
       overflow: hidden;
+      border-bottom: 3px solid var(--black);
+      background: var(--black);
     }
 
-    .visual::before {
+    .mini-cover-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 50px;
+      padding: 4px 10px 0;
+      background: var(--black);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+    }
+
+    .mini-cover-header span {
+      font-family: "Outfit", sans-serif;
+      font-size: 44px;
+      line-height: 0.7;
+      font-weight: 900;
+      letter-spacing: -0.13em;
+      color: var(--coral);
+      text-transform: lowercase;
+    }
+
+    .mini-cover-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+      bottom: 50px;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+    }
+
+    .mini-cover-image::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
         linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
-      background-size: 18px 18px;
+      background-size: 16px 16px;
       mix-blend-mode: multiply;
-      opacity: 0.38;
+      opacity: 0.42;
     }
 
-    .visual::after {
-      content: "✦";
+    .mini-one {
+      background:
+        radial-gradient(circle at 26% 32%, rgba(255,90,67,0.92), transparent 26%),
+        radial-gradient(circle at 78% 48%, rgba(30,211,139,0.94), transparent 28%),
+        linear-gradient(135deg, #f6eee1, #42606b);
+    }
+
+    .mini-two {
+      background:
+        radial-gradient(circle at 18% 66%, rgba(5,5,5,0.86), transparent 26%),
+        radial-gradient(circle at 72% 28%, rgba(255,122,61,0.92), transparent 27%),
+        radial-gradient(circle at 58% 66%, rgba(132,215,231,0.94), transparent 24%),
+        linear-gradient(135deg, #f4ead9, #1d3f3f);
+    }
+
+    .mini-three {
+      background:
+        radial-gradient(circle at 26% 30%, rgba(255,227,110,0.96), transparent 26%),
+        radial-gradient(circle at 76% 58%, rgba(255,90,67,0.88), transparent 28%),
+        radial-gradient(circle at 52% 20%, rgba(30,211,139,0.9), transparent 22%),
+        linear-gradient(135deg, #faf2e4, #435b87);
+    }
+
+    .mini-cover-title {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 96px;
-      color: rgba(255,255,255,0.72);
-      text-shadow: 0 0 34px rgba(255,255,255,0.94);
+      left: 10px;
+      right: 10px;
+      bottom: 58px;
+      z-index: 6;
+      color: var(--cream);
+      font-family: "Outfit", sans-serif;
+      font-size: 28px;
+      line-height: 0.92;
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      text-shadow: 3px 3px 0 var(--black);
+      white-space: nowrap;
     }
 
-    .visual-one {
-      background:
-        radial-gradient(circle at 24% 28%, rgba(196,0,22,0.86), transparent 24%),
-        radial-gradient(circle at 74% 42%, rgba(191,255,216,0.96), transparent 30%),
-        radial-gradient(circle at 50% 80%, rgba(255,215,239,0.9), transparent 27%),
-        linear-gradient(135deg, #f7eddb, #d6c7b0);
+    .mini-cover-sticker {
+      position: absolute;
+      right: 16px;
+      top: 78px;
+      z-index: 7;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      background: var(--orange);
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-align: center;
+      transform: rotate(-10deg);
     }
 
-    .visual-two {
-      background:
-        radial-gradient(circle at 20% 70%, rgba(14,14,14,0.84), transparent 25%),
-        radial-gradient(circle at 72% 24%, rgba(255,215,239,0.92), transparent 26%),
-        radial-gradient(circle at 56% 58%, rgba(191,255,216,0.94), transparent 25%),
-        linear-gradient(135deg, #f5efe2, #d9cbb8);
+    .mini-cover-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      background: var(--black);
+      color: var(--cream);
     }
 
-    .visual-three {
+    .mini-barcode {
+      margin: 7px;
       background:
-        radial-gradient(circle at 28% 30%, rgba(255,240,168,0.96), transparent 24%),
-        radial-gradient(circle at 72% 62%, rgba(196,0,22,0.82), transparent 26%),
-        radial-gradient(circle at 54% 18%, rgba(231,221,255,0.92), transparent 24%),
-        linear-gradient(135deg, #faf6ee, #ddd1be);
+        repeating-linear-gradient(
+          90deg,
+          #fff 0 2px,
+          #000 2px 4px,
+          #fff 4px 7px,
+          #000 7px 9px,
+          #fff 9px 12px
+        );
+      border: 1px solid var(--cream);
+    }
+
+    .mini-credit {
+      padding: 8px 8px 6px;
+      font-size: 7px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,248,232,0.78);
+      overflow: hidden;
     }
 
     .caption {
       padding: 12px;
-      border-bottom: 2px solid var(--black);
-      font-size: 11px;
+      border-bottom: 3px solid var(--black);
+      font-size: 10px;
       line-height: 1.55;
       font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       color: var(--muted);
-      background: rgba(253,251,244,0.62);
+      background: var(--cream);
     }
 
     .pullquote {
       padding: 16px;
       margin-top: auto;
-      background:
-        radial-gradient(circle at 86% 18%, rgba(255,215,239,0.22), transparent 35%),
-        var(--black);
-      color: white;
+      background: var(--black);
+      color: var(--cream);
       font-size: 21px;
       line-height: 1.35;
       font-weight: 900;
@@ -638,29 +842,30 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 180px 1fr 1fr;
+      grid-template-columns: 190px 1fr 1fr;
     }
 
     .about-title {
       padding: 16px;
-      border-right: 2px solid var(--black);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(191,255,216,0.42), transparent 32%),
-        var(--cream);
+      border-right: 3px solid var(--black);
+      background: var(--cream);
     }
 
     .about-title h1 {
       margin: 0;
-      font-size: 48px;
-      line-height: 0.9;
+      font-family: "Outfit", sans-serif;
+      font-size: 50px;
+      line-height: 0.88;
       font-weight: 900;
-      letter-spacing: -0.08em;
+      letter-spacing: -0.09em;
+      color: var(--coral);
+      text-shadow: 2px 2px 0 var(--black);
     }
 
     .about-card {
       padding: 18px;
-      border-right: 2px solid var(--black);
-      background: rgba(253,251,244,0.72);
+      border-right: 3px solid var(--black);
+      background: rgba(255,248,232,0.76);
     }
 
     .about-card:last-child {
@@ -668,15 +873,16 @@
     }
 
     .about-card h2 {
-      margin: 0 0 12px;
       display: inline-block;
-      padding: 4px 7px;
+      margin: 0 0 12px;
+      padding: 5px 8px;
       border: 2px solid var(--black);
-      background: var(--pink);
+      background: var(--cyan);
       font-size: 12px;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--black);
     }
 
     .about-card p {
@@ -688,16 +894,28 @@
 
     .footer {
       padding: 10px 16px;
-      border-top: 2px solid var(--black);
-      font-size: 11px;
+      border-top: 3px solid var(--black);
+      background: var(--black);
+      color: rgba(255,248,232,0.78);
+      font-size: 10px;
       font-weight: 900;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
-      background: rgba(255,255,255,0.42);
     }
 
     @media (max-width: 1080px) {
+      .top-nav {
+        grid-template-columns: 150px 1fr;
+      }
+
+      .top-copy {
+        display: none;
+      }
+
+      .nav-links {
+        border-left: 2px solid var(--cream);
+      }
+
       .cover-grid,
       .article-grid,
       .about-grid {
@@ -710,11 +928,11 @@
       .about-title,
       .about-card {
         border-right: none;
-        border-bottom: 2px solid var(--black);
+        border-bottom: 3px solid var(--black);
       }
 
-      .cover-visual {
-        min-height: 340px;
+      .cover-art {
+        min-height: 420px;
       }
 
       .body {
@@ -727,60 +945,46 @@
 
       .contents a {
         border-right: none;
-        border-bottom: 2px solid var(--black);
+        border-bottom: 3px solid var(--black);
       }
 
       .contents a:last-child {
         border-bottom: none;
       }
 
-      .side-panel {
-        min-height: auto;
-      }
-
-      .visual {
-        min-height: 240px;
+      .mini-cover {
+        min-height: 320px;
       }
     }
 
-    @media (max-width: 760px) {
-      .left-nav {
-        width: 58px;
+    @media (max-width: 720px) {
+      .top-nav {
+        grid-template-columns: 1fr;
       }
 
-      .left-nav a {
-        min-height: 52px;
-        font-size: 9px;
-        letter-spacing: 0.04em;
-        padding: 6px 3px;
+      .top-logo {
+        justify-content: flex-start;
+        border-right: none;
+        border-bottom: 2px solid var(--cream);
+        padding-left: 12px;
       }
 
-      .left-nav .nav-logo {
-        min-height: 64px;
-        font-size: 12px;
+      .nav-links {
+        border-left: none;
       }
 
-      .left-nav .nav-issue {
-        min-height: 64px;
-        font-size: 8px;
-      }
-
-      .page {
-        padding-left: 58px;
+      .nav-links a {
+        min-width: 64px;
+        padding: 10px 10px;
+        font-size: 10px;
       }
 
       .section {
-        padding: 78px 10px;
-      }
-
-      .section::before {
-        left: 74px;
-        top: 26px;
-        font-size: 24px;
+        padding: 72px 10px;
       }
 
       .section-marker {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         font-size: 9px;
       }
 
@@ -793,7 +997,7 @@
       }
 
       .site-title {
-        font-size: clamp(66px, 25vw, 112px);
+        font-size: clamp(70px, 25vw, 116px);
       }
 
       .deck {
@@ -808,29 +1012,47 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .cover-visual {
-        min-height: 300px;
+      .cover-art {
+        min-height: 360px;
       }
 
-      .sticker.star {
-        left: 28px;
-        top: 44px;
-        width: 68px;
-        height: 68px;
-        font-size: 34px;
+      .album-header {
+        height: 60px;
       }
 
-      .sticker.heart {
-        right: 34px;
-        top: 118px;
-        width: 58px;
-        height: 58px;
-        font-size: 26px;
+      .album-header span {
+        font-size: 58px;
       }
 
-      .sticker.label {
-        left: 34px;
-        bottom: 90px;
+      .album-image {
+        top: 60px;
+        bottom: 62px;
+      }
+
+      .album-footer {
+        height: 62px;
+        grid-template-columns: 92px 1fr 64px;
+      }
+
+      .album-title-line {
+        bottom: 72px;
+        font-size: 30px;
+      }
+
+      .sticker.circle {
+        width: 72px;
+        height: 72px;
+        right: 18px;
+        top: 102px;
+        font-size: 13px;
+      }
+
+      .sticker.green {
+        width: 60px;
+        height: 60px;
+        left: 18px;
+        bottom: 82px;
+        font-size: 22px;
       }
 
       .article-main h1 {
@@ -849,54 +1071,69 @@
       .pullquote {
         font-size: 18px;
       }
+
+      .about-title h1 {
+        font-size: 42px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav class="left-nav" aria-label="Issue navigation">
-    <a href="#cover" class="nav-logo">NOISE</a>
-    <a href="#cover">TOP</a>
-    <a href="#article-01">01</a>
-    <a href="#article-02">02</a>
-    <a href="#article-03">03</a>
-    <a href="#about">ABOUT</a>
-    <a href="#cover" class="nav-issue">ISSUE<br>001</a>
-  </nav>
+  <header class="top-nav">
+    <a class="top-logo" href="#cover">noise</a>
+    <div class="top-copy">Independent Web Magazine / Snoozer × How Sweet Study / Music, Film, Media, Criticism</div>
+    <nav class="nav-links" aria-label="Issue navigation">
+      <a href="#cover">Top</a>
+      <a href="#article-01">01</a>
+      <a href="#article-02">02</a>
+      <a href="#article-03">03</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
   <main class="page">
     <section id="cover" class="section cover">
       <div class="section-marker">
-        <span>✦ Cover / Texture Issue</span>
+        <span>Cover / CD Jacket Issue</span>
       </div>
 
       <div class="sheet">
         <div class="cover-grid">
           <div class="cover-main">
-            <div class="kicker soft">SNOOZER × WISHCORE</div>
-            <h1 class="site-title">NOISE</h1>
+            <div class="kicker">SNOOZER × HOW SWEET</div>
+            <h1 class="site-title">noise</h1>
 
             <p class="deck">
               音楽、映画、メディア、批評。<br>
-              2000年代カルチャー誌の硬い骨格に、淡い夢の質感を重ねる。
+              2000年代カルチャー誌の硬い情報密度を、CDジャケット、ステッカー、黒帯、コーラルの質感で包む。
             </p>
 
             <p class="deck-small">
-              Independent web magazine / music, film, media, criticism / black grid, soft glow, pastel texture, one page issue.
+              One page web magazine / black frame / retro pop typography / compact editorial grid / sticker culture / barcode / micro credits.
             </p>
 
             <div class="issue-row">
               <div class="issue-cell"><strong>Issue</strong>001</div>
               <div class="issue-cell"><strong>Format</strong>One Page Magazine</div>
               <div class="issue-cell"><strong>Field</strong>Music / Film</div>
-              <div class="issue-cell"><strong>Mode</strong>Soft Critical</div>
+              <div class="issue-cell"><strong>Mode</strong>Sweet Critical</div>
             </div>
           </div>
 
-          <div class="cover-visual" aria-label="Snoozer and Wishcore inspired abstract visual">
-            <div class="sticker star">✦</div>
-            <div class="sticker heart">♡</div>
-            <div class="sticker label">soft issue</div>
+          <div class="cover-art" aria-label="How Sweet inspired abstract CD jacket">
+            <div class="album-header"><span>noise</span></div>
+            <div class="album-image"></div>
+            <div class="sticker circle">soft<br>critical</div>
+            <div class="sticker green">✦</div>
+            <div class="album-title-line">Issue 001 & Soft Critical</div>
+            <div class="album-footer">
+              <div class="barcode"></div>
+              <div class="microcopy">
+                NOISE FIRST ISSUE OF 2026. FEATURES THREE TEXTS: VOODOO, PRINCE, AND LISTENING AS MAPPING. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
+              </div>
+              <div class="nj-box">N<br>J</div>
+            </div>
           </div>
         </div>
 
@@ -924,7 +1161,7 @@
 
     <section id="article-01" class="section">
       <div class="section-marker">
-        <span>✦ Article 01 / Music</span>
+        <span>Article 01 / Music</span>
       </div>
 
       <div class="sheet">
@@ -939,7 +1176,7 @@
               Soft Loop<br>
               2026.07.04
             </div>
-            <div class="rail-symbol">✧</div>
+            <div class="rail-sticker">sweet</div>
           </aside>
 
           <div class="article-main">
@@ -967,9 +1204,18 @@
           </div>
 
           <aside class="side-panel">
-            <div class="visual visual-one"></div>
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-one"></div>
+              <div class="mini-cover-sticker">soft<br>loop</div>
+              <div class="mini-cover-title">Voodoo & Loop</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / cd jacket logic / texture only / no copyrighted photo assets.</div>
+              </div>
+            </div>
             <div class="caption">
-              SAMPLE VISUAL / 黒罫線の硬さと、ミント、ピンク、光の質感を重ねた抽象ビジュアル。
+              SAMPLE VISUAL / CDジャケットの黒帯、ステッカー、バーコード感を使った抽象ビジュアル。
             </div>
             <div class="pullquote">
               生演奏でありながら、ループのように聴こえる。
@@ -981,7 +1227,7 @@
 
     <section id="article-02" class="section">
       <div class="section-marker">
-        <span>♡ Article 02 / Music</span>
+        <span>Article 02 / Music</span>
       </div>
 
       <div class="sheet">
@@ -996,7 +1242,7 @@
               Body<br>
               2026.07.04
             </div>
-            <div class="rail-symbol">♡</div>
+            <div class="rail-sticker">bubble</div>
           </aside>
 
           <div class="article-main">
@@ -1024,9 +1270,18 @@
           </div>
 
           <aside class="side-panel">
-            <div class="visual visual-two"></div>
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-two"></div>
+              <div class="mini-cover-sticker">body<br>pop</div>
+              <div class="mini-cover-title">Prince & Body</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / compact editorial grid / artificial sleeve texture.</div>
+              </div>
+            </div>
             <div class="caption">
-              SAMPLE VISUAL / 音楽誌のサイド図版を、Wishcore的な発光と淡色で再構成。
+              SAMPLE VISUAL / 音楽誌のサイド図版を、ポップなCDスリーブ風に再構成。
             </div>
             <div class="pullquote">
               ジャンルが一人の身体に集まりすぎた状態。
@@ -1038,7 +1293,7 @@
 
     <section id="article-03" class="section">
       <div class="section-marker">
-        <span>✦ Article 03 / Essay</span>
+        <span>Article 03 / Essay</span>
       </div>
 
       <div class="sheet">
@@ -1053,7 +1308,7 @@
               Archive<br>
               2026.07.04
             </div>
-            <div class="rail-symbol">✦</div>
+            <div class="rail-sticker">map</div>
           </aside>
 
           <div class="article-main">
@@ -1081,9 +1336,18 @@
           </div>
 
           <aside class="side-panel">
-            <div class="visual visual-three"></div>
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-three"></div>
+              <div class="mini-cover-sticker">map<br>issue</div>
+              <div class="mini-cover-title">Archive & Map</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / no external image / relation as sleeve design.</div>
+              </div>
+            </div>
             <div class="caption">
-              SAMPLE VISUAL / 関係性を、硬い線ではなく、淡い重なりとして見せるための仮ビジュアル。
+              SAMPLE VISUAL / 関係性をジャケット、帯、バーコード、クレジットとして見せる仮ビジュアル。
             </div>
             <div class="pullquote">
               作品を、原因と結果ではなく、配置として扱う。
@@ -1095,13 +1359,13 @@
 
     <section id="about" class="section">
       <div class="section-marker">
-        <span>✦ About / Colophon</span>
+        <span>About / Colophon</span>
       </div>
 
       <div class="sheet">
         <div class="about-grid">
           <div class="about-title">
-            <h1>ABOUT<br>NOISE</h1>
+            <h1>about<br>noise</h1>
           </div>
 
           <div class="about-card">
@@ -1114,13 +1378,13 @@
           <div class="about-card">
             <h2>Design</h2>
             <p>
-              SNOOZER的な黒罫線、太いサンセリフ、情報密度を骨格にし、Wishcore的な淡い色、光、記号、質感を表皮として重ねています。
+              SNOOZER的な黒罫線、太いサンセリフ、情報密度を骨格にし、『How Sweet』周辺のCDジャケット、黒帯、ステッカー、バーコード、コーラル色のポップさを表皮として重ねています。
             </p>
           </div>
         </div>
 
         <div class="footer">
-          © NOISE / Independent Web Magazine / Issue 001 / Snoozer × Wishcore Study
+          © NOISE / Independent Web Magazine / Issue 001 / Snoozer × How Sweet Study
         </div>
       </div>
     </section>
