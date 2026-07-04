@@ -588,6 +588,20 @@
       border-right: 3px solid var(--black);
     }
 
+    .photo-panel {
+      background: var(--black);
+    }
+
+    .article-photo-wrap {
+      background: var(--black);
+    }
+
+    .article-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     .article-main {
       padding: 20px 24px 28px;
       background:
@@ -701,13 +715,6 @@
       background-size: 16px 16px;
       mix-blend-mode: multiply;
       opacity: 0.42;
-    }
-
-    .mini-one {
-      background:
-        radial-gradient(circle at 26% 32%, rgba(255,90,67,0.92), transparent 26%),
-        radial-gradient(circle at 78% 48%, rgba(30,211,139,0.94), transparent 28%),
-        linear-gradient(135deg, #f6eee1, #42606b);
     }
 
     .mini-two {
@@ -1180,19 +1187,9 @@
             </div>
           </aside>
 
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-one"></div>
-              <div class="mini-cover-sticker">gaze<br>eq</div>
-              <div class="mini-cover-title">Michael & EQ</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">sample visual / film review / gaze, entertainment, eq, remix, remastered 2026.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / 映画『マイケル』の「視線」と「EQ」を仮のジャケットとして配置した抽象ビジュアル。
+          <aside class="side-panel photo-panel">
+            <div class="article-photo-wrap">
+              <img class="article-photo" src="michael-2026-movie-7680x9180-25486.jpg" alt="映画『マイケル』記事のビジュアル">
             </div>
           </aside>
 
