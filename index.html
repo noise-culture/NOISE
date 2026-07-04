@@ -147,7 +147,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 58px;
+      min-width: 64px;
       padding: 12px 12px;
       border-right: 1px solid rgba(255,248,232,0.3);
       font-size: 11px;
@@ -495,7 +495,7 @@
 
     .contents {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       background: var(--cream);
       border-top: 3px solid var(--black);
     }
@@ -504,11 +504,10 @@
       min-height: 150px;
       padding: 16px;
       border-right: 3px solid var(--black);
-      border-bottom: 3px solid var(--black);
       transition: background 0.16s ease, color 0.16s ease;
     }
 
-    .contents a:nth-child(4n) {
+    .contents a:last-child {
       border-right: none;
     }
 
@@ -530,7 +529,7 @@
     .contents-title {
       display: block;
       margin-bottom: 10px;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.25;
       font-weight: 900;
       letter-spacing: -0.05em;
@@ -670,7 +669,7 @@
     }
 
     .mini-cover {
-      min-height: 300px;
+      min-height: 360px;
       position: relative;
       overflow: hidden;
       border-bottom: 3px solid var(--black);
@@ -760,22 +759,6 @@
         linear-gradient(135deg, #f5eadb, #243b48);
     }
 
-    .mini-six {
-      background:
-        radial-gradient(circle at 18% 28%, rgba(255,122,61,0.9), transparent 26%),
-        radial-gradient(circle at 74% 52%, rgba(132,215,231,0.94), transparent 29%),
-        radial-gradient(circle at 48% 78%, rgba(30,211,139,0.78), transparent 24%),
-        linear-gradient(135deg, #f7efe2, #2d3f5f);
-    }
-
-    .mini-seven {
-      background:
-        radial-gradient(circle at 24% 38%, rgba(5,5,5,0.86), transparent 25%),
-        radial-gradient(circle at 78% 28%, rgba(255,90,67,0.88), transparent 26%),
-        radial-gradient(circle at 52% 72%, rgba(255,227,110,0.9), transparent 26%),
-        linear-gradient(135deg, #fbf3e5, #345a59);
-    }
-
     .mini-cover-title {
       position: absolute;
       left: 10px;
@@ -852,7 +835,6 @@
 
     .caption {
       padding: 12px;
-      border-bottom: 3px solid var(--black);
       font-size: 10px;
       line-height: 1.55;
       font-weight: 800;
@@ -860,17 +842,6 @@
       text-transform: uppercase;
       color: var(--muted);
       background: var(--cream);
-    }
-
-    .pullquote {
-      padding: 16px;
-      margin-top: auto;
-      background: var(--black);
-      color: var(--cream);
-      font-size: 21px;
-      line-height: 1.35;
-      font-weight: 900;
-      letter-spacing: -0.06em;
     }
 
     .about-grid {
@@ -1101,10 +1072,6 @@
         font-size: 19px;
       }
 
-      .pullquote {
-        font-size: 18px;
-      }
-
       .about-title h1 {
         font-size: 42px;
       }
@@ -1123,8 +1090,6 @@
       <a href="#article-03">03</a>
       <a href="#article-04">04</a>
       <a href="#article-05">05</a>
-      <a href="#article-06">06</a>
-      <a href="#article-07">07</a>
       <a href="#about">About</a>
     </nav>
   </header>
@@ -1167,7 +1132,7 @@
             <div class="album-footer">
               <div class="barcode"></div>
               <div class="microcopy">
-                NOISE FIRST ISSUE OF 2026. FEATURES SEVEN TEXTS: VOODOO, PRINCE, LISTENING AS MAPPING, POP PACKAGE, CINEMA, INTERNET MEMORY, AND EDITORIAL METHOD. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
+                NOISE FIRST ISSUE OF 2026. FEATURES FIVE TEXTS: VOODOO, PRINCE, LISTENING AS MAPPING, POP PACKAGE, AND CINEMA GAZE. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
               </div>
               <div class="nj-box">N<br>J</div>
             </div>
@@ -1204,18 +1169,6 @@
             <span class="contents-title">映画における視線と編集</span>
             <span class="contents-category">Film / Essay</span>
           </a>
-
-          <a href="#article-06">
-            <span class="contents-number">06</span>
-            <span class="contents-title">インターネットの記憶はなぜ淡いのか</span>
-            <span class="contents-category">Internet / Memory</span>
-          </a>
-
-          <a href="#article-07">
-            <span class="contents-number">07</span>
-            <span class="contents-title">個人編集のための方法</span>
-            <span class="contents-category">Editorial / Note</span>
-          </a>
         </div>
       </div>
     </section>
@@ -1251,15 +1204,31 @@
               </p>
 
               <p>
-                この作品を聴くとき、まず耳に入るのは演奏のゆるさである。だが、そのゆるさは単なるラフさではない。ドラムは正確さからわずかに外れ、ベースは拍の中心を避けるように動く。歌は前に出すぎず、楽器の一部として沈み込む。
+                D’Angelo『Voodoo』を聴くとき、まず耳に入るのは演奏のゆるさである。だが、そのゆるさは単なるラフさではない。ドラムは正確さからわずかに外れ、ベースは拍の中心を避けるように動き、歌は前に出すぎず、楽器の一部として沈み込む。普通なら欠点として処理されるはずの揺れが、ここではアルバム全体の呼吸になっている。音が整っていないのではない。整いすぎることを拒んでいる。
               </p>
 
               <p>
-                ここで重要なのは、70年代ソウルへの敬意ではなく、その敬意が一度ヒップホップの耳を通過していることだ。生演奏でありながら、ループのように聴こえる。人間が演奏しているのに、サンプルのように反復する。
+                この作品を「70年代ソウルへの回帰」とだけ言うと、かなり大事な部分を取り逃がす。もちろん、そこにはSly Stone、Marvin Gaye、Prince、P-Funk、Al Greenのような過去の音楽が重なっている。だが『Voodoo』は、それらをそのまま再現しているわけではない。むしろ、過去のソウルを一度ヒップホップの耳で聴き直した作品である。生演奏なのに、ループのように聴こえる。人間が叩いているのに、サンプルの反復のように感じられる。そこに、このアルバムの奇妙な新しさがある。
               </p>
 
               <p>
-                『Voodoo』は、過去へ戻る作品ではない。過去を素材として、2000年のR&Bがどこまで遅く、重く、曖昧になれるかを試した作品である。
+                ヒップホップ以後の耳は、演奏を「曲の進行」としてだけではなく、「質感の反復」として聴く。ドラムのスネアが少し遅れること、ベースが粘ること、声がマイクの奥で湿ること。それらはメロディや歌詞と同じくらい重要な情報になる。『Voodoo』の魅力は、歌がうまいとか、演奏が渋いとかいうところだけにあるのではない。むしろ、音がどの位置にあり、どれくらい遅れて、どれくらい前に出ないかという配置の感覚にある。
+              </p>
+
+              <p>
+                たとえば、D’Angeloの声はしばしば中心にいるようで、実際には中心を譲っている。歌は主役であるにもかかわらず、ドラム、ベース、ギター、コーラス、空気のざらつきと同じ平面に置かれている。これは一般的なR&Bの歌唱中心主義とは違う。声がすべてを支配するのではなく、声もまたグルーヴの一部になる。だから、このアルバムでは言葉の意味より先に、声の湿度、息の距離、発音の丸まりが届く。
+              </p>
+
+              <p>
+                『Voodoo』が2000年に出たという事実も重要である。90年代のR&Bは、メジャーなポップ・ミュージックとして洗練され、プロダクションはより硬く、輪郭はより明確になっていた。その時代に『Voodoo』は、反対方向へ進む。音像は暗く、テンポは遅く、輪郭は曖昧で、曲はしばしば終わりに向かうよりも、同じ場所に長く留まるように感じられる。そこには、ポップ・ソングとしての即効性を弱めてでも、身体の時間を取り戻そうとする意思がある。
+              </p>
+
+              <p>
+                このアルバムを聴くことは、曲を順番に追うことではなく、部屋の中にしばらくいることに近い。音は説明的ではない。何かが大きく展開するわけでもない。だが、同じフレーズが繰り返されるうちに、少しずつ体の位置が変わっていく。最初は単に重く聴こえたビートが、次第に柔らかくなる。単に遅いと思っていたテンポが、やがて必要な遅さとして感じられる。『Voodoo』は、聴き手の時間感覚を変えるアルバムである。
+              </p>
+
+              <p>
+                だから『Voodoo』は、ネオ・ソウルの名盤というより、録音された身体のアルバムとして聴くべきだと思う。そこには、過去の音楽への敬意がある。しかし、それ以上に、過去を現在の耳でどう再配置するかという問いがある。過去へ戻るのではない。過去を素材として、2000年のR&Bがどこまで遅く、重く、曖昧になれるかを試している。その試みが、いま聴いても古びない理由である。
               </p>
             </div>
           </div>
@@ -1277,9 +1246,6 @@
             </div>
             <div class="caption">
               SAMPLE VISUAL / CDジャケットの黒帯、ステッカー、バーコード感を使った抽象ビジュアル。
-            </div>
-            <div class="pullquote">
-              生演奏でありながら、ループのように聴こえる。
             </div>
           </aside>
         </article>
@@ -1317,15 +1283,31 @@
               </p>
 
               <p>
-                ファンク、ロック、ポップ、ゴスペル、ジャズ、R&B。それらはPrinceの作品の中で整理されるのではなく、しばしば過剰なまま同居する。だからPrince以後のR&Bを考えることは、単に影響源をたどることではない。
+                Prince以後のR&Bを考えるとき、単に「Princeから誰が影響を受けたか」を列挙しても、あまり本質には近づけない。もちろん、D’Angelo、Miguel、Frank Ocean、The Weeknd、Janelle Monáe、そして多くの現代R&Bやポップの作り手に、Princeの影を見ることはできる。だが、それはギターの音色やファルセットやセクシュアルな歌詞といった、表面上の特徴だけの話ではない。Princeが残したものは、ジャンルをまたぐ技術ではなく、ジャンルを一人の身体の中で同時に鳴らしてしまう感覚である。
               </p>
 
               <p>
-                重要なのは、R&Bが歌唱のジャンルであると同時に、身体、信仰、性、録音技術、ステージングを含む総合的な表現形式になっていくことだ。
+                Princeの音楽では、ファンク、ロック、ポップ、R&B、ジャズ、ゴスペルが整理されるのではなく、しばしば過剰なまま同居している。普通なら別々の文脈に分けられる要素が、同じ声、同じリズム、同じステージ上に置かれる。その結果、曲はジャンルの見本市になるのではなく、むしろジャンルの境界を気にしていない身体の記録になる。ギターを弾く身体、踊る身体、歌う身体、信仰する身体、欲望する身体。それらが分けられずに現れる。
               </p>
 
               <p>
-                『Lovesexy』と『The Rainbow Children』を同じ線で結ぶ必要はない。むしろ、それらは同じ人物の中で別々の時点に現れた、似ているが同一ではない問いとして置かれるべきである。
+                ここで重要なのは、PrinceがR&Bを「歌のジャンル」から「総合的な表現形式」へ拡張したことだ。R&Bは声の音楽である。しかしPrince以後、その声は単独で存在しない。衣装、ステージング、アルバム・ジャケット、ミュージック・ビデオ、バンド編成、録音の質感、宗教的な言葉、性的な身振りが、声と同じ強度で作品を構成する。つまり、歌が上手いことだけでは足りない。どのような存在として歌っているのかが問われる。
+              </p>
+
+              <p>
+                D’AngeloがPrinceから受け取ったのは、単なるファンクネスではない。おそらくそれは、音楽を身体の倫理として作るという態度である。『Voodoo』におけるドラムの遅れ、声の沈み込み、演奏の粘りは、Prince的な過剰さとは違う方向を向いている。だが、作品をジャンルの形式ではなく、身体の状態として作るという点では、強く接続している。Princeが爆発的に外へ放ったものを、D’Angeloは内側へ沈めたとも言える。
+              </p>
+
+              <p>
+                一方で、Frank OceanにおけるPrinceの影は、もっと断片的である。Frank Oceanの音楽は、Princeのようにステージ上で全能の身体を見せるのではなく、むしろ語りの断片、沈黙、未完成な感情、声の距離によって成り立っている。だが、R&Bを単なる恋愛歌やボーカル・ミュージックに閉じ込めず、私的な記憶、映像、文章、ファッション、インターネット上の断片まで含む表現形式として扱う点で、やはりPrince以後の地平にいる。
+              </p>
+
+              <p>
+                Prince以後のR&Bは、ジャンルとして拡散しただけではない。むしろ、R&Bが「何を歌う音楽か」ではなく、「どのような身体や人格が現れる場所か」という問いに変わった。だから現代のR&Bを聴くとき、コード進行やビートだけを分析しても足りない。声がどの距離にあるか。アーティストの人格がどこまで見えるか。身体がどの程度演出され、どの程度隠されているか。そこまで含めて聴く必要がある。
+              </p>
+
+              <p>
+                Princeはあまりに強すぎる存在だった。だから、その影響はしばしば分かりやすい模倣としてではなく、直接には見えにくい問いとして残る。ジャンルをどう混ぜるかではない。自分の身体をどのようなメディアとして使うか。R&Bをどこまで個人的で、どこまで演劇的で、どこまで信仰的で、どこまでポップにできるか。Prince以後のR&Bとは、その問いの反復である。
               </p>
             </div>
           </div>
@@ -1343,9 +1325,6 @@
             </div>
             <div class="caption">
               SAMPLE VISUAL / 音楽誌のサイド図版を、ポップなCDスリーブ風に再構成。
-            </div>
-            <div class="pullquote">
-              ジャンルが一人の身体に集まりすぎた状態。
             </div>
           </aside>
         </article>
@@ -1383,15 +1362,31 @@
               </p>
 
               <p>
-                あるアルバムが別のアルバムに影響を与えた、と言うことは簡単である。だが、その線はしばしば強すぎる。影響という言葉は、作品同士の関係を原因と結果に押し込めてしまう。
+                音楽について語るとき、「影響」という言葉はとても便利である。あるアルバムが別のアルバムに影響を与えた。あるアーティストが過去のアーティストから影響を受けた。そう言えば、作品同士の関係を一本の線で説明できる。しかし、その便利さは危うい。影響という言葉は、複雑な関係を原因と結果に変えてしまう。まるで一方が出発点で、もう一方が到着点であるかのように見せてしまう。
               </p>
 
               <p>
-                だから、ここでは作品を「配置」として扱う。ある作品がどの時代に現れ、どの作品と近く、どの作品とは遠いのか。どの線は明確で、どの線はまだ仮説にすぎないのか。
+                実際の聴取体験は、それほど単純ではない。ある作品を聴いて別の作品を思い出すとき、そこに明確な影響関係があるとは限らない。音色が似ているだけかもしれない。録音の湿度が近いだけかもしれない。時代の空気が重なっているだけかもしれない。あるいは、自分がたまたま同じ時期に聴いていたから、記憶の中で結びついているだけかもしれない。
               </p>
 
               <p>
-                NOISEは、作品を評価する場所というより、作品の位置を考える場所である。
+                だから、作品同士の関係を考えるときには、「影響」よりも「配置」という言葉を使いたい。配置とは、作品を固定された系譜の中に置くことではない。むしろ、いま自分がどのような地図を作っているのかを明らかにする行為である。近い作品、遠い作品、似ている作品、似ていないのになぜか同じ場所に置きたくなる作品。それらを、原因と結果ではなく、距離と角度の問題として扱う。
+              </p>
+
+              <p>
+                音楽史は、しばしば一直線に語られる。ソウルからファンクへ、ファンクからヒップホップへ、ヒップホップからR&Bへ、というように。しかし実際には、聴き手はそんな順番で音楽を聴いていない。2026年にD’Angeloを聴く人は、同時にFrank Oceanも、NewJeansも、古いPrinceも、YouTubeのライブ映像も、TikTokで断片的に流れてくる曲も聴いている。時間は直線ではなく、フィードのように混ざっている。
+              </p>
+
+              <p>
+                配置として聴くとは、この混ざった時間をそのまま扱うことである。過去の作品を過去に閉じ込めず、現在の耳の中でどの位置に現れるのかを見る。新しい作品を新しさだけで判断せず、どの古い質感を呼び戻しているのかを見る。そうすると、作品は単独の評価対象ではなく、関係の中で光る点になる。
+              </p>
+
+              <p>
+                もちろん、影響関係を調べること自体が不要なわけではない。作り手が何を聴いていたのか、どの作品を参照していたのか、どの録音技術や演奏スタイルを受け継いでいるのか。それらを確認することは重要である。ただ、それだけでは聴くことの実感には届かない。資料上の影響と、耳の中で起きる接続は別のものだからだ。
+              </p>
+
+              <p>
+                NOISEでやりたいのは、正しい音楽史を完成させることではない。むしろ、聴き手としての仮の地図を更新し続けることである。ある作品を聴いたとき、どの作品が近づき、どの作品が遠ざかるのか。なぜ、全然違う時代の曲が同じ質感を持って聴こえるのか。そういう曖昧な接続を、曖昧なまま配置していく。その地図は間違えるかもしれない。だが、間違えることも含めて、聴くことの形式である。
               </p>
             </div>
           </div>
@@ -1409,9 +1404,6 @@
             </div>
             <div class="caption">
               SAMPLE VISUAL / 関係性をジャケット、帯、バーコード、クレジットとして見せる仮ビジュアル。
-            </div>
-            <div class="pullquote">
-              作品を、原因と結果ではなく、配置として扱う。
             </div>
           </aside>
         </article>
@@ -1449,15 +1441,31 @@
               </p>
 
               <p>
-                配信時代になっても、パッケージの感覚は消えていない。むしろ、物理的なCDやレコードの役割が弱まったぶん、画面の中でパッケージ性をどう作るかが重要になっている。
+                配信時代になって、音楽は物理的なパッケージから解放されたように見える。曲はアプリの中で再生され、アルバムは小さなサムネイルになり、歌詞はスクロールされ、アーティスト写真はSNSの投稿に分散していく。だが、パッケージは消えたわけではない。むしろ、形を変えてより広い範囲に広がった。いまのポップは、CDやレコードだけではなく、ティザー、コンセプトフォト、ミュージックビデオ、ショート動画、グッズ、ファンの二次的な編集まで含めて届く。
               </p>
 
               <p>
-                黒い帯、過剰なロゴ、細かいクレジット、バーコードのような記号は、情報であると同時に質感でもある。それらは作品を説明するのではなく、作品に触れたという感覚を作る。
+                だから、ポップを聴くという行為は、音源だけを聴く行為ではなくなっている。リリース前に公開される写真を見る。タイトルロゴを見る。色を見る。衣装を見る。トラックリストの表記を見る。ファンが作ったスクリーンショットや切り抜きが流れてくる。それらを受け取ったあとで、ようやく曲を聴く。つまり、曲はすでに何らかの気分に包まれた状態で耳に入ってくる。
               </p>
 
               <p>
-                ポップは曲として聴かれる前に、まずパッケージとして見られる。NOISEの画面もまた、記事の容器であると同時に、読む前の気分を作るジャケットである。
+                ここでパッケージとは、単なる販売物ではない。作品がどのような温度で、どのような速度で、どのような身体感覚として受け取られるかを決める環境である。たとえば、同じ曲でも、暗いモノクロのジャケットで届くのか、明るいコーラル色のロゴとステッカーで届くのかによって、聴く前の構えは変わる。音楽そのものが変わるわけではない。だが、音楽が現れる場所が変わる。
+              </p>
+
+              <p>
+                2000年代の雑誌やCDパッケージには、この「届き方」を作る力があった。大きな見出し、黒い帯、過剰なレイアウト、細かいクレジット、バーコード、広告のような文字列。それらは情報であると同時に、質感でもあった。読者は文章を読む前に、まず誌面の密度を受け取る。リスナーは曲を聴く前に、まずジャケットの気分を受け取る。
+              </p>
+
+              <p>
+                配信以後のポップは、このパッケージ感を別の形で再発明している。アルバムが物ではなくなったからこそ、画面の中で物質感を作ろうとする。ステッカー風のロゴ、Y2K的なフォント、使い捨てカメラのような写真、手書き風の文字、パッケージの開封を模した映像。どれも、音楽に触れる前の手触りを作るための装置である。
+              </p>
+
+              <p>
+                NOISEのデザインでCDジャケットやバーコードの要素を入れているのも、単に装飾したいからではない。記事もまた、パッケージとして届くからである。同じ文章でも、白いプレーンな画面で読むのと、黒帯やステッカーや抽象ビジュアルの中で読むのでは、読む前の態度が変わる。批評もまた、どのような容器に入るかによって、届き方が変わる。
+              </p>
+
+              <p>
+                ポップは音だけではない。だが、それは音が弱くなったという意味ではない。むしろ音が、画像、文字、物、画面、記憶と結びつきながら届くようになったということだ。パッケージは音楽の外側ではない。音楽が聴かれる条件そのものである。だから、ポップを考えるには、曲だけでなく、その曲がどのように包まれ、どのように見せられ、どのように保存されるのかを見なければならない。
               </p>
             </div>
           </div>
@@ -1475,9 +1483,6 @@
             </div>
             <div class="caption">
               SAMPLE VISUAL / パッケージ、帯、ステッカーをWeb画面に翻訳するための仮ビジュアル。
-            </div>
-            <div class="pullquote">
-              曲は、音より先にパッケージとして届く。
             </div>
           </aside>
         </article>
@@ -1515,15 +1520,31 @@
               </p>
 
               <p>
-                カメラが顔を映す。次に、その人物が見ているものを映す。さらに、その対象が見返す。こうした単純な切り返しの中で、観客は関係性を理解する。言葉より先に、視線が人物の距離を決める。
+                映画を見るとき、私たちはしばしばストーリーを追っているつもりでいる。誰が何をしたのか、何が起きたのか、結末はどうなるのか。しかし実際には、観客の感情を強く動かしているのは、出来事そのものよりも、視線の配置であることが多い。人物が何を見るのか。何を見ないのか。誰の目を避けるのか。誰に見られていることに気づくのか。そうした視線の動きが、物語の意味を静かに決めている。
               </p>
 
               <p>
-                編集とは、出来事を短くする作業ではない。視線の向き、反応の間、沈黙の長さを並べ替え、観客が何を信じるかを決める作業である。
+                映画における基本的な編集のひとつに、人物の顔、人物が見ている対象、その反応をつなぐ切り返しがある。これは単純な技法に見えるが、実際には非常に強い。カメラがある人物の目を映し、次にその人物が見ているものを映すと、観客はその二つを関係づける。さらに、見られた対象が見返すと、そこに緊張が生まれる。視線は、台詞よりも先に関係を作る。
               </p>
 
               <p>
-                だから映画を見ることは、誰が画面の中心にいるかを見ることだけではない。誰が見られ、誰が見返し、誰の視線だけが切り落とされているのかを読むことでもある。
+                重要なのは、視線が常に平等に与えられるわけではないということだ。ある人物の視線は何度も映される。別の人物の視線は省略される。ある人物は見つめる主体として置かれ、別の人物は見られる対象として置かれる。そこには、映画が誰の感情に寄り添い、誰の感情を遠ざけているのかが表れる。つまり、視線の編集は倫理の問題でもある。
+              </p>
+
+              <p>
+                視線は、映画の中で権力を作る。見ている者は状況を理解しているように見える。見られている者は、しばしば評価され、判断され、欲望される対象になる。もちろん、映画はその関係を反転させることもできる。見られていた人物が突然見返すとき、画面の力関係は変わる。観客は、それまで安全な位置から見ていたはずなのに、急に見られる側へ引き戻される。
+              </p>
+
+              <p>
+                編集とは、単に映像を短くつなぐ作業ではない。誰の視線を先に見せるか、どの反応を遅らせるか、どの沈黙を残すかを決める作業である。同じ場面でも、視線の順番が変われば意味は変わる。先に怯えた顔を見せてから対象を映せば恐怖になる。先に対象を映してから顔を映せば理解になる。視線の順番が、観客の感情の順番を決める。
+              </p>
+
+              <p>
+                現代の映画やドラマでは、視線はスクリーンの中だけで完結しない。スマートフォンの画面、監視カメラ、SNS、ビデオ通話、ライブ配信の視線が物語の中に入り込んでいる。人物は誰かを直接見るだけではなく、画面越しに見る。保存された映像を見る。誰かに見られていることを前提に振る舞う。視線はますます複雑になり、編集はその複数の画面をどう並べるかという問題になっている。
+              </p>
+
+              <p>
+                だから映画を見ることは、中心に映っているものを見るだけでは足りない。誰の視線が採用されているのか。誰の視線が切り落とされているのか。誰が見て、誰が見返し、誰だけが見られ続けているのか。その配置を読むことで、作品の本当の構造が見えてくる。物語は出来事の連続として進む。しかし、観客の感情は視線の編集によって作られている。
               </p>
             </div>
           </div>
@@ -1541,141 +1562,6 @@
             </div>
             <div class="caption">
               SAMPLE VISUAL / 映画のフレームとカット割りを、CDスリーブ風に置き換えた仮ビジュアル。
-            </div>
-            <div class="pullquote">
-              編集とは、視線の順番を組み替える作業である。
-            </div>
-          </aside>
-        </article>
-      </div>
-    </section>
-
-    <section id="article-06" class="section">
-      <div class="section-marker">
-        <span>Article 06 / Internet Memory</span>
-      </div>
-
-      <div class="sheet">
-        <article class="article-grid">
-          <aside class="article-rail">
-            <div class="article-number">06</div>
-            <div class="rail-meta">
-              <strong>Internet</strong><br>
-              Memory<br>
-              Archive<br>
-              Feed<br>
-              Image<br>
-              2026.07.04
-            </div>
-            <div class="rail-sticker">feed</div>
-          </aside>
-
-          <div class="article-main">
-            <div class="article-label">Internet / Memory</div>
-            <h1>インターネットの記憶はなぜ淡いのか</h1>
-            <div class="meta">Internet / Memory / Archive / Feed</div>
-
-            <div class="body">
-              <p class="lead">
-                インターネット上の記憶は、はっきり保存されているようで、実際にはいつも少しだけ薄い。見たことは覚えているのに、どこで見たのかを思い出せない。
-              </p>
-
-              <p>
-                フィードは出来事を時系列に並べるが、体験としては時系列を壊す。昨日の投稿、数年前の画像、誰かの引用、広告、保存したまま見返していないリンク。それらが同じ平面に置かれる。
-              </p>
-
-              <p>
-                その結果、記憶は情報ではなく質感として残る。特定の文章よりも、色味、画質、スクリーンショットの余白、サムネイルの並び方の方が長く残る。
-              </p>
-
-              <p>
-                インターネットの記憶が淡いのは、忘れているからではない。むしろ、多すぎる断片が重なりすぎて、ひとつの像として輪郭を失っているからである。
-              </p>
-            </div>
-          </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-six"></div>
-              <div class="mini-cover-sticker">net<br>fog</div>
-              <div class="mini-cover-title">Internet Fog</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">memory as texture / feed, screenshot, archive, soft image, saved link.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / フィード、スクリーンショット、保存された画像の淡さを意識した仮ビジュアル。
-            </div>
-            <div class="pullquote">
-              記憶は、情報ではなく質感として残る。
-            </div>
-          </aside>
-        </article>
-      </div>
-    </section>
-
-    <section id="article-07" class="section">
-      <div class="section-marker">
-        <span>Article 07 / Editorial Note</span>
-      </div>
-
-      <div class="sheet">
-        <article class="article-grid">
-          <aside class="article-rail">
-            <div class="article-number">07</div>
-            <div class="rail-meta">
-              <strong>Editorial</strong><br>
-              Note<br>
-              Method<br>
-              Personal<br>
-              Magazine<br>
-              2026.07.04
-            </div>
-            <div class="rail-sticker">edit</div>
-          </aside>
-
-          <div class="article-main">
-            <div class="article-label">Editorial / Method</div>
-            <h1>個人編集のための方法</h1>
-            <div class="meta">Editorial / Personal Magazine / Method</div>
-
-            <div class="body">
-              <p class="lead">
-                個人で雑誌を作ることは、巨大なメディアを小さく模倣することではない。むしろ、自分の関心の速度に合わせて、記事、配置、デザインを同時に動かすことである。
-              </p>
-
-              <p>
-                編集とは、文章を並べることだけではない。何を一番上に置くのか。どの言葉を大きくするのか。どの記事の隣にどの図版を置くのか。そうした判断の積み重ねが、媒体の人格を作る。
-              </p>
-
-              <p>
-                個人編集の強さは、規模の小ささにある。すべてを説明しなくていい。毎回同じ読者を想定しなくていい。未完成な関心を、そのまま号として出すことができる。
-              </p>
-
-              <p>
-                NOISEは、完成されたメディアではなく、編集の実験場である。記事を書くこと、配置すること、画面を作ること。それらを分けずに扱うための場所である。
-              </p>
-            </div>
-          </div>
-
-          <aside class="side-panel">
-            <div class="mini-cover">
-              <div class="mini-cover-header"><span>noise</span></div>
-              <div class="mini-cover-image mini-seven"></div>
-              <div class="mini-cover-sticker">edit<br>note</div>
-              <div class="mini-cover-title">Edit Method</div>
-              <div class="mini-cover-footer">
-                <div class="mini-barcode"></div>
-                <div class="mini-credit">personal publishing / layout, text, design, issue, method, unfinished magazine.</div>
-              </div>
-            </div>
-            <div class="caption">
-              SAMPLE VISUAL / 個人編集、誌面設計、未完成な媒体性を示すための仮ビジュアル。
-            </div>
-            <div class="pullquote">
-              媒体の人格は、配置の判断から生まれる。
             </div>
           </aside>
         </article>
@@ -1709,7 +1595,7 @@
         </div>
 
         <div class="footer">
-          © NOISE / Independent Web Magazine / Issue 001 / Seven Article Test
+          © NOISE / Independent Web Magazine / Issue 001 / Five Article Test
         </div>
       </div>
     </section>
