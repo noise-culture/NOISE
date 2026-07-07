@@ -697,28 +697,77 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      background:
-        radial-gradient(circle at 14% 12%, rgba(216,231,227,0.46), transparent 26%),
-        radial-gradient(circle at 88% 14%, rgba(231,220,201,0.42), transparent 24%),
-        linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(23,32,32,0.04) 1px, transparent 1px),
-        #f4efe5;
-      background-size: auto, auto, 86px 86px, 86px 86px, auto;
-      transform: translateX(110%);
-      transition: transform 0.52s cubic-bezier(.18,.82,.2,1);
-      box-shadow: -24px 0 80px rgba(0,0,0,0.24);
+      display: block;
+      padding: 5svh 5vw;
+      background: rgba(18, 26, 26, 0.38);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.24s ease;
       overflow: hidden;
     }
 
-    .article-panel.from-left {
-      transform: translateX(-110%);
-      box-shadow: 24px 0 80px rgba(0,0,0,0.24);
+    .article-panel.is-open {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    .article-panel.is-open {
-      transform: translateX(0);
+    .article-panel .panel-topbar {
+      width: min(900px, 90vw);
+      margin: 0 auto;
+      border-radius: 26px 26px 0 0;
+      transform: scale(0.9) translateY(22px);
+      opacity: 0;
+      transition:
+        transform 0.38s cubic-bezier(.18,.82,.2,1),
+        opacity 0.22s ease;
+    }
+
+    .article-panel .panel-scroll {
+      width: min(900px, 90vw);
+      height: calc(90svh - 54px);
+      margin: 0 auto;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 0 0 32px 32px;
+      transform: scale(0.9) translateY(22px);
+      opacity: 0;
+      transition:
+        transform 0.38s cubic-bezier(.18,.82,.2,1),
+        opacity 0.22s ease;
+    }
+
+    .article-panel.from-left .panel-topbar,
+    .article-panel.from-left .panel-scroll {
+      transform-origin: left center;
+    }
+
+    .article-panel.from-right .panel-topbar,
+    .article-panel.from-right .panel-scroll {
+      transform-origin: right center;
+    }
+
+    .article-panel.is-open .panel-topbar,
+    .article-panel.is-open .panel-scroll {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .article-panel::after {
+      content: "TAP OUTSIDE TO RETURN";
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(247, 243, 235, 0.78);
+      color: rgba(23, 32, 32, 0.62);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      pointer-events: none;
     }
 
     .panel-topbar {
@@ -728,7 +777,7 @@
       align-items: center;
       padding: 14px;
       border-bottom: 1px solid rgba(23,32,32,0.1);
-      background: rgba(247,244,237,0.8);
+      background: rgba(247,244,237,0.86);
       backdrop-filter: blur(18px);
     }
 
@@ -758,21 +807,19 @@
       text-overflow: ellipsis;
     }
 
-    .panel-scroll {
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
     .panel-inner {
-      padding: 18px 16px 48px;
+      padding: 0;
+      min-height: 100%;
     }
 
     .panel-surface {
-      width: min(860px, 100%);
-      margin: 0 auto;
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.8);
-      border-radius: 34px;
+      border-top: 0;
+      border-radius: 0 0 32px 32px;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.54)),
         linear-gradient(180deg, rgba(255,255,255,0.2), rgba(23,32,32,0.03));
@@ -1064,8 +1111,12 @@
         font-size: 14px;
       }
 
-      .panel-inner {
-        padding: 28px 34px 64px;
+      .article-panel {
+        padding: 5svh 5vw;
+      }
+
+      .article-panel .panel-scroll {
+        height: calc(90svh - 56px);
       }
 
       .panel-body {
@@ -1107,6 +1158,19 @@
       .tenant-door h3 {
         font-size: 20px;
       }
+
+      .article-panel {
+        padding: 5svh 4.5vw;
+      }
+
+      .article-panel .panel-topbar,
+      .article-panel .panel-scroll {
+        width: 91vw;
+      }
+
+      .article-panel .panel-scroll {
+        height: calc(90svh - 54px);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1119,12 +1183,15 @@
         animation: none;
       }
 
-      .article-panel {
+      .article-panel,
+      .article-panel .panel-topbar,
+      .article-panel .panel-scroll {
         transition: none;
       }
     }
   </style>
 </head>
+
 <body>
   <header class="site-nav">
     <a class="brand" href="#top" aria-label="COVE TAKANAWA トップへ戻る">
@@ -1155,7 +1222,7 @@
           <span>歩きながら、店の入口をひらく。</span>
         </h1>
         <p class="hero-copy">
-          COVE TAKANAWAは、植物、ガラス、石、スチールパイプが緩やかに連続する、5層構成の都市型ショッピングモールです。このサイトは、通常のテナント一覧ではなく、館内を回遊する感覚をそのままスマートフォンの縦スクロールへ置き換えました。気になる店舗をタップすると、詳細が横からスライドして現れます。
+          COVE TAKANAWAは、植物、ガラス、石、スチールパイプが緩やかに連続する、5層構成の都市型ショッピングモールです。このサイトは、通常のテナント一覧ではなく、館内を回遊する感覚をそのままスマートフォンの縦スクロールへ置き換えました。気になる店舗をタップすると、店舗詳細がその場で画面の約90%まで拡大します。
         </p>
         <div class="hero-note">Start from 5F</div>
       </div>
@@ -1424,7 +1491,7 @@
       <div class="footer-inner">
         <h2>COVE TAKANAWA</h2>
         <p>
-          このサイトは、テナント一覧をクリックして遷移する代わりに、館内を歩いて気になった店舗へ入る感覚を、そのまま1ページ完結型のモバイル体験へ置き換えています。店の入口をタップし、詳細を開き、また通路へ戻って次の店へ進んでください。
+          このサイトは、テナント一覧をクリックして遷移する代わりに、館内を歩いて気になった店舗へ入る感覚を、そのまま1ページ完結型のモバイル体験へ置き換えています。店舗詳細は画面全体へ移動するのではなく、その場で約90%まで広がり、背景には通路とエスカレーターが残ります。
         </p>
         <div class="footer-actions">
           <a class="footer-button" href="#top">Back to top</a>
@@ -1490,7 +1557,7 @@
                   <strong>Note</strong>
                   <p>日没後は照明を落とし、夜景と植物の陰影が感じられる空間になります。</p>
                 </div>
-                <div class="panel-note">Tap close to return to the corridor</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1554,7 +1621,7 @@
                   <strong>Note</strong>
                   <p>週末夜にはライブ上映イベントを開催。最新スケジュールは館内サイネージで案内します。</p>
                 </div>
-                <div class="panel-note">Swipe mentally, not physically — this is still one page</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1618,7 +1685,7 @@
                   <strong>Note</strong>
                   <p>店内中央の展示台は撮影可能。展示替え日は一部エリア入場制限があります。</p>
                 </div>
-                <div class="panel-note">Books and objects, all in one edited shelf</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1682,7 +1749,7 @@
                   <strong>Note</strong>
                   <p>毎週金曜18時よりインストアDJセッションを開催します。</p>
                 </div>
-                <div class="panel-note">Touch the sound, not only the screen</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1746,7 +1813,7 @@
                   <strong>Note</strong>
                   <p>スタイリング相談は事前予約不要。混雑時は受付順に案内します。</p>
                 </div>
-                <div class="panel-note">Fabric, mirror, light, and a slower pace</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1810,7 +1877,7 @@
                   <strong>Note</strong>
                   <p>ギフトセットはその場で組み合わせ可能。スタッフが提案します。</p>
                 </div>
-                <div class="panel-note">Small rituals for daily balance</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1874,7 +1941,7 @@
                   <strong>Note</strong>
                   <p>食品ギフト配送に対応。冷蔵品は当日受付のみです。</p>
                 </div>
-                <div class="panel-note">For the table, pantry, and everyday rhythm</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -1938,7 +2005,7 @@
                   <strong>Note</strong>
                   <p>大型植物の配送は都内近郊限定。季節により在庫が変動します。</p>
                 </div>
-                <div class="panel-note">A quieter room begins with a small green choice</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -2002,7 +2069,7 @@
                   <strong>Note</strong>
                   <p>朝の焼き上がりは8:00と11:00。人気商品は日によって早期完売する場合があります。</p>
                 </div>
-                <div class="panel-note">Meet, grab, go — right by the station gate</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -2066,7 +2133,7 @@
                   <strong>Note</strong>
                   <p>平日17:00以降は夜限定メニューを提供します。</p>
                 </div>
-                <div class="panel-note">Last stop before the city outside</div>
+                <div class="panel-note">Tap outside to return to the corridor</div>
               </div>
             </div>
           </div>
@@ -2132,6 +2199,14 @@
     closeButtons.forEach(button => {
       button.addEventListener("click", () => {
         closePanel(button.closest(".article-panel"));
+      });
+    });
+
+    panels.forEach(panel => {
+      panel.addEventListener("click", event => {
+        if (event.target === panel) {
+          closePanel(panel);
+        }
       });
     });
 
