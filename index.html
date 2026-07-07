@@ -135,43 +135,23 @@
       padding-left: 6px;
     }
 
-    .brand-mark {
-      position: relative;
-      width: 32px;
-      height: 32px;
-      flex: 0 0 auto;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 34% 32%, #fff 0 16%, transparent 17%),
-        conic-gradient(from 210deg, var(--sweet-blue), var(--sweet-pink), var(--sweet-yellow), var(--sweet-green), var(--sweet-purple), var(--sweet-blue));
-      box-shadow: 3px 3px 0 var(--black);
+    .brand-logo-wrap {
+      display: grid;
+      gap: 3px;
+      align-items: center;
+      min-width: 0;
     }
 
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      right: -5px;
-      bottom: -4px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-pink);
-    }
-
-    .brand-text strong {
+    .brand-logo {
       display: block;
-      font-size: 27px;
-      line-height: 0.85;
-      font-weight: 900;
-      letter-spacing: -0.145em;
-      text-transform: lowercase;
+      width: 96px;
+      height: auto;
+      max-height: 34px;
+      object-fit: contain;
     }
 
-    .brand-text span {
+    .brand-subtitle {
       display: block;
-      margin-top: 4px;
       font-family: var(--mono);
       font-size: 8px;
       line-height: 1;
@@ -356,21 +336,22 @@
       transform: rotate(-1deg);
     }
 
-    .hero h1 {
+    .hero-title {
       margin: 0;
       max-width: 1020px;
-      font-size: clamp(78px, 22vw, 190px);
-      line-height: 0.7;
-      letter-spacing: -0.17em;
-      font-weight: 900;
-      text-transform: lowercase;
-      color: var(--black);
-      text-shadow:
-        4px 4px 0 rgba(255,255,255,0.74),
-        7px 7px 0 rgba(5,5,5,0.16);
+      line-height: 1;
     }
 
-    .hero h1 span {
+    .hero-logo-main {
+      display: block;
+      width: min(680px, 84vw);
+      height: auto;
+      filter:
+        drop-shadow(4px 4px 0 rgba(255,255,255,0.74))
+        drop-shadow(7px 7px 0 rgba(5,5,5,0.16));
+    }
+
+    .hero-title span {
       display: block;
       max-width: 880px;
       margin-top: 20px;
@@ -380,6 +361,10 @@
       letter-spacing: -0.08em;
       color: rgba(7,7,7,0.76);
       text-transform: none;
+      font-weight: 900;
+      text-shadow:
+        3px 3px 0 rgba(255,255,255,0.7),
+        6px 6px 0 rgba(5,5,5,0.22);
     }
 
     .hero-copy {
@@ -1135,8 +1120,9 @@
         top: 20px;
       }
 
-      .brand-text strong {
-        font-size: 30px;
+      .brand-logo {
+        width: 104px;
+        max-height: 36px;
       }
 
       .hero {
@@ -1240,6 +1226,20 @@
         border-radius: 18px;
       }
 
+      .brand {
+        justify-content: center;
+        padding-left: 0;
+      }
+
+      .brand-logo-wrap {
+        justify-items: center;
+      }
+
+      .brand-logo {
+        width: 102px;
+        max-height: 36px;
+      }
+
       .nav-floors {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -1253,8 +1253,12 @@
         padding-top: 146px;
       }
 
-      .hero h1 {
-        font-size: clamp(74px, 24vw, 110px);
+      .hero-logo-main {
+        width: min(560px, 86vw);
+      }
+
+      .hero-title span {
+        font-size: clamp(25px, 8vw, 42px);
       }
 
       .hero-copy {
@@ -1406,10 +1410,9 @@
 <body>
   <header class="site-nav">
     <a class="brand" href="#top" aria-label="NOISE トップへ戻る">
-      <span class="brand-mark"></span>
-      <span class="brand-text">
-        <strong>noise</strong>
-        <span>pop culture web magazine</span>
+      <span class="brand-logo-wrap">
+        <img class="brand-logo" src="assets/logo.png" alt="NOISE">
+        <span class="brand-subtitle">pop culture web magazine</span>
       </span>
     </a>
 
@@ -1430,10 +1433,12 @@
 
       <div class="hero-inner">
         <div class="hero-label">Issue 001 / Pop Culture Mall</div>
-        <h1>
-          noise
+
+        <h1 class="hero-title">
+          <img class="hero-logo-main" src="assets/logo.png" alt="NOISE">
           <span>記事の入口を覗きながら、5Fから1Fへ降りる。</span>
         </h1>
+
         <p class="hero-copy">
           NOISEは、映画、音楽、アイドル、ファッション、インターネット、フードを扱うポップカルチャーWebマガジンです。この号では、記事一覧をクリックして移動するのではなく、ショッピングモールの通路を歩き、気になるテナントに入るように記事を読みます。入口をタップすると、記事がその場で画面の約90%まで広がります。
         </p>
