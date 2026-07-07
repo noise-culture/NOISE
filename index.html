@@ -916,19 +916,18 @@
     .close-panel {
       position: fixed;
       left: 50%;
-      bottom: 14px;
+      bottom: 18px;
       z-index: 1200;
       transform: translateX(-50%);
-      width: auto;
-      height: auto;
-      min-width: auto;
-      padding: 9px 13px;
+      width: min(360px, calc(100vw - 36px));
+      min-height: 56px;
+      padding: 16px 22px;
       border: 3px solid var(--black);
       border-radius: 999px;
       background: var(--paper2);
       color: var(--ink);
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 13px;
       line-height: 1;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -1041,7 +1040,7 @@
     }
 
     .panel-body {
-      padding: 22px 18px 96px;
+      padding: 22px 18px 112px;
     }
 
     .article-body {
@@ -1244,11 +1243,18 @@
       }
 
       .panel-body {
-        padding: 28px 34px 106px;
+        padding: 28px 34px 124px;
       }
 
       .article-body p {
         font-size: 16px;
+      }
+
+      .close-panel {
+        bottom: 24px;
+        width: min(380px, calc(100vw - 44px));
+        min-height: 60px;
+        font-size: 13px;
       }
     }
 
@@ -1363,7 +1369,7 @@
       }
 
       .panel-body {
-        padding: 18px 14px 92px;
+        padding: 18px 14px 108px;
       }
 
       .article-meta-box {
@@ -1394,9 +1400,11 @@
       }
 
       .close-panel {
-        bottom: 8px;
-        padding: 8px 11px;
-        font-size: 8px;
+        bottom: 10px;
+        width: min(340px, calc(100vw - 28px));
+        min-height: 54px;
+        padding: 15px 18px;
+        font-size: 11px;
       }
     }
 
@@ -1851,6 +1859,14 @@
     closeButtons.forEach(button => {
       button.addEventListener("click", () => {
         closePanel(button.closest(".article-panel"));
+      });
+    });
+
+    panels.forEach(panel => {
+      panel.addEventListener("click", event => {
+        if (event.target === panel) {
+          closePanel(panel);
+        }
       });
     });
 
