@@ -865,7 +865,7 @@
 
     .panel-topbar {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr;
       gap: 10px;
       align-items: center;
       width: min(900px, 90vw);
@@ -914,17 +914,27 @@
     }
 
     .close-panel {
-      min-width: 110px;
-      height: 40px;
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      z-index: 1200;
+      transform: translateX(-50%);
+      width: auto;
+      height: auto;
+      min-width: auto;
+      padding: 9px 13px;
       border: 3px solid var(--black);
       border-radius: 999px;
-      background: var(--black);
-      color: var(--paper2);
+      background: var(--paper2);
+      color: var(--ink);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 9px;
+      line-height: 1;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       cursor: pointer;
+      box-shadow: var(--shadow-small);
     }
 
     .panel-location {
@@ -1031,7 +1041,7 @@
     }
 
     .panel-body {
-      padding: 22px 18px 34px;
+      padding: 22px 18px 96px;
     }
 
     .article-body {
@@ -1076,26 +1086,6 @@
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--ink-faint);
-    }
-
-    .article-panel::after {
-      content: "TAP OUTSIDE TO RETURN";
-      position: fixed;
-      left: 50%;
-      bottom: 14px;
-      transform: translateX(-50%);
-      padding: 8px 11px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--paper2);
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      pointer-events: none;
-      box-shadow: var(--shadow-small);
     }
 
     .footer {
@@ -1254,7 +1244,7 @@
       }
 
       .panel-body {
-        padding: 28px 34px 42px;
+        padding: 28px 34px 106px;
       }
 
       .article-body p {
@@ -1373,7 +1363,7 @@
       }
 
       .panel-body {
-        padding: 18px 14px 30px;
+        padding: 18px 14px 92px;
       }
 
       .article-meta-box {
@@ -1403,8 +1393,9 @@
         padding-top: 14px;
       }
 
-      .article-panel::after {
+      .close-panel {
         bottom: 8px;
+        padding: 8px 11px;
         font-size: 8px;
       }
     }
@@ -1509,7 +1500,7 @@
       <div class="footer-inner">
         <h2>noise</h2>
         <p>
-          NOISEは、ポップカルチャーを“記事一覧”ではなく“回遊空間”として読ませるWebマガジンです。5Fから1Fへ降りながら、気になった記事の入口をタップしてください。本文はページ遷移せず、その場で広がり、ワンタップで通路へ戻れます。
+          NOISEは、ポップカルチャーを“記事一覧”ではなく“回遊空間”として読ませるWebマガジンです。5Fから1Fへ降りながら、気になった記事の入口をタップしてください。本文はページ遷移せず、その場で広がり、TAP HERE TO RETURNで通路へ戻れます。
         </p>
         <div class="footer-actions">
           <a class="footer-button" href="#top">Back to top</a>
@@ -1770,7 +1761,6 @@
       floor.articles.map(article => `
         <article id="${escapeHTML(article.id)}" class="article-panel from-${escapeHTML(article.side)}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="${escapeHTML(article.id)}-title">
           <div class="panel-topbar">
-            <button class="close-panel" type="button">${article.side === "left" ? "← 通路へ戻る" : "通路へ戻る →"}</button>
             <div class="panel-location">${escapeHTML(floor.floor)} / ${escapeHTML(article.category)} / Article ${escapeHTML(article.number)}</div>
           </div>
 
@@ -1792,11 +1782,15 @@
                     ${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join("")}
                   </div>
 
-                  <div class="panel-end">End of Article ${escapeHTML(article.number)} / Tap outside to return</div>
+                  <div class="panel-end">End of Article ${escapeHTML(article.number)} / Tap here to return</div>
                 </div>
               </div>
             </div>
           </div>
+
+          <button class="close-panel" type="button" aria-label="本文を閉じて通路画面に戻る">
+            TAP HERE TO RETURN
+          </button>
         </article>
       `)
     ).join("");
@@ -1857,14 +1851,6 @@
     closeButtons.forEach(button => {
       button.addEventListener("click", () => {
         closePanel(button.closest(".article-panel"));
-      });
-    });
-
-    panels.forEach(panel => {
-      panel.addEventListener("click", event => {
-        if (event.target === panel) {
-          closePanel(panel);
-        }
       });
     });
 
