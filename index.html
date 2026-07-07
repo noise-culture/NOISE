@@ -3,31 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOISE ONLINE MALL</title>
+  <title>COVE WALK JOURNAL</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f3f0e8;
-      --floor: #eee8dc;
-      --tile: #ddd5c8;
-      --white: #ffffff;
-      --cream: #fffaf0;
-      --black: #111111;
-      --muted: #6f6a61;
-      --line: #1b1b1b;
-      --glass: rgba(255, 255, 255, 0.72);
-      --blue: #0b6cff;
-      --sky: #b8e7ff;
-      --green: #2fc878;
-      --red: #ff4d3d;
-      --orange: #ff9f1c;
-      --yellow: #ffe66d;
-      --pink: #ffb7cf;
-      --shadow: rgba(0, 0, 0, 0.16);
+      --ink: #1e2424;
+      --muted: #6f7773;
+      --paper: #f5f1e8;
+      --stone: #d8d2c5;
+      --glass: rgba(255,255,255,0.62);
+      --line: rgba(30,36,36,0.22);
+      --shadow: 0 24px 80px rgba(24,32,32,0.14);
+      --radius-lg: 34px;
+      --radius-md: 22px;
+      --max: 1680px;
     }
 
     * {
@@ -40,14 +33,11 @@
 
     body {
       margin: 0;
-      color: var(--black);
+      color: var(--ink);
       font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(0,0,0,0.035) 1px, transparent 1px),
-        linear-gradient(135deg, #f6f2ea 0%, #e7dfd1 50%, #eef5f8 100%);
-      background-size: 42px 42px, 42px 42px, auto;
+      background: #ebe7dc;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
 
@@ -56,1558 +46,1028 @@
       text-decoration: none;
     }
 
-    .mall-topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: 64px;
+    .site-nav {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(920px, calc(100vw - 32px));
+      height: 54px;
       display: grid;
-      grid-template-columns: 240px 1fr auto;
-      background: var(--white);
-      border-bottom: 2px solid var(--line);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 8px 10px 8px 18px;
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 999px;
+      background: rgba(248,247,242,0.72);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 50px rgba(30,36,36,0.13);
     }
 
-    .mall-logo {
+    .brand {
       display: flex;
       align-items: center;
-      padding: 0 18px;
-      border-right: 2px solid var(--line);
-      font-size: 18px;
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      text-transform: uppercase;
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .mall-search {
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      color: var(--muted);
-      font-size: 12px;
+      gap: 10px;
+      min-width: 0;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      overflow: hidden;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .mall-search::before {
-      content: "SEARCH";
-      margin-right: 12px;
-      padding: 7px 10px;
-      border: 2px solid var(--line);
-      background: var(--yellow);
-      color: var(--black);
-      font-size: 10px;
-      font-weight: 900;
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 36% 32%, #fff 0 18%, transparent 19%),
+        linear-gradient(135deg, #aabdb3, #7d9b97);
+      box-shadow: inset 0 0 0 1px rgba(30,36,36,0.18);
+      flex: 0 0 auto;
     }
 
-    .mall-nav {
+    .nav-floors {
       display: flex;
-      border-left: 2px solid var(--line);
-      overflow-x: auto;
-      scrollbar-width: none;
-      background: var(--cream);
+      align-items: center;
+      gap: 4px;
     }
 
-    .mall-nav::-webkit-scrollbar {
-      display: none;
+    .nav-floors a {
+      min-width: 42px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: rgba(30,36,36,0.68);
+      transition: background 0.18s ease, color 0.18s ease;
     }
 
-    .mall-nav a {
-      min-width: 64px;
+    .nav-floors a:hover {
+      background: rgba(30,36,36,0.08);
+      color: var(--ink);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 0 12px;
-      border-right: 1px solid var(--line);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-    }
-
-    .mall-nav a:hover {
-      background: var(--sky);
-    }
-
-    .page {
-      width: 100%;
-    }
-
-    .entrance {
-      min-height: calc(100vh - 64px);
-      padding: 40px 24px 80px;
-      display: grid;
-      align-items: center;
-    }
-
-    .entrance-shell {
-      width: min(1380px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 28px 80px var(--shadow);
-    }
-
-    .entrance-main {
-      min-height: 720px;
-      padding: 32px;
-      position: relative;
-      border-right: 2px solid var(--line);
+      padding: 110px 28px 70px;
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.12)),
-        radial-gradient(circle at 78% 18%, rgba(184,231,255,0.88), transparent 27%),
-        radial-gradient(circle at 22% 70%, rgba(255,230,109,0.74), transparent 24%),
-        linear-gradient(135deg, #fbf6eb, #e9dfd0);
+        radial-gradient(circle at 18% 18%, rgba(188,208,199,0.86), transparent 34%),
+        radial-gradient(circle at 86% 12%, rgba(246,236,212,0.96), transparent 28%),
+        linear-gradient(180deg, #edf2ec 0%, #e7e4d8 62%, #d9d2c2 100%);
       overflow: hidden;
     }
 
-    .entrance-main::before {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      background:
+        linear-gradient(90deg, transparent 0 8%, rgba(255,255,255,0.42) 8% 8.3%, transparent 8.3% 100%),
+        linear-gradient(0deg, transparent 0 12%, rgba(255,255,255,0.35) 12% 12.2%, transparent 12.2% 100%);
+      background-size: 180px 180px;
+    }
+
+    .hero-shell {
+      position: relative;
+      width: min(var(--max), 100%);
+      display: grid;
+      grid-template-columns: minmax(280px, 0.92fr) minmax(420px, 1.08fr);
+      gap: 48px;
+      align-items: end;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 10px 14px;
+      border: 1px solid rgba(30,36,36,0.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(18px);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(30,36,36,0.72);
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(58px, 8vw, 138px);
+      line-height: 0.94;
+      letter-spacing: -0.085em;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      display: block;
+      padding-left: 0.06em;
+      color: rgba(30,36,36,0.58);
+    }
+
+    .hero-text {
+      margin: 28px 0 0;
+      max-width: 690px;
+      font-size: clamp(16px, 1.4vw, 22px);
+      line-height: 1.85;
+      font-weight: 700;
+      color: rgba(30,36,36,0.74);
+    }
+
+    .mall-map {
+      min-height: 560px;
+      position: relative;
+      border-radius: 42px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.74), rgba(255,255,255,0.34)),
+        radial-gradient(circle at 48% 34%, rgba(151,177,170,0.42), transparent 34%);
+      border: 1px solid rgba(255,255,255,0.78);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(26px);
+    }
+
+    .mall-map::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -12%;
+      width: 180px;
+      height: 124%;
+      transform: translateX(-50%) rotate(17deg);
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(30,36,36,0.12) 0 10px,
+          rgba(255,255,255,0.62) 10px 20px
+        );
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.5),
+        0 0 0 18px rgba(255,255,255,0.25);
+      animation: escalatorMove 1.2s linear infinite;
+    }
+
+    .mall-map::after {
+      content: "START 5F ↓ DESCEND TO 1F";
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(30,36,36,0.8);
+      color: #fffaf0;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .map-floor {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: 78%;
+      left: 11%;
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.54);
+      border: 1px solid rgba(30,36,36,0.12);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .map-floor small {
+      color: rgba(30,36,36,0.52);
+      font-size: 10px;
+    }
+
+    .mf-5 { top: 40px; }
+    .mf-4 { top: 136px; }
+    .mf-3 { top: 232px; }
+    .mf-2 { top: 328px; }
+    .mf-1 { top: 424px; }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 70px;
+      border: 1px solid rgba(30,36,36,0.24);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.38);
+      backdrop-filter: blur(12px);
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid rgba(30,36,36,0.72);
+      border-bottom: 2px solid rgba(30,36,36,0.72);
+      transform: rotate(45deg);
+      animation: down 1.2s ease-in-out infinite;
+    }
+
+    @keyframes down {
+      0%, 100% { transform: translateY(-8px) rotate(45deg); opacity: 0.35; }
+      50% { transform: translateY(8px) rotate(45deg); opacity: 1; }
+    }
+
+    @keyframes escalatorMove {
+      from { background-position-y: 0; }
+      to { background-position-y: 40px; }
+    }
+
+    .floor {
+      position: relative;
+      min-height: 132vh;
+      padding: 120px 28px;
+      overflow: hidden;
+    }
+
+    .floor::before {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      opacity: 0.45;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
     }
 
-    .entrance-tag {
+    .floor-shell {
       position: relative;
-      z-index: 2;
-      display: inline-block;
-      padding: 10px 14px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 5px 5px 0 var(--line);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .entrance-title {
-      position: relative;
-      z-index: 2;
-      margin: 34px 0 0;
-      max-width: 860px;
-      font-size: clamp(64px, 11vw, 154px);
-      line-height: 0.86;
-      font-weight: 900;
-      letter-spacing: -0.12em;
-      text-transform: uppercase;
-    }
-
-    .entrance-copy {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-      margin: 28px 0 0;
-      font-size: clamp(20px, 2.4vw, 34px);
-      line-height: 1.32;
-      font-weight: 900;
-      letter-spacing: -0.07em;
-    }
-
-    .entrance-note {
-      position: relative;
-      z-index: 2;
-      max-width: 740px;
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-      font-weight: 800;
-    }
-
-    .mall-floor-buttons {
-      position: absolute;
-      left: 32px;
-      right: 32px;
-      bottom: 32px;
-      z-index: 3;
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      border: 2px solid var(--line);
-      background: var(--white);
-    }
-
-    .mall-floor-buttons a {
-      min-height: 96px;
-      padding: 12px;
-      border-right: 2px solid var(--line);
-      background: var(--cream);
-    }
-
-    .mall-floor-buttons a:last-child {
-      border-right: none;
-    }
-
-    .mall-floor-buttons a:hover {
-      background: var(--yellow);
-    }
-
-    .mall-floor-buttons strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 34px;
-      line-height: 0.8;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-      color: var(--blue);
-    }
-
-    .mall-floor-buttons span {
-      display: block;
-      font-size: 10px;
-      line-height: 1.35;
-      font-weight: 900;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .directory {
-      position: relative;
-      min-height: 720px;
-      padding: 24px;
-      background: #0f1620;
-      color: var(--white);
-      overflow: hidden;
-    }
-
-    .directory::before {
-      content: "";
-      position: absolute;
-      inset: 24px;
-      border: 2px solid rgba(255,255,255,0.36);
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-
-    .directory-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .directory-label {
-      display: inline-block;
-      padding: 8px 10px;
-      border: 2px solid rgba(255,255,255,0.8);
-      background: rgba(255,255,255,0.08);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--yellow);
-    }
-
-    .directory-title {
-      margin: 30px 0 24px;
-      font-size: 44px;
-      line-height: 0.92;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-transform: uppercase;
-    }
-
-    .directory-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .directory-item {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 14px;
-      align-items: center;
-      min-height: 74px;
-      padding: 10px;
-      border: 2px solid rgba(255,255,255,0.48);
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .directory-item strong {
-      display: grid;
-      place-items: center;
-      height: 48px;
-      border: 2px solid var(--white);
-      background: var(--yellow);
-      color: var(--black);
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-    }
-
-    .directory-item span {
-      font-size: 12px;
-      line-height: 1.35;
-      font-weight: 800;
-    }
-
-    .mall-section {
-      min-height: 100vh;
-      padding: 16vh 24px 18vh;
-      position: relative;
+      width: min(var(--max), 100%);
+      margin: 0 auto;
     }
 
     .floor-header {
-      width: min(1380px, 100%);
-      margin: 0 auto 52px;
       display: grid;
-      grid-template-columns: 180px 1fr auto;
-      align-items: stretch;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 18px 54px rgba(0,0,0,0.12);
+      grid-template-columns: 280px 1fr auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 44px;
     }
 
-    .floor-badge {
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      border-right: 2px solid var(--line);
-      background: var(--blue);
-      color: var(--white);
-      font-size: 56px;
-      line-height: 0.8;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-    }
-
-    .floor-info {
-      padding: 18px 22px;
-    }
-
-    .floor-info p {
-      margin: 0 0 6px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .floor-info h2 {
-      margin: 0;
-      font-size: clamp(30px, 4vw, 56px);
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-transform: uppercase;
-    }
-
-    .floor-status {
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      border-left: 2px solid var(--line);
-      background: var(--yellow);
-      font-size: 12px;
-      line-height: 1.25;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    .storefront {
-      width: min(1380px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 28px 80px var(--shadow);
-    }
-
-    .store-window {
-      position: relative;
-      min-height: 720px;
-      border-right: 2px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.58), rgba(255,255,255,0.1)),
-        linear-gradient(135deg, #e9eef3, #f8f4ec);
-      overflow: hidden;
-    }
-
-    .store-window::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.55) 0 1px, transparent 1px 36px),
-        linear-gradient(0deg, rgba(255,255,255,0.46) 0 1px, transparent 1px 36px);
-      mix-blend-mode: screen;
-      opacity: 0.9;
-    }
-
-    .store-sign {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      z-index: 4;
-      padding: 10px 12px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 5px 5px 0 var(--line);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .store-price {
-      position: absolute;
-      right: 18px;
-      top: 18px;
-      z-index: 4;
-      width: 88px;
-      height: 88px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--line);
-      border-radius: 999px;
-      background: var(--yellow);
-      box-shadow: 5px 5px 0 var(--line);
-      font-size: 12px;
-      line-height: 1;
-      font-weight: 900;
-      text-transform: uppercase;
-      text-align: center;
-      transform: rotate(-8deg);
-    }
-
-    .window-title {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 26px;
-      z-index: 4;
-      color: var(--white);
-      font-size: clamp(32px, 5vw, 62px);
-      line-height: 0.9;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-      text-shadow: 3px 3px 0 var(--black);
-      text-transform: uppercase;
-    }
-
-    .michael-window {
-      background: var(--black);
-    }
-
-    .michael-window img {
-      width: 100%;
-      height: 720px;
-      display: block;
-      object-fit: cover;
-      object-position: center top;
-      opacity: 0.95;
-    }
-
-    .music-window {
-      background:
-        radial-gradient(circle at 22% 30%, rgba(255,230,109,0.98), transparent 24%),
-        radial-gradient(circle at 72% 26%, rgba(255,183,207,0.95), transparent 26%),
-        radial-gradient(circle at 58% 70%, rgba(47,200,120,0.92), transparent 30%),
-        linear-gradient(135deg, #151515, #51606a);
-    }
-
-    .essay-window {
-      background:
-        radial-gradient(circle at 24% 28%, rgba(184,231,255,0.95), transparent 26%),
-        radial-gradient(circle at 76% 66%, rgba(255,230,109,0.9), transparent 30%),
-        linear-gradient(135deg, #f9f2e5, #546b8b);
-    }
-
-    .pop-window {
-      background:
-        radial-gradient(circle at 20% 22%, rgba(255,77,61,0.92), transparent 28%),
-        radial-gradient(circle at 78% 38%, rgba(255,230,109,0.92), transparent 26%),
-        radial-gradient(circle at 44% 74%, rgba(11,108,255,0.76), transparent 30%),
-        linear-gradient(135deg, #fffaf0, #363f46);
-    }
-
-    .film-window {
-      background:
-        radial-gradient(circle at 20% 72%, rgba(47,200,120,0.86), transparent 28%),
-        radial-gradient(circle at 74% 24%, rgba(255,230,109,0.92), transparent 24%),
-        radial-gradient(circle at 56% 56%, rgba(255,77,61,0.82), transparent 28%),
-        linear-gradient(135deg, #f7efe4, #263846);
-    }
-
-    .article-card {
-      min-height: 720px;
-      padding: 34px 38px 44px;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(0,0,0,0.025) 1px, transparent 1px),
-        var(--cream);
-      background-size: 30px 30px;
-    }
-
-    .tenant-label {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 9px 14px;
-      border: 2px solid var(--line);
-      background: var(--yellow);
-      box-shadow: 4px 4px 0 var(--line);
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .article-card h1 {
-      max-width: 850px;
-      margin: 0 0 22px;
-      font-size: clamp(34px, 4.3vw, 60px);
-      line-height: 1.04;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-    }
-
-    .tenant-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-
-    .tenant-info span {
-      padding: 6px 8px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .lead {
-      max-width: 780px;
-      margin: 0 0 22px;
-      padding: 18px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
-      font-size: 22px;
-      line-height: 1.5;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-    }
-
-    .body {
-      max-width: 780px;
-      font-size: 15.5px;
-      line-height: 1.9;
-      font-weight: 650;
-    }
-
-    .body p {
-      margin: 0 0 18px;
-    }
-
-    .shop-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 30px;
-    }
-
-    .shop-tags span {
-      padding: 8px 10px;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 3px 3px 0 var(--line);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .escalator-zone {
-      min-height: 82vh;
-      padding: 14vh 24px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-      border-top: 2px solid rgba(0,0,0,0.15);
-      border-bottom: 2px solid rgba(0,0,0,0.15);
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,0.28) 1px, transparent 1px),
-        linear-gradient(135deg, #e3ded4, #f8f4ec);
-      background-size: 52px 52px, 52px 52px, auto;
-    }
-
-    .escalator-zone::before {
-      content: "VOID / ATRIUM / ESCALATOR";
-      position: absolute;
-      left: 24px;
-      top: 24px;
-      color: rgba(0,0,0,0.18);
-      font-size: clamp(44px, 9vw, 128px);
+    .floor-no {
+      font-size: clamp(68px, 8vw, 126px);
       line-height: 0.82;
+      letter-spacing: -0.11em;
       font-weight: 900;
-      letter-spacing: -0.1em;
-      text-transform: uppercase;
     }
 
-    .escalator-card {
-      position: relative;
-      z-index: 2;
-      width: min(980px, 100%);
-      min-height: 420px;
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      border: 2px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 28px 80px var(--shadow);
-      overflow: hidden;
-    }
-
-    .escalator-visual {
-      position: relative;
-      min-height: 420px;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(184,231,255,0.66), transparent 25%),
-        linear-gradient(135deg, #fffaf0, #d7d0c4);
-      border-right: 2px solid var(--line);
-      overflow: hidden;
-    }
-
-    .escalator-rail {
-      position: absolute;
-      left: 5%;
-      top: 46%;
-      width: 92%;
-      height: 42px;
-      transform: rotate(-11deg);
-      border: 2px solid var(--line);
-      border-radius: 999px;
-      background: var(--black);
-      box-shadow: 0 18px 0 rgba(0,0,0,0.12);
-    }
-
-    .escalator-steps {
-      position: absolute;
-      left: 10%;
-      top: 54%;
-      width: 82%;
-      height: 86px;
-      transform: rotate(-11deg);
-      border: 2px solid var(--line);
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #f8f4ec 0 18px,
-          #c5beb2 18px 22px
-        );
-      box-shadow: 8px 8px 0 rgba(0,0,0,0.12);
-    }
-
-    .escalator-side {
-      position: absolute;
-      left: 8%;
-      top: 35%;
-      width: 86%;
-      height: 190px;
-      transform: rotate(-11deg);
-      border: 3px solid rgba(255,255,255,0.62);
-      background: linear-gradient(135deg, rgba(255,255,255,0.32), rgba(255,255,255,0.04));
-      pointer-events: none;
-    }
-
-    .escalator-people {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .person {
-      position: absolute;
-      width: 18px;
-      height: 34px;
-      border: 2px solid var(--line);
-      border-radius: 12px 12px 4px 4px;
-      background: var(--blue);
-      transform: rotate(-11deg);
-    }
-
-    .person::before {
-      content: "";
-      position: absolute;
-      left: 3px;
-      top: -13px;
-      width: 8px;
-      height: 8px;
-      border: 2px solid var(--line);
-      border-radius: 999px;
-      background: var(--yellow);
-    }
-
-    .person.one {
-      left: 26%;
-      top: 46%;
-      background: var(--red);
-    }
-
-    .person.two {
-      left: 50%;
-      top: 40%;
-      background: var(--green);
-    }
-
-    .person.three {
-      left: 70%;
-      top: 34%;
-      background: var(--blue);
-    }
-
-    .escalator-copy {
-      padding: 28px;
-      background: var(--white);
-    }
-
-    .escalator-copy small {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 7px 9px;
-      border: 2px solid var(--line);
-      background: var(--yellow);
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .escalator-copy h2 {
-      margin: 0 0 18px;
-      font-size: 48px;
-      line-height: 0.92;
-      font-weight: 900;
-      letter-spacing: -0.09em;
-      text-transform: uppercase;
-    }
-
-    .escalator-copy p {
+    .floor-title h2 {
       margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-      font-weight: 750;
-    }
-
-    .info {
-      min-height: 80vh;
-      padding: 16vh 24px;
-      display: grid;
-      align-items: center;
-    }
-
-    .info-shell {
-      width: min(1380px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      border: 2px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 28px 80px var(--shadow);
-    }
-
-    .info-title {
-      padding: 32px;
-      border-right: 2px solid var(--line);
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .info-title span {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 9px 12px;
-      border: 2px solid var(--white);
-      background: var(--yellow);
-      color: var(--black);
-      font-size: 12px;
+      font-size: clamp(30px, 4vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.07em;
       font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
     }
 
-    .info-title h1 {
-      margin: 0;
-      font-size: clamp(56px, 8vw, 120px);
-      line-height: 0.82;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-      text-transform: uppercase;
-    }
-
-    .info-body {
-      padding: 32px;
-      background: var(--cream);
-    }
-
-    .info-body p {
+    .floor-title p {
       max-width: 780px;
-      margin: 0 0 18px;
-      font-size: 16px;
-      line-height: 1.85;
+      margin: 16px 0 0;
+      color: rgba(30,36,36,0.66);
+      font-size: 15px;
+      line-height: 1.8;
       font-weight: 700;
     }
 
-    .footer {
-      padding: 14px 18px;
-      background: var(--black);
-      color: rgba(255,255,255,0.74);
-      font-size: 10px;
+    .floor-sign {
+      min-width: 210px;
+      padding: 16px 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(30,36,36,0.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 44px rgba(30,36,36,0.08);
+      font-size: 11px;
+      line-height: 1.6;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    @media (max-width: 1080px) {
-      .mall-topbar {
-        grid-template-columns: 200px 1fr;
-      }
+    .floor-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
+      gap: 42px;
+      align-items: start;
+    }
 
-      .mall-search {
-        display: none;
-      }
+    .escalator {
+      position: sticky;
+      top: 104px;
+      height: 78vh;
+      min-height: 560px;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.54), rgba(255,255,255,0.18)),
+        repeating-linear-gradient(
+          180deg,
+          rgba(30,36,36,0.15) 0 14px,
+          rgba(255,255,255,0.58) 14px 28px
+        );
+      border: 1px solid rgba(255,255,255,0.68);
+      box-shadow:
+        inset 0 0 0 12px rgba(255,255,255,0.22),
+        0 24px 70px rgba(30,36,36,0.14);
+      overflow: hidden;
+      animation: escalatorMove 1.1s linear infinite;
+    }
 
-      .entrance-shell,
-      .storefront,
-      .escalator-card,
-      .info-shell {
+    .escalator::before,
+    .escalator::after {
+      content: "";
+      position: absolute;
+      top: 6%;
+      bottom: 6%;
+      width: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      box-shadow: 0 0 0 1px rgba(30,36,36,0.07);
+    }
+
+    .escalator::before {
+      left: 44px;
+    }
+
+    .escalator::after {
+      right: 44px;
+    }
+
+    .escalator-label {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: rgba(30,36,36,0.55);
+      text-transform: uppercase;
+    }
+
+    .article-card {
+      position: relative;
+      padding: clamp(24px, 3vw, 42px);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(24px);
+    }
+
+    .article-card + .article-card {
+      margin-top: 42px;
+    }
+
+    .article-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(30,36,36,0.16);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(30,36,36,0.58);
+    }
+
+    .article-kicker span:first-child {
+      color: var(--ink);
+    }
+
+    .article-card h3 {
+      margin: 0 0 22px;
+      font-size: clamp(25px, 2.3vw, 40px);
+      line-height: 1.18;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+    }
+
+    .article-card p {
+      margin: 0 0 18px;
+      font-size: 15px;
+      line-height: 2.02;
+      font-weight: 600;
+      color: rgba(30,36,36,0.8);
+    }
+
+    .article-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .floor-5 {
+      background:
+        radial-gradient(circle at 20% 14%, rgba(193,218,202,0.86), transparent 31%),
+        radial-gradient(circle at 84% 22%, rgba(246,238,216,0.84), transparent 26%),
+        linear-gradient(180deg, #edf4ec 0%, #dce6da 100%);
+    }
+
+    .floor-5::before {
+      opacity: 0.28;
+      background:
+        radial-gradient(circle at 12% 64%, rgba(90,128,104,0.28), transparent 18%),
+        radial-gradient(circle at 78% 72%, rgba(90,128,104,0.2), transparent 20%);
+    }
+
+    .floor-4 {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.32) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,0.28) 1px, transparent 1px),
+        linear-gradient(180deg, #e9dfce 0%, #d8c7b1 100%);
+      background-size: 84px 84px, 84px 84px, auto;
+    }
+
+    .floor-4::before {
+      opacity: 0.46;
+      background:
+        radial-gradient(circle at 18% 26%, rgba(174,116,79,0.22), transparent 22%),
+        radial-gradient(circle at 82% 70%, rgba(102,128,124,0.22), transparent 24%);
+    }
+
+    .floor-3 {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(255,255,255,0.42), transparent 26%),
+        linear-gradient(180deg, #e6dfd1 0%, #d1c2ad 100%);
+    }
+
+    .floor-3::before {
+      opacity: 0.24;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(92,68,46,0.18) 0 2px,
+          transparent 2px 70px
+        );
+    }
+
+    .floor-2 {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(214,231,229,0.88), transparent 34%),
+        radial-gradient(circle at 80% 28%, rgba(244,238,223,0.9), transparent 30%),
+        linear-gradient(180deg, #e9eeea 0%, #ccd8d4 100%);
+    }
+
+    .floor-2::before {
+      opacity: 0.34;
+      background:
+        radial-gradient(ellipse at 50% 18%, transparent 0 28%, rgba(255,255,255,0.54) 28.2% 29%, transparent 29.2% 100%),
+        radial-gradient(ellipse at 52% 52%, transparent 0 26%, rgba(255,255,255,0.42) 26.2% 27%, transparent 27.2% 100%);
+    }
+
+    .floor-1 {
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.38) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(30,36,36,0.06) 1px, transparent 1px),
+        linear-gradient(180deg, #dfddd4 0%, #c9c5b9 100%);
+      background-size: 120px 120px, 120px 120px, auto;
+    }
+
+    .floor-1::before {
+      opacity: 0.36;
+      background:
+        linear-gradient(110deg, transparent 0 18%, rgba(255,255,255,0.58) 18.2% 18.7%, transparent 19% 100%),
+        linear-gradient(72deg, transparent 0 64%, rgba(255,255,255,0.44) 64.2% 64.7%, transparent 65% 100%);
+    }
+
+    .exit {
+      padding: 120px 28px 140px;
+      background: #1f2525;
+      color: #f6f1e6;
+    }
+
+    .exit-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: end;
+    }
+
+    .exit h2 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 110px);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      font-weight: 900;
+    }
+
+    .exit p {
+      max-width: 760px;
+      margin: 24px 0 0;
+      color: rgba(246,241,230,0.72);
+      font-size: 16px;
+      line-height: 1.9;
+      font-weight: 700;
+    }
+
+    .exit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      height: 54px;
+      border-radius: 999px;
+      background: #f6f1e6;
+      color: #1f2525;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-shell {
         grid-template-columns: 1fr;
       }
 
-      .entrance-main,
-      .directory,
-      .store-window,
-      .article-card {
-        min-height: auto;
-      }
-
-      .entrance-main {
-        min-height: 720px;
-        border-right: none;
-        border-bottom: 2px solid var(--line);
-      }
-
-      .mall-floor-buttons {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .directory {
-        min-height: 520px;
+      .mall-map {
+        min-height: 460px;
       }
 
       .floor-header {
-        grid-template-columns: 150px 1fr;
+        grid-template-columns: 1fr;
       }
 
-      .floor-status {
-        grid-column: 1 / -1;
-        border-left: none;
-        border-top: 2px solid var(--line);
+      .floor-grid {
+        grid-template-columns: 1fr;
       }
 
-      .store-window {
-        min-height: 520px;
-        border-right: none;
-        border-bottom: 2px solid var(--line);
+      .escalator {
+        position: relative;
+        top: auto;
+        height: 180px;
+        min-height: 180px;
+        border-radius: 42px;
+        transform: rotate(0deg);
       }
 
-      .michael-window img {
-        height: auto;
+      .escalator-label {
+        writing-mode: horizontal-tb;
       }
 
-      .article-card {
-        min-height: auto;
+      .article-card + .article-card {
+        margin-top: 28px;
       }
 
-      .escalator-visual {
-        border-right: none;
-        border-bottom: 2px solid var(--line);
-      }
-
-      .info-title {
-        border-right: none;
-        border-bottom: 2px solid var(--line);
+      .exit-inner {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 720px) {
-      .mall-topbar {
+      .site-nav {
+        top: 12px;
         height: auto;
         grid-template-columns: 1fr;
+        gap: 8px;
+        border-radius: 24px;
+        padding: 12px;
       }
 
-      .mall-logo {
-        min-height: 56px;
-        border-right: none;
-        border-bottom: 2px solid var(--line);
+      .brand {
+        font-size: 11px;
       }
 
-      .mall-nav {
-        border-left: none;
+      .nav-floors {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
       }
 
-      .mall-nav a {
+      .nav-floors a {
         min-width: 0;
-        min-height: 42px;
         padding: 8px 0;
+        text-align: center;
         font-size: 10px;
       }
 
-      .entrance,
-      .mall-section,
-      .escalator-zone,
-      .info {
-        padding-left: 10px;
-        padding-right: 10px;
+      .hero {
+        padding: 132px 16px 70px;
       }
 
-      .entrance-main {
-        min-height: 760px;
-        padding: 18px;
+      .hero h1 {
+        font-size: clamp(48px, 18vw, 78px);
       }
 
-      .entrance-title {
-        font-size: clamp(56px, 22vw, 96px);
-      }
-
-      .entrance-copy {
-        font-size: 21px;
-      }
-
-      .mall-floor-buttons {
-        left: 18px;
-        right: 18px;
-        bottom: 18px;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .mall-floor-buttons a {
-        min-height: 74px;
-      }
-
-      .directory {
-        padding: 18px;
-      }
-
-      .directory-title {
-        font-size: 36px;
-      }
-
-      .directory-item {
-        grid-template-columns: 54px 1fr;
-      }
-
-      .floor-header {
-        grid-template-columns: 1fr;
-      }
-
-      .floor-badge {
-        min-height: 92px;
-        border-right: none;
-        border-bottom: 2px solid var(--line);
-      }
-
-      .floor-info h2 {
-        font-size: 34px;
-      }
-
-      .store-window {
+      .mall-map {
         min-height: 420px;
+        border-radius: 28px;
       }
 
-      .window-title {
-        font-size: 34px;
+      .map-floor {
+        width: 86%;
+        left: 7%;
+        padding: 12px;
+      }
+
+      .floor {
+        min-height: auto;
+        padding: 86px 16px;
+      }
+
+      .floor-no {
+        font-size: 78px;
+      }
+
+      .floor-grid {
+        gap: 24px;
       }
 
       .article-card {
-        padding: 22px 18px 30px;
+        border-radius: 26px;
+        padding: 24px;
       }
 
-      .article-card h1 {
-        font-size: clamp(30px, 9.4vw, 44px);
-        line-height: 1.06;
+      .article-card h3 {
+        font-size: 27px;
       }
 
-      .lead {
-        font-size: 18px;
-      }
-
-      .body {
+      .article-card p {
         font-size: 14px;
-        line-height: 1.78;
+        line-height: 1.9;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
 
-      .escalator-zone {
-        min-height: 78vh;
-      }
-
-      .escalator-zone::before {
-        font-size: 48px;
-      }
-
-      .escalator-visual {
-        min-height: 300px;
-      }
-
-      .escalator-copy {
-        padding: 22px;
-      }
-
-      .escalator-copy h2 {
-        font-size: 38px;
-      }
-
-      .info-title,
-      .info-body {
-        padding: 22px;
+      .mall-map::before,
+      .escalator,
+      .scroll-cue::after {
+        animation: none;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="mall-topbar">
-    <a class="mall-logo" href="#top">NOISE<br>ONLINE MALL</a>
-    <div class="mall-search">Culture, cinema, music, pop, essay, window shopping, floors, tenants</div>
-    <nav class="mall-nav" aria-label="Mall navigation">
-      <a href="#top">TOP</a>
+  <header class="site-nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark"></span>
+      <span>Cove Walk Journal</span>
+    </a>
+
+    <nav class="nav-floors" aria-label="floor navigation">
       <a href="#floor-5">5F</a>
       <a href="#floor-4">4F</a>
       <a href="#floor-3">3F</a>
       <a href="#floor-2">2F</a>
       <a href="#floor-1">1F</a>
-      <a href="#info">INFO</a>
     </nav>
   </header>
 
-  <main class="page">
-    <section id="top" class="entrance">
-      <div class="entrance-shell">
-        <div class="entrance-main">
-          <div class="entrance-tag">Online Window Shopping / Entrance</div>
-          <h1 class="entrance-title">CULTURE<br>MALL</h1>
-
-          <p class="entrance-copy">
-            ショッピングモールを、そのままインターネットに移行する。記事はテナントで、スクロールはエスカレーター。読むことは、館内を回遊することになる。
+  <main>
+    <section id="top" class="hero">
+      <div class="hero-shell">
+        <div>
+          <div class="hero-label">Shopping Mall Descent Web Magazine</div>
+          <h1>
+            エスカレーターで<br>
+            降りながら読む。
+            <span>5F→1F</span>
+          </h1>
+          <p class="hero-text">
+            このサイトは、記事一覧をクリックして読むためのページではない。最上階から入り、エスカレーターで階を降りるように、空間、光、床、店、ベンチ、吹き抜け、出口の気配を順番に通過するためのWebモールである。各階には2本の記事が置かれ、読者はスクロールしながら、商業施設を回遊する身体感覚を追体験する。
           </p>
-
-          <p class="entrance-note">
-            このページは、上層階から下層階へ降りていくオンラインモールです。各記事は独立した店舗として配置され、広い余白、ショーウィンドウ、フロア表示、エスカレーター移動によって、ウィンドウショッピングの感覚を再現します。
-          </p>
-
-          <div class="mall-floor-buttons">
-            <a href="#floor-5">
-              <strong>5F</strong>
-              <span>Cinema Megastore / Michael</span>
-            </a>
-            <a href="#floor-4">
-              <strong>4F</strong>
-              <span>Music Select Shop / Prince</span>
-            </a>
-            <a href="#floor-3">
-              <strong>3F</strong>
-              <span>Archive Books / Essay</span>
-            </a>
-            <a href="#floor-2">
-              <strong>2F</strong>
-              <span>Pop Goods / Package</span>
-            </a>
-            <a href="#floor-1">
-              <strong>1F</strong>
-              <span>Cinema Exit / Gaze</span>
-            </a>
-            <a href="#info">
-              <strong>IF</strong>
-              <span>Information Counter</span>
-            </a>
-          </div>
         </div>
 
-        <aside class="directory">
-          <div class="directory-inner">
-            <div class="directory-label">Mall Directory</div>
-            <h2 class="directory-title">Floor<br>Guide</h2>
+        <div class="mall-map" aria-label="floor map">
+          <div class="map-floor mf-5"><span>5F Garden</span><small>Article 01 / 02</small></div>
+          <div class="map-floor mf-4"><span>4F Market</span><small>Article 03 / 04</small></div>
+          <div class="map-floor mf-3"><span>3F Lounge</span><small>Article 05 / 06</small></div>
+          <div class="map-floor mf-2"><span>2F Cove</span><small>Article 07 / 08</small></div>
+          <div class="map-floor mf-1"><span>1F Gate</span><small>Article 09 / 10</small></div>
+        </div>
+      </div>
 
-            <div class="directory-list">
-              <a class="directory-item" href="#floor-5">
-                <strong>5F</strong>
-                <span>映画『マイケル』ー「視線」と「EQ」でスターは語り直される</span>
-              </a>
-              <a class="directory-item" href="#floor-4">
-                <strong>4F</strong>
-                <span>Prince以後のR&Bについて</span>
-              </a>
-              <a class="directory-item" href="#floor-3">
-                <strong>3F</strong>
-                <span>影響関係ではなく、配置として聴く</span>
-              </a>
-              <a class="directory-item" href="#floor-2">
-                <strong>2F</strong>
-                <span>ポップはパッケージとして届く</span>
-              </a>
-              <a class="directory-item" href="#floor-1">
-                <strong>1F</strong>
-                <span>映画における視線と編集</span>
-              </a>
-            </div>
+      <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
+
+    <section id="floor-5" class="floor floor-5">
+      <div class="floor-shell">
+        <header class="floor-header">
+          <div class="floor-no">5F</div>
+          <div class="floor-title">
+            <h2>Garden / 外光と余白のフロア</h2>
+            <p>
+              最上階は、買い物の目的地というよりも、歩き始める前に呼吸を整える場所として設計する。外光、植栽、風、開放感。ここから下へ降りていく。
+            </p>
           </div>
-        </aside>
+          <div class="floor-sign">
+            Start Point<br>
+            Garden Deck<br>
+            Down Escalator
+          </div>
+        </header>
+
+        <div class="floor-grid">
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 01</span>
+                <span>Garden</span>
+              </div>
+              <h3>屋上庭園的な場所で、都市は少しだけ解除される</h3>
+              <p>
+                商業施設の上層階にある庭園は、自然そのものではない。土も植物も水も、当然ながら管理され、選ばれ、配置されている。けれど、その人工性を理由に価値が低いとは言えない。むしろ都市の中で人が休むためには、完全な自然よりも、よく調整された半自然の方が必要なことがある。屋上や高層階のテラスに出ると、店の音、照明、看板、商品の密度から一度だけ距離を取れる。財布を出す前の身体に戻るというより、買い物の途中で、買わない自分を思い出す。
+              </p>
+              <p>
+                そこでは都市が消えるわけではない。ビルの輪郭も、電車の音も、ガラス越しの反射も残っている。ただし、それらは少し遠くに置かれる。庭園的な場所の役割は、都市を否定することではなく、都市の強度を一段だけ下げることにある。人はベンチに座り、スマートフォンを見て、友人を待ち、紙袋を足元に置く。何かを買った後でも、まだ何も買っていないような顔でいられる。この短い解除感があるから、商業施設は単なる売場ではなく、滞在できる街になる。
+              </p>
+            </article>
+          </div>
+
+          <div class="escalator" aria-hidden="true">
+            <div class="escalator-label">going down</div>
+          </div>
+
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 02</span>
+                <span>Ending</span>
+              </div>
+              <h3>出口ではなく、もう一度歩きたくなる終わり方</h3>
+              <p>
+                ショッピングモールの面白さは、出口が必ずしも終点ではないところにある。映画館のように作品が終わり、照明がつき、観客が一方向に退場するわけではない。モールでは、帰ろうと思った瞬間に別の通路が見える。下の階に降りるエスカレーターがあり、その先にまだ見ていない店の光がある。終わるつもりで歩いていたのに、身体だけがもう少し先へ行こうとする。回遊性とは、目的地を増やすことではなく、終わりを少しずつ延期する技術である。
+              </p>
+              <p>
+                Webサイトも同じように作れる。記事を読み終えた瞬間に、関連記事を機械的に並べるのではなく、次の空間の気配を見せる。スクロールの下に別の階の床が見える。色が少し変わる。空気が変わる。すると読者はリンクを選ぶのではなく、足元につられて進む。出口の設計とは、離脱を防ぐことではない。離脱してもいいが、もう一度歩きたくなる余韻を残すことだ。良いモールは、買ったものよりも、歩いた順番の方が記憶に残る。
+              </p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="escalator-zone" aria-label="Escalator from entrance to 5F">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
+    <section id="floor-4" class="floor floor-4">
+      <div class="floor-shell">
+        <header class="floor-header">
+          <div class="floor-no">4F</div>
+          <div class="floor-title">
+            <h2>Market / 店と人の密度</h2>
+            <p>
+              4Fは売場の気配を強める。小さな区画、棚、ポップアップ、期間限定、通路の角。視線が短い距離で次々に切り替わるフロア。
+            </p>
+          </div>
+          <div class="floor-sign">
+            Pop-up Units<br>
+            Product Shelves<br>
+            Short Turns
+          </div>
+        </header>
+
+        <div class="floor-grid">
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 03</span>
+                <span>Market</span>
+              </div>
+              <h3>ポップアップショップは、常設店よりも記憶に残る</h3>
+              <p>
+                ポップアップショップは、最初から消えることを前提にしている。そこにある商品も、什器も、壁の色も、一定期間が過ぎれば撤去される。だからこそ、常設店よりも強く記憶に残ることがある。常にそこにある店は、便利で、信頼できて、生活の一部になる。一方でポップアップは、通り過ぎる瞬間にだけ強く光る。見逃したら次はないかもしれないという時間の圧力が、商品そのもの以上に人を引き寄せる。
+              </p>
+              <p>
+                この形式は、現代のカルチャーの届き方に近い。音楽も映画も服も、ずっと同じ棚に置かれているというより、短い期間だけ強く露出し、フィードを流れ、誰かの投稿に写り、次の話題へ移っていく。ポップアップ的な売場は、その流れを空間化したものだ。通路の途中に突然現れる仮設の島。そこではブランドの歴史よりも、いまここにしかない感じが優先される。買い物とは、所有ではなく、その一瞬の場に参加したという記憶になる。
+              </p>
+            </article>
+          </div>
+
+          <div class="escalator" aria-hidden="true">
+            <div class="escalator-label">going down</div>
+          </div>
+
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 04</span>
+                <span>Shelf</span>
+              </div>
+              <h3>棚を見ること、商品を見ること、世界観を見ること</h3>
+              <p>
+                棚を見るとき、人は商品だけを見ているわけではない。商品の並び方、余白、照明、隣に置かれた別の商品、値札の位置、説明文の短さ、パッケージの色。それらを同時に受け取っている。棚とは、小さな編集面である。雑誌のページが写真、見出し、本文、余白を組み合わせてひとつの気分を作るように、棚も複数の商品を並べることで、ひとつの世界観を作る。
+              </p>
+              <p>
+                良い棚は、買うべきものを大声で命令しない。むしろ、何となく手に取りたくなる距離を作る。商品が整いすぎていると緊張するし、雑すぎると信頼できない。その中間に、少しだけ触ってもいい感じがある。商業施設の棚は、物の保管場所ではなく、視線のリズムを作る装置である。左から右へ、上から下へ、近くから遠くへ。人は棚の前で小さなスクロールをしている。Webの記事一覧も、本当は棚として設計できる。クリックの前に、眺める時間がある。
+              </p>
+            </article>
           </div>
         </div>
-        <div class="escalator-copy">
-          <small>Access to 5F</small>
-          <h2>Take the<br>Escalator</h2>
+      </div>
+    </section>
+
+    <section id="floor-3" class="floor floor-3">
+      <div class="floor-shell">
+        <header class="floor-header">
+          <div class="floor-no">3F</div>
+          <div class="floor-title">
+            <h2>Lounge / 買わない時間</h2>
+            <p>
+              3Fは休憩と滞在の階。木、布、ベンチ、低い照明。ここでは商品よりも、人が座ること、待つこと、時間を伸ばすことが中心になる。
+            </p>
+          </div>
+          <div class="floor-sign">
+            Rest Area<br>
+            Soft Light<br>
+            Waiting Space
+          </div>
+        </header>
+
+        <div class="floor-grid">
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 05</span>
+                <span>Lounge</span>
+              </div>
+              <h3>ベンチ、植栽、余白——買わない時間のデザイン</h3>
+              <p>
+                商業施設におけるベンチは、単なる休憩用の家具ではない。そこに座る人は、買い物を一時停止している。誰かを待っている。次にどの店へ行くかを相談している。紙袋の中身を確認している。あるいは何もせず、ただ人の流れを眺めている。ベンチは、購買行動から外れた時間を受け止める場所である。だから、ベンチが少ない商業施設は疲れる。ずっと客でいなければならないからだ。
+              </p>
+              <p>
+                植栽や余白も同じ役割を持つ。売場面積だけを最大化すれば、理論上は多くの商品を置ける。しかし、人は商品だけの空間には長くいられない。何も売っていない場所があるから、売っている場所にも戻れる。余白は無駄ではなく、回遊を持続させるための呼吸である。Webサイトでも、記事と記事の間に何もない時間が必要だ。すぐ次を読ませるのではなく、一度視線を休ませる。余白があるから、次の記事が商品ではなく、場所として立ち上がる。
+              </p>
+            </article>
+          </div>
+
+          <div class="escalator" aria-hidden="true">
+            <div class="escalator-label">going down</div>
+          </div>
+
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 06</span>
+                <span>City</span>
+              </div>
+              <h3>カフェではなく、ラウンジとしての都市</h3>
+              <p>
+                都市には、座るためだけの場所が少ない。多くの場合、座るには何かを買う必要がある。カフェで飲み物を買い、レストランで食事をし、映画館でチケットを買う。もちろんそれは悪いことではない。ただ、商業施設のラウンジ的な場所には、もう少し曖昧な可能性がある。そこでは、購入と滞在の関係が少し緩む。何かを買った人も、まだ買っていない人も、同じベンチに座ることができる。
+              </p>
+              <p>
+                この曖昧さは、都市にとって重要である。完全な公共空間ではないが、完全な店舗でもない。誰かの所有物でありながら、誰かが少しのあいだ自分の場所のように使える。ラウンジとしての都市とは、そのような半公共的な居場所の連なりだ。商業施設を批判するとき、消費の論理だけを見ればたしかに窮屈に見える。けれど、実際の身体はもっと複雑に使っている。待ち合わせる、座る、迷う、眺める、充電する、雨を避ける。買わない都市経験も、商業施設の中には確かに存在している。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="floor-2" class="floor floor-2">
+      <div class="floor-shell">
+        <header class="floor-header">
+          <div class="floor-no">2F</div>
+          <div class="floor-title">
+            <h2>Cove / 入江の回廊</h2>
+            <p>
+              2Fは湾曲した通路と吹き抜けの階。まっすぐ進ませるのではなく、少し迷わせ、見下ろさせ、次の角へ誘導する。
+            </p>
+          </div>
+          <div class="floor-sign">
+            Curved Path<br>
+            Atrium View<br>
+            Slow Circulation
+          </div>
+        </header>
+
+        <div class="floor-grid">
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 07</span>
+                <span>Cove</span>
+              </div>
+              <h3>ショッピングモールはなぜ“迷える”ように作られるのか</h3>
+              <p>
+                ショッピングモールは、完全に分かりやすい方が便利なはずだ。入口から目的の店まで一直線で行けて、帰り道もすぐ分かる。けれど実際のモールは、しばしば少しだけ迷うように作られている。通路が曲がり、吹き抜けがあり、エスカレーターの位置がずれ、店の見え方が角度によって変わる。これは不親切というより、歩く理由を作るための設計である。迷いは、滞在時間を伸ばすだけでなく、偶然の発見を生む。
+              </p>
+              <p>
+                ただし、良い迷いには限度がある。完全に方向感覚を失うと、人は不安になる。だからモールの迷いやすさは、いつでも戻れる安心感とセットでなければならない。吹き抜けから下の階が見える。遠くにサインがある。エスカレーターの光が見える。迷っているが、閉じ込められてはいない。この状態が、回遊の快楽を作る。Webサイトでも同じだ。すべてをメニューで説明しすぎると、読む体験はただの選択肢処理になる。少し迷える余地があると、ページは空間になる。
+              </p>
+            </article>
+          </div>
+
+          <div class="escalator" aria-hidden="true">
+            <div class="escalator-label">going down</div>
+          </div>
+
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 08</span>
+                <span>Atrium</span>
+              </div>
+              <h3>吹き抜けを見ると、人はなぜ少し立ち止まるのか</h3>
+              <p>
+                吹き抜けは、商業施設の中で最も商品から離れた場所に見える。そこには棚もレジもない。あるのは上下に抜けた空間、手すり、反対側の通路、下の階を歩く人の小さな動きである。けれど、吹き抜けはモールの中心的な装置でもある。人は吹き抜けの前で一度立ち止まり、自分がどの高さにいるのかを確認する。現在地が、平面ではなく立体として理解される。
+              </p>
+              <p>
+                吹き抜けが作るのは、単なる開放感ではない。それは、自分以外の移動を見る感覚である。下の階の人、向こう側の人、上の階へ行く人、エスカレーターで降りてくる人。複数の時間が同時に見える。だから吹き抜けは、商業施設の中の小さな劇場でもある。自分も歩いているが、他人が歩いている様子も見ている。Webページにおける吹き抜けは、次のセクションが少し見える余白かもしれない。まだ読んでいない階の光が、いまいる場所に差し込む。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="floor-1" class="floor floor-1">
+      <div class="floor-shell">
+        <header class="floor-header">
+          <div class="floor-no">1F</div>
+          <div class="floor-title">
+            <h2>Gate / 駅前の入口へ戻る</h2>
+            <p>
+              1Fは出口であり、入口でもある。駅、道路、ガラス、石、案内板。ここでモールの中の時間が、都市の時間へ戻っていく。
+            </p>
+          </div>
+          <div class="floor-sign">
+            Main Gate<br>
+            Station Link<br>
+            Street Level
+          </div>
+        </header>
+
+        <div class="floor-grid">
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 09</span>
+                <span>Gate</span>
+              </div>
+              <h3>駅から商業施設へ、気分が切り替わる瞬間</h3>
+              <p>
+                駅から商業施設へ入る瞬間、人の気分はほとんど無意識に切り替わる。改札を出たばかりの身体は、まだ移動のリズムを持っている。電車の時間、乗り換え、人の流れ、ホームの音。そのままガラスの入口を抜けると、照明が変わり、床の素材が変わり、空気の温度が少し安定する。都市の速度から、商業施設の速度へ移る。入口の役割は、店を見せることだけではない。身体のテンポを変えることだ。
+              </p>
+              <p>
+                良い入口は、いきなり商品を押しつけない。まず天井の高さ、奥行き、案内板、エスカレーターの位置、待ち合わせできそうな余白を見せる。人はそこで、自分がどのように歩けばいいのかを判断する。Webサイトのトップページも同じである。すぐに記事を並べるのではなく、この場所がどのような速度で読まれるべきかを知らせる必要がある。入口は情報の一覧ではなく、気分の変換装置である。駅前からモールへ入る一歩には、すでに編集がある。
+              </p>
+            </article>
+          </div>
+
+          <div class="escalator" aria-hidden="true">
+            <div class="escalator-label">arrival</div>
+          </div>
+
+          <div>
+            <article class="article-card">
+              <div class="article-kicker">
+                <span>Article 10</span>
+                <span>Wayfinding</span>
+              </div>
+              <h3>案内板を見ないで歩くことについて</h3>
+              <p>
+                商業施設で案内板を見るのは、目的地があるときだけではない。むしろ案内板を見る前に、私たちはすでに多くの情報を読んでいる。人の流れ、エスカレーターの向き、明るい方角、店の開口部、床の切り替わり、天井の高さ。案内板はその確認にすぎないことも多い。良い空間は、サインを読まなくても何となく進める。道が身体に伝わる。
+              </p>
+              <p>
+                もちろん、案内板は必要だ。迷った人を助け、目的地までの距離を示し、施設全体を理解させる。ただ、サインだけに頼る空間は弱い。矢印がなければ動けない場所は、歩く楽しさを失っている。Webサイトでも、メニューやボタンだけで読者を誘導すると、ページは地図になりすぎる。大切なのは、読者が案内を読まなくても次へ進みたくなることだ。色の変化、余白、見出しの位置、スクロールした先に見える次の床。案内板を見ないで歩けるサイトは、読む場所ではなく、歩ける場所になる。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="exit">
+      <div class="exit-inner">
+        <div>
+          <h2>Back to the city.</h2>
           <p>
-            ここから先は、記事をクリックして開くのではなく、モールの階を降りるようにスクロールします。余白は移動時間です。
+            5Fから1Fまで降りてきた。記事を読むというより、階を移動した。クリックではなく、回遊。目次ではなく、案内板。ページではなく、床。ここでサイトは終わるが、商業施設と同じように、出口はまた次の入口でもある。
           </p>
         </div>
+
+        <a class="exit-button" href="#top">Ride Again</a>
       </div>
     </section>
-
-    <section id="floor-5" class="mall-section">
-      <div class="floor-header">
-        <div class="floor-badge">5F</div>
-        <div class="floor-info">
-          <p>Tenant 501 / Cinema Megastore</p>
-          <h2>Now Showing Window</h2>
-        </div>
-        <div class="floor-status">Open<br>10:00-22:00</div>
-      </div>
-
-      <div class="storefront">
-        <aside class="store-window michael-window">
-          <div class="store-sign">Cinema Megastore / 501</div>
-          <div class="store-price">Now<br>Showing</div>
-          <img src="michael-2026-movie-7680x9180-25486.jpg" alt="映画『マイケル』記事のビジュアル">
-          <div class="window-title">Michael<br>Gaze / EQ</div>
-        </aside>
-
-        <article class="article-card">
-          <div class="tenant-label">Film</div>
-          <h1>映画『マイケル』ー「視線」と「EQ」でスターは語り直される</h1>
-
-          <div class="tenant-info">
-            <span>Floor 5</span>
-            <span>Cinema</span>
-            <span>Show Window</span>
-          </div>
-
-          <p class="lead">
-            『マイケル』は、ひとりのスターの伝記であると同時に、「誰がマイケル・ジャクソンを演出したのか」をめぐる映画でもある。
-          </p>
-
-          <div class="body">
-            <p>
-              アントワーン・フークア監督、映画『マイケル』（2026）。父親がマイケルに「俺の目を見ろ！」と指導するシークエンスから始まるこの映画は、終始、マイケルの「視線」の行方を追いかけていく。
-            </p>
-            <p>
-              エンターテイメントは、観客に見られて初めて成立する。ステージの上で、もしくは画面の上で、多くの視線を奪う生業。少年マイケルは、理屈を理解する前に、まずステップを踏んでしまう。
-            </p>
-            <p>
-              さらに映画は、誰がミキサー卓に座り、どのフェーダーを上げ、どの声を背景に下げるのかを追いかけていく。父親、ベリー・ゴーディ、クインシー・ジョーンズ、そして2026年の製作陣。『マイケル』はスターの音量を調整する者たちの映画でもある。
-            </p>
-          </div>
-
-          <div class="shop-tags">
-            <span>Gaze</span>
-            <span>EQ</span>
-            <span>Star Image</span>
-            <span>Cinema Floor</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="escalator-zone" aria-label="Escalator from 5F to 4F">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
-          </div>
-        </div>
-        <div class="escalator-copy">
-          <small>Down to 4F</small>
-          <h2>Music<br>Floor</h2>
-          <p>
-            映画フロアを抜けて、吹き抜けを横切る。下の階から、音楽ショップの照明と試聴機の気配が見えてくる。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="floor-4" class="mall-section">
-      <div class="floor-header">
-        <div class="floor-badge">4F</div>
-        <div class="floor-info">
-          <p>Tenant 401 / Music Select Shop</p>
-          <h2>Listening Booth Area</h2>
-        </div>
-        <div class="floor-status">Listen<br>Before Buy</div>
-      </div>
-
-      <div class="storefront">
-        <aside class="store-window music-window">
-          <div class="store-sign">Music Select Shop / 401</div>
-          <div class="store-price">New<br>Arrival</div>
-          <div class="window-title">Prince<br>& Body</div>
-        </aside>
-
-        <article class="article-card">
-          <div class="tenant-label">Music</div>
-          <h1>Prince以後のR&Bについて</h1>
-
-          <div class="tenant-info">
-            <span>Floor 4</span>
-            <span>Music</span>
-            <span>Listening Booth</span>
-          </div>
-
-          <p class="lead">
-            Princeの音楽は、ジャンルの融合というより、ジャンルが一人の身体に集まりすぎた状態として聴こえる。
-          </p>
-
-          <div class="body">
-            <p>
-              Prince以後のR&Bを考えるとき、単に「Princeから誰が影響を受けたか」を列挙しても、あまり本質には近づけない。
-            </p>
-            <p>
-              重要なのは、ジャンルをまたぐ技術ではなく、ジャンルを一人の身体の中で同時に鳴らしてしまう感覚である。ファンク、ロック、ポップ、R&B、ジャズ、ゴスペルが、整理されるのではなく、過剰なまま同居する。
-            </p>
-            <p>
-              D’Angelo、Frank Ocean、Janelle Monáe以降のR&Bは、Princeを単に模倣しているのではない。R&Bを、声、身体、衣装、映像、人格を含む総合的な表現形式として受け継いでいる。
-            </p>
-          </div>
-
-          <div class="shop-tags">
-            <span>Prince</span>
-            <span>R&B</span>
-            <span>Body</span>
-            <span>Listening</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="escalator-zone" aria-label="Escalator from 4F to 3F">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
-          </div>
-        </div>
-        <div class="escalator-copy">
-          <small>Down to 3F</small>
-          <h2>Archive<br>Books</h2>
-          <p>
-            音楽ショップの試聴機を離れ、次はアーカイブ書店へ。作品同士の距離を測るための静かなフロアです。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="floor-3" class="mall-section">
-      <div class="floor-header">
-        <div class="floor-badge">3F</div>
-        <div class="floor-info">
-          <p>Tenant 301 / Archive Books</p>
-          <h2>Reference Corridor</h2>
-        </div>
-        <div class="floor-status">Quiet<br>Zone</div>
-      </div>
-
-      <div class="storefront">
-        <aside class="store-window essay-window">
-          <div class="store-sign">Archive Books / 301</div>
-          <div class="store-price">Map<br>Issue</div>
-          <div class="window-title">Archive<br>& Map</div>
-        </aside>
-
-        <article class="article-card">
-          <div class="tenant-label">Essay</div>
-          <h1>影響関係ではなく、配置として聴く</h1>
-
-          <div class="tenant-info">
-            <span>Floor 3</span>
-            <span>Essay</span>
-            <span>Archive</span>
-          </div>
-
-          <p class="lead">
-            作品は単独で存在しているように見える。しかし実際には、他の作品、時代、メディア、聴き手の記憶の中に置かれている。
-          </p>
-
-          <div class="body">
-            <p>
-              音楽について語るとき、「影響」という言葉は便利である。だが、その便利さは危うい。影響という言葉は、複雑な関係を原因と結果に変えてしまう。
-            </p>
-            <p>
-              作品同士の関係を考えるときには、「影響」よりも「配置」という言葉を使いたい。近い作品、遠い作品、似ている作品、似ていないのになぜか同じ場所に置きたくなる作品。
-            </p>
-            <p>
-              このフロアは、モールの中の小さなアーカイブ通路である。棚と棚のあいだを歩くように、作品と作品の関係を移動する。
-            </p>
-          </div>
-
-          <div class="shop-tags">
-            <span>Archive</span>
-            <span>Mapping</span>
-            <span>Listening</span>
-            <span>Reference</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="escalator-zone" aria-label="Escalator from 3F to 2F">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
-          </div>
-        </div>
-        <div class="escalator-copy">
-          <small>Down to 2F</small>
-          <h2>Pop<br>Goods</h2>
-          <p>
-            静かな書店の階を抜けると、グッズショップの明るい棚が見えてくる。ポップは商品棚の形式で届く。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="floor-2" class="mall-section">
-      <div class="floor-header">
-        <div class="floor-badge">2F</div>
-        <div class="floor-info">
-          <p>Tenant 201 / Pop Goods</p>
-          <h2>Package Shop</h2>
-        </div>
-        <div class="floor-status">Display<br>Sale</div>
-      </div>
-
-      <div class="storefront">
-        <aside class="store-window pop-window">
-          <div class="store-sign">Pop Goods / 201</div>
-          <div class="store-price">Pop<br>Pack</div>
-          <div class="window-title">Package<br>Store</div>
-        </aside>
-
-        <article class="article-card">
-          <div class="tenant-label">Pop</div>
-          <h1>ポップはパッケージとして届く</h1>
-
-          <div class="tenant-info">
-            <span>Floor 2</span>
-            <span>Pop</span>
-            <span>Package</span>
-          </div>
-
-          <p class="lead">
-            ポップ・ミュージックは音だけで届くわけではない。ジャケット、フォント、色、写真、ステッカー、開封体験まで含めて、ひとつの作品として受け取られる。
-          </p>
-
-          <div class="body">
-            <p>
-              配信時代になって、音楽は物理的なパッケージから解放されたように見える。だが、パッケージは消えたわけではない。
-            </p>
-            <p>
-              ティザー、コンセプトフォト、ミュージックビデオ、ショート動画、グッズ、SNSの切り抜きまで含む環境へと広がった。
-            </p>
-            <p>
-              ショッピングモール型のWebサイトは、この発想と相性が良い。記事もまた、文章だけで届くのではない。看板、窓、フロアマップ、スクロールの順番によって、読む前の身体感覚が作られる。
-            </p>
-          </div>
-
-          <div class="shop-tags">
-            <span>Package</span>
-            <span>Display</span>
-            <span>Goods</span>
-            <span>Interface</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="escalator-zone" aria-label="Escalator from 2F to 1F">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
-          </div>
-        </div>
-        <div class="escalator-copy">
-          <small>Down to 1F</small>
-          <h2>Exit<br>Cinema</h2>
-          <p>
-            最後のフロアへ。出口に近づくほど、視線の問題がはっきりしてくる。誰が見て、誰が見返すのか。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="floor-1" class="mall-section">
-      <div class="floor-header">
-        <div class="floor-badge">1F</div>
-        <div class="floor-info">
-          <p>Tenant 101 / Cinema Exit</p>
-          <h2>Street Level Window</h2>
-        </div>
-        <div class="floor-status">Exit<br>Gate</div>
-      </div>
-
-      <div class="storefront">
-        <aside class="store-window film-window">
-          <div class="store-sign">Cinema Exit / 101</div>
-          <div class="store-price">Exit<br>Cut</div>
-          <div class="window-title">Gaze<br>& Cut</div>
-        </aside>
-
-        <article class="article-card">
-          <div class="tenant-label">Film</div>
-          <h1>映画における視線と編集</h1>
-
-          <div class="tenant-info">
-            <span>Floor 1</span>
-            <span>Film</span>
-            <span>Exit</span>
-          </div>
-
-          <p class="lead">
-            映画の中で、誰が誰を見るのか。その視線の順番は、物語の説明以上に強く、観客の感情を組み立てている。
-          </p>
-
-          <div class="body">
-            <p>
-              映画を見るとき、私たちはしばしばストーリーを追っているつもりでいる。しかし実際には、観客の感情を強く動かしているのは、出来事そのものよりも、視線の配置であることが多い。
-            </p>
-            <p>
-              人物の顔、人物が見ている対象、その反応をつなぐ切り返し。これは単純な技法に見えるが、非常に強い。
-            </p>
-            <p>
-              1Fは出口である。観客はここで、館内を一周したあと、もう一度「見る」という行為に戻される。映画を見ること、音楽を聴くこと、Webサイトをスクロールすること。それらはすべて、視線の設計によって動かされている。
-            </p>
-          </div>
-
-          <div class="shop-tags">
-            <span>Gaze</span>
-            <span>Editing</span>
-            <span>Frame</span>
-            <span>Exit</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="escalator-zone" aria-label="Escalator to information counter">
-      <div class="escalator-card">
-        <div class="escalator-visual">
-          <div class="escalator-side"></div>
-          <div class="escalator-rail"></div>
-          <div class="escalator-steps"></div>
-          <div class="escalator-people">
-            <div class="person one"></div>
-            <div class="person two"></div>
-            <div class="person three"></div>
-          </div>
-        </div>
-        <div class="escalator-copy">
-          <small>To Information</small>
-          <h2>End of<br>Mall</h2>
-          <p>
-            最後にインフォメーションカウンターへ。ここで、このサイト全体が「記事一覧」ではなく「館内体験」だったことが回収されます。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="info" class="info">
-      <div class="info-shell">
-        <div class="info-title">
-          <span>Information Counter</span>
-          <h1>Thank<br>You</h1>
-        </div>
-
-        <div class="info-body">
-          <p>
-            この案では、サイト全体をショッピングモールとして扱っています。トップは入口、各記事はテナント、記事横のビジュアルはショーウィンドウ、記事間の大きな余白は吹き抜けとエスカレーターです。
-          </p>
-          <p>
-            重要なのは、クリックして記事を開くのではなく、スクロールによって階を移動することです。読者は「記事を読む」というより、フロアを順番に降りながら、店頭の商品を見るようにカルチャーを眺めていきます。
-          </p>
-          <p>
-            次に詰めるなら、各テナントをもっと具体的にできます。映画記事はシネコン、音楽記事はCDショップ、批評記事は書店、ポップ記事はグッズショップ、というように、それぞれ内装を変えるとさらにモールらしくなります。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © NOISE ONLINE MALL / Shopping Mall Migration Prototype / Vertical Window Shopping Website
-    </footer>
   </main>
 </body>
 </html>
