@@ -223,9 +223,9 @@
           90deg,
           var(--sweet-blue) 0 20%,
           var(--sweet-pink) 20% 40%,
-          var(--sweet-yellow) 40% 57%,
-          var(--sweet-green) 57% 78%,
-          var(--sweet-purple) 78% 100%
+          var(--sweet-yellow) 40% 60%,
+          var(--sweet-green) 60% 80%,
+          var(--sweet-purple) 80% 100%
         );
     }
 
@@ -411,27 +411,6 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .hero-note {
-      width: fit-content;
-      padding: 12px 16px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--black);
-      color: var(--paper2);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      box-shadow: var(--shadow-small);
-    }
-
-    .hero-note::after {
-      content: " ↓";
-      animation: floatDown 1.2s ease-in-out infinite;
-      display: inline-block;
     }
 
     .floor-map {
@@ -1151,11 +1130,6 @@
       to { background-position-y: 36px; }
     }
 
-    @keyframes floatDown {
-      0%, 100% { transform: translateY(-2px); opacity: 0.56; }
-      50% { transform: translateY(4px); opacity: 1; }
-    }
-
     @media (min-width: 760px) {
       .site-nav {
         top: 20px;
@@ -1415,7 +1389,6 @@
         scroll-behavior: auto;
       }
 
-      .hero-note::after,
       .hero::before,
       .floor::after {
         animation: none;
@@ -1464,7 +1437,6 @@
         <p class="hero-copy">
           NOISEは、映画、音楽、アイドル、ファッション、インターネット、フードを扱うポップカルチャーWebマガジンです。この号では、記事一覧をクリックして移動するのではなく、ショッピングモールの通路を歩き、気になるテナントに入るように記事を読みます。入口をタップすると、記事がその場で画面の約90%まで広がります。
         </p>
-        <div class="hero-note">Start from 5F</div>
       </div>
     </section>
 
