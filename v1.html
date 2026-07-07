@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOISE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e9e4d8;
+      --paper: #f8f2e7;
+      --cream: #fff8e8;
+      --text: #070707;
+      --muted: #6b665d;
+      --black: #050505;
+      --line: #050505;
+      --coral: #ff5a43;
+      --orange: #ff7a3d;
+      --green: #1ed38b;
+      --cyan: #84d7e7;
+      --blue: #244c9a;
+      --yellow: #ffe36e;
+      --soft: #e7dfcf;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,90,67,0.24), transparent 26%),
+        radial-gradient(circle at 82% 10%, rgba(132,215,231,0.32), transparent 28%),
+        radial-gradient(circle at 74% 76%, rgba(30,211,139,0.24), transparent 30%),
+        linear-gradient(135deg, #e9e4d8 0%, #f3eddf 42%, #e3f1eb 100%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.13;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.45) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mix-blend-mode: multiply;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.14;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.3) 0px,
+          rgba(255,255,255,0.3) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: 172px 1fr auto;
+      align-items: stretch;
+      background: var(--black);
+      color: var(--cream);
+      border-bottom: 3px solid var(--black);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .top-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: 34px;
+      line-height: 0.82;
+      font-weight: 900;
+      letter-spacing: -0.12em;
+      color: var(--coral);
+      background: var(--black);
+      border-right: 2px solid var(--cream);
+      text-transform: lowercase;
+    }
+
+    .top-copy {
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      font-size: 10px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,248,232,0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: stretch;
+      border-left: 2px solid var(--cream);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      padding: 12px 12px;
+      border-right: 1px solid rgba(255,248,232,0.3);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.16s ease, color 0.16s ease;
+    }
+
+    .nav-links a:hover {
+      background: var(--coral);
+      color: var(--black);
+    }
+
+    .page {
+      width: 100%;
+    }
+
+    .section {
+      position: relative;
+      padding: 112px 20px;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .section-marker {
+      max-width: 1240px;
+      margin: 0 auto 16px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-marker::before,
+    .section-marker::after {
+      content: "";
+      height: 2px;
+      background: var(--black);
+    }
+
+    .section-marker span {
+      padding: 6px 9px;
+      background: var(--cream);
+      border: 2px solid var(--black);
+    }
+
+    .sheet {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 3px solid var(--black);
+      box-shadow: 0 24px 54px rgba(0,0,0,0.16);
+      overflow: hidden;
+    }
+
+    .cover {
+      padding-top: 36px;
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.92fr;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .cover-main {
+      padding: 22px;
+      border-right: 3px solid var(--black);
+      background:
+        radial-gradient(circle at 88% 10%, rgba(132,215,231,0.34), transparent 30%),
+        linear-gradient(135deg, rgba(255,248,232,0.9), rgba(237,228,211,0.82));
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 8px;
+      background: var(--coral);
+      color: var(--black);
+      border: 2px solid var(--black);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .site-title {
+      margin: 0;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(82px, 16vw, 190px);
+      line-height: 0.76;
+      font-weight: 900;
+      letter-spacing: -0.14em;
+      text-transform: lowercase;
+      color: var(--coral);
+      text-shadow:
+        3px 3px 0 var(--black),
+        6px 6px 0 rgba(0,0,0,0.1);
+    }
+
+    .deck {
+      max-width: 720px;
+      margin: 22px 0 0;
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.34;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+    }
+
+    .deck-small {
+      max-width: 720px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.75;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .issue-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 24px;
+      border: 2px solid var(--black);
+      background: var(--cream);
+    }
+
+    .issue-cell {
+      min-height: 66px;
+      padding: 10px;
+      border-right: 1px solid var(--black);
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .issue-cell:last-child {
+      border-right: none;
+    }
+
+    .issue-cell strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--black);
+      font-size: 13px;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+
+    .cover-art {
+      min-height: 472px;
+      position: relative;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .album-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      padding: 6px 18px 0;
+      background: var(--black);
+      z-index: 5;
+    }
+
+    .album-header span {
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(58px, 8vw, 92px);
+      line-height: 0.7;
+      font-weight: 900;
+      letter-spacing: -0.13em;
+      color: var(--coral);
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    .album-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 78px;
+      bottom: 72px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,90,67,0.88), transparent 20%),
+        radial-gradient(circle at 76% 34%, rgba(30,211,139,0.9), transparent 25%),
+        radial-gradient(circle at 52% 66%, rgba(132,215,231,0.9), transparent 27%),
+        linear-gradient(135deg, #f7f2e5 0%, #e1d5c4 48%, #243b48 100%);
+      border-top: 3px solid var(--black);
+      border-bottom: 3px solid var(--black);
+    }
+
+    .album-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+      mix-blend-mode: multiply;
+      opacity: 0.45;
+    }
+
+    .album-image::after {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 3px solid rgba(255,255,255,0.72);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.46), rgba(255,255,255,0.05));
+      box-shadow:
+        inset 0 0 60px rgba(255,255,255,0.42),
+        0 18px 40px rgba(0,0,0,0.16);
+      transform: rotate(-2.5deg);
+    }
+
+    .sticker {
+      position: absolute;
+      z-index: 8;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--black);
+      font-weight: 900;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.82);
+    }
+
+    .sticker.circle {
+      width: 92px;
+      height: 92px;
+      right: 30px;
+      top: 122px;
+      border-radius: 999px;
+      background: var(--orange);
+      font-family: "Outfit", sans-serif;
+      font-size: 17px;
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      text-align: center;
+      transform: rotate(-12deg);
+    }
+
+    .sticker.green {
+      width: 78px;
+      height: 78px;
+      left: 34px;
+      bottom: 94px;
+      border-radius: 999px;
+      background: var(--green);
+      font-size: 28px;
+      transform: rotate(8deg);
+    }
+
+    .album-title-line {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 84px;
+      z-index: 10;
+      font-family: "Outfit", "Inter", sans-serif;
+      font-size: clamp(28px, 4.8vw, 54px);
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      color: var(--cream);
+      text-shadow: 3px 3px 0 var(--black);
+      white-space: nowrap;
+    }
+
+    .album-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 72px;
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 120px 1fr 96px;
+      background: var(--black);
+      color: var(--cream);
+      border-top: 3px solid var(--black);
+    }
+
+    .barcode {
+      margin: 8px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #fff 0 2px,
+          #000 2px 4px,
+          #fff 4px 7px,
+          #000 7px 9px,
+          #fff 9px 13px
+        );
+      border: 2px solid var(--cream);
+      position: relative;
+    }
+
+    .barcode::after {
+      content: "5 220722 221029";
+      position: absolute;
+      left: 6px;
+      bottom: 3px;
+      padding: 1px 2px;
+      background: var(--cream);
+      color: var(--black);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+    }
+
+    .microcopy {
+      padding: 8px 8px 6px;
+      font-size: 8px;
+      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,248,232,0.82);
+      overflow: hidden;
+    }
+
+    .nj-box {
+      margin: 8px;
+      border: 2px solid var(--cream);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      line-height: 0.8;
+      font-weight: 900;
+      color: var(--coral);
+    }
+
+    .contents {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: var(--cream);
+      border-top: 3px solid var(--black);
+    }
+
+    .contents a {
+      min-height: 150px;
+      padding: 16px;
+      border-right: 3px solid var(--black);
+      transition: background 0.16s ease, color 0.16s ease;
+    }
+
+    .contents a:last-child {
+      border-right: none;
+    }
+
+    .contents a:hover {
+      background: var(--cyan);
+    }
+
+    .contents-number {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 42px;
+      line-height: 0.8;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      color: var(--coral);
+      text-shadow: 2px 2px 0 var(--black);
+    }
+
+    .contents-title {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 17px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .contents-category {
+      display: block;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: 168px 320px 1fr;
+      min-height: 700px;
+    }
+
+    .article-rail {
+      padding: 16px;
+      border-right: 3px solid var(--black);
+      background: var(--cream);
+    }
+
+    .article-number {
+      font-size: 74px;
+      line-height: 0.78;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      color: var(--coral);
+      text-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 18px;
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      background: #efe7d8;
+      border-right: 3px solid var(--black);
+    }
+
+    .photo-panel {
+      background: #efe7d8;
+    }
+
+    .article-photo-wrap {
+      background: #efe7d8;
+      width: 100%;
+    }
+
+    .article-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .article-main {
+      padding: 20px 24px 28px;
+      background:
+        radial-gradient(circle at 96% 8%, rgba(132,215,231,0.28), transparent 24%),
+        rgba(248,242,231,0.88);
+    }
+
+    .article-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 13px;
+      border: 3px solid var(--black);
+      background: var(--yellow);
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .article-main h1 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4.1vw, 56px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    .body {
+      column-count: 1;
+      max-width: 760px;
+      font-size: 15px;
+      line-height: 1.9;
+      font-weight: 600;
+    }
+
+    .body p {
+      margin: 0 0 17px;
+      break-inside: avoid;
+    }
+
+    .body .lead {
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 3px solid var(--black);
+      background: var(--cream);
+      font-size: 22px;
+      line-height: 1.45;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      box-shadow: 5px 5px 0 rgba(0,0,0,0.12);
+    }
+
+    .mini-cover {
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--black);
+      background: var(--black);
+    }
+
+    .mini-cover-header {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 50px;
+      padding: 4px 10px 0;
+      background: var(--black);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+    }
+
+    .mini-cover-header span {
+      font-family: "Outfit", sans-serif;
+      font-size: 44px;
+      line-height: 0.7;
+      font-weight: 900;
+      letter-spacing: -0.13em;
+      color: var(--coral);
+      text-transform: lowercase;
+    }
+
+    .mini-cover-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+      bottom: 50px;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+    }
+
+    .mini-cover-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 16px 16px;
+      mix-blend-mode: multiply;
+      opacity: 0.42;
+    }
+
+    .mini-two {
+      background:
+        radial-gradient(circle at 18% 66%, rgba(5,5,5,0.86), transparent 26%),
+        radial-gradient(circle at 72% 28%, rgba(255,122,61,0.92), transparent 27%),
+        radial-gradient(circle at 58% 66%, rgba(132,215,231,0.94), transparent 24%),
+        linear-gradient(135deg, #f4ead9, #1d3f3f);
+    }
+
+    .mini-three {
+      background:
+        radial-gradient(circle at 26% 30%, rgba(255,227,110,0.96), transparent 26%),
+        radial-gradient(circle at 76% 58%, rgba(255,90,67,0.88), transparent 28%),
+        radial-gradient(circle at 52% 20%, rgba(30,211,139,0.9), transparent 22%),
+        linear-gradient(135deg, #faf2e4, #435b87);
+    }
+
+    .mini-four {
+      background:
+        radial-gradient(circle at 22% 24%, rgba(132,215,231,0.95), transparent 26%),
+        radial-gradient(circle at 76% 62%, rgba(255,90,67,0.9), transparent 28%),
+        linear-gradient(135deg, #f8eedf, #314046);
+    }
+
+    .mini-five {
+      background:
+        radial-gradient(circle at 22% 70%, rgba(30,211,139,0.9), transparent 28%),
+        radial-gradient(circle at 74% 26%, rgba(255,227,110,0.94), transparent 25%),
+        radial-gradient(circle at 52% 58%, rgba(255,90,67,0.8), transparent 24%),
+        linear-gradient(135deg, #f5eadb, #243b48);
+    }
+
+    .mini-cover-title {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 58px;
+      z-index: 6;
+      color: var(--cream);
+      font-family: "Outfit", sans-serif;
+      font-size: 28px;
+      line-height: 0.92;
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      text-shadow: 3px 3px 0 var(--black);
+      white-space: nowrap;
+    }
+
+    .mini-cover-sticker {
+      position: absolute;
+      right: 16px;
+      top: 78px;
+      z-index: 7;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      background: var(--orange);
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-align: center;
+      transform: rotate(-10deg);
+    }
+
+    .mini-cover-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .mini-barcode {
+      margin: 7px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #fff 0 2px,
+          #000 2px 4px,
+          #fff 4px 7px,
+          #000 7px 9px,
+          #fff 9px 12px
+        );
+      border: 1px solid var(--cream);
+    }
+
+    .mini-credit {
+      padding: 8px 8px 6px;
+      font-size: 7px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,248,232,0.78);
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 190px 1fr 1fr;
+    }
+
+    .about-title {
+      padding: 16px;
+      border-right: 3px solid var(--black);
+      background: var(--cream);
+    }
+
+    .about-title h1 {
+      margin: 0;
+      font-family: "Outfit", sans-serif;
+      font-size: 50px;
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      color: var(--coral);
+      text-shadow: 2px 2px 0 var(--black);
+    }
+
+    .about-card {
+      padding: 18px;
+      border-right: 3px solid var(--black);
+      background: rgba(255,248,232,0.76);
+    }
+
+    .about-card:last-child {
+      border-right: none;
+    }
+
+    .about-card h2 {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 5px 8px;
+      border: 2px solid var(--black);
+      background: var(--cyan);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .about-card p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 10px 16px;
+      border-top: 3px solid var(--black);
+      background: var(--black);
+      color: rgba(255,248,232,0.78);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1080px) {
+      .top-nav {
+        grid-template-columns: 150px 1fr;
+      }
+
+      .top-copy {
+        display: none;
+      }
+
+      .nav-links {
+        border-left: 2px solid var(--cream);
+      }
+
+      .cover-grid,
+      .article-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cover-main,
+      .article-rail,
+      .side-panel,
+      .about-title,
+      .about-card {
+        border-right: none;
+        border-bottom: 3px solid var(--black);
+      }
+
+      .article-main {
+        border-right: none;
+      }
+
+      .cover-art {
+        min-height: 420px;
+      }
+
+      .contents {
+        grid-template-columns: 1fr;
+      }
+
+      .contents a {
+        border-right: none;
+        border-bottom: 3px solid var(--black);
+      }
+
+      .contents a:last-child {
+        border-bottom: none;
+      }
+
+      .mini-cover {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .top-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .top-logo {
+        justify-content: flex-start;
+        border-right: none;
+        border-bottom: 2px solid var(--cream);
+        padding-left: 12px;
+      }
+
+      .nav-links {
+        border-left: none;
+        display: grid;
+        grid-template-columns: 1fr repeat(5, 0.72fr) 1.55fr;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .nav-links a {
+        min-width: 0;
+        padding: 10px 0;
+        font-size: clamp(8px, 2.4vw, 10px);
+        letter-spacing: 0.05em;
+        border-right: 1px solid rgba(255,248,232,0.3);
+      }
+
+      .section {
+        padding: 72px 10px;
+      }
+
+      .section-marker {
+        margin-bottom: 10px;
+        font-size: 9px;
+      }
+
+      .cover-main,
+      .article-main,
+      .article-rail,
+      .about-card,
+      .about-title {
+        padding: 14px;
+      }
+
+      .site-title {
+        font-size: clamp(70px, 25vw, 116px);
+      }
+
+      .deck {
+        font-size: 20px;
+      }
+
+      .deck-small {
+        font-size: 10px;
+      }
+
+      .issue-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cover-art {
+        min-height: 360px;
+      }
+
+      .album-header {
+        height: 60px;
+      }
+
+      .album-header span {
+        font-size: 58px;
+      }
+
+      .album-image {
+        top: 60px;
+        bottom: 62px;
+      }
+
+      .album-footer {
+        height: 62px;
+        grid-template-columns: 92px 1fr 64px;
+      }
+
+      .album-title-line {
+        bottom: 72px;
+        font-size: 30px;
+      }
+
+      .sticker.circle {
+        width: 72px;
+        height: 72px;
+        right: 18px;
+        top: 102px;
+        font-size: 13px;
+      }
+
+      .sticker.green {
+        width: 60px;
+        height: 60px;
+        left: 18px;
+        bottom: 82px;
+        font-size: 22px;
+      }
+
+      .article-main h1 {
+        font-size: clamp(30px, 9.4vw, 44px);
+        line-height: 1.04;
+      }
+
+      .article-label {
+        margin-bottom: 16px;
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .body {
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .body .lead {
+        font-size: 19px;
+      }
+
+      .about-title h1 {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <a class="top-logo" href="#cover">noise</a>
+    <div class="top-copy">Independent Web Magazine / Snoozer × How Sweet Study / Music, Film, Media, Criticism</div>
+    <nav class="nav-links" aria-label="Issue navigation">
+      <a href="#cover">Top</a>
+      <a href="#article-01">01</a>
+      <a href="#article-02">02</a>
+      <a href="#article-03">03</a>
+      <a href="#article-04">04</a>
+      <a href="#article-05">05</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section id="cover" class="section cover">
+      <div class="section-marker">
+        <span>Cover / CD Jacket Issue</span>
+      </div>
+
+      <div class="sheet">
+        <div class="cover-grid">
+          <div class="cover-main">
+            <div class="kicker">SNOOZER × HOW SWEET</div>
+            <h1 class="site-title">noise</h1>
+
+            <p class="deck">
+              音楽、映画、メディア、批評。<br>
+              2000年代カルチャー誌の硬い情報密度を、CDジャケット、ステッカー、黒帯、コーラルの質感で包む。
+            </p>
+
+            <p class="deck-small">
+              One page web magazine / black frame / retro pop typography / compact editorial grid / sticker culture / barcode / micro credits.
+            </p>
+
+            <div class="issue-row">
+              <div class="issue-cell"><strong>Issue</strong>001</div>
+              <div class="issue-cell"><strong>Format</strong>One Page Magazine</div>
+              <div class="issue-cell"><strong>Field</strong>Music / Film</div>
+              <div class="issue-cell"><strong>Mode</strong>Sweet Critical</div>
+            </div>
+          </div>
+
+          <div class="cover-art" aria-label="How Sweet inspired abstract CD jacket">
+            <div class="album-header"><span>noise</span></div>
+            <div class="album-image"></div>
+            <div class="sticker circle">soft<br>critical</div>
+            <div class="sticker green">✦</div>
+            <div class="album-title-line">Issue 001 & Soft Critical</div>
+            <div class="album-footer">
+              <div class="barcode"></div>
+              <div class="microcopy">
+                NOISE FIRST ISSUE OF 2026. FEATURES FIVE TEXTS: MICHAEL, PRINCE, LISTENING AS MAPPING, POP PACKAGE, AND CINEMA GAZE. DESIGNED AS A ONE PAGE WEB MAGAZINE WITH CD JACKET LOGIC, BARCODE, STICKER, MICRO CREDITS, AND CRITICAL TEXTURE.
+              </div>
+              <div class="nj-box">N<br>J</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contents">
+          <a href="#article-01">
+            <span class="contents-number">01</span>
+            <span class="contents-title">映画『マイケル』ー「視線」と「EQ」でスターは語り直される</span>
+            <span class="contents-category">FILM</span>
+          </a>
+
+          <a href="#article-02">
+            <span class="contents-number">02</span>
+            <span class="contents-title">Prince以後のR&Bについて</span>
+            <span class="contents-category">MUSIC</span>
+          </a>
+
+          <a href="#article-03">
+            <span class="contents-number">03</span>
+            <span class="contents-title">影響関係ではなく、配置として聴く</span>
+            <span class="contents-category">ESSAY</span>
+          </a>
+
+          <a href="#article-04">
+            <span class="contents-number">04</span>
+            <span class="contents-title">ポップはパッケージとして届く</span>
+            <span class="contents-category">POP</span>
+          </a>
+
+          <a href="#article-05">
+            <span class="contents-number">05</span>
+            <span class="contents-title">映画における視線と編集</span>
+            <span class="contents-category">FILM</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="article-01" class="section">
+      <div class="section-marker">
+        <span>Article 01 / Film</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">01</div>
+          </aside>
+
+          <aside class="side-panel photo-panel">
+            <div class="article-photo-wrap">
+              <img class="article-photo" src="michael-2026-movie-7680x9180-25486.jpg" alt="映画『マイケル』記事のビジュアル">
+            </div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Film</div>
+            <h1>映画『マイケル』ー「視線」と「EQ」でスターは語り直される</h1>
+
+            <div class="body">
+              <p class="lead">
+                『マイケル』は、ひとりのスターの伝記であると同時に、「誰がマイケル・ジャクソンを演出したのか」をめぐる映画でもある。
+              </p>
+
+              <p>
+                アントワーン・フークア監督、映画『マイケル』（2026）。父親がマイケルに「俺の目を見ろ！」と指導するシークエンスから始まるこの映画は、終始、マイケルの「視線」の行方を追いかけていく。彼は父親とのアイコンタクトを露骨に嫌う。が、信頼できる人と話すとき、あるいはエイターテイナーとしてのアイデンティティを光らせたときーーアイスを食べながら母親からエホバの教えを解かれるとき、車椅子の女の子に向かって「I'll Be There」を歌うとき、ジョンを担当弁護士に選ぶとき、などーーだけは、他人と目を合わせる。これらがすべてフリとなって、「Victory Tour」の最終日、マイケルの「ジャクソンズ終了宣言」へと繋がる。「これが最後のツアーだ」と、上手（かみて）にいる父親を見ながら言い放つマイケル。この一連のセリフは、1984年12月9日の公演で実際に彼が言ったセリフだ。（ほんとうはラスト曲は「Shake Your Body」なのだが、劇中では「Workin' Day and Night」に置き換わっている。いずれにせよ、「おい親父！俺をずっと昼夜問わずコキ使いやがって！」というコンテクストが乗ってくる。）
+              </p>
+
+              <p>
+                そもそもエンターテイメントは、観客に見られて初めて成立する。ステージの上で、もしくは画面の上で、多くの視線を奪う生業。そういったポップ・エンターテイメントの強度は、観客がその意味を理解する前に、思わず見てしまうこと、聴いてしまうこと、身体が反応してしまうことにある。少年マイケルは、「マイクにノイズが入ってしまうから」という理屈を理解する前に、「ステップを踏んでしまう」。彼こそがエンターテイメントだから。
+              </p>
+
+              <p>
+                マイケルは劇中で、クインシー・ジョーンズとの初アルバム『Off the Wall』を「ピュア・エスケーピズム」と形容する。そう、現実逃避ーー現実から目を「合わせない」ことーーこそ、彼がずっと追求していたものだった。現実よりもファンタジー。意味よりも身体反応。理屈よりも感覚。（まぁ、彼の場合は、究極の理屈を感覚レベルで超洗練させていったわけだけど、あくまでニュアンスとして。）実は私たちも、マイケルに意味や理屈を求めていない。ほんとうにビリー・ジーンの正体が知りたい？ほんとうにアニーが容態が気になる？ーーどうでもいい。私たちがほんとうに求めているのは、マイケル・ジャクソンという身体から生み出される語感であり、リズムであり、衣装であり、造形美であり、「よくわかんないけど、なんかわかった！」という感覚だけである。
+              </p>
+
+              <p>
+                ーーだからこそ、恐ろしい。マイケル・ジャクソンがカッコよければ、アニーなんて死んでも構わないと思ってしまう。フィクションだからだ。でもマイケル・ジャクソンは生身の人間だったはずだ。何かの一線を超えてしまったとき、ポップ・カルチャーが暴力装置としての一面を牙を向くのだが、ここではそれは別の話として置いておいて……。
+              </p>
+
+              <p>
+                話を戻すと、つまり、マイケルがエンターテイメント≒現実逃避を志向している以上、彼が提示する物語は上っ面に留まる。言ってしまえば映画『マイケル』も、彼のそのスタイルを踏襲しているのではないか。意味や理屈、そこから生まれる解釈は、そもそも想定されていないのではないかーー現実逃避だけがあればいい。最高、という感覚だけが残ればいい。そうなると「視線」云々の解釈も無駄ということになるが、もう終わるので少しだけ粘らせてほしい。ラスト「BAD」のイントロ、マイケルは微笑みながらビルと目を合わせ、次のカットでこちら（観客）を直視する。マイケルの信頼を得た「私たちが」、彼を「ジャクソン家の」スターから「世界の」スターにする瞬間。スターはいつだって観客を必要とする。繰り返すが、エンターテイメントは、観客に見られて初めて成立するからである。
+              </p>
+
+              <p>
+                今度は別の角度から、映画『マイケル』を捉えてみたい。今作が、関係者／プロデューサーの意向や撮影中／撮影後のゴタつきによって、最終的にかなり歪な形で公開された作品なのは周知の通りである。いち映画ファン、且つ、いちマイケルファンとしても、必要以上にポスト・プロダクション面に気を取られるのは否めない。しかし、偶然か必然か、『マイケル』を語る上で逃れられないそのポスト・プロダクション性は、実は作品の中にすでに描かれている。
+              </p>
+
+              <p>
+                『イコライザー』シリーズを撮ったアントワーン・フークア監督だからこその小ネタと思われる、ベリー・ゴーディ・Jr.が少年マイケルにEQ（イコライザー）の説明をするシーン。しかしこのEQは、映画『マイケル』の企画そのものの性質をも表している。一般的に音楽スタジオでは、録音されたすべてのトラックを同じ音量で鳴らすわけではない。まず、トラックの取捨選択があって、次に、それぞれの音量を調整して、パンやエフェクトを調整して、ひとつの楽曲として全体のバランスをとっていく。聴かせどころを強調し、それ以外のトラックは隠し味程度に小さく鳴らすこともある。1960年代の父親ジョーは、「マイケル・ジャクソン」を聴かせどころにすると決めた。マイケルのフェーダーをグイッと上に押し上げたのだ。しかし1960年代末になると、ジョーが座っていた席をベリー・ゴーディ・Jr.が奪う。1970年代末になると今度は、クインシー・ジョーンズが奪う。『マイケル』は明確に、誰がミキサー卓に座るかーー誰が「ジャクソン家」のEQを調整するかーーを追いかけていく。
+              </p>
+
+              <p>
+                映画製作もEQの調整に近い。何を撮り、何を撮らず、何を繋ぎ、何を背景にするか。複雑な経緯があれど、製作陣は結果的に、「悪役としての」父親のフェーダーを上げたり、ジャクソン兄弟（姉妹）のフェーダーを下げたりしながら、2026年に最大限ベストに調整された「マイケル・ジャクソン」を志したのである。映画『マイケル』は、EQを再調整した21世紀の製作陣と、マイケルがスターになる瞬間を改めて承認した私たち観客による、みんなでつくった「マイケル・ジャクソン（Remixed and Remastered 2026）」なのだ。
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-02" class="section">
+      <div class="section-marker">
+        <span>Article 02 / Music</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">02</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-two"></div>
+              <div class="mini-cover-sticker">body<br>pop</div>
+              <div class="mini-cover-title">Prince & Body</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / compact editorial grid / artificial sleeve texture.</div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Music</div>
+            <h1>Prince以後のR&Bについて</h1>
+
+            <div class="body">
+              <p class="lead">
+                Princeの音楽は、ジャンルの融合というより、ジャンルが一人の身体に集まりすぎた状態として聴こえる。
+              </p>
+
+              <p>
+                Prince以後のR&Bを考えるとき、単に「Princeから誰が影響を受けたか」を列挙しても、あまり本質には近づけない。もちろん、D’Angelo、Miguel、Frank Ocean、The Weeknd、Janelle Monáe、そして多くの現代R&Bやポップの作り手に、Princeの影を見ることはできる。だが、それはギターの音色やファルセットやセクシュアルな歌詞といった、表面上の特徴だけの話ではない。Princeが残したものは、ジャンルをまたぐ技術ではなく、ジャンルを一人の身体の中で同時に鳴らしてしまう感覚である。
+              </p>
+
+              <p>
+                Princeの音楽では、ファンク、ロック、ポップ、R&B、ジャズ、ゴスペルが整理されるのではなく、しばしば過剰なまま同居している。普通なら別々の文脈に分けられる要素が、同じ声、同じリズム、同じステージ上に置かれる。その結果、曲はジャンルの見本市になるのではなく、むしろジャンルの境界を気にしていない身体の記録になる。ギターを弾く身体、踊る身体、歌う身体、信仰する身体、欲望する身体。それらが分けられずに現れる。
+              </p>
+
+              <p>
+                ここで重要なのは、PrinceがR&Bを「歌のジャンル」から「総合的な表現形式」へ拡張したことだ。R&Bは声の音楽である。しかしPrince以後、その声は単独で存在しない。衣装、ステージング、アルバム・ジャケット、ミュージック・ビデオ、バンド編成、録音の質感、宗教的な言葉、性的な身振りが、声と同じ強度で作品を構成する。つまり、歌が上手いことだけでは足りない。どのような存在として歌っているのかが問われる。
+              </p>
+
+              <p>
+                D’AngeloがPrinceから受け取ったのは、単なるファンクネスではない。おそらくそれは、音楽を身体の倫理として作るという態度である。『Voodoo』におけるドラムの遅れ、声の沈み込み、演奏の粘りは、Prince的な過剰さとは違う方向を向いている。だが、作品をジャンルの形式ではなく、身体の状態として作るという点では、強く接続している。Princeが爆発的に外へ放ったものを、D’Angeloは内側へ沈めたとも言える。
+              </p>
+
+              <p>
+                一方で、Frank OceanにおけるPrinceの影は、もっと断片的である。Frank Oceanの音楽は、Princeのようにステージ上で全能の身体を見せるのではなく、むしろ語りの断片、沈黙、未完成な感情、声の距離によって成り立っている。だが、R&Bを単なる恋愛歌やボーカル・ミュージックに閉じ込めず、私的な記憶、映像、文章、ファッション、インターネット上の断片まで含む表現形式として扱う点で、やはりPrince以後の地平にいる。
+              </p>
+
+              <p>
+                Prince以後のR&Bは、ジャンルとして拡散しただけではない。むしろ、R&Bが「何を歌う音楽か」ではなく、「どのような身体や人格が現れる場所か」という問いに変わった。だから現代のR&Bを聴くとき、コード進行やビートだけを分析しても足りない。声がどの距離にあるか。アーティストの人格がどこまで見えるか。身体がどの程度演出され、どの程度隠されているか。そこまで含めて聴く必要がある。
+              </p>
+
+              <p>
+                Princeはあまりに強すぎる存在だった。だから、その影響はしばしば分かりやすい模倣としてではなく、直接には見えにくい問いとして残る。ジャンルをどう混ぜるかではない。自分の身体をどのようなメディアとして使うか。R&Bをどこまで個人的で、どこまで演劇的で、どこまで信仰的で、どこまでポップにできるか。Prince以後のR&Bとは、その問いの反復である。
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-03" class="section">
+      <div class="section-marker">
+        <span>Article 03 / Essay</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">03</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-three"></div>
+              <div class="mini-cover-sticker">map<br>issue</div>
+              <div class="mini-cover-title">Archive & Map</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">sample visual / no external image / relation as sleeve design.</div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Essay</div>
+            <h1>影響関係ではなく、配置として聴く</h1>
+
+            <div class="body">
+              <p class="lead">
+                作品は単独で存在しているように見える。しかし実際には、他の作品、時代、メディア、聴き手の記憶の中に置かれている。
+              </p>
+
+              <p>
+                音楽について語るとき、「影響」という言葉はとても便利である。あるアルバムが別のアルバムに影響を与えた。あるアーティストが過去のアーティストから影響を受けた。そう言えば、作品同士の関係を一本の線で説明できる。しかし、その便利さは危うい。影響という言葉は、複雑な関係を原因と結果に変えてしまう。まるで一方が出発点で、もう一方が到着点であるかのように見せてしまう。
+              </p>
+
+              <p>
+                実際の聴取体験は、それほど単純ではない。ある作品を聴いて別の作品を思い出すとき、そこに明確な影響関係があるとは限らない。音色が似ているだけかもしれない。録音の湿度が近いだけかもしれない。時代の空気が重なっているだけかもしれない。あるいは、自分がたまたま同じ時期に聴いていたから、記憶の中で結びついているだけかもしれない。
+              </p>
+
+              <p>
+                だから、作品同士の関係を考えるときには、「影響」よりも「配置」という言葉を使いたい。配置とは、作品を固定された系譜の中に置くことではない。むしろ、いま自分がどのような地図を作っているのかを明らかにする行為である。近い作品、遠い作品、似ている作品、似ていないのになぜか同じ場所に置きたくなる作品。それらを、原因と結果ではなく、距離と角度の問題として扱う。
+              </p>
+
+              <p>
+                音楽史は、しばしば一直線に語られる。ソウルからファンクへ、ファンクからヒップホップへ、ヒップホップからR&Bへ、というように。しかし実際には、聴き手はそんな順番で音楽を聴いていない。2026年にD’Angeloを聴く人は、同時にFrank Oceanも、NewJeansも、古いPrinceも、YouTubeのライブ映像も、TikTokで断片的に流れてくる曲も聴いている。時間は直線ではなく、フィードのように混ざっている。
+              </p>
+
+              <p>
+                配置として聴くとは、この混ざった時間をそのまま扱うことである。過去の作品を過去に閉じ込めず、現在の耳の中でどの位置に現れるのかを見る。新しい作品を新しさだけで判断せず、どの古い質感を呼び戻しているのかを見る。そうすると、作品は単独の評価対象ではなく、関係の中で光る点になる。
+              </p>
+
+              <p>
+                もちろん、影響関係を調べること自体が不要なわけではない。作り手が何を聴いていたのか、どの作品を参照していたのか、どの録音技術や演奏スタイルを受け継いでいるのか。それらを確認することは重要である。ただ、それだけでは聴くことの実感には届かない。資料上の影響と、耳の中で起きる接続は別のものだからだ。
+              </p>
+
+              <p>
+                NOISEでやりたいのは、正しい音楽史を完成させることではない。むしろ、聴き手としての仮の地図を更新し続けることである。ある作品を聴いたとき、どの作品が近づき、どの作品が遠ざかるのか。なぜ、全然違う時代の曲が同じ質感を持って聴こえるのか。そういう曖昧な接続を、曖昧なまま配置していく。その地図は間違えるかもしれない。だが、間違えることも含めて、聴くことの形式である。
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-04" class="section">
+      <div class="section-marker">
+        <span>Article 04 / Pop</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">04</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-four"></div>
+              <div class="mini-cover-sticker">pop<br>pack</div>
+              <div class="mini-cover-title">Pop Package</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">package as interface / color, barcode, object, sticker, credit, sleeve.</div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Pop</div>
+            <h1>ポップはパッケージとして届く</h1>
+
+            <div class="body">
+              <p class="lead">
+                ポップ・ミュージックは音だけで届くわけではない。ジャケット、フォント、色、写真、ステッカー、開封体験まで含めて、ひとつの作品として受け取られる。
+              </p>
+
+              <p>
+                配信時代になって、音楽は物理的なパッケージから解放されたように見える。曲はアプリの中で再生され、アルバムは小さなサムネイルになり、歌詞はスクロールされ、アーティスト写真はSNSの投稿に分散していく。だが、パッケージは消えたわけではない。むしろ、形を変えてより広い範囲に広がった。いまのポップは、CDやレコードだけではなく、ティザー、コンセプトフォト、ミュージックビデオ、ショート動画、グッズ、ファンの二次的な編集まで含めて届く。
+              </p>
+
+              <p>
+                だから、ポップを聴くという行為は、音源だけを聴く行為ではなくなっている。リリース前に公開される写真を見る。タイトルロゴを見る。色を見る。衣装を見る。トラックリストの表記を見る。ファンが作ったスクリーンショットや切り抜きが流れてくる。それらを受け取ったあとで、ようやく曲を聴く。つまり、曲はすでに何らかの気分に包まれた状態で耳に入ってくる。
+              </p>
+
+              <p>
+                ここでパッケージとは、単なる販売物ではない。作品がどのような温度で、どのような速度で、どのような身体感覚として受け取られるかを決める環境である。たとえば、同じ曲でも、暗いモノクロのジャケットで届くのか、明るいコーラル色のロゴとステッカーで届くのかによって、聴く前の構えは変わる。音楽そのものが変わるわけではない。だが、音楽が現れる場所が変わる。
+              </p>
+
+              <p>
+                2000年代の雑誌やCDパッケージには、この「届き方」を作る力があった。大きな見出し、黒い帯、過剰なレイアウト、細かいクレジット、バーコード、広告のような文字列。それらは情報であると同時に、質感でもあった。読者は文章を読む前に、まず誌面の密度を受け取る。リスナーは曲を聴く前に、まずジャケットの気分を受け取る。
+              </p>
+
+              <p>
+                配信以後のポップは、このパッケージ感を別の形で再発明している。アルバムが物ではなくなったからこそ、画面の中で物質感を作ろうとする。ステッカー風のロゴ、Y2K的なフォント、使い捨てカメラのような写真、手書き風の文字、パッケージの開封を模した映像。どれも、音楽に触れる前の手触りを作るための装置である。
+              </p>
+
+              <p>
+                NOISEのデザインでCDジャケットやバーコードの要素を入れているのも、単に装飾したいからではない。記事もまた、パッケージとして届くからである。同じ文章でも、白いプレーンな画面で読むのと、黒帯やステッカーや抽象ビジュアルの中で読むのでは、読む前の態度が変わる。批評もまた、どのような容器に入るかによって、届き方が変わる。
+              </p>
+
+              <p>
+                ポップは音だけではない。だが、それは音が弱くなったという意味ではない。むしろ音が、画像、文字、物、画面、記憶と結びつきながら届くようになったということだ。パッケージは音楽の外側ではない。音楽が聴かれる条件そのものである。だから、ポップを考えるには、曲だけでなく、その曲がどのように包まれ、どのように見せられ、どのように保存されるのかを見なければならない。
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="article-05" class="section">
+      <div class="section-marker">
+        <span>Article 05 / Film</span>
+      </div>
+
+      <div class="sheet">
+        <article class="article-grid">
+          <aside class="article-rail">
+            <div class="article-number">05</div>
+          </aside>
+
+          <aside class="side-panel">
+            <div class="mini-cover">
+              <div class="mini-cover-header"><span>noise</span></div>
+              <div class="mini-cover-image mini-five"></div>
+              <div class="mini-cover-sticker">gaze<br>cut</div>
+              <div class="mini-cover-title">Gaze & Cut</div>
+              <div class="mini-cover-footer">
+                <div class="mini-barcode"></div>
+                <div class="mini-credit">film note / gaze, edit, reaction, silence, frame, point of view.</div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="article-main">
+            <div class="article-label">Film</div>
+            <h1>映画における視線と編集</h1>
+
+            <div class="body">
+              <p class="lead">
+                映画の中で、誰が誰を見るのか。その視線の順番は、物語の説明以上に強く、観客の感情を組み立てている。
+              </p>
+
+              <p>
+                映画を見るとき、私たちはしばしばストーリーを追っているつもりでいる。誰が何をしたのか、何が起きたのか、結末はどうなるのか。しかし実際には、観客の感情を強く動かしているのは、出来事そのものよりも、視線の配置であることが多い。人物が何を見るのか。何を見ないのか。誰の目を避けるのか。誰に見られていることに気づくのか。そうした視線の動きが、物語の意味を静かに決めている。
+              </p>
+
+              <p>
+                映画における基本的な編集のひとつに、人物の顔、人物が見ている対象、その反応をつなぐ切り返しがある。これは単純な技法に見えるが、実際には非常に強い。カメラがある人物の目を映し、次にその人物が見ているものを映すと、観客はその二つを関係づける。さらに、見られた対象が見返すと、そこに緊張が生まれる。視線は、台詞よりも先に関係を作る。
+              </p>
+
+              <p>
+                重要なのは、視線が常に平等に与えられるわけではないということだ。ある人物の視線は何度も映される。別の人物の視線は省略される。ある人物は見つめる主体として置かれ、別の人物は見られる対象として置かれる。そこには、映画が誰の感情に寄り添い、誰の感情を遠ざけているのかが表れる。つまり、視線の編集は倫理の問題でもある。
+              </p>
+
+              <p>
+                視線は、映画の中で権力を作る。見ている者は状況を理解しているように見える。見られている者は、しばしば評価され、判断され、欲望される対象になる。もちろん、映画はその関係を反転させることもできる。見られていた人物が突然見返すとき、画面の力関係は変わる。観客は、それまで安全な位置から見ていたはずなのに、急に見られる側へ引き戻される。
+              </p>
+
+              <p>
+                編集とは、単に映像を短くつなぐ作業ではない。誰の視線を先に見せるか、どの反応を遅らせるか、どの沈黙を残すかを決める作業である。同じ場面でも、視線の順番が変われば意味は変わる。先に怯えた顔を見せてから対象を映せば恐怖になる。先に対象を映してから顔を映せば理解になる。視線の順番が、観客の感情の順番を決める。
+              </p>
+
+              <p>
+                現代の映画やドラマでは、視線はスクリーンの中だけで完結しない。スマートフォンの画面、監視カメラ、SNS、ビデオ通話、ライブ配信の視線が物語の中に入り込んでいる。人物は誰かを直接見るだけではなく、画面越しに見る。保存された映像を見る。誰かに見られていることを前提に振る舞う。視線はますます複雑になり、編集はその複数の画面をどう並べるかという問題になっている。
+              </p>
+
+              <p>
+                だから映画を見ることは、中心に映っているものを見るだけでは足りない。誰の視線が採用されているのか。誰の視線が切り落とされているのか。誰が見て、誰が見返し、誰だけが見られ続けているのか。その配置を読むことで、作品の本当の構造が見えてくる。物語は出来事の連続として進む。しかし、観客の感情は視線の編集によって作られている。
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-marker">
+        <span>About / Colophon</span>
+      </div>
+
+      <div class="sheet">
+        <div class="about-grid">
+          <div class="about-title">
+            <h1>about<br>noise</h1>
+          </div>
+
+          <div class="about-card">
+            <h2>Concept</h2>
+            <p>
+              NOISEは、音楽、映画、メディア、批評を扱う個人編集のWebマガジンです。
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h2>Design</h2>
+            <p>
+              SNOOZER的な黒罫線、太いサンセリフ、情報密度を骨格にし、『How Sweet』周辺のCDジャケット、黒帯、ステッカー、バーコード、コーラル色のポップさを表皮として重ねています。
+            </p>
+          </div>
+        </div>
+
+        <div class="footer">
+          © NOISE / Independent Web Magazine / Issue 001 / Five Article Test
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
