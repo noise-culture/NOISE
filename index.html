@@ -5,33 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NOISE — Pop Culture Web Magazine</title>
-  <meta name="description" content="NOISEは、映画、音楽、アイドル、ファッション、フードを扱うポップカルチャーWebマガジンです。" />
+  <meta name="description" content="NOISEは、映画、音楽、アイドル、ファッション、インターネット、フードを扱うポップカルチャーWebマガジンです。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --ink: #070707;
-      --ink-soft: rgba(7, 7, 7, 0.72);
-      --ink-faint: rgba(7, 7, 7, 0.48);
-      --paper: #f7f0df;
-      --paper2: #fff8e8;
-      --blue: #b9dded;
-      --mint: #b8e5cf;
-      --yellow: #ffe26a;
-      --coral: #ff6b5b;
-      --pink: #f1bed9;
-      --green: #36c982;
-      --gray: #d8d2c5;
+      --ink: #090909;
+      --ink-soft: rgba(9, 9, 9, 0.72);
+      --ink-faint: rgba(9, 9, 9, 0.48);
+
+      --paper: #fff7e7;
+      --paper2: #fffdf2;
+      --paper3: #f4ead7;
+
+      --sweet-blue: #a9dbf5;
+      --sweet-mint: #b8efd3;
+      --sweet-yellow: #ffe66c;
+      --sweet-orange: #ff8a5c;
+      --sweet-pink: #ffc0dc;
+      --sweet-lime: #d9ff76;
+      --sweet-purple: #d8c4ff;
+
       --black: #050505;
       --line: #050505;
-      --shadow: 8px 8px 0 #050505;
+
+      --shadow: 7px 7px 0 #050505;
+      --shadow-small: 4px 4px 0 #050505;
       --soft-shadow: 0 24px 70px rgba(0,0,0,0.18);
+
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
@@ -46,11 +55,12 @@
       margin: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 18% 10%, rgba(185,221,237,0.72), transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(255,226,106,0.48), transparent 26%),
-        radial-gradient(circle at 50% 88%, rgba(255,107,91,0.18), transparent 28%),
-        var(--paper);
-      font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        radial-gradient(circle at 14% 8%, rgba(169,219,245,0.9), transparent 28%),
+        radial-gradient(circle at 88% 14%, rgba(255,230,108,0.68), transparent 26%),
+        radial-gradient(circle at 20% 86%, rgba(255,192,220,0.55), transparent 26%),
+        radial-gradient(circle at 82% 86%, rgba(184,239,211,0.7), transparent 28%),
+        linear-gradient(180deg, #fff7e7 0%, #f4ead7 100%);
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
@@ -62,11 +72,11 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      opacity: 0.5;
       background:
         linear-gradient(90deg, rgba(5,5,5,0.07) 1px, transparent 1px),
         linear-gradient(0deg, rgba(5,5,5,0.06) 1px, transparent 1px);
-      background-size: 34px 34px;
+      background-size: 32px 32px;
+      opacity: 0.58;
     }
 
     body::after {
@@ -75,12 +85,12 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.16;
+      opacity: 0.18;
       background:
         repeating-linear-gradient(
           0deg,
           transparent 0 5px,
-          rgba(0,0,0,0.15) 5px 6px
+          rgba(0,0,0,0.13) 5px 6px
         );
       mix-blend-mode: multiply;
     }
@@ -105,16 +115,18 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 500;
-      width: min(720px, calc(100vw - 20px));
+      width: min(760px, calc(100vw - 20px));
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 8px;
       align-items: center;
       padding: 8px;
       border: 3px solid var(--black);
-      background: rgba(255,248,232,0.88);
-      backdrop-filter: blur(18px);
-      box-shadow: 6px 6px 0 var(--black);
+      background:
+        linear-gradient(135deg, rgba(255,253,242,0.94), rgba(255,247,231,0.82));
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-small);
+      border-radius: 22px;
     }
 
     .brand {
@@ -126,31 +138,46 @@
     }
 
     .brand-mark {
-      width: 30px;
-      height: 30px;
+      position: relative;
+      width: 32px;
+      height: 32px;
       flex: 0 0 auto;
       border: 3px solid var(--black);
       border-radius: 999px;
       background:
-        radial-gradient(circle at 34% 32%, #fff 0 18%, transparent 19%),
-        conic-gradient(from 210deg, var(--blue), var(--yellow), var(--coral), var(--mint), var(--blue));
+        radial-gradient(circle at 34% 32%, #fff 0 16%, transparent 17%),
+        conic-gradient(from 210deg, var(--sweet-blue), var(--sweet-yellow), var(--sweet-orange), var(--sweet-mint), var(--sweet-blue));
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      right: -5px;
+      bottom: -4px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      background: var(--sweet-pink);
     }
 
     .brand-text strong {
       display: block;
-      font-size: 25px;
+      font-size: 27px;
       line-height: 0.85;
       font-weight: 900;
-      letter-spacing: -0.14em;
+      letter-spacing: -0.145em;
       text-transform: lowercase;
     }
 
     .brand-text span {
       display: block;
-      margin-top: 3px;
-      font-size: 9px;
+      margin-top: 4px;
+      font-family: var(--mono);
+      font-size: 8px;
       line-height: 1;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-faint);
@@ -167,35 +194,38 @@
     .nav-floors a {
       display: grid;
       place-items: center;
-      min-width: 33px;
-      height: 33px;
+      min-width: 34px;
+      height: 34px;
       border: 2px solid var(--black);
+      border-radius: 999px;
       background: var(--paper2);
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: -0.02em;
       box-shadow: 3px 3px 0 var(--black);
     }
 
-    .nav-floors a:nth-child(1) { background: var(--blue); }
-    .nav-floors a:nth-child(2) { background: var(--yellow); }
-    .nav-floors a:nth-child(3) { background: var(--mint); }
-    .nav-floors a:nth-child(4) { background: var(--pink); }
-    .nav-floors a:nth-child(5) { background: var(--coral); }
+    .nav-floors a:nth-child(1) { background: var(--sweet-blue); }
+    .nav-floors a:nth-child(2) { background: var(--sweet-yellow); }
+    .nav-floors a:nth-child(3) { background: var(--sweet-mint); }
+    .nav-floors a:nth-child(4) { background: var(--sweet-pink); }
+    .nav-floors a:nth-child(5) { background: var(--sweet-orange); }
 
     .hero {
       position: relative;
       min-height: 100svh;
-      padding: 120px 16px 70px;
+      padding: 124px 16px 74px;
       display: flex;
       align-items: flex-end;
       overflow: hidden;
       border-bottom: 4px solid var(--black);
       background:
-        radial-gradient(circle at 12% 16%, rgba(185,221,237,0.96), transparent 34%),
-        radial-gradient(circle at 86% 18%, rgba(255,226,106,0.82), transparent 30%),
-        radial-gradient(circle at 72% 78%, rgba(241,190,217,0.58), transparent 30%),
-        linear-gradient(180deg, #fff8e8 0%, #f0e6d0 100%);
+        radial-gradient(circle at 12% 16%, rgba(169,219,245,0.98), transparent 34%),
+        radial-gradient(circle at 86% 16%, rgba(255,230,108,0.9), transparent 30%),
+        radial-gradient(circle at 72% 74%, rgba(255,192,220,0.66), transparent 28%),
+        radial-gradient(circle at 18% 78%, rgba(184,239,211,0.8), transparent 28%),
+        linear-gradient(180deg, #fffdf2 0%, #fff0d4 100%);
     }
 
     .hero::before {
@@ -204,34 +234,101 @@
       left: 50%;
       top: 0;
       bottom: 0;
-      width: min(190px, 34vw);
+      width: min(188px, 34vw);
       transform: translateX(-50%);
       border-left: 3px solid var(--black);
       border-right: 3px solid var(--black);
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08)),
+        linear-gradient(90deg, rgba(255,255,255,0.58), rgba(255,255,255,0.08)),
         repeating-linear-gradient(
           180deg,
-          rgba(5,5,5,0.18) 0 10px,
-          rgba(255,255,255,0.55) 10px 20px
+          rgba(5,5,5,0.18) 0 9px,
+          rgba(255,255,255,0.62) 9px 18px
         );
-      animation: escalatorSteps 1.05s linear infinite;
-      opacity: 0.52;
+      animation: escalatorSteps 0.95s linear infinite;
+      opacity: 0.48;
     }
 
     .hero::after {
-      content: "ISSUE 001 / ZERO CLICK MALL MAGAZINE";
+      content: "ISSUE 001 / SWEET POP PACKAGE / ZERO CLICK";
       position: absolute;
       right: 14px;
       bottom: 14px;
+      max-width: 260px;
       padding: 9px 11px;
       border: 3px solid var(--black);
-      background: var(--yellow);
+      border-radius: 999px;
+      background: var(--sweet-yellow);
+      font-family: var(--mono);
       font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      box-shadow: 4px 4px 0 var(--black);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      box-shadow: var(--shadow-small);
       transform: rotate(-2deg);
+    }
+
+    .hero-sticker {
+      position: absolute;
+      z-index: 1;
+      border: 3px solid var(--black);
+      box-shadow: var(--shadow-small);
+      pointer-events: none;
+    }
+
+    .sticker-1 {
+      right: 8%;
+      top: 16%;
+      width: 110px;
+      height: 74px;
+      border-radius: 38px;
+      background: var(--sweet-pink);
+      transform: rotate(10deg);
+    }
+
+    .sticker-1::before {
+      content: "sweet!";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      color: var(--black);
+    }
+
+    .sticker-2 {
+      left: 7%;
+      top: 18%;
+      width: 88px;
+      height: 88px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 36% 32%, #fff 0 18%, transparent 19%),
+        var(--sweet-lime);
+      transform: rotate(-12deg);
+    }
+
+    .sticker-3 {
+      left: 12%;
+      bottom: 18%;
+      width: 108px;
+      height: 52px;
+      border-radius: 999px;
+      background: var(--sweet-blue);
+      transform: rotate(7deg);
+    }
+
+    .sticker-3::before {
+      content: "READ ME";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
     .hero-inner {
@@ -240,17 +337,19 @@
       width: min(1120px, 100%);
       margin: 0 auto;
       display: grid;
-      gap: 26px;
+      gap: 24px;
     }
 
     .hero-label {
       width: fit-content;
       padding: 9px 12px;
       border: 3px solid var(--black);
-      background: var(--mint);
-      box-shadow: 5px 5px 0 var(--black);
+      border-radius: 999px;
+      background: var(--sweet-mint);
+      box-shadow: var(--shadow-small);
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       transform: rotate(-1deg);
@@ -258,36 +357,58 @@
 
     .hero h1 {
       margin: 0;
-      max-width: 1000px;
-      font-size: clamp(76px, 22vw, 180px);
-      line-height: 0.72;
+      max-width: 1020px;
+      font-size: clamp(78px, 22vw, 190px);
+      line-height: 0.7;
       letter-spacing: -0.17em;
       font-weight: 900;
       text-transform: lowercase;
+      text-shadow:
+        4px 4px 0 rgba(255,255,255,0.7),
+        7px 7px 0 rgba(5,5,5,0.12);
     }
 
     .hero h1 span {
       display: block;
-      margin-top: 18px;
+      max-width: 880px;
+      margin-top: 20px;
       font-family: "Noto Sans JP", sans-serif;
-      font-size: clamp(25px, 6.8vw, 58px);
-      line-height: 1.03;
+      font-size: clamp(25px, 6.6vw, 58px);
+      line-height: 1.02;
       letter-spacing: -0.08em;
-      color: rgba(7,7,7,0.66);
+      color: rgba(7,7,7,0.7);
       text-transform: none;
     }
 
     .hero-copy {
-      max-width: 760px;
+      position: relative;
+      max-width: 780px;
       margin: 0;
       padding: 18px;
       border: 3px solid var(--black);
-      background: rgba(255,248,232,0.72);
+      border-radius: 24px;
+      background: rgba(255,253,242,0.78);
       box-shadow: var(--shadow);
       font-size: 15px;
       line-height: 1.88;
       font-weight: 700;
       color: var(--ink-soft);
+    }
+
+    .hero-copy::before {
+      content: "editor's note";
+      position: absolute;
+      right: 14px;
+      top: -14px;
+      padding: 5px 9px;
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      background: var(--sweet-orange);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .hero-note {
@@ -297,10 +418,12 @@
       border-radius: 999px;
       background: var(--black);
       color: var(--paper2);
+      font-family: var(--mono);
       font-size: 11px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      box-shadow: var(--shadow-small);
     }
 
     .hero-note::after {
@@ -321,7 +444,9 @@
       margin: 0 auto;
       padding: 14px;
       border: 3px solid var(--black);
-      background: rgba(255,248,232,0.9);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,253,242,0.94), rgba(255,240,212,0.86));
       box-shadow: var(--shadow);
     }
 
@@ -336,15 +461,17 @@
     }
 
     .floor-map-top strong {
-      font-size: 13px;
+      font-size: 18px;
+      line-height: 1;
       font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: -0.08em;
+      text-transform: lowercase;
     }
 
     .floor-map-top span {
+      font-family: var(--mono);
       font-size: 9px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-faint);
@@ -362,9 +489,9 @@
       align-items: start;
       padding: 12px;
       border: 2px solid var(--black);
+      border-radius: 20px;
       background: #fffdf3;
       color: inherit;
-      text-decoration: none;
       cursor: pointer;
       box-shadow: 4px 4px 0 var(--black);
       transition: transform 0.16s ease, box-shadow 0.16s ease;
@@ -375,14 +502,14 @@
       box-shadow: 1px 1px 0 var(--black);
     }
 
-    .floor-map-item:nth-child(1) { background: var(--blue); }
-    .floor-map-item:nth-child(2) { background: var(--yellow); }
-    .floor-map-item:nth-child(3) { background: var(--mint); }
-    .floor-map-item:nth-child(4) { background: var(--pink); }
-    .floor-map-item:nth-child(5) { background: var(--coral); }
+    .floor-map-item:nth-child(1) { background: var(--sweet-blue); }
+    .floor-map-item:nth-child(2) { background: var(--sweet-yellow); }
+    .floor-map-item:nth-child(3) { background: var(--sweet-mint); }
+    .floor-map-item:nth-child(4) { background: var(--sweet-pink); }
+    .floor-map-item:nth-child(5) { background: var(--sweet-orange); }
 
     .floor-map-item strong {
-      font-size: 28px;
+      font-size: 30px;
       line-height: 0.9;
       letter-spacing: -0.08em;
       font-weight: 900;
@@ -418,8 +545,8 @@
       background:
         linear-gradient(90deg, rgba(5,5,5,0.07) 1px, transparent 1px),
         linear-gradient(0deg, rgba(5,5,5,0.06) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.6;
+      background-size: 32px 32px;
+      opacity: 0.58;
     }
 
     .floor::after {
@@ -434,21 +561,45 @@
       border-left: 3px solid var(--black);
       border-right: 3px solid var(--black);
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.38), rgba(255,255,255,0.06)),
+        linear-gradient(90deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06)),
         repeating-linear-gradient(
           180deg,
-          rgba(5,5,5,0.18) 0 10px,
-          rgba(255,255,255,0.5) 10px 20px
+          rgba(5,5,5,0.18) 0 9px,
+          rgba(255,255,255,0.56) 9px 18px
         );
       opacity: 0.42;
-      animation: escalatorSteps 1.05s linear infinite;
+      animation: escalatorSteps 0.95s linear infinite;
     }
 
-    .floor-5 { background: linear-gradient(180deg, #e7f4f8, #d8edf4); }
-    .floor-4 { background: linear-gradient(180deg, #fff0a8, #f5df72); }
-    .floor-3 { background: linear-gradient(180deg, #d9f3e5, #b8e5cf); }
-    .floor-2 { background: linear-gradient(180deg, #f6d5e7, #f1bed9); }
-    .floor-1 { background: linear-gradient(180deg, #ffb1a5, #ff7b67); }
+    .floor-5 {
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.68), transparent 22%),
+        linear-gradient(180deg, #d8f0ff, #b6e1f6);
+    }
+
+    .floor-4 {
+      background:
+        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.62), transparent 22%),
+        linear-gradient(180deg, #fff3a6, #f6d96b);
+    }
+
+    .floor-3 {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.62), transparent 22%),
+        linear-gradient(180deg, #d6ffe9, #aeecc9);
+    }
+
+    .floor-2 {
+      background:
+        radial-gradient(circle at 86% 18%, rgba(255,255,255,0.62), transparent 22%),
+        linear-gradient(180deg, #ffd6e9, #f2b3d4);
+    }
+
+    .floor-1 {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.58), transparent 22%),
+        linear-gradient(180deg, #ffad91, #ff795e);
+    }
 
     .floor-shell {
       width: min(1120px, 100%);
@@ -461,12 +612,13 @@
       position: sticky;
       top: 76px;
       z-index: 40;
-      width: min(560px, 100%);
-      margin: 0 auto 46px;
+      width: min(590px, 100%);
+      margin: 0 auto 48px;
       padding: 16px;
       border: 3px solid var(--black);
-      background: rgba(255,248,232,0.88);
-      box-shadow: 6px 6px 0 var(--black);
+      border-radius: 26px;
+      background: rgba(255,253,242,0.88);
+      box-shadow: var(--shadow-small);
       backdrop-filter: blur(16px);
     }
 
@@ -475,8 +627,9 @@
       justify-content: space-between;
       gap: 12px;
       margin-bottom: 10px;
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--ink-faint);
@@ -484,9 +637,9 @@
 
     .floor-header h2 {
       margin: 0;
-      font-size: 25px;
-      line-height: 1.08;
-      letter-spacing: -0.07em;
+      font-size: 27px;
+      line-height: 1.06;
+      letter-spacing: -0.08em;
       font-weight: 900;
     }
 
@@ -501,7 +654,7 @@
     .article-row {
       position: relative;
       display: flex;
-      margin: 0 0 38px;
+      margin: 0 0 42px;
       z-index: 3;
     }
 
@@ -552,10 +705,12 @@
     .article-door {
       position: relative;
       overflow: hidden;
-      min-height: 284px;
+      min-height: 292px;
       padding: 14px;
       border: 3px solid var(--black);
-      background: var(--paper2);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,253,242,0.96), rgba(255,247,231,0.86));
       box-shadow: var(--shadow);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
@@ -566,21 +721,22 @@
     }
 
     .article-row.left .article-door {
-      border-top-left-radius: 20px;
+      border-top-left-radius: 8px;
     }
 
     .article-row.right .article-door {
-      border-top-right-radius: 20px;
+      border-top-right-radius: 8px;
     }
 
     .article-visual {
       position: relative;
-      height: 118px;
+      height: 122px;
       border: 3px solid var(--black);
+      border-radius: 22px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 18% 24%, rgba(255,255,255,0.72), transparent 18%),
-        linear-gradient(135deg, var(--blue), var(--yellow));
+        radial-gradient(circle at 18% 24%, rgba(255,255,255,0.78), transparent 18%),
+        linear-gradient(135deg, var(--sweet-blue), var(--sweet-yellow));
     }
 
     .article-visual::before {
@@ -599,21 +755,37 @@
       position: absolute;
       right: -20px;
       bottom: -26px;
-      width: 116px;
-      height: 86px;
+      width: 124px;
+      height: 88px;
       border: 3px solid var(--black);
       border-radius: 999px 0 0 0;
       background:
-        radial-gradient(circle at 40% 56%, var(--mint), transparent 34%),
-        radial-gradient(circle at 66% 40%, var(--coral), transparent 36%),
+        radial-gradient(circle at 40% 56%, var(--sweet-mint), transparent 34%),
+        radial-gradient(circle at 66% 40%, var(--sweet-orange), transparent 36%),
         var(--paper2);
     }
 
-    .floor-5 .article-visual { background: linear-gradient(135deg, var(--blue), #fff); }
-    .floor-4 .article-visual { background: linear-gradient(135deg, var(--yellow), var(--coral)); }
-    .floor-3 .article-visual { background: linear-gradient(135deg, var(--mint), var(--blue)); }
-    .floor-2 .article-visual { background: linear-gradient(135deg, var(--pink), var(--paper2)); }
-    .floor-1 .article-visual { background: linear-gradient(135deg, var(--coral), var(--yellow)); }
+    .article-visual span {
+      position: absolute;
+      left: 46px;
+      top: 18px;
+      padding: 7px 10px;
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      background: rgba(255,253,242,0.88);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .floor-5 .article-visual { background: linear-gradient(135deg, var(--sweet-blue), #fff); }
+    .floor-4 .article-visual { background: linear-gradient(135deg, var(--sweet-yellow), var(--sweet-orange)); }
+    .floor-3 .article-visual { background: linear-gradient(135deg, var(--sweet-mint), var(--sweet-blue)); }
+    .floor-2 .article-visual { background: linear-gradient(135deg, var(--sweet-pink), var(--paper2)); }
+    .floor-1 .article-visual { background: linear-gradient(135deg, var(--sweet-orange), var(--sweet-yellow)); }
 
     .article-sign {
       display: inline-flex;
@@ -622,10 +794,12 @@
       margin-top: 14px;
       padding: 8px 10px;
       border: 3px solid var(--black);
-      background: var(--yellow);
+      border-radius: 999px;
+      background: var(--sweet-yellow);
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 0.11em;
+      font-weight: 700;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       box-shadow: 3px 3px 0 var(--black);
     }
@@ -636,15 +810,15 @@
 
     .article-door h3 {
       margin: 16px 0 10px;
-      font-size: 22px;
-      line-height: 1.12;
-      letter-spacing: -0.07em;
+      font-size: 23px;
+      line-height: 1.1;
+      letter-spacing: -0.075em;
       font-weight: 900;
     }
 
     .article-door p {
       margin: 0;
-      padding-bottom: 30px;
+      padding-bottom: 34px;
       font-size: 12px;
       line-height: 1.65;
       font-weight: 800;
@@ -657,10 +831,12 @@
       bottom: 12px;
       padding: 8px 10px;
       border: 3px solid var(--black);
+      border-radius: 999px;
       background: var(--black);
       color: var(--paper2);
+      font-family: var(--mono);
       font-size: 9px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -671,8 +847,11 @@
       z-index: 1000;
       display: block;
       padding: 5svh 5vw;
-      background: rgba(5, 5, 5, 0.38);
-      backdrop-filter: blur(10px);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(169,219,245,0.34), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(255,230,108,0.26), transparent 24%),
+        rgba(5, 5, 5, 0.42);
+      backdrop-filter: blur(11px);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.24s ease;
@@ -694,7 +873,8 @@
       padding: 12px;
       border: 3px solid var(--black);
       border-bottom: 0;
-      background: rgba(255,248,232,0.94);
+      border-radius: 28px 28px 0 0;
+      background: rgba(255,253,242,0.94);
       opacity: 0;
       transition:
         transform 0.46s cubic-bezier(.18,.82,.2,1),
@@ -714,6 +894,7 @@
         transform 0.46s cubic-bezier(.18,.82,.2,1),
         opacity 0.2s ease;
       box-shadow: 10px 10px 0 var(--black);
+      border-radius: 0 0 30px 30px;
     }
 
     .article-panel.from-left .panel-topbar,
@@ -739,17 +920,19 @@
       border-radius: 999px;
       background: var(--black);
       color: var(--paper2);
+      font-family: var(--mono);
       font-size: 11px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.06em;
       cursor: pointer;
     }
 
     .panel-location {
       min-width: 0;
+      font-family: var(--mono);
       font-size: 10px;
       line-height: 1.4;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--ink-faint);
@@ -774,13 +957,13 @@
 
     .panel-hero {
       position: relative;
-      min-height: 220px;
+      min-height: 224px;
       padding: 24px;
       border-bottom: 3px solid var(--black);
       overflow: hidden;
       background:
         radial-gradient(circle at 16% 20%, rgba(255,255,255,0.78), transparent 18%),
-        linear-gradient(135deg, var(--blue), var(--yellow));
+        linear-gradient(135deg, var(--sweet-blue), var(--sweet-yellow));
     }
 
     .panel-hero::before {
@@ -799,13 +982,13 @@
       position: absolute;
       right: -22px;
       bottom: -30px;
-      width: 180px;
-      height: 126px;
+      width: 190px;
+      height: 132px;
       border: 3px solid var(--black);
       border-radius: 999px 0 0 0;
       background:
-        radial-gradient(circle at 32% 62%, var(--mint), transparent 30%),
-        radial-gradient(circle at 62% 40%, var(--coral), transparent 36%),
+        radial-gradient(circle at 32% 62%, var(--sweet-mint), transparent 30%),
+        radial-gradient(circle at 62% 40%, var(--sweet-orange), transparent 36%),
         var(--paper2);
     }
 
@@ -815,10 +998,12 @@
       display: inline-flex;
       padding: 8px 10px;
       border: 3px solid var(--black);
+      border-radius: 999px;
       background: var(--paper2);
-      box-shadow: 4px 4px 0 var(--black);
+      box-shadow: var(--shadow-small);
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -826,7 +1011,7 @@
     .panel-hero h1 {
       position: relative;
       z-index: 2;
-      max-width: 640px;
+      max-width: 650px;
       margin: 20px 0 10px;
       font-size: clamp(32px, 9vw, 62px);
       line-height: 1.02;
@@ -866,15 +1051,17 @@
       margin: 0 0 20px;
       padding: 14px;
       border: 3px solid var(--black);
-      background: rgba(255,255,255,0.62);
-      box-shadow: 5px 5px 0 var(--black);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.66);
+      box-shadow: var(--shadow-small);
     }
 
     .article-meta-box p {
       margin: 0;
+      font-family: var(--mono);
       font-size: 12px;
       line-height: 1.7;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.03em;
       text-transform: uppercase;
     }
@@ -883,8 +1070,9 @@
       margin-top: 28px;
       padding-top: 16px;
       border-top: 3px solid var(--black);
+      font-family: var(--mono);
       font-size: 10px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--ink-faint);
@@ -898,19 +1086,24 @@
       transform: translateX(-50%);
       padding: 8px 11px;
       border: 3px solid var(--black);
+      border-radius: 999px;
       background: var(--paper2);
       color: var(--ink);
+      font-family: var(--mono);
       font-size: 9px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       pointer-events: none;
-      box-shadow: 4px 4px 0 var(--black);
+      box-shadow: var(--shadow-small);
     }
 
     .footer {
       padding: 84px 16px 100px;
-      background: var(--black);
+      background:
+        radial-gradient(circle at 14% 18%, rgba(169,219,245,0.28), transparent 28%),
+        radial-gradient(circle at 84% 22%, rgba(255,230,108,0.2), transparent 28%),
+        var(--black);
       color: var(--paper2);
     }
 
@@ -955,15 +1148,16 @@
       border-radius: 999px;
       background: var(--paper2);
       color: var(--black);
+      font-family: var(--mono);
       font-size: 11px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     @keyframes escalatorSteps {
       from { background-position-y: 0; }
-      to { background-position-y: 40px; }
+      to { background-position-y: 36px; }
     }
 
     @keyframes floatDown {
@@ -977,7 +1171,7 @@
       }
 
       .brand-text strong {
-        font-size: 28px;
+        font-size: 30px;
       }
 
       .hero {
@@ -1006,7 +1200,7 @@
       }
 
       .article-row {
-        margin-bottom: 54px;
+        margin-bottom: 56px;
       }
 
       .article-row.left {
@@ -1035,16 +1229,16 @@
       }
 
       .article-door {
-        min-height: 308px;
+        min-height: 316px;
         padding: 18px;
       }
 
       .article-visual {
-        height: 132px;
+        height: 136px;
       }
 
       .article-door h3 {
-        font-size: 31px;
+        font-size: 32px;
       }
 
       .article-door p {
@@ -1068,10 +1262,10 @@
       }
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 600px) {
       .site-nav {
         grid-template-columns: 1fr;
-        border-radius: 0;
+        border-radius: 18px;
       }
 
       .nav-floors {
@@ -1081,6 +1275,41 @@
 
       .nav-floors a {
         width: 100%;
+      }
+
+      .hero {
+        padding-top: 146px;
+      }
+
+      .hero h1 {
+        font-size: clamp(74px, 24vw, 110px);
+      }
+
+      .hero-copy {
+        font-size: 14px;
+        line-height: 1.82;
+      }
+
+      .sticker-1 {
+        width: 82px;
+        height: 56px;
+        right: 4%;
+        top: 20%;
+      }
+
+      .sticker-1::before {
+        font-size: 15px;
+      }
+
+      .sticker-2 {
+        width: 64px;
+        height: 64px;
+        left: 4%;
+        top: 24%;
+      }
+
+      .sticker-3 {
+        display: none;
       }
 
       .article-row.left {
@@ -1109,11 +1338,9 @@
       }
 
       .article-door h3 {
-        font-size: 20px;
+        font-size: 21px;
       }
-    }
 
-    @media (max-width: 600px) {
       .article-panel {
         padding: 3svh 2vw;
       }
@@ -1152,7 +1379,6 @@
       .article-meta-box {
         margin-bottom: 18px;
         padding: 12px;
-        box-shadow: 4px 4px 0 var(--black);
       }
 
       .article-meta-box p {
@@ -1224,8 +1450,12 @@
 
   <main>
     <section class="hero" id="top">
+      <div class="hero-sticker sticker-1" aria-hidden="true"></div>
+      <div class="hero-sticker sticker-2" aria-hidden="true"></div>
+      <div class="hero-sticker sticker-3" aria-hidden="true"></div>
+
       <div class="hero-inner">
-        <div class="hero-label">Issue 001 / Mall Walk Magazine</div>
+        <div class="hero-label">Issue 001 / Sweet Pop Magazine</div>
         <h1>
           noise
           <span>記事の入口を覗きながら、5Fから1Fへ降りる。</span>
@@ -1240,7 +1470,7 @@
     <section class="floor-map" aria-label="NOISE フロア概要">
       <div class="floor-map-inner">
         <div class="floor-map-top">
-          <strong>Issue Map</strong>
+          <strong>issue map</strong>
           <span>Tap floor to jump</span>
         </div>
 
@@ -1273,192 +1503,7 @@
       </div>
     </section>
 
-    <div class="magazine">
-      <section class="floor floor-5" id="floor-5">
-        <div class="floor-shell">
-          <header class="floor-header">
-            <div class="floor-meta">
-              <span>5F</span>
-              <span>Film / Theater Floor</span>
-            </div>
-            <h2>映画のフロア</h2>
-            <p>大きなスクリーン、スター、アメリカ、子ども時代。最上階には、遠くからでも見える物語を置く。</p>
-          </header>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-01" aria-controls="article-01" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>01</strong> Film Review</div>
-                <h3>映画『マイケル』レビュー</h3>
-                <p>スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-
-          <div class="article-row right">
-            <button class="article-card" type="button" data-panel-target="article-02" aria-controls="article-02" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>02</strong> Animation</div>
-                <h3>『トイ・ストーリー』以後のアメリカ</h3>
-                <p>おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="floor floor-4" id="floor-4">
-        <div class="floor-shell">
-          <header class="floor-header">
-            <div class="floor-meta">
-              <span>4F</span>
-              <span>Music / Album Floor</span>
-            </div>
-            <h2>音楽のフロア</h2>
-            <p>アルバム、声、サンプル、自己神話。耳で読むための記事が、ポップアップショップのように並ぶ。</p>
-          </header>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-03" aria-controls="article-03" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>03</strong> Feature</div>
-                <h3>特集「アメリカ」</h3>
-                <p>ポップカルチャーは、なぜいつもアメリカを通ってくるのか。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-
-          <div class="article-row right">
-            <button class="article-card" type="button" data-panel-target="article-04" aria-controls="article-04" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>04</strong> Album Review</div>
-                <h3>Ye『Bully』レビュー</h3>
-                <p>壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-05" aria-controls="article-05" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>05</strong> R&B</div>
-                <h3>RAYEの歌はなぜ演劇的なのか</h3>
-                <p>大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="floor floor-3" id="floor-3">
-        <div class="floor-shell">
-          <header class="floor-header">
-            <div class="floor-meta">
-              <span>3F</span>
-              <span>Idol / Pop Package</span>
-            </div>
-            <h2>アイドルとポップのフロア</h2>
-            <p>MV、制服、日常映像、パッケージ。曲だけではなく、届き方そのものを読む階。</p>
-          </header>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-06" aria-controls="article-06" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>06</strong> Pop</div>
-                <h3>NewJeans以後の“パッケージ”感</h3>
-                <p>楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-
-          <div class="article-row right">
-            <button class="article-card" type="button" data-panel-target="article-07" aria-controls="article-07" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>07</strong> MV Essay</div>
-                <h3>アイドルMVと日常映像</h3>
-                <p>学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="floor floor-2" id="floor-2">
-        <div class="floor-shell">
-          <header class="floor-header">
-            <div class="floor-meta">
-              <span>2F</span>
-              <span>Internet / Fashion</span>
-            </div>
-            <h2>インターネットと服のフロア</h2>
-            <p>懐かしさの速度、スカート丈、SNS、平成リバイバル。身体と記憶の中層階。</p>
-          </header>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-08" aria-controls="article-08" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>08</strong> Column</div>
-                <h3>コラム「2001年問題」</h3>
-                <p>2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-
-          <div class="article-row right">
-            <button class="article-card" type="button" data-panel-target="article-09" aria-controls="article-09" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>09</strong> Fashion</div>
-                <h3>平成リバイバルとスカート丈</h3>
-                <p>服の長さは、時代の気分をどのように記録しているのか。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section class="floor floor-1" id="floor-1">
-        <div class="floor-shell">
-          <header class="floor-header">
-            <div class="floor-meta">
-              <span>1F</span>
-              <span>Food / Exit Floor</span>
-            </div>
-            <h2>フードと出口のフロア</h2>
-            <p>最後は食べ物へ。映画や音楽のあと、都市へ戻る身体のための一皿。</p>
-          </header>
-
-          <div class="article-row left">
-            <button class="article-card" type="button" data-panel-target="article-10" aria-controls="article-10" aria-expanded="false">
-              <div class="article-door">
-                <div class="article-visual"></div>
-                <div class="article-sign"><strong>10</strong> Food</div>
-                <h3>フードコートの孤独</h3>
-                <p>ひとりで食べることを、都市の中で最も自然にしてくれる場所について。</p>
-                <div class="article-enter">Tap to read</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
+    <div class="magazine" id="magazine"></div>
 
     <footer class="footer">
       <div class="footer-inner">
@@ -1474,297 +1519,288 @@
     </footer>
   </main>
 
-  <article id="article-01" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-01-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">5F / Film Review / Article 01</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 01 / Film Review</div>
-            <h1 id="article-01-title">映画『マイケル』レビュー</h1>
-            <p>スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Film / Michael / Star Image / Gaze / Remix</p>
-            </div>
-            <div class="article-body">
-              <p>『マイケル』を見ていて最初に気づくのは、この映画がマイケル・ジャクソンの内面を説明する映画というより、彼がどのような視線に囲まれていたのかを追いかける映画だということだ。父、兄弟、母、プロデューサー、メディア、観客。マイケルの周囲には常に誰かの目がある。彼は見られることでスターになり、同時に見られすぎることで人間としての輪郭を削られていく。</p>
-              <p>伝記映画としては、説明が足りない部分もある。彼の矛盾や不穏さを、もっと厳しく扱うべきだと感じる人もいるだろう。だが映画が最も強くなるのは、倫理的な判断を一度保留し、パフォーマンスの身体を見せる瞬間である。歌が始まり、リズムが鳴り、衣装の白さや靴の角度が画面を支配すると、観客は意味を理解する前に反応してしまう。マイケルという存在の怖さは、まさにそこにある。考えるより先に、見てしまう。</p>
-              <p>この映画は、彼を完全に説明することには成功していない。むしろ説明できなさを、スターの輪郭として残している。誰が彼を作ったのか。家族か、音楽産業か、観客か、メディアか、それとも彼自身か。おそらく答えは一つではない。『マイケル』は、その複数のフェーダーを調整しながら、もう一度「マイケル・ジャクソン」という音像をミックスし直した映画である。美しく、危うく、どこか片づかなさを残す。その片づかなさこそが、本作の批評的な余韻だ。</p>
-            </div>
-            <div class="panel-end">End of Article 01 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-02" class="article-panel from-right" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-02-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">5F / Animation / Article 02</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 02 / Animation</div>
-            <h1 id="article-02-title">『トイ・ストーリー』以後のアメリカ</h1>
-            <p>おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Film / Pixar / America / Toy / Childhood</p>
-            </div>
-            <div class="article-body">
-              <p>『トイ・ストーリー』は、おもちゃの映画であると同時に、アメリカの子ども部屋の映画だった。ベッド、壁紙、プラスチックのおもちゃ、テレビ、車庫、郊外の家。そこには、世界を支配しているようでいて、実は子どもの成長によって簡単に捨てられてしまう小さな王国がある。ウッディたちはヒーローでありながら、常に所有物でもある。その不安定さが、シリーズ全体の感情を作っていた。</p>
-              <p>面白いのは、シリーズがいつもアメリカの自己批判として読めてしまうことだ。カウボーイ、宇宙飛行士、消費社会、ファミリー、郊外、ノスタルジー。アメリカの神話的な記号が子ども部屋の中に詰め込まれ、やがて新しい世代に置き換えられていく。ウッディは古いアメリカのヒーローであり、バズは宇宙開発時代の夢であり、しかしどちらも本当には自由ではない。彼らは飛べないし、永遠に選ばれ続けることもできない。</p>
-              <p>だから『トイ・ストーリー』以後のアメリカとは、夢が終わった後に、その夢のグッズだけが残っている世界なのかもしれない。スクリーンの時代に、おもちゃはまだ必要か。答えは単純ではない。手で触れられるもの、名前をつけられるもの、どこかへ連れていけるもの。そうした物質的な記憶は、デジタルの中に完全には回収されない。おもちゃたちは古くなりながら、アメリカの夢がプラスチックの形をしていた時代を、いまも小さく保存している。</p>
-            </div>
-            <div class="panel-end">End of Article 02 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-03" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-03-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">4F / Feature / Article 03</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 03 / Feature</div>
-            <h1 id="article-03-title">特集「アメリカ」</h1>
-            <p>ポップカルチャーは、なぜいつもアメリカを通ってくるのか。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Feature / America / Pop Culture / Image</p>
-            </div>
-            <div class="article-body">
-              <p>日本でカルチャーについて話すとき、アメリカはいつも少し遅れて、しかし確実に現れる。映画、R&B、ヒップホップ、スニーカー、ファストフード、郊外、ロードムービー、スポーツ中継、テレビドラマ。私たちはアメリカそのものを知っているわけではない。断片としてのアメリカを、輸入された形式として、字幕付きの映像として、雑誌の特集として、アルバムのジャケットとして受け取ってきた。</p>
-              <p>だからアメリカは、実体よりも先にイメージとして存在する。自由、暴力、成功、孤独、家族、移動、宗教、資本、郊外、荒野。これらの言葉は、どれもアメリカを説明するようでいて、同時にアメリカ映画やアメリカ音楽が作り出した物語でもある。私たちは「本当のアメリカ」を見る前に、すでに編集されたアメリカを何度も見ている。</p>
-              <p>この特集で扱いたいのは、アメリカを好きか嫌いかではない。むしろ、私たちの感覚がどれほどアメリカ的な形式を通って作られているのかという問題だ。ヒーローはなぜ孤独なのか。成功物語はなぜ破滅と隣り合うのか。ポップスターはなぜ神話化されるのか。家族映画はなぜ国家の寓話になってしまうのか。アメリカを考えることは、遠くの国を考えることではない。自分の中にある、輸入された感情の形を点検することである。</p>
-            </div>
-            <div class="panel-end">End of Article 03 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-04" class="article-panel from-right" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-04-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">4F / Album Review / Article 04</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 04 / Album Review</div>
-            <h1 id="article-04-title">Ye『Bully』レビュー</h1>
-            <p>壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Music / Ye / Album / Self Myth</p>
-            </div>
-            <div class="article-body">
-              <p>『Bully』を聴くと、まず耳に入るのは既視感である。オートチューンの揺れ、ざらついたビート、ソウルサンプルの断片、かつての巨大な自己神話を思わせるフレーズ。Yeはここで、新しい建物を建てるというより、過去の部材を再利用して仮設の売場を作っている。『808s』的な孤独、『Yeezus』的な金属音、『Graduation』的な祝祭感。そのすべてが、完全には統合されないまま並んでいる。</p>
-              <p>本作は強い復活作というより、復活という形式そのものを商品化した作品に近い。リスナーは新しいYeを聴いているというより、自分がかつて好きだったYeの面影を探している。アルバムはそれをよく理解しているように見える。だからこそ、ところどころで意図的に過去作の記憶を刺激する。しかし、刺激された記憶は必ずしも幸福ではない。</p>
-              <p>音楽的には、まだ惹きつける瞬間がある。サンプルの切り方、声の置き方、荒い輪郭の中に急に現れる美しいコード。Yeの耳は、完全には失われていない。だが、問題はその才能がどこへ向かっているのかである。『Bully』は、自分の神話を修復しようとするアルバムでありながら、修復という行為の限界も露呈している。壊れた看板を磨き直しても、店の中の空気まで元通りになるわけではない。</p>
-            </div>
-            <div class="panel-end">End of Article 04 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-05" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-05-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">4F / R&B / Article 05</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 05 / R&B Essay</div>
-            <h1 id="article-05-title">RAYEの歌はなぜ演劇的なのか</h1>
-            <p>大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Music / RAYE / Voice / Theater</p>
-            </div>
-            <div class="article-body">
-              <p>RAYEの歌を聴いていると、声が単にメロディを運んでいるのではなく、舞台上で出来事を起こしているように感じる。息の吸い方、言葉の置き方、音程を少しだけ引きずる癖、急に広がる高音。そこには、スタジオ録音でありながら、観客の前で何かを告白しているような緊張がある。彼女の歌は、うまいというより、場を作る。</p>
-              <p>この演劇性は、ときに過剰でもある。すべてを歌い、すべてを語り、すべてを意味づけようとするため、リスナーが解釈する余白が狭くなる瞬間もある。だが、その説明しすぎる感じも含めて、RAYEの現在地なのだと思う。彼女はクールに見せることよりも、壊れそうなほど誠実に差し出すことを選んでいる。</p>
-              <p>最も魅力的なのは、声が常に物語を引き受けていることだ。大きなアレンジに飲み込まれそうになっても、RAYEの声は中心に戻ってくる。そこには、ただ上手い歌手という以上の説得力がある。希望は軽い言葉ではない。RAYEにとって希望とは、明るい結論ではなく、何度も大げさに歌い直すことでようやく見えてくる仮の出口である。</p>
-            </div>
-            <div class="panel-end">End of Article 05 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-06" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-06-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">3F / Pop / Article 06</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 06 / Pop Essay</div>
-            <h1 id="article-06-title">NewJeans以後の“パッケージ”感</h1>
-            <p>楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Pop / Package / Design / Idol</p>
-            </div>
-            <div class="article-body">
-              <p>NewJeans以後、ポップミュージックの届き方は、曲単体ではなくパッケージ全体として語られることが増えた。楽曲、MV、写真、制服、ロゴ、UI、スマートフォン上の見え方、ファンが保存する画像の比率。すべてが一つの感触として届く。重要なのは、曲の外側にあるデザインが、曲の意味を補足しているのではなく、曲そのものの一部として機能していることだ。</p>
-              <p>このパッケージ感は、2000年代のCD文化とも少し違う。CDジャケットは所有される物だったが、現在のポップのパッケージは、スクリーン上で何度も切り抜かれ、保存され、再投稿される。そこでは「公式の完成品」よりも、「使われやすい質感」が重要になる。少し余白があること。日常写真のように見えること。過剰に説明しないこと。ファンが自分の記憶に貼り付けられること。</p>
-              <p>ポップは、もはや曲が始まった瞬間に始まるのではない。サムネイルを見た瞬間、ティザーの色を見た瞬間、ロゴの角丸を見た瞬間、すでに始まっている。逆に、曲が終わっても終わらない。写真フォルダ、SNS、プレイリスト、友人との会話の中で続いていく。NewJeans以後のパッケージ感とは、ポップが一つの作品ではなく、生活の中に侵入する小さなUIになったことの名前である。</p>
-            </div>
-            <div class="panel-end">End of Article 06 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-07" class="article-panel from-right" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-07-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">3F / MV Essay / Article 07</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 07 / MV Essay</div>
-            <h1 id="article-07-title">アイドルMVと日常映像</h1>
-            <p>学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Idol / Music Video / Everyday / Fiction</p>
-            </div>
-            <div class="article-body">
-              <p>アイドルMVにおける「日常っぽさ」は、実際の日常そのものではない。学校の廊下、体育館、放課後の駅前、コンビニの光、友人同士の何気ない表情。そうした要素は、自然に撮られているように見えて、かなり精密に組み立てられている。日常らしさとは、加工されていないことではなく、加工が見えにくいことによって生まれる。</p>
-              <p>特に重要なのは、演技と偶然の境界である。笑っているのか、笑わされているのか。ふざけているのか、ふざける演技をしているのか。アイドルMVは、この曖昧さを利用する。観客は、完成されたスターを見ると同時に、素の本人を見たような気分になる。そこに親密さが生まれる。しかしその親密さは、画面の中で作られた距離の演出でもある。</p>
-              <p>日常映像の強さは、物語を大げさに語らなくても、時間の質感を伝えられるところにある。誰かが走る。誰かが窓の外を見る。誰かが何かを言いかけてやめる。それだけで、観客はその空間に自分の記憶を重ねる。アイドルMVにおける日常とは、現実の記録ではなく、観客が入り込める余白である。そこにこそ、ポップの新しいリアリティがある。</p>
-            </div>
-            <div class="panel-end">End of Article 07 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-08" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-08-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">2F / Column / Article 08</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 08 / Column</div>
-            <h1 id="article-08-title">コラム「2001年問題」</h1>
-            <p>2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Column / Generation / Internet / Memory</p>
-            </div>
-            <div class="article-body">
-              <p>2001年生まれという言葉には、妙な響きがある。20世紀ではなく、21世紀の側に置かれた最初期の世代。インターネットはすでにあり、携帯電話もあり、アニメや音楽やゲームは大量に流通していた。けれど、スマートフォンがすべてを飲み込む前の時間も、まだ少しだけ残っていた。だから2001年生まれは、デジタルネイティブでありながら、どこかアナログの残響も知っている。</p>
-              <p>この世代が抱える問題は、自分たちの「懐かしさ」が早く古びすぎることだ。小学生の頃に触れた動画サイト、ガラケーとスマホの切り替わり、CDショップの残り香、初期SNS、ニコニコ動画、YouTube、K-POP、ボカロ、深夜アニメ、ファストファッション。全部がそれほど昔ではないのに、すでに別の時代のものとして語られ始めている。</p>
-              <p>だから「2001年問題」とは、年齢の問題ではなく、記憶の速度の問題だ。自分が大人になる前に、自分の子ども時代がコンテンツとして整理されてしまう。懐かしいと感じる前に、誰かがその時代をパッケージ化する。そこで必要なのは、ただ昔を美化することではない。自分たちがどんなメディアの切れ目を生きてきたのかを、少し冷静に見ることだ。</p>
-            </div>
-            <div class="panel-end">End of Article 08 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-09" class="article-panel from-right" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-09-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">2F / Fashion / Article 09</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 09 / Fashion</div>
-            <h1 id="article-09-title">平成リバイバルとスカート丈</h1>
-            <p>服の長さは、時代の気分をどのように記録しているのか。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Fashion / Heisei Revival / Body / Archive</p>
-            </div>
-            <div class="article-body">
-              <p>スカート丈は、単なる流行の長短ではない。膝上、膝下、ミニ、ロング、プリーツ、タイト。その長さは、身体の見せ方、歩き方、写真の撮られ方、街の空気と結びついている。平成リバイバルを考えるとき、ロゴや色や髪型だけでなく、スカート丈の変化を見ると、その時代の身体感覚が少し見えてくる。</p>
-              <p>平成的なミニ丈は、単に露出が多いという話ではない。そこには、制服文化、ギャル、アイドル、ファストファッション、プリクラ、雑誌スナップの影響が重なっている。写真に撮られる身体、友達と並ぶ身体、駅前を歩く身体。スカート丈は、個人の選択であると同時に、メディアが作った見られ方の形式でもある。</p>
-              <p>現代のリバイバルは、過去をそのまま再現しているわけではない。過去の丈感を、スマートフォンの画面、SNSの縦長比率、現代のジェンダー感覚、古着の流通の中で再編集している。だから平成リバイバルは懐古ではなく、アーカイブの再配置である。服の長さは、時代の気分を記録する。そしてリバイバルは、その記録をもう一度、別の身体で再生することなのだ。</p>
-            </div>
-            <div class="panel-end">End of Article 09 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article id="article-10" class="article-panel from-left" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-10-title">
-    <div class="panel-topbar">
-      <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">1F / Food / Article 10</div>
-    </div>
-    <div class="panel-scroll">
-      <div class="panel-inner">
-        <div class="panel-surface">
-          <div class="panel-hero">
-            <div class="panel-badge">Article 10 / Food</div>
-            <h1 id="article-10-title">フードコートの孤独</h1>
-            <p>ひとりで食べることを、都市の中で最も自然にしてくれる場所について。</p>
-          </div>
-          <div class="panel-body">
-            <div class="article-meta-box">
-              <p>Food / Mall / City / Solitude</p>
-            </div>
-            <div class="article-body">
-              <p>レストランでひとりで食べると、少しだけ自分の存在が強調されることがある。席に案内され、注文し、料理を待つ。その一連の流れの中で、ひとりであることが形を持つ。だがフードコートでは、その輪郭が少し薄まる。誰もがトレーを持ち、席を探し、短い時間だけ滞在している。家族連れも、会社員も、学生も、買い物帰りの人も、ひとり客も、同じざわめきの中に混ざる。</p>
-              <p>フードコートの孤独は、寂しさではない。むしろ、都市の中で他人に紛れるための技術である。誰かと話してもいいし、話さなくてもいい。スマホを見てもいいし、ただ食べてもいい。料理のジャンルもばらばらで、同じテーブルにラーメン、カレー、サラダ、クレープが並ぶこともある。その雑多さが、食事を少しだけ自由にする。</p>
-              <p>カルチャーにおいても、フードコート的な場所は必要だと思う。高級な批評だけではなく、軽く食べられる文章。ジャンルが揃っていなくても、同じ空間に置かれていることで成立する編集。映画レビューの隣にフードコラムがあってもいい。音楽論のあとにレシピがあってもいい。NOISEの1Fに食べ物の記事を置くのは、読み終わった身体を都市に戻すためである。最後は、何かを食べたくなるくらいがちょうどいい。</p>
-            </div>
-            <div class="panel-end">End of Article 10 / Tap outside to return</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+  <div id="panels"></div>
 
   <script>
+    const floors = [
+      {
+        id: "floor-5",
+        className: "floor-5",
+        floor: "5F",
+        meta: "Film / Theater Floor",
+        title: "映画のフロア",
+        lead: "大きなスクリーン、スター、アメリカ、子ども時代。最上階には、遠くからでも見える物語を置く。",
+        articles: [
+          {
+            id: "article-01",
+            side: "left",
+            number: "01",
+            category: "Film Review",
+            title: "映画『マイケル』レビュー",
+            teaser: "スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。",
+            meta: "Film / Michael / Star Image / Gaze / Remix",
+            lead: "スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。",
+            body: [
+              "『マイケル』を見ていて最初に気づくのは、この映画がマイケル・ジャクソンの内面を説明する映画というより、彼がどのような視線に囲まれていたのかを追いかける映画だということだ。父、兄弟、母、プロデューサー、メディア、観客。マイケルの周囲には常に誰かの目がある。彼は見られることでスターになり、同時に見られすぎることで人間としての輪郭を削られていく。",
+              "伝記映画としては、説明が足りない部分もある。彼の矛盾や不穏さを、もっと厳しく扱うべきだと感じる人もいるだろう。だが映画が最も強くなるのは、倫理的な判断を一度保留し、パフォーマンスの身体を見せる瞬間である。歌が始まり、リズムが鳴り、衣装の白さや靴の角度が画面を支配すると、観客は意味を理解する前に反応してしまう。マイケルという存在の怖さは、まさにそこにある。考えるより先に、見てしまう。",
+              "この映画は、彼を完全に説明することには成功していない。むしろ説明できなさを、スターの輪郭として残している。誰が彼を作ったのか。家族か、音楽産業か、観客か、メディアか、それとも彼自身か。おそらく答えは一つではない。『マイケル』は、その複数のフェーダーを調整しながら、もう一度「マイケル・ジャクソン」という音像をミックスし直した映画である。美しく、危うく、どこか片づかなさを残す。その片づかなさこそが、本作の批評的な余韻だ。"
+            ]
+          },
+          {
+            id: "article-02",
+            side: "right",
+            number: "02",
+            category: "Animation",
+            title: "『トイ・ストーリー』以後のアメリカ",
+            teaser: "おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。",
+            meta: "Film / Pixar / America / Toy / Childhood",
+            lead: "おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。",
+            body: [
+              "『トイ・ストーリー』は、おもちゃの映画であると同時に、アメリカの子ども部屋の映画だった。ベッド、壁紙、プラスチックのおもちゃ、テレビ、車庫、郊外の家。そこには、世界を支配しているようでいて、実は子どもの成長によって簡単に捨てられてしまう小さな王国がある。ウッディたちはヒーローでありながら、常に所有物でもある。その不安定さが、シリーズ全体の感情を作っていた。",
+              "面白いのは、シリーズがいつもアメリカの自己批判として読めてしまうことだ。カウボーイ、宇宙飛行士、消費社会、ファミリー、郊外、ノスタルジー。アメリカの神話的な記号が子ども部屋の中に詰め込まれ、やがて新しい世代に置き換えられていく。ウッディは古いアメリカのヒーローであり、バズは宇宙開発時代の夢であり、しかしどちらも本当には自由ではない。彼らは飛べないし、永遠に選ばれ続けることもできない。",
+              "だから『トイ・ストーリー』以後のアメリカとは、夢が終わった後に、その夢のグッズだけが残っている世界なのかもしれない。スクリーンの時代に、おもちゃはまだ必要か。答えは単純ではない。手で触れられるもの、名前をつけられるもの、どこかへ連れていけるもの。そうした物質的な記憶は、デジタルの中に完全には回収されない。おもちゃたちは古くなりながら、アメリカの夢がプラスチックの形をしていた時代を、いまも小さく保存している。"
+            ]
+          }
+        ]
+      },
+      {
+        id: "floor-4",
+        className: "floor-4",
+        floor: "4F",
+        meta: "Music / Album Floor",
+        title: "音楽のフロア",
+        lead: "アルバム、声、サンプル、自己神話。耳で読むための記事が、ポップアップショップのように並ぶ。",
+        articles: [
+          {
+            id: "article-03",
+            side: "left",
+            number: "03",
+            category: "Feature",
+            title: "特集「アメリカ」",
+            teaser: "ポップカルチャーは、なぜいつもアメリカを通ってくるのか。",
+            meta: "Feature / America / Pop Culture / Image",
+            lead: "ポップカルチャーは、なぜいつもアメリカを通ってくるのか。",
+            body: [
+              "日本でカルチャーについて話すとき、アメリカはいつも少し遅れて、しかし確実に現れる。映画、R&B、ヒップホップ、スニーカー、ファストフード、郊外、ロードムービー、スポーツ中継、テレビドラマ。私たちはアメリカそのものを知っているわけではない。断片としてのアメリカを、輸入された形式として、字幕付きの映像として、雑誌の特集として、アルバムのジャケットとして受け取ってきた。",
+              "だからアメリカは、実体よりも先にイメージとして存在する。自由、暴力、成功、孤独、家族、移動、宗教、資本、郊外、荒野。これらの言葉は、どれもアメリカを説明するようでいて、同時にアメリカ映画やアメリカ音楽が作り出した物語でもある。私たちは「本当のアメリカ」を見る前に、すでに編集されたアメリカを何度も見ている。",
+              "この特集で扱いたいのは、アメリカを好きか嫌いかではない。むしろ、私たちの感覚がどれほどアメリカ的な形式を通って作られているのかという問題だ。ヒーローはなぜ孤独なのか。成功物語はなぜ破滅と隣り合うのか。ポップスターはなぜ神話化されるのか。家族映画はなぜ国家の寓話になってしまうのか。アメリカを考えることは、遠くの国を考えることではない。自分の中にある、輸入された感情の形を点検することである。"
+            ]
+          },
+          {
+            id: "article-04",
+            side: "right",
+            number: "04",
+            category: "Album Review",
+            title: "Ye『Bully』レビュー",
+            teaser: "壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。",
+            meta: "Music / Ye / Album / Self Myth",
+            lead: "壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。",
+            body: [
+              "『Bully』を聴くと、まず耳に入るのは既視感である。オートチューンの揺れ、ざらついたビート、ソウルサンプルの断片、かつての巨大な自己神話を思わせるフレーズ。Yeはここで、新しい建物を建てるというより、過去の部材を再利用して仮設の売場を作っている。『808s』的な孤独、『Yeezus』的な金属音、『Graduation』的な祝祭感。そのすべてが、完全には統合されないまま並んでいる。",
+              "本作は強い復活作というより、復活という形式そのものを商品化した作品に近い。リスナーは新しいYeを聴いているというより、自分がかつて好きだったYeの面影を探している。アルバムはそれをよく理解しているように見える。だからこそ、ところどころで意図的に過去作の記憶を刺激する。しかし、刺激された記憶は必ずしも幸福ではない。",
+              "音楽的には、まだ惹きつける瞬間がある。サンプルの切り方、声の置き方、荒い輪郭の中に急に現れる美しいコード。Yeの耳は、完全には失われていない。だが、問題はその才能がどこへ向かっているのかである。『Bully』は、自分の神話を修復しようとするアルバムでありながら、修復という行為の限界も露呈している。壊れた看板を磨き直しても、店の中の空気まで元通りになるわけではない。"
+            ]
+          },
+          {
+            id: "article-05",
+            side: "left",
+            number: "05",
+            category: "R&B",
+            title: "RAYEの歌はなぜ演劇的なのか",
+            teaser: "大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。",
+            meta: "Music / RAYE / Voice / Theater",
+            lead: "大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。",
+            body: [
+              "RAYEの歌を聴いていると、声が単にメロディを運んでいるのではなく、舞台上で出来事を起こしているように感じる。息の吸い方、言葉の置き方、音程を少しだけ引きずる癖、急に広がる高音。そこには、スタジオ録音でありながら、観客の前で何かを告白しているような緊張がある。彼女の歌は、うまいというより、場を作る。",
+              "この演劇性は、ときに過剰でもある。すべてを歌い、すべてを語り、すべてを意味づけようとするため、リスナーが解釈する余白が狭くなる瞬間もある。だが、その説明しすぎる感じも含めて、RAYEの現在地なのだと思う。彼女はクールに見せることよりも、壊れそうなほど誠実に差し出すことを選んでいる。",
+              "最も魅力的なのは、声が常に物語を引き受けていることだ。大きなアレンジに飲み込まれそうになっても、RAYEの声は中心に戻ってくる。そこには、ただ上手い歌手という以上の説得力がある。希望は軽い言葉ではない。RAYEにとって希望とは、明るい結論ではなく、何度も大げさに歌い直すことでようやく見えてくる仮の出口である。"
+            ]
+          }
+        ]
+      },
+      {
+        id: "floor-3",
+        className: "floor-3",
+        floor: "3F",
+        meta: "Idol / Pop Package",
+        title: "アイドルとポップのフロア",
+        lead: "MV、制服、日常映像、パッケージ。曲だけではなく、届き方そのものを読む階。",
+        articles: [
+          {
+            id: "article-06",
+            side: "left",
+            number: "06",
+            category: "Pop",
+            title: "NewJeans以後の“パッケージ”感",
+            teaser: "楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。",
+            meta: "Pop / Package / Design / Idol",
+            lead: "楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。",
+            body: [
+              "NewJeans以後、ポップミュージックの届き方は、曲単体ではなくパッケージ全体として語られることが増えた。楽曲、MV、写真、制服、ロゴ、UI、スマートフォン上の見え方、ファンが保存する画像の比率。すべてが一つの感触として届く。重要なのは、曲の外側にあるデザインが、曲の意味を補足しているのではなく、曲そのものの一部として機能していることだ。",
+              "このパッケージ感は、2000年代のCD文化とも少し違う。CDジャケットは所有される物だったが、現在のポップのパッケージは、スクリーン上で何度も切り抜かれ、保存され、再投稿される。そこでは「公式の完成品」よりも、「使われやすい質感」が重要になる。少し余白があること。日常写真のように見えること。過剰に説明しないこと。ファンが自分の記憶に貼り付けられること。",
+              "ポップは、もはや曲が始まった瞬間に始まるのではない。サムネイルを見た瞬間、ティザーの色を見た瞬間、ロゴの角丸を見た瞬間、すでに始まっている。逆に、曲が終わっても終わらない。写真フォルダ、SNS、プレイリスト、友人との会話の中で続いていく。NewJeans以後のパッケージ感とは、ポップが一つの作品ではなく、生活の中に侵入する小さなUIになったことの名前である。"
+            ]
+          },
+          {
+            id: "article-07",
+            side: "right",
+            number: "07",
+            category: "MV Essay",
+            title: "アイドルMVと日常映像",
+            teaser: "学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。",
+            meta: "Idol / Music Video / Everyday / Fiction",
+            lead: "学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。",
+            body: [
+              "アイドルMVにおける「日常っぽさ」は、実際の日常そのものではない。学校の廊下、体育館、放課後の駅前、コンビニの光、友人同士の何気ない表情。そうした要素は、自然に撮られているように見えて、かなり精密に組み立てられている。日常らしさとは、加工されていないことではなく、加工が見えにくいことによって生まれる。",
+              "特に重要なのは、演技と偶然の境界である。笑っているのか、笑わされているのか。ふざけているのか、ふざける演技をしているのか。アイドルMVは、この曖昧さを利用する。観客は、完成されたスターを見ると同時に、素の本人を見たような気分になる。そこに親密さが生まれる。しかしその親密さは、画面の中で作られた距離の演出でもある。",
+              "日常映像の強さは、物語を大げさに語らなくても、時間の質感を伝えられるところにある。誰かが走る。誰かが窓の外を見る。誰かが何かを言いかけてやめる。それだけで、観客はその空間に自分の記憶を重ねる。アイドルMVにおける日常とは、現実の記録ではなく、観客が入り込める余白である。そこにこそ、ポップの新しいリアリティがある。"
+            ]
+          }
+        ]
+      },
+      {
+        id: "floor-2",
+        className: "floor-2",
+        floor: "2F",
+        meta: "Internet / Fashion",
+        title: "インターネットと服のフロア",
+        lead: "懐かしさの速度、スカート丈、SNS、平成リバイバル。身体と記憶の中層階。",
+        articles: [
+          {
+            id: "article-08",
+            side: "left",
+            number: "08",
+            category: "Column",
+            title: "コラム「2001年問題」",
+            teaser: "2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。",
+            meta: "Column / Generation / Internet / Memory",
+            lead: "2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。",
+            body: [
+              "2001年生まれという言葉には、妙な響きがある。20世紀ではなく、21世紀の側に置かれた最初期の世代。インターネットはすでにあり、携帯電話もあり、アニメや音楽やゲームは大量に流通していた。けれど、スマートフォンがすべてを飲み込む前の時間も、まだ少しだけ残っていた。だから2001年生まれは、デジタルネイティブでありながら、どこかアナログの残響も知っている。",
+              "この世代が抱える問題は、自分たちの「懐かしさ」が早く古びすぎることだ。小学生の頃に触れた動画サイト、ガラケーとスマホの切り替わり、CDショップの残り香、初期SNS、ニコニコ動画、YouTube、K-POP、ボカロ、深夜アニメ、ファストファッション。全部がそれほど昔ではないのに、すでに別の時代のものとして語られ始めている。",
+              "だから「2001年問題」とは、年齢の問題ではなく、記憶の速度の問題だ。自分が大人になる前に、自分の子ども時代がコンテンツとして整理されてしまう。懐かしいと感じる前に、誰かがその時代をパッケージ化する。そこで必要なのは、ただ昔を美化することではない。自分たちがどんなメディアの切れ目を生きてきたのかを、少し冷静に見ることだ。"
+            ]
+          },
+          {
+            id: "article-09",
+            side: "right",
+            number: "09",
+            category: "Fashion",
+            title: "平成リバイバルとスカート丈",
+            teaser: "服の長さは、時代の気分をどのように記録しているのか。",
+            meta: "Fashion / Heisei Revival / Body / Archive",
+            lead: "服の長さは、時代の気分をどのように記録しているのか。",
+            body: [
+              "スカート丈は、単なる流行の長短ではない。膝上、膝下、ミニ、ロング、プリーツ、タイト。その長さは、身体の見せ方、歩き方、写真の撮られ方、街の空気と結びついている。平成リバイバルを考えるとき、ロゴや色や髪型だけでなく、スカート丈の変化を見ると、その時代の身体感覚が少し見えてくる。",
+              "平成的なミニ丈は、単に露出が多いという話ではない。そこには、制服文化、ギャル、アイドル、ファストファッション、プリクラ、雑誌スナップの影響が重なっている。写真に撮られる身体、友達と並ぶ身体、駅前を歩く身体。スカート丈は、個人の選択であると同時に、メディアが作った見られ方の形式でもある。",
+              "現代のリバイバルは、過去をそのまま再現しているわけではない。過去の丈感を、スマートフォンの画面、SNSの縦長比率、現代のジェンダー感覚、古着の流通の中で再編集している。だから平成リバイバルは懐古ではなく、アーカイブの再配置である。服の長さは、時代の気分を記録する。そしてリバイバルは、その記録をもう一度、別の身体で再生することなのだ。"
+            ]
+          }
+        ]
+      },
+      {
+        id: "floor-1",
+        className: "floor-1",
+        floor: "1F",
+        meta: "Food / Exit Floor",
+        title: "フードと出口のフロア",
+        lead: "最後は食べ物へ。映画や音楽のあと、都市へ戻る身体のための一皿。",
+        articles: [
+          {
+            id: "article-10",
+            side: "left",
+            number: "10",
+            category: "Food",
+            title: "フードコートの孤独",
+            teaser: "ひとりで食べることを、都市の中で最も自然にしてくれる場所について。",
+            meta: "Food / Mall / City / Solitude",
+            lead: "ひとりで食べることを、都市の中で最も自然にしてくれる場所について。",
+            body: [
+              "レストランでひとりで食べると、少しだけ自分の存在が強調されることがある。席に案内され、注文し、料理を待つ。その一連の流れの中で、ひとりであることが形を持つ。だがフードコートでは、その輪郭が少し薄まる。誰もがトレーを持ち、席を探し、短い時間だけ滞在している。家族連れも、会社員も、学生も、買い物帰りの人も、ひとり客も、同じざわめきの中に混ざる。",
+              "フードコートの孤独は、寂しさではない。むしろ、都市の中で他人に紛れるための技術である。誰かと話してもいいし、話さなくてもいい。スマホを見てもいいし、ただ食べてもいい。料理のジャンルもばらばらで、同じテーブルにラーメン、カレー、サラダ、クレープが並ぶこともある。その雑多さが、食事を少しだけ自由にする。",
+              "カルチャーにおいても、フードコート的な場所は必要だと思う。高級な批評だけではなく、軽く食べられる文章。ジャンルが揃っていなくても、同じ空間に置かれていることで成立する編集。映画レビューの隣にフードコラムがあってもいい。音楽論のあとにレシピがあってもいい。NOISEの1Fに食べ物の記事を置くのは、読み終わった身体を都市に戻すためである。最後は、何かを食べたくなるくらいがちょうどいい。"
+            ]
+          }
+        ]
+      }
+    ];
+
+    const escapeHTML = value =>
+      String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[character]));
+
+    const magazine = document.getElementById("magazine");
+    const panelsRoot = document.getElementById("panels");
+
+    magazine.innerHTML = floors.map(floor => `
+      <section class="floor ${escapeHTML(floor.className)}" id="${escapeHTML(floor.id)}">
+        <div class="floor-shell">
+          <header class="floor-header">
+            <div class="floor-meta">
+              <span>${escapeHTML(floor.floor)}</span>
+              <span>${escapeHTML(floor.meta)}</span>
+            </div>
+            <h2>${escapeHTML(floor.title)}</h2>
+            <p>${escapeHTML(floor.lead)}</p>
+          </header>
+
+          ${floor.articles.map(article => `
+            <div class="article-row ${escapeHTML(article.side)}">
+              <button class="article-card" type="button" data-panel-target="${escapeHTML(article.id)}" aria-controls="${escapeHTML(article.id)}" aria-expanded="false">
+                <div class="article-door">
+                  <div class="article-visual"><span>sweet package</span></div>
+                  <div class="article-sign"><strong>${escapeHTML(article.number)}</strong> ${escapeHTML(article.category)}</div>
+                  <h3>${escapeHTML(article.title)}</h3>
+                  <p>${escapeHTML(article.teaser)}</p>
+                  <div class="article-enter">Tap to read</div>
+                </div>
+              </button>
+            </div>
+          `).join("")}
+        </div>
+      </section>
+    `).join("");
+
+    panelsRoot.innerHTML = floors.flatMap(floor =>
+      floor.articles.map(article => `
+        <article id="${escapeHTML(article.id)}" class="article-panel from-${escapeHTML(article.side)}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="${escapeHTML(article.id)}-title">
+          <div class="panel-topbar">
+            <button class="close-panel" type="button">${article.side === "left" ? "← 通路へ戻る" : "通路へ戻る →"}</button>
+            <div class="panel-location">${escapeHTML(floor.floor)} / ${escapeHTML(article.category)} / Article ${escapeHTML(article.number)}</div>
+          </div>
+
+          <div class="panel-scroll">
+            <div class="panel-inner">
+              <div class="panel-surface">
+                <div class="panel-hero">
+                  <div class="panel-badge">Article ${escapeHTML(article.number)} / ${escapeHTML(article.category)}</div>
+                  <h1 id="${escapeHTML(article.id)}-title">${escapeHTML(article.title)}</h1>
+                  <p>${escapeHTML(article.lead)}</p>
+                </div>
+
+                <div class="panel-body">
+                  <div class="article-meta-box">
+                    <p>${escapeHTML(article.meta)}</p>
+                  </div>
+
+                  <div class="article-body">
+                    ${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join("")}
+                  </div>
+
+                  <div class="panel-end">End of Article ${escapeHTML(article.number)} / Tap outside to return</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `)
+    ).join("");
+
     const articleCards = document.querySelectorAll(".article-card");
     const panels = document.querySelectorAll(".article-panel");
     const closeButtons = document.querySelectorAll(".close-panel");
