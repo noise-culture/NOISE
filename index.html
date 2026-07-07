@@ -1111,18 +1111,75 @@
       .article-door h3 {
         font-size: 20px;
       }
+    }
 
+    @media (max-width: 600px) {
       .article-panel {
-        padding: 5svh 4.5vw;
+        padding: 3svh 2vw;
       }
 
       .panel-topbar,
       .panel-scroll {
-        width: 91vw;
+        width: 96vw;
       }
 
       .panel-scroll {
-        height: calc(90svh - 52px);
+        height: calc(94svh - 52px);
+      }
+
+      .panel-hero {
+        min-height: 180px;
+        padding: 20px 16px;
+      }
+
+      .panel-hero h1 {
+        margin: 18px 0 10px;
+        font-size: clamp(30px, 8.4vw, 42px);
+        line-height: 1.08;
+        letter-spacing: -0.075em;
+      }
+
+      .panel-hero p {
+        font-size: 14px;
+        line-height: 1.75;
+        font-weight: 700;
+      }
+
+      .panel-body {
+        padding: 18px 14px 30px;
+      }
+
+      .article-meta-box {
+        margin-bottom: 18px;
+        padding: 12px;
+        box-shadow: 4px 4px 0 var(--black);
+      }
+
+      .article-meta-box p {
+        font-size: 10px;
+        line-height: 1.55;
+      }
+
+      .article-body {
+        gap: 16px;
+      }
+
+      .article-body p {
+        font-size: 14px;
+        line-height: 1.9;
+        font-weight: 550;
+        letter-spacing: 0.01em;
+        text-align: left;
+      }
+
+      .panel-end {
+        margin-top: 24px;
+        padding-top: 14px;
+      }
+
+      .article-panel::after {
+        bottom: 8px;
+        font-size: 8px;
       }
     }
 
