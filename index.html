@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>NOISE — Pop Culture Web Magazine</title>
-  <meta name="description" content="NOISEは、映画、音楽、アイドル、ファッション、インターネット、フードを扱うポップカルチャーWebマガジンです。" />
+  <meta name="description" content="NOISEは、映画、音楽、ポップカルチャーを扱うゼロクリック型Webマガジンです。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,31 +16,24 @@
 
   <style>
     :root {
-      --ink: #090909;
-      --ink-soft: rgba(9, 9, 9, 0.72);
-      --ink-faint: rgba(9, 9, 9, 0.48);
+      --black: #0b0b0b;
+      --paper: #f4f1e8;
+      --paper-2: #ece8dc;
+      --paper-3: #e3ddd0;
+      --ink-soft: rgba(11, 11, 11, 0.78);
+      --ink-faint: rgba(11, 11, 11, 0.52);
 
-      --paper: #fff7e7;
-      --paper2: #fffdf2;
-      --paper3: #f4ead7;
+      --c-blue: #1fa4dd;
+      --c-pink: #ef4a9b;
+      --c-yellow: #f2eb00;
+      --c-green: #80cd3d;
+      --c-purple: #5942a6;
 
-      --sweet-blue: #a9dbf5;
-      --sweet-mint: #b8efd3;
-      --sweet-yellow: #ffe66c;
-      --sweet-orange: #ff8a5c;
-      --sweet-pink: #ffc0dc;
-      --sweet-lime: #d9ff76;
-      --sweet-purple: #d8c4ff;
+      --shadow: 6px 6px 0 var(--black);
+      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.18);
 
-      --black: #050505;
-      --line: #050505;
-
-      --shadow: 7px 7px 0 #050505;
-      --shadow-small: 4px 4px 0 #050505;
-      --soft-shadow: 0 24px 70px rgba(0,0,0,0.18);
-
-      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       --sans: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
     * {
@@ -53,13 +46,8 @@
 
     body {
       margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 14% 8%, rgba(169,219,245,0.9), transparent 28%),
-        radial-gradient(circle at 88% 14%, rgba(255,230,108,0.68), transparent 26%),
-        radial-gradient(circle at 20% 86%, rgba(255,192,220,0.55), transparent 26%),
-        radial-gradient(circle at 82% 86%, rgba(184,239,211,0.7), transparent 28%),
-        linear-gradient(180deg, #fff7e7 0%, #f4ead7 100%);
+      color: var(--black);
+      background: var(--paper);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -73,10 +61,10 @@
       z-index: -2;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(5,5,5,0.07) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(5,5,5,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.58;
+        linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0,0,0,0.045) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.7;
     }
 
     body::after {
@@ -85,587 +73,518 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: 0.18;
       background:
-        repeating-linear-gradient(
-          0deg,
-          transparent 0 5px,
-          rgba(0,0,0,0.13) 5px 6px
-        );
-      mix-blend-mode: multiply;
+        radial-gradient(circle at 20% 10%, rgba(31,164,221,0.08), transparent 22%),
+        radial-gradient(circle at 80% 18%, rgba(239,74,155,0.08), transparent 22%),
+        radial-gradient(circle at 40% 82%, rgba(128,205,61,0.08), transparent 22%);
     }
 
     body.panel-open {
       overflow: hidden;
     }
 
-    button,
     a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
       font: inherit;
       color: inherit;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    .site-nav {
+    .topbar {
       position: fixed;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 500;
-      width: min(760px, calc(100vw - 20px));
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: center;
-      padding: 8px;
-      border: 3px solid var(--black);
-      background:
-        linear-gradient(135deg, rgba(255,253,242,0.94), rgba(255,247,231,0.82));
-      backdrop-filter: blur(16px);
-      box-shadow: var(--shadow-small);
-      border-radius: 22px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      padding-left: 6px;
-    }
-
-    .brand-mark {
-      position: relative;
-      width: 32px;
-      height: 32px;
-      flex: 0 0 auto;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 34% 32%, #fff 0 16%, transparent 17%),
-        conic-gradient(from 210deg, var(--sweet-blue), var(--sweet-yellow), var(--sweet-orange), var(--sweet-mint), var(--sweet-blue));
-      box-shadow: 3px 3px 0 var(--black);
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      right: -5px;
-      bottom: -4px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-pink);
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 27px;
-      line-height: 0.85;
-      font-weight: 900;
-      letter-spacing: -0.145em;
-      text-transform: lowercase;
-    }
-
-    .brand-text span {
-      display: block;
-      margin-top: 4px;
-      font-family: var(--mono);
-      font-size: 8px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .nav-floors {
-      display: flex;
-      gap: 4px;
-    }
-
-    .nav-floors a {
-      display: grid;
-      place-items: center;
-      min-width: 34px;
-      height: 34px;
-      border: 2px solid var(--black);
-      border-radius: 999px;
-      background: var(--paper2);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      box-shadow: 3px 3px 0 var(--black);
-    }
-
-    .nav-floors a:nth-child(1) { background: var(--sweet-blue); }
-    .nav-floors a:nth-child(2) { background: var(--sweet-yellow); }
-    .nav-floors a:nth-child(3) { background: var(--sweet-mint); }
-    .nav-floors a:nth-child(4) { background: var(--sweet-pink); }
-    .nav-floors a:nth-child(5) { background: var(--sweet-orange); }
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      padding: 124px 16px 74px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      border-bottom: 4px solid var(--black);
-      background:
-        radial-gradient(circle at 12% 16%, rgba(169,219,245,0.98), transparent 34%),
-        radial-gradient(circle at 86% 16%, rgba(255,230,108,0.9), transparent 30%),
-        radial-gradient(circle at 72% 74%, rgba(255,192,220,0.66), transparent 28%),
-        radial-gradient(circle at 18% 78%, rgba(184,239,211,0.8), transparent 28%),
-        linear-gradient(180deg, #fffdf2 0%, #fff0d4 100%);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      left: 50%;
       top: 0;
-      bottom: 0;
-      width: min(188px, 34vw);
-      transform: translateX(-50%);
-      border-left: 3px solid var(--black);
-      border-right: 3px solid var(--black);
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.58), rgba(255,255,255,0.08)),
-        repeating-linear-gradient(
-          180deg,
-          rgba(5,5,5,0.18) 0 9px,
-          rgba(255,255,255,0.62) 9px 18px
-        );
-      animation: escalatorSteps 0.95s linear infinite;
-      opacity: 0.48;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      background: rgba(11, 11, 11, 0.94);
+      color: #fff;
+      border-bottom: 2px solid #fff;
+      backdrop-filter: blur(10px);
     }
 
-    .hero::after {
-      content: "ISSUE 001 / SWEET POP PACKAGE / ZERO CLICK";
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      max-width: 260px;
-      padding: 9px 11px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-yellow);
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      box-shadow: var(--shadow-small);
-      transform: rotate(-2deg);
-    }
-
-    .hero-sticker {
-      position: absolute;
-      z-index: 1;
-      border: 3px solid var(--black);
-      box-shadow: var(--shadow-small);
-      pointer-events: none;
-    }
-
-    .sticker-1 {
-      right: 8%;
-      top: 16%;
-      width: 110px;
-      height: 74px;
-      border-radius: 38px;
-      background: var(--sweet-pink);
-      transform: rotate(10deg);
-    }
-
-    .sticker-1::before {
-      content: "sweet!";
-      position: absolute;
-      inset: 0;
+    .topbar-inner {
+      width: min(1320px, 100%);
+      margin: 0 auto;
       display: grid;
-      place-items: center;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: -0.08em;
+      grid-template-columns: 180px 1fr auto;
+      align-items: stretch;
+      min-height: 56px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--c-pink);
       color: var(--black);
+      border-right: 2px solid #fff;
+      font-weight: 900;
+      font-size: 38px;
+      letter-spacing: -0.12em;
+      text-transform: lowercase;
+      line-height: 1;
     }
 
-    .sticker-2 {
-      left: 7%;
-      top: 18%;
-      width: 88px;
-      height: 88px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 36% 32%, #fff 0 18%, transparent 19%),
-        var(--sweet-lime);
-      transform: rotate(-12deg);
-    }
-
-    .sticker-3 {
-      left: 12%;
-      bottom: 18%;
-      width: 108px;
-      height: 52px;
-      border-radius: 999px;
-      background: var(--sweet-blue);
-      transform: rotate(7deg);
-    }
-
-    .sticker-3::before {
-      content: "READ ME";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
+    .topbar-copy {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-right: 2px solid rgba(255,255,255,0.28);
+    }
+
+    .topnav {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .topnav a {
+      min-width: 64px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid rgba(255,255,255,0.28);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      padding: 96px 18px 54px;
+      border-bottom: 2px solid var(--black);
+      background:
+        linear-gradient(
+          90deg,
+          var(--c-blue) 0 20%,
+          var(--c-pink) 20% 40%,
+          var(--c-yellow) 40% 57%,
+          var(--c-green) 57% 78%,
+          var(--c-purple) 78% 100%
+        );
     }
 
     .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(1120px, 100%);
+      width: min(1280px, 100%);
       margin: 0 auto;
-      display: grid;
-      gap: 24px;
-    }
-
-    .hero-label {
-      width: fit-content;
-      padding: 9px 12px;
+      background: rgba(244, 241, 232, 0.92);
       border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-mint);
-      box-shadow: var(--shadow-small);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transform: rotate(-1deg);
-    }
-
-    .hero h1 {
-      margin: 0;
-      max-width: 1020px;
-      font-size: clamp(78px, 22vw, 190px);
-      line-height: 0.7;
-      letter-spacing: -0.17em;
-      font-weight: 900;
-      text-transform: lowercase;
-      text-shadow:
-        4px 4px 0 rgba(255,255,255,0.7),
-        7px 7px 0 rgba(5,5,5,0.12);
-    }
-
-    .hero h1 span {
-      display: block;
-      max-width: 880px;
-      margin-top: 20px;
-      font-family: "Noto Sans JP", sans-serif;
-      font-size: clamp(25px, 6.6vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.08em;
-      color: rgba(7,7,7,0.7);
-      text-transform: none;
-    }
-
-    .hero-copy {
-      position: relative;
-      max-width: 780px;
-      margin: 0;
-      padding: 18px;
-      border: 3px solid var(--black);
-      border-radius: 24px;
-      background: rgba(255,253,242,0.78);
       box-shadow: var(--shadow);
-      font-size: 15px;
-      line-height: 1.88;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 360px;
+    }
+
+    .hero-side {
+      padding: 24px 20px 22px;
+      border-right: 3px solid var(--black);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.65), rgba(0,0,0,0.02)),
+        var(--paper);
+    }
+
+    .issue-no {
+      margin: 0;
+      font-size: 108px;
+      line-height: 0.8;
+      letter-spacing: -0.11em;
+      font-weight: 900;
+      color: var(--c-pink);
+      text-shadow: 4px 4px 0 var(--black);
+    }
+
+    .side-rule {
+      width: 100%;
+      height: 4px;
+      background: var(--black);
+      margin: 20px 0 24px;
+    }
+
+    .hero-side-meta {
+      display: grid;
+      gap: 8px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-height: 360px;
+    }
+
+    .hero-main-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .hero-main-top div {
+      min-height: 84px;
+      border-right: 3px solid var(--black);
+    }
+
+    .hero-main-top div:last-child {
+      border-right: 0;
+    }
+
+    .hero-main-top .block-1 {
+      background: var(--c-yellow);
+    }
+
+    .hero-main-top .block-2 {
+      background: var(--c-purple);
+    }
+
+    .hero-title-wrap {
+      padding: 22px 24px 10px;
+      border-bottom: 3px solid var(--black);
+      background: var(--paper);
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      padding: 7px 12px 6px;
+      margin-bottom: 14px;
+      border: 2px solid var(--black);
+      background: var(--c-yellow);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(48px, 10vw, 108px);
+      line-height: 0.9;
+      letter-spacing: -0.09em;
+      font-weight: 900;
+    }
+
+    .hero-subtitle {
+      margin: 10px 0 0;
+      max-width: 800px;
+      font-size: 17px;
+      line-height: 1.8;
       font-weight: 700;
       color: var(--ink-soft);
     }
 
-    .hero-copy::before {
-      content: "editor's note";
-      position: absolute;
-      right: 14px;
-      top: -14px;
-      padding: 5px 9px;
-      border: 2px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-orange);
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      min-height: 160px;
+    }
+
+    .hero-note {
+      padding: 22px 24px;
+      border-right: 3px solid var(--black);
+      background: rgba(255,255,255,0.56);
+    }
+
+    .hero-note p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.9;
+      font-weight: 700;
+    }
+
+    .hero-sticker {
+      position: relative;
+      padding: 18px;
+      background: var(--c-blue);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .hero-sticker span {
+      display: inline-block;
+      padding: 14px 16px;
+      border: 3px solid var(--black);
+      background: var(--paper);
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+      transform: rotate(-4deg);
+    }
+
+    .issue-map {
+      padding: 30px 18px 0;
+    }
+
+    .issue-map-inner {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      border: 3px solid var(--black);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .issue-map-header {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .issue-map-header strong {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      border-right: 3px solid var(--black);
+      background: var(--black);
+      color: #fff;
+      font-size: 24px;
+      letter-spacing: -0.08em;
+      text-transform: lowercase;
+    }
+
+    .issue-map-header span {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .hero-note {
-      width: fit-content;
-      padding: 12px 16px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--black);
-      color: var(--paper2);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      box-shadow: var(--shadow-small);
-    }
-
-    .hero-note::after {
-      content: " ↓";
-      animation: floatDown 1.2s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    .floor-map {
-      position: relative;
-      padding: 22px 16px 0;
-      margin-top: -20px;
-      z-index: 10;
-    }
-
-    .floor-map-inner {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      padding: 14px;
-      border: 3px solid var(--black);
-      border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(255,253,242,0.94), rgba(255,240,212,0.86));
-      box-shadow: var(--shadow);
-    }
-
-    .floor-map-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 3px solid var(--black);
-    }
-
-    .floor-map-top strong {
-      font-size: 18px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-transform: lowercase;
-    }
-
-    .floor-map-top span {
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-    }
-
-    .floor-map-grid {
+    .issue-map-grid {
       display: grid;
-      gap: 8px;
+      grid-template-columns: repeat(5, 1fr);
     }
 
-    .floor-map-item {
-      display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 10px;
-      align-items: start;
-      padding: 12px;
-      border: 2px solid var(--black);
-      border-radius: 20px;
-      background: #fffdf3;
-      color: inherit;
-      cursor: pointer;
-      box-shadow: 4px 4px 0 var(--black);
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    .issue-map-item {
+      padding: 18px 14px;
+      border-right: 3px solid var(--black);
+      background: var(--paper);
+      transition: transform 0.12s ease, background 0.12s ease;
     }
 
-    .floor-map-item:active {
-      transform: translate(3px, 3px);
-      box-shadow: 1px 1px 0 var(--black);
+    .issue-map-item:last-child {
+      border-right: 0;
     }
 
-    .floor-map-item:nth-child(1) { background: var(--sweet-blue); }
-    .floor-map-item:nth-child(2) { background: var(--sweet-yellow); }
-    .floor-map-item:nth-child(3) { background: var(--sweet-mint); }
-    .floor-map-item:nth-child(4) { background: var(--sweet-pink); }
-    .floor-map-item:nth-child(5) { background: var(--sweet-orange); }
+    .issue-map-item:nth-child(1) { background: rgba(31,164,221,0.2); }
+    .issue-map-item:nth-child(2) { background: rgba(239,74,155,0.18); }
+    .issue-map-item:nth-child(3) { background: rgba(242,235,0,0.22); }
+    .issue-map-item:nth-child(4) { background: rgba(128,205,61,0.22); }
+    .issue-map-item:nth-child(5) { background: rgba(89,66,166,0.18); }
 
-    .floor-map-item strong {
-      font-size: 30px;
+    .issue-map-item:active {
+      transform: translate(2px, 2px);
+    }
+
+    .issue-map-item strong {
+      display: block;
+      font-size: 42px;
       line-height: 0.9;
       letter-spacing: -0.08em;
       font-weight: 900;
+      margin-bottom: 10px;
     }
 
-    .floor-map-item p {
+    .issue-map-item p {
       margin: 0;
-      font-size: 12px;
-      line-height: 1.55;
-      font-weight: 800;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 700;
     }
 
     .magazine {
-      position: relative;
-      padding-top: 30px;
+      padding-top: 28px;
     }
 
     .floor {
       position: relative;
-      min-height: 104svh;
-      padding: 92px 16px 88px;
+      padding: 76px 18px 86px;
+      border-bottom: 3px solid var(--black);
       overflow: hidden;
-      isolation: isolate;
-      border-bottom: 4px solid var(--black);
     }
 
     .floor::before {
       content: "";
       position: absolute;
-      inset: 0;
-      z-index: -3;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(5,5,5,0.07) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(5,5,5,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.58;
-    }
-
-    .floor::after {
-      content: "";
-      position: absolute;
       left: 50%;
       top: 0;
       bottom: 0;
-      width: min(180px, 34vw);
+      width: min(170px, 32vw);
       transform: translateX(-50%);
-      z-index: -2;
-      border-left: 3px solid var(--black);
-      border-right: 3px solid var(--black);
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06)),
+        linear-gradient(90deg, rgba(255,255,255,0.32), rgba(255,255,255,0.04)),
         repeating-linear-gradient(
           180deg,
-          rgba(5,5,5,0.18) 0 9px,
-          rgba(255,255,255,0.56) 9px 18px
+          rgba(0,0,0,0.16) 0 9px,
+          rgba(255,255,255,0.5) 9px 18px
         );
-      opacity: 0.42;
-      animation: escalatorSteps 0.95s linear infinite;
+      border-left: 3px solid var(--black);
+      border-right: 3px solid var(--black);
+      opacity: 0.38;
+      z-index: 0;
     }
 
-    .floor-5 {
-      background:
-        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.68), transparent 22%),
-        linear-gradient(180deg, #d8f0ff, #b6e1f6);
+    .floor.floor-5 {
+      background: linear-gradient(180deg, rgba(31,164,221,0.18), rgba(31,164,221,0.08));
     }
 
-    .floor-4 {
-      background:
-        radial-gradient(circle at 84% 16%, rgba(255,255,255,0.62), transparent 22%),
-        linear-gradient(180deg, #fff3a6, #f6d96b);
+    .floor.floor-4 {
+      background: linear-gradient(180deg, rgba(239,74,155,0.16), rgba(239,74,155,0.08));
     }
 
-    .floor-3 {
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.62), transparent 22%),
-        linear-gradient(180deg, #d6ffe9, #aeecc9);
+    .floor.floor-3 {
+      background: linear-gradient(180deg, rgba(242,235,0,0.2), rgba(242,235,0,0.09));
     }
 
-    .floor-2 {
-      background:
-        radial-gradient(circle at 86% 18%, rgba(255,255,255,0.62), transparent 22%),
-        linear-gradient(180deg, #ffd6e9, #f2b3d4);
+    .floor.floor-2 {
+      background: linear-gradient(180deg, rgba(128,205,61,0.16), rgba(128,205,61,0.08));
     }
 
-    .floor-1 {
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.58), transparent 22%),
-        linear-gradient(180deg, #ffad91, #ff795e);
+    .floor.floor-1 {
+      background: linear-gradient(180deg, rgba(89,66,166,0.14), rgba(89,66,166,0.07));
     }
 
     .floor-shell {
-      width: min(1120px, 100%);
-      margin: 0 auto;
       position: relative;
-      z-index: 3;
+      z-index: 2;
+      width: min(1280px, 100%);
+      margin: 0 auto;
     }
 
     .floor-header {
-      position: sticky;
-      top: 76px;
-      z-index: 40;
-      width: min(590px, 100%);
-      margin: 0 auto 48px;
-      padding: 16px;
+      margin-bottom: 44px;
       border: 3px solid var(--black);
-      border-radius: 26px;
-      background: rgba(255,253,242,0.88);
-      box-shadow: var(--shadow-small);
-      backdrop-filter: blur(16px);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .floor-header-top {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      min-height: 78px;
+      border-bottom: 3px solid var(--black);
+    }
+
+    .floor-no {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 3px solid var(--black);
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
     }
 
     .floor-meta {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
+      align-items: center;
+      padding: 0 18px;
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink-faint);
     }
 
-    .floor-header h2 {
-      margin: 0;
-      font-size: 27px;
-      line-height: 1.06;
+    .floor-header-bottom {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+    }
+
+    .floor-text {
+      padding: 20px 22px;
+      border-right: 3px solid var(--black);
+    }
+
+    .floor-text h2 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 4.5vw, 58px);
+      line-height: 0.95;
       letter-spacing: -0.08em;
       font-weight: 900;
     }
 
-    .floor-header p {
-      margin: 10px 0 0;
-      font-size: 12px;
-      line-height: 1.7;
-      font-weight: 800;
+    .floor-text p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.9;
+      font-weight: 700;
       color: var(--ink-soft);
+    }
+
+    .floor-color {
+      min-height: 140px;
+      position: relative;
+    }
+
+    .floor.floor-5 .floor-no,
+    .floor.floor-5 .floor-color { background: var(--c-blue); }
+
+    .floor.floor-4 .floor-no,
+    .floor.floor-4 .floor-color { background: var(--c-pink); }
+
+    .floor.floor-3 .floor-no,
+    .floor.floor-3 .floor-color { background: var(--c-yellow); }
+
+    .floor.floor-2 .floor-no,
+    .floor.floor-2 .floor-color { background: var(--c-green); }
+
+    .floor.floor-1 .floor-no,
+    .floor.floor-1 .floor-color {
+      background: var(--c-purple);
+      color: #fff;
+    }
+
+    .floor-color::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      width: 98px;
+      height: 46px;
+      border: 3px solid var(--black);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      transform: rotate(-4deg);
     }
 
     .article-row {
       position: relative;
       display: flex;
-      margin: 0 0 42px;
-      z-index: 3;
+      margin: 0 0 48px;
     }
 
     .article-row.left {
       justify-content: flex-start;
-      padding-right: 26%;
+      padding-right: 46%;
     }
 
     .article-row.right {
       justify-content: flex-end;
-      padding-left: 26%;
+      padding-left: 46%;
     }
 
     .article-row.left::after,
@@ -673,22 +592,21 @@
       content: "";
       position: absolute;
       top: 50%;
-      width: 18%;
+      width: 28%;
       height: 3px;
       background: var(--black);
     }
 
     .article-row.left::after {
-      left: calc(100% - 26%);
+      left: 54%;
     }
 
     .article-row.right::after {
-      right: calc(100% - 26%);
+      right: 54%;
     }
 
     .article-card {
-      position: relative;
-      width: min(100%, 360px);
+      width: min(100%, 520px);
       border: 0;
       padding: 0;
       background: transparent;
@@ -699,163 +617,162 @@
 
     .article-card:focus-visible {
       outline: 4px solid var(--black);
-      outline-offset: 5px;
+      outline-offset: 4px;
     }
 
     .article-door {
-      position: relative;
-      overflow: hidden;
-      min-height: 292px;
-      padding: 14px;
       border: 3px solid var(--black);
-      border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(255,253,242,0.96), rgba(255,247,231,0.86));
+      background: var(--paper);
       box-shadow: var(--shadow);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+      overflow: hidden;
     }
 
     .article-card:active .article-door {
-      transform: scale(0.985);
+      transform: translate(2px, 2px);
       box-shadow: 4px 4px 0 var(--black);
     }
 
-    .article-row.left .article-door {
-      border-top-left-radius: 8px;
+    .article-topline {
+      display: grid;
+      grid-template-columns: 92px 1fr 136px;
+      min-height: 54px;
+      border-bottom: 3px solid var(--black);
     }
 
-    .article-row.right .article-door {
-      border-top-right-radius: 8px;
+    .article-no {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 3px solid var(--black);
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      background: var(--paper-2);
+    }
+
+    .article-cat {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      border-right: 3px solid var(--black);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #fff;
+    }
+
+    .article-enter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--black);
+      color: #fff;
     }
 
     .article-visual {
+      height: 142px;
+      border-bottom: 3px solid var(--black);
       position: relative;
-      height: 122px;
-      border: 3px solid var(--black);
-      border-radius: 22px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 18% 24%, rgba(255,255,255,0.78), transparent 18%),
-        linear-gradient(135deg, var(--sweet-blue), var(--sweet-yellow));
     }
 
     .article-visual::before {
       content: "";
       position: absolute;
-      left: 18px;
-      top: 0;
-      width: 13px;
-      height: 100%;
-      background: var(--black);
-      opacity: 0.86;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0,0,0,0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.7;
     }
 
     .article-visual::after {
       content: "";
       position: absolute;
-      right: -20px;
-      bottom: -26px;
-      width: 124px;
-      height: 88px;
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      right: -34px;
+      bottom: -80px;
       border: 3px solid var(--black);
-      border-radius: 999px 0 0 0;
-      background:
-        radial-gradient(circle at 40% 56%, var(--sweet-mint), transparent 34%),
-        radial-gradient(circle at 66% 40%, var(--sweet-orange), transparent 36%),
-        var(--paper2);
+      background: rgba(255,255,255,0.34);
     }
 
-    .article-visual span {
+    .floor.floor-5 .article-visual {
+      background: linear-gradient(135deg, var(--c-blue), rgba(255,255,255,0.8));
+    }
+
+    .floor.floor-4 .article-visual {
+      background: linear-gradient(135deg, var(--c-pink), rgba(255,255,255,0.72));
+    }
+
+    .floor.floor-3 .article-visual {
+      background: linear-gradient(135deg, var(--c-yellow), rgba(255,255,255,0.75));
+    }
+
+    .floor.floor-2 .article-visual {
+      background: linear-gradient(135deg, var(--c-green), rgba(255,255,255,0.72));
+    }
+
+    .floor.floor-1 .article-visual {
+      background: linear-gradient(135deg, var(--c-purple), rgba(255,255,255,0.72));
+    }
+
+    .article-visual-label {
       position: absolute;
-      left: 46px;
-      top: 18px;
+      left: 16px;
+      top: 16px;
       padding: 7px 10px;
       border: 2px solid var(--black);
-      border-radius: 999px;
-      background: rgba(255,253,242,0.88);
-      font-family: var(--mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      box-shadow: 3px 3px 0 var(--black);
-    }
-
-    .floor-5 .article-visual { background: linear-gradient(135deg, var(--sweet-blue), #fff); }
-    .floor-4 .article-visual { background: linear-gradient(135deg, var(--sweet-yellow), var(--sweet-orange)); }
-    .floor-3 .article-visual { background: linear-gradient(135deg, var(--sweet-mint), var(--sweet-blue)); }
-    .floor-2 .article-visual { background: linear-gradient(135deg, var(--sweet-pink), var(--paper2)); }
-    .floor-1 .article-visual { background: linear-gradient(135deg, var(--sweet-orange), var(--sweet-yellow)); }
-
-    .article-sign {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      padding: 8px 10px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--sweet-yellow);
+      background: rgba(244,241,232,0.95);
       font-family: var(--mono);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: 3px 3px 0 var(--black);
+      z-index: 2;
     }
 
-    .article-sign strong {
-      font-size: 13px;
+    .article-body-brief {
+      padding: 16px 16px 18px;
     }
 
-    .article-door h3 {
-      margin: 16px 0 10px;
-      font-size: 23px;
-      line-height: 1.1;
-      letter-spacing: -0.075em;
+    .article-body-brief h3 {
+      margin: 0 0 10px;
+      font-size: 31px;
+      line-height: 1.02;
+      letter-spacing: -0.06em;
       font-weight: 900;
     }
 
-    .article-door p {
+    .article-body-brief p {
       margin: 0;
-      padding-bottom: 34px;
-      font-size: 12px;
-      line-height: 1.65;
-      font-weight: 800;
-      color: var(--ink-soft);
-    }
-
-    .article-enter {
-      position: absolute;
-      right: 12px;
-      bottom: 12px;
-      padding: 8px 10px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--black);
-      color: var(--paper2);
-      font-family: var(--mono);
-      font-size: 9px;
+      font-size: 14px;
+      line-height: 1.82;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      color: var(--ink-soft);
     }
 
     .article-panel {
       position: fixed;
       inset: 0;
       z-index: 1000;
+      padding: 3.5vh 3vw;
       display: block;
-      padding: 5svh 5vw;
-      background:
-        radial-gradient(circle at 12% 10%, rgba(169,219,245,0.34), transparent 26%),
-        radial-gradient(circle at 88% 12%, rgba(255,230,108,0.26), transparent 24%),
-        rgba(5, 5, 5, 0.42);
-      backdrop-filter: blur(11px);
+      background: rgba(11, 11, 11, 0.44);
+      backdrop-filter: blur(10px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.24s ease;
-      overflow: hidden;
+      transition: opacity 0.22s ease;
     }
 
     .article-panel.is-open {
@@ -863,48 +780,47 @@
       pointer-events: auto;
     }
 
-    .panel-topbar {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      align-items: center;
-      width: min(900px, 90vw);
+    .panel-shell {
+      width: min(1120px, 94vw);
       margin: 0 auto;
-      padding: 12px;
+    }
+
+    .panel-topbar {
       border: 3px solid var(--black);
       border-bottom: 0;
-      border-radius: 28px 28px 0 0;
-      background: rgba(255,253,242,0.94);
+      background: var(--paper);
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       opacity: 0;
-      transition:
-        transform 0.46s cubic-bezier(.18,.82,.2,1),
-        opacity 0.2s ease;
+      transition: transform 0.45s cubic-bezier(.16,.82,.18,1), opacity 0.22s ease;
     }
 
     .panel-scroll {
-      width: min(900px, 90vw);
-      height: calc(90svh - 52px);
-      margin: 0 auto;
+      height: calc(92svh - 62px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       border: 3px solid var(--black);
-      background: var(--paper2);
-      opacity: 0;
-      transition:
-        transform 0.46s cubic-bezier(.18,.82,.2,1),
-        opacity 0.2s ease;
+      background: var(--paper);
       box-shadow: 10px 10px 0 var(--black);
-      border-radius: 0 0 30px 30px;
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(.16,.82,.18,1), opacity 0.22s ease;
     }
 
     .article-panel.from-left .panel-topbar,
     .article-panel.from-left .panel-scroll {
-      transform: translateX(-112vw);
+      transform: translateX(-104vw);
     }
 
     .article-panel.from-right .panel-topbar,
     .article-panel.from-right .panel-scroll {
-      transform: translateX(112vw);
+      transform: translateX(104vw);
     }
 
     .article-panel.is-open .panel-topbar,
@@ -913,156 +829,103 @@
       opacity: 1;
     }
 
-    .close-panel {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      z-index: 1200;
-      transform: translateX(-50%);
-      width: min(360px, calc(100vw - 36px));
-      min-height: 56px;
-      padding: 16px 22px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--paper2);
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: var(--shadow-small);
-    }
-
-    .panel-location {
-      min-width: 0;
-      font-family: var(--mono);
-      font-size: 10px;
-      line-height: 1.4;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .panel-inner {
-      padding: 0;
-      min-height: 100%;
-    }
-
-    .panel-surface {
-      min-height: 100%;
-      background:
-        linear-gradient(90deg, rgba(5,5,5,0.05) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(5,5,5,0.05) 1px, transparent 1px),
-        var(--paper2);
-      background-size: 30px 30px;
-    }
-
     .panel-hero {
-      position: relative;
-      min-height: 224px;
-      padding: 24px;
+      display: grid;
+      grid-template-columns: 230px 1fr;
       border-bottom: 3px solid var(--black);
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 16% 20%, rgba(255,255,255,0.78), transparent 18%),
-        linear-gradient(135deg, var(--sweet-blue), var(--sweet-yellow));
+      min-height: 280px;
     }
 
-    .panel-hero::before {
-      content: "";
-      position: absolute;
-      left: 30px;
-      top: -16px;
-      width: 16px;
-      height: calc(100% + 32px);
+    .panel-hero-side {
+      border-right: 3px solid var(--black);
+      background: var(--paper-2);
+      padding: 18px;
+    }
+
+    .panel-article-no {
+      margin: 0;
+      font-size: 88px;
+      line-height: 0.78;
+      letter-spacing: -0.1em;
+      font-weight: 900;
+      text-shadow: 3px 3px 0 var(--black);
+    }
+
+    .panel-rule {
+      width: 100%;
+      height: 4px;
       background: var(--black);
-      opacity: 0.84;
+      margin: 16px 0 18px;
     }
 
-    .panel-hero::after {
-      content: "";
-      position: absolute;
-      right: -22px;
-      bottom: -30px;
-      width: 190px;
-      height: 132px;
-      border: 3px solid var(--black);
-      border-radius: 999px 0 0 0;
-      background:
-        radial-gradient(circle at 32% 62%, var(--sweet-mint), transparent 30%),
-        radial-gradient(circle at 62% 40%, var(--sweet-orange), transparent 36%),
-        var(--paper2);
-    }
-
-    .panel-badge {
-      position: relative;
-      z-index: 2;
-      display: inline-flex;
-      padding: 8px 10px;
-      border: 3px solid var(--black);
-      border-radius: 999px;
-      background: var(--paper2);
-      box-shadow: var(--shadow-small);
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+    .panel-side-text {
+      display: grid;
+      gap: 8px;
+      font-size: 17px;
+      line-height: 1.15;
+      font-weight: 800;
       text-transform: uppercase;
     }
 
-    .panel-hero h1 {
-      position: relative;
-      z-index: 2;
-      max-width: 650px;
-      margin: 20px 0 10px;
-      font-size: clamp(32px, 9vw, 62px);
-      line-height: 1.02;
-      letter-spacing: -0.09em;
-      font-weight: 900;
+    .panel-hero-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      min-width: 0;
     }
 
-    .panel-hero p {
-      position: relative;
-      z-index: 2;
-      max-width: 620px;
+    .panel-kicker-row {
+      padding: 18px 20px 0;
+    }
+
+    .panel-kicker {
+      display: inline-block;
+      padding: 9px 14px 8px;
+      border: 3px solid var(--black);
+      background: var(--c-yellow);
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel-title-row {
+      padding: 16px 20px 14px;
+    }
+
+    .panel-title-row h1 {
       margin: 0;
+      font-size: clamp(34px, 5vw, 74px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      font-weight: 900;
+      word-break: keep-all;
+    }
+
+    .panel-leadbox {
+      margin: 0 20px 22px;
+      padding: 16px 18px;
+      border: 3px solid var(--black);
+      background: rgba(255,255,255,0.5);
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.82;
       font-weight: 800;
-      color: var(--ink-soft);
     }
 
     .panel-body {
-      padding: 22px 18px 112px;
-    }
-
-    .article-body {
-      display: grid;
-      gap: 18px;
-    }
-
-    .article-body p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 2.02;
-      font-weight: 650;
-      color: rgba(7,7,7,0.82);
+      padding: 24px 20px 124px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0,0,0,0.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 24px 24px;
     }
 
     .article-meta-box {
-      margin: 0 0 20px;
-      padding: 14px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
       border: 3px solid var(--black);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.66);
-      box-shadow: var(--shadow-small);
+      background: rgba(255,255,255,0.58);
     }
 
     .article-meta-box p {
@@ -1071,8 +934,22 @@
       font-size: 12px;
       line-height: 1.7;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .article-body {
+      display: grid;
+      gap: 18px;
+      max-width: 860px;
+    }
+
+    .article-body p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 2.02;
+      font-weight: 650;
+      color: rgba(0,0,0,0.84);
     }
 
     .panel-end {
@@ -1080,343 +957,280 @@
       padding-top: 16px;
       border-top: 3px solid var(--black);
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 11px;
+      line-height: 1.8;
       font-weight: 700;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-faint);
     }
 
+    .close-panel {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 1200;
+      width: min(440px, calc(100vw - 30px));
+      min-height: 70px;
+      padding: 18px 24px;
+      border: 3px solid var(--black);
+      background: var(--c-yellow);
+      color: var(--black);
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
     .footer {
-      padding: 84px 16px 100px;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(169,219,245,0.28), transparent 28%),
-        radial-gradient(circle at 84% 22%, rgba(255,230,108,0.2), transparent 28%),
-        var(--black);
-      color: var(--paper2);
+      padding: 70px 18px 86px;
+      background: var(--black);
+      color: #fff;
+      border-top: 3px solid #fff;
     }
 
     .footer-inner {
-      width: min(1120px, 100%);
+      width: min(1280px, 100%);
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 22px;
     }
 
-    .footer h2 {
-      margin: 0;
-      font-size: clamp(58px, 16vw, 150px);
-      line-height: 0.75;
-      letter-spacing: -0.15em;
+    .footer-logo {
+      font-size: 96px;
+      line-height: 0.82;
+      letter-spacing: -0.12em;
       font-weight: 900;
+      color: var(--c-pink);
       text-transform: lowercase;
     }
 
-    .footer p {
-      max-width: 720px;
-      margin: 26px 0 0;
+    .footer-text p {
+      margin: 0 0 14px;
+      max-width: 780px;
       font-size: 15px;
-      line-height: 1.9;
+      line-height: 1.95;
       font-weight: 700;
-      color: rgba(255,248,232,0.78);
+      color: rgba(255,255,255,0.82);
     }
 
-    .footer-actions {
+    .footer-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 26px;
+      margin-top: 16px;
     }
 
-    .footer-button {
+    .footer-buttons a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 154px;
+      min-width: 170px;
       height: 48px;
       padding: 0 18px;
-      border: 3px solid var(--paper2);
-      border-radius: 999px;
-      background: var(--paper2);
-      color: var(--black);
+      border: 2px solid #fff;
+      background: transparent;
+      color: #fff;
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    @keyframes escalatorSteps {
-      from { background-position-y: 0; }
-      to { background-position-y: 36px; }
-    }
-
-    @keyframes floatDown {
-      0%, 100% { transform: translateY(-2px); opacity: 0.56; }
-      50% { transform: translateY(4px); opacity: 1; }
-    }
-
-    @media (min-width: 760px) {
-      .site-nav {
-        top: 20px;
-      }
-
-      .brand-text strong {
-        font-size: 30px;
-      }
-
-      .hero {
-        padding: 140px 34px 100px;
-      }
-
-      .floor-map {
-        padding: 34px 34px 0;
-      }
-
-      .floor-map-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .floor-map-item {
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .hero-bottom,
+      .panel-hero,
+      .footer-inner,
+      .floor-header-bottom {
         grid-template-columns: 1fr;
       }
 
-      .floor {
-        padding: 126px 34px 126px;
+      .hero-side,
+      .panel-hero-side,
+      .floor-text,
+      .hero-note {
+        border-right: 0;
       }
 
-      .floor-header {
-        top: 98px;
-        margin-bottom: 60px;
+      .hero-side,
+      .panel-hero-side {
+        border-bottom: 3px solid var(--black);
       }
 
-      .article-row {
-        margin-bottom: 56px;
+      .hero-note {
+        border-bottom: 3px solid var(--black);
       }
 
-      .article-row.left {
-        padding-right: 48%;
+      .hero-sticker {
+        min-height: 110px;
       }
 
+      .floor-header-bottom {
+        display: block;
+      }
+
+      .floor-text {
+        border-bottom: 3px solid var(--black);
+      }
+
+      .floor-color {
+        min-height: 110px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .topbar-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-block {
+        min-height: 54px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.24);
+      }
+
+      .topbar-copy {
+        min-height: 42px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.24);
+        justify-content: center;
+      }
+
+      .topnav {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .topnav a {
+        min-width: 0;
+        min-height: 44px;
+      }
+
+      .hero {
+        padding-top: 152px;
+      }
+
+      .issue-map-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .issue-map-item {
+        border-right: 0;
+        border-bottom: 3px solid var(--black);
+      }
+
+      .issue-map-item:last-child {
+        border-bottom: 0;
+      }
+
+      .article-row.left,
       .article-row.right {
-        padding-left: 48%;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: flex-start;
       }
 
       .article-row.left::after,
       .article-row.right::after {
-        width: 32%;
-      }
-
-      .article-row.left::after {
-        left: 52%;
-      }
-
-      .article-row.right::after {
-        right: 52%;
-      }
-
-      .article-card {
-        width: min(100%, 500px);
-      }
-
-      .article-door {
-        min-height: 316px;
-        padding: 18px;
-      }
-
-      .article-visual {
-        height: 136px;
-      }
-
-      .article-door h3 {
-        font-size: 32px;
-      }
-
-      .article-door p {
-        font-size: 14px;
-      }
-
-      .article-panel {
-        padding: 5svh 5vw;
-      }
-
-      .panel-scroll {
-        height: calc(90svh - 56px);
-      }
-
-      .panel-body {
-        padding: 28px 34px 124px;
-      }
-
-      .article-body p {
-        font-size: 16px;
-      }
-
-      .close-panel {
-        bottom: 24px;
-        width: min(380px, calc(100vw - 44px));
-        min-height: 60px;
-        font-size: 13px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .site-nav {
-        grid-template-columns: 1fr;
-        border-radius: 18px;
-      }
-
-      .nav-floors {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .nav-floors a {
-        width: 100%;
-      }
-
-      .hero {
-        padding-top: 146px;
-      }
-
-      .hero h1 {
-        font-size: clamp(74px, 24vw, 110px);
-      }
-
-      .hero-copy {
-        font-size: 14px;
-        line-height: 1.82;
-      }
-
-      .sticker-1 {
-        width: 82px;
-        height: 56px;
-        right: 4%;
-        top: 20%;
-      }
-
-      .sticker-1::before {
-        font-size: 15px;
-      }
-
-      .sticker-2 {
-        width: 64px;
-        height: 64px;
-        left: 4%;
-        top: 24%;
-      }
-
-      .sticker-3 {
         display: none;
       }
 
-      .article-row.left {
-        padding-right: 18%;
-      }
-
-      .article-row.right {
-        padding-left: 18%;
-      }
-
-      .article-row.left::after,
-      .article-row.right::after {
-        width: 13%;
-      }
-
-      .article-row.left::after {
-        left: calc(100% - 18%);
-      }
-
-      .article-row.right::after {
-        right: calc(100% - 18%);
-      }
-
       .article-card {
-        width: min(100%, 332px);
+        width: 100%;
       }
 
-      .article-door h3 {
-        font-size: 21px;
+      .article-topline {
+        grid-template-columns: 84px 1fr 118px;
       }
 
-      .article-panel {
-        padding: 3svh 2vw;
-      }
-
-      .panel-topbar,
-      .panel-scroll {
+      .panel-shell {
         width: 96vw;
       }
 
       .panel-scroll {
-        height: calc(94svh - 52px);
+        height: calc(94svh - 62px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 170px 12px 34px;
       }
 
-      .panel-hero {
-        min-height: 180px;
-        padding: 20px 16px;
+      .issue-map,
+      .floor,
+      .footer {
+        padding-left: 12px;
+        padding-right: 12px;
       }
 
-      .panel-hero h1 {
-        margin: 18px 0 10px;
-        font-size: clamp(30px, 8.4vw, 42px);
-        line-height: 1.08;
-        letter-spacing: -0.075em;
+      .hero-title {
+        font-size: clamp(42px, 14vw, 72px);
       }
 
-      .panel-hero p {
+      .issue-no {
+        font-size: 84px;
+      }
+
+      .hero-side-meta {
+        font-size: 15px;
+      }
+
+      .hero-subtitle,
+      .hero-note p,
+      .floor-text p,
+      .article-body-brief p {
+        font-size: 14px;
+      }
+
+      .article-body-brief h3 {
+        font-size: 24px;
+      }
+
+      .panel-topbar {
+        font-size: 10px;
+      }
+
+      .panel-kicker {
+        font-size: 12px;
+        padding: 8px 12px 7px;
+      }
+
+      .panel-title-row h1 {
+        font-size: clamp(30px, 10vw, 48px);
+      }
+
+      .panel-leadbox {
         font-size: 14px;
         line-height: 1.75;
-        font-weight: 700;
-      }
-
-      .panel-body {
-        padding: 18px 14px 108px;
-      }
-
-      .article-meta-box {
-        margin-bottom: 18px;
-        padding: 12px;
-      }
-
-      .article-meta-box p {
-        font-size: 10px;
-        line-height: 1.55;
-      }
-
-      .article-body {
-        gap: 16px;
       }
 
       .article-body p {
         font-size: 14px;
-        line-height: 1.9;
-        font-weight: 550;
-        letter-spacing: 0.01em;
-        text-align: left;
-      }
-
-      .panel-end {
-        margin-top: 24px;
-        padding-top: 14px;
+        line-height: 1.95;
       }
 
       .close-panel {
-        bottom: 10px;
-        width: min(340px, calc(100vw - 28px));
-        min-height: 54px;
-        padding: 15px 18px;
-        font-size: 11px;
+        width: calc(100vw - 24px);
+        min-height: 64px;
+        font-size: 13px;
+      }
+
+      .footer-logo {
+        font-size: 72px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
-      }
-
-      .hero-note::after,
-      .hero::before,
-      .floor::after {
-        animation: none;
       }
 
       .article-panel,
@@ -1429,74 +1243,105 @@
 </head>
 
 <body>
-  <header class="site-nav">
-    <a class="brand" href="#top" aria-label="NOISE トップへ戻る">
-      <span class="brand-mark"></span>
-      <span class="brand-text">
-        <strong>noise</strong>
-        <span>pop culture web magazine</span>
-      </span>
-    </a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo-block" href="#top">noise</a>
 
-    <nav class="nav-floors" aria-label="フロアナビゲーション">
-      <a href="#floor-5">5F</a>
-      <a href="#floor-4">4F</a>
-      <a href="#floor-3">3F</a>
-      <a href="#floor-2">2F</a>
-      <a href="#floor-1">1F</a>
-    </nav>
+      <div class="topbar-copy">
+        INDEPENDENT WEB MAGAZINE / LATE-90S MUSIC PRESS FEEL / FILM, MUSIC, MEDIA, COLUMN
+      </div>
+
+      <nav class="topnav" aria-label="ページナビゲーション">
+        <a href="#top">TOP</a>
+        <a href="#floor-5">01</a>
+        <a href="#floor-4">02</a>
+        <a href="#floor-3">03</a>
+        <a href="#floor-2">04</a>
+        <a href="#floor-1">05</a>
+        <a href="#footer">ABOUT</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-sticker sticker-1" aria-hidden="true"></div>
-      <div class="hero-sticker sticker-2" aria-hidden="true"></div>
-      <div class="hero-sticker sticker-3" aria-hidden="true"></div>
-
       <div class="hero-inner">
-        <div class="hero-label">Issue 001 / Sweet Pop Magazine</div>
-        <h1>
-          noise
-          <span>記事の入口を覗きながら、5Fから1Fへ降りる。</span>
-        </h1>
-        <p class="hero-copy">
-          NOISEは、映画、音楽、アイドル、ファッション、インターネット、フードを扱うポップカルチャーWebマガジンです。この号では、記事一覧をクリックして移動するのではなく、ショッピングモールの通路を歩き、気になるテナントに入るように記事を読みます。入口をタップすると、記事がその場で画面の約90%まで広がります。
-        </p>
-        <div class="hero-note">Start from 5F</div>
+        <div class="hero-grid">
+          <aside class="hero-side">
+            <p class="issue-no">01</p>
+            <div class="side-rule"></div>
+            <div class="hero-side-meta">
+              <span>NOISE</span>
+              <span>POP CULTURE</span>
+              <span>WEB MAGAZINE</span>
+              <span>ZERO CLICK</span>
+              <span>ISSUE 001</span>
+            </div>
+          </aside>
+
+          <div class="hero-main">
+            <div class="hero-main-top">
+              <div class="block-1"></div>
+              <div class="block-2"></div>
+            </div>
+
+            <div class="hero-title-wrap">
+              <div class="hero-kicker">FEATURE / ISSUE OPENING</div>
+              <h1 class="hero-title">NOISE</h1>
+              <p class="hero-subtitle">
+                90年代末〜00年代の音楽雑誌の空気を、スマホの縦スクロールに移植する。ここでは記事一覧をクリックしません。通路を下り、気になった記事の入口をタップすると、その記事が画面の9割までスライドして広がります。
+              </p>
+            </div>
+
+            <div class="hero-bottom">
+              <div class="hero-note">
+                <p>
+                  今号は5Fから1Fへ降りる構造です。各フロアに異なるジャンルの記事を配置し、左右に互い違いに並んだ「入口」から本文に入ります。本文を読み終えたら、大きな
+                  <strong>TAP HERE TO RETURN</strong>
+                  ボタンか、本文枠の外側をタップして通路へ戻れます。
+                </p>
+              </div>
+
+              <div class="hero-sticker">
+                <span>ISSUE MAP ↓</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="floor-map" aria-label="NOISE フロア概要">
-      <div class="floor-map-inner">
-        <div class="floor-map-top">
+    <section class="issue-map" aria-label="フロアマップ">
+      <div class="issue-map-inner">
+        <div class="issue-map-header">
           <strong>issue map</strong>
-          <span>Tap floor to jump</span>
+          <span>tap each floor to jump directly</span>
         </div>
 
-        <div class="floor-map-grid">
-          <a class="floor-map-item" href="#floor-5">
+        <div class="issue-map-grid">
+          <a class="issue-map-item" href="#floor-5">
             <strong>5F</strong>
-            <p>Film / 大きなスクリーンとスターのフロア</p>
+            <p>FILM / スクリーン、スター、アメリカ。いちばん上の階には大きく見せたい記事を置く。</p>
           </a>
 
-          <a class="floor-map-item" href="#floor-4">
+          <a class="issue-map-item" href="#floor-4">
             <strong>4F</strong>
-            <p>Music / ノイズ、声、アルバムのフロア</p>
+            <p>MUSIC / アルバム、声、神話、批評。耳で読むためのフロア。</p>
           </a>
 
-          <a class="floor-map-item" href="#floor-3">
+          <a class="issue-map-item" href="#floor-3">
             <strong>3F</strong>
-            <p>Idol & Pop / MV、パッケージ、身体のフロア</p>
+            <p>POP / アイドル、MV、パッケージ感。ポップの届き方を考える。</p>
           </a>
 
-          <a class="floor-map-item" href="#floor-2">
+          <a class="issue-map-item" href="#floor-2">
             <strong>2F</strong>
-            <p>Internet & Fashion / 記憶、服、世代のフロア</p>
+            <p>INTERNET / 世代、記憶、ファッション。中間層の雑談と批評。</p>
           </a>
 
-          <a class="floor-map-item" href="#floor-1">
+          <a class="issue-map-item" href="#floor-1">
             <strong>1F</strong>
-            <p>Food / 街へ戻る前のフードコート</p>
+            <p>FOOD / 出口前の寄り道。カルチャーを街へ返すためのフードフロア。</p>
           </a>
         </div>
       </div>
@@ -1504,15 +1349,23 @@
 
     <div class="magazine" id="magazine"></div>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="footer-inner">
-        <h2>noise</h2>
-        <p>
-          NOISEは、ポップカルチャーを“記事一覧”ではなく“回遊空間”として読ませるWebマガジンです。5Fから1Fへ降りながら、気になった記事の入口をタップしてください。本文はページ遷移せず、その場で広がり、TAP HERE TO RETURNで通路へ戻れます。
-        </p>
-        <div class="footer-actions">
-          <a class="footer-button" href="#top">Back to top</a>
-          <a class="footer-button" href="#floor-5">Start again</a>
+        <div class="footer-logo">noise</div>
+        <div class="footer-text">
+          <p>
+            NOISEは、記事をリンク一覧ではなく回遊空間として読むためのポップカルチャーWebマガジンです。90年代末から00年代の音楽雑誌の誌面感を、現代のスマホ的なスライド体験に置き換えることを目指しています。
+          </p>
+          <p>
+            各記事の入口をタップすると、左側の記事は左から、右側の記事は右から本文がスライドして開きます。読み終えたら大きな
+            TAP HERE TO RETURN
+            ボタン、または本文枠の外側をタップして通路に戻れます。
+          </p>
+
+          <div class="footer-buttons">
+            <a href="#top">BACK TO TOP</a>
+            <a href="#floor-5">START FROM 5F</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -1526,7 +1379,7 @@
         id: "floor-5",
         className: "floor-5",
         floor: "5F",
-        meta: "Film / Theater Floor",
+        meta: "FILM / THEATER FLOOR",
         title: "映画のフロア",
         lead: "大きなスクリーン、スター、アメリカ、子ども時代。最上階には、遠くからでも見える物語を置く。",
         articles: [
@@ -1534,30 +1387,32 @@
             id: "article-01",
             side: "left",
             number: "01",
-            category: "Film Review",
+            category: "FILM",
+            label: "FILM",
             title: "映画『マイケル』レビュー",
             teaser: "スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。",
-            meta: "Film / Michael / Star Image / Gaze / Remix",
+            meta: "FILM / MICHAEL / STAR IMAGE / GAZE / REMIX",
             lead: "スターは誰の視線によって作られるのか。伝記映画を、視線と編集の映画として読む。",
             body: [
               "『マイケル』を見ていて最初に気づくのは、この映画がマイケル・ジャクソンの内面を説明する映画というより、彼がどのような視線に囲まれていたのかを追いかける映画だということだ。父、兄弟、母、プロデューサー、メディア、観客。マイケルの周囲には常に誰かの目がある。彼は見られることでスターになり、同時に見られすぎることで人間としての輪郭を削られていく。",
               "伝記映画としては、説明が足りない部分もある。彼の矛盾や不穏さを、もっと厳しく扱うべきだと感じる人もいるだろう。だが映画が最も強くなるのは、倫理的な判断を一度保留し、パフォーマンスの身体を見せる瞬間である。歌が始まり、リズムが鳴り、衣装の白さや靴の角度が画面を支配すると、観客は意味を理解する前に反応してしまう。マイケルという存在の怖さは、まさにそこにある。考えるより先に、見てしまう。",
-              "この映画は、彼を完全に説明することには成功していない。むしろ説明できなさを、スターの輪郭として残している。誰が彼を作ったのか。家族か、音楽産業か、観客か、メディアか、それとも彼自身か。おそらく答えは一つではない。『マイケル』は、その複数のフェーダーを調整しながら、もう一度「マイケル・ジャクソン」という音像をミックスし直した映画である。美しく、危うく、どこか片づかなさを残す。その片づかなさこそが、本作の批評的な余韻だ。"
+              "この映画は、彼を完全に説明することには成功していない。むしろ説明できなさを、スターの輪郭として残している。誰が彼を作ったのか。家族か、音楽産業か、観客か、メディアか、それとも彼自身か。おそらく答えは一つではない。『マイケル』は、その複数のフェーダーを調整しながら、もう一度「マイケル・ジャクソン」という音像をミックスし直した映画である。"
             ]
           },
           {
             id: "article-02",
             side: "right",
             number: "02",
-            category: "Animation",
+            category: "FILM",
+            label: "FILM",
             title: "『トイ・ストーリー』以後のアメリカ",
             teaser: "おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。",
-            meta: "Film / Pixar / America / Toy / Childhood",
+            meta: "FILM / PIXAR / AMERICA / TOY / CHILDHOOD",
             lead: "おもちゃ、子ども部屋、郊外、スクリーン。ピクサーが描き続けたアメリカの自己像。",
             body: [
-              "『トイ・ストーリー』は、おもちゃの映画であると同時に、アメリカの子ども部屋の映画だった。ベッド、壁紙、プラスチックのおもちゃ、テレビ、車庫、郊外の家。そこには、世界を支配しているようでいて、実は子どもの成長によって簡単に捨てられてしまう小さな王国がある。ウッディたちはヒーローでありながら、常に所有物でもある。その不安定さが、シリーズ全体の感情を作っていた。",
-              "面白いのは、シリーズがいつもアメリカの自己批判として読めてしまうことだ。カウボーイ、宇宙飛行士、消費社会、ファミリー、郊外、ノスタルジー。アメリカの神話的な記号が子ども部屋の中に詰め込まれ、やがて新しい世代に置き換えられていく。ウッディは古いアメリカのヒーローであり、バズは宇宙開発時代の夢であり、しかしどちらも本当には自由ではない。彼らは飛べないし、永遠に選ばれ続けることもできない。",
-              "だから『トイ・ストーリー』以後のアメリカとは、夢が終わった後に、その夢のグッズだけが残っている世界なのかもしれない。スクリーンの時代に、おもちゃはまだ必要か。答えは単純ではない。手で触れられるもの、名前をつけられるもの、どこかへ連れていけるもの。そうした物質的な記憶は、デジタルの中に完全には回収されない。おもちゃたちは古くなりながら、アメリカの夢がプラスチックの形をしていた時代を、いまも小さく保存している。"
+              "『トイ・ストーリー』は、おもちゃの映画であると同時に、アメリカの子ども部屋の映画だった。ベッド、壁紙、プラスチックのおもちゃ、テレビ、車庫、郊外の家。そこには、世界を支配しているようでいて、実は子どもの成長によって簡単に捨てられてしまう小さな王国がある。",
+              "面白いのは、シリーズがいつもアメリカの自己批判として読めてしまうことだ。カウボーイ、宇宙飛行士、消費社会、ファミリー、郊外、ノスタルジー。アメリカの神話的な記号が子ども部屋の中に詰め込まれ、やがて新しい世代に置き換えられていく。",
+              "だから『トイ・ストーリー』以後のアメリカとは、夢が終わった後に、その夢のグッズだけが残っている世界なのかもしれない。おもちゃたちは古くなりながら、アメリカの夢がプラスチックの形をしていた時代を、いまも小さく保存している。"
             ]
           }
         ]
@@ -1566,38 +1421,40 @@
         id: "floor-4",
         className: "floor-4",
         floor: "4F",
-        meta: "Music / Album Floor",
+        meta: "MUSIC / ALBUM FLOOR",
         title: "音楽のフロア",
-        lead: "アルバム、声、サンプル、自己神話。耳で読むための記事が、ポップアップショップのように並ぶ。",
+        lead: "アルバム、声、サンプル、自己神話。耳で読むための記事が、ショップのように並ぶ。",
         articles: [
           {
             id: "article-03",
             side: "left",
             number: "03",
-            category: "Feature",
+            category: "FEATURE",
+            label: "MUSIC",
             title: "特集「アメリカ」",
             teaser: "ポップカルチャーは、なぜいつもアメリカを通ってくるのか。",
-            meta: "Feature / America / Pop Culture / Image",
+            meta: "FEATURE / AMERICA / POP CULTURE / IMAGE",
             lead: "ポップカルチャーは、なぜいつもアメリカを通ってくるのか。",
             body: [
-              "日本でカルチャーについて話すとき、アメリカはいつも少し遅れて、しかし確実に現れる。映画、R&B、ヒップホップ、スニーカー、ファストフード、郊外、ロードムービー、スポーツ中継、テレビドラマ。私たちはアメリカそのものを知っているわけではない。断片としてのアメリカを、輸入された形式として、字幕付きの映像として、雑誌の特集として、アルバムのジャケットとして受け取ってきた。",
-              "だからアメリカは、実体よりも先にイメージとして存在する。自由、暴力、成功、孤独、家族、移動、宗教、資本、郊外、荒野。これらの言葉は、どれもアメリカを説明するようでいて、同時にアメリカ映画やアメリカ音楽が作り出した物語でもある。私たちは「本当のアメリカ」を見る前に、すでに編集されたアメリカを何度も見ている。",
-              "この特集で扱いたいのは、アメリカを好きか嫌いかではない。むしろ、私たちの感覚がどれほどアメリカ的な形式を通って作られているのかという問題だ。ヒーローはなぜ孤独なのか。成功物語はなぜ破滅と隣り合うのか。ポップスターはなぜ神話化されるのか。家族映画はなぜ国家の寓話になってしまうのか。アメリカを考えることは、遠くの国を考えることではない。自分の中にある、輸入された感情の形を点検することである。"
+              "日本でカルチャーについて話すとき、アメリカはいつも少し遅れて、しかし確実に現れる。映画、R&B、ヒップホップ、スニーカー、ファストフード、郊外、ロードムービー。私たちはアメリカそのものを知っているわけではない。断片としてのアメリカを、編集された形式として受け取ってきた。",
+              "だからアメリカは、実体よりも先にイメージとして存在する。自由、暴力、成功、孤独、家族、移動、宗教、資本。私たちは「本当のアメリカ」を見る前に、すでに編集されたアメリカを何度も見ている。",
+              "この特集で扱いたいのは、アメリカを好きか嫌いかではない。むしろ、私たちの感覚がどれほどアメリカ的な形式を通って作られているのかという問題だ。アメリカを考えることは、自分の中にある、輸入された感情の形を点検することである。"
             ]
           },
           {
             id: "article-04",
             side: "right",
             number: "04",
-            category: "Album Review",
+            category: "REVIEW",
+            label: "MUSIC",
             title: "Ye『Bully』レビュー",
             teaser: "壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。",
-            meta: "Music / Ye / Album / Self Myth",
+            meta: "MUSIC / YE / ALBUM / SELF MYTH",
             lead: "壊れた看板を磨き直すことは、店の空気まで元に戻すことなのか。",
             body: [
-              "『Bully』を聴くと、まず耳に入るのは既視感である。オートチューンの揺れ、ざらついたビート、ソウルサンプルの断片、かつての巨大な自己神話を思わせるフレーズ。Yeはここで、新しい建物を建てるというより、過去の部材を再利用して仮設の売場を作っている。『808s』的な孤独、『Yeezus』的な金属音、『Graduation』的な祝祭感。そのすべてが、完全には統合されないまま並んでいる。",
-              "本作は強い復活作というより、復活という形式そのものを商品化した作品に近い。リスナーは新しいYeを聴いているというより、自分がかつて好きだったYeの面影を探している。アルバムはそれをよく理解しているように見える。だからこそ、ところどころで意図的に過去作の記憶を刺激する。しかし、刺激された記憶は必ずしも幸福ではない。",
-              "音楽的には、まだ惹きつける瞬間がある。サンプルの切り方、声の置き方、荒い輪郭の中に急に現れる美しいコード。Yeの耳は、完全には失われていない。だが、問題はその才能がどこへ向かっているのかである。『Bully』は、自分の神話を修復しようとするアルバムでありながら、修復という行為の限界も露呈している。壊れた看板を磨き直しても、店の中の空気まで元通りになるわけではない。"
+              "『Bully』を聴くと、まず耳に入るのは既視感である。オートチューンの揺れ、ざらついたビート、ソウルサンプルの断片。Yeはここで、新しい建物を建てるというより、過去の部材を再利用して仮設の売場を作っている。",
+              "本作は強い復活作というより、復活という形式そのものを商品化した作品に近い。リスナーは新しいYeを聴いているというより、自分がかつて好きだったYeの面影を探している。",
+              "音楽的にはまだ惹きつける瞬間がある。だが、問題はその才能がどこへ向かっているのかである。『Bully』は、自分の神話を修復しようとするアルバムでありながら、修復という行為の限界も露呈している。"
             ]
           },
           {
@@ -1605,14 +1462,15 @@
             side: "left",
             number: "05",
             category: "R&B",
+            label: "MUSIC",
             title: "RAYEの歌はなぜ演劇的なのか",
             teaser: "大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。",
-            meta: "Music / RAYE / Voice / Theater",
+            meta: "MUSIC / RAYE / VOICE / THEATER",
             lead: "大きく歌い、大きく傷つき、大きく回復する。声の過剰さについて。",
             body: [
-              "RAYEの歌を聴いていると、声が単にメロディを運んでいるのではなく、舞台上で出来事を起こしているように感じる。息の吸い方、言葉の置き方、音程を少しだけ引きずる癖、急に広がる高音。そこには、スタジオ録音でありながら、観客の前で何かを告白しているような緊張がある。彼女の歌は、うまいというより、場を作る。",
-              "この演劇性は、ときに過剰でもある。すべてを歌い、すべてを語り、すべてを意味づけようとするため、リスナーが解釈する余白が狭くなる瞬間もある。だが、その説明しすぎる感じも含めて、RAYEの現在地なのだと思う。彼女はクールに見せることよりも、壊れそうなほど誠実に差し出すことを選んでいる。",
-              "最も魅力的なのは、声が常に物語を引き受けていることだ。大きなアレンジに飲み込まれそうになっても、RAYEの声は中心に戻ってくる。そこには、ただ上手い歌手という以上の説得力がある。希望は軽い言葉ではない。RAYEにとって希望とは、明るい結論ではなく、何度も大げさに歌い直すことでようやく見えてくる仮の出口である。"
+              "RAYEの歌を聴いていると、声が単にメロディを運んでいるのではなく、舞台上で出来事を起こしているように感じる。息の吸い方、言葉の置き方、音程を少しだけ引きずる癖、急に広がる高音。そこには、観客の前で何かを告白しているような緊張がある。",
+              "この演劇性は、ときに過剰でもある。すべてを歌い、すべてを語り、すべてを意味づけようとするため、リスナーが解釈する余白が狭くなる瞬間もある。だが、その説明しすぎる感じも含めて、RAYEの現在地なのだと思う。",
+              "最も魅力的なのは、声が常に物語を引き受けていることだ。希望とは明るい結論ではなく、何度も大げさに歌い直すことでようやく見えてくる仮の出口である。"
             ]
           }
         ]
@@ -1621,38 +1479,40 @@
         id: "floor-3",
         className: "floor-3",
         floor: "3F",
-        meta: "Idol / Pop Package",
-        title: "アイドルとポップのフロア",
+        meta: "POP / PACKAGE FLOOR",
+        title: "ポップのフロア",
         lead: "MV、制服、日常映像、パッケージ。曲だけではなく、届き方そのものを読む階。",
         articles: [
           {
             id: "article-06",
             side: "left",
             number: "06",
-            category: "Pop",
+            category: "POP",
+            label: "POP",
             title: "NewJeans以後の“パッケージ”感",
             teaser: "楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。",
-            meta: "Pop / Package / Design / Idol",
+            meta: "POP / PACKAGE / DESIGN / IDOL",
             lead: "楽曲、写真、制服、UI、余白。ポップはどこから始まり、どこまで続くのか。",
             body: [
-              "NewJeans以後、ポップミュージックの届き方は、曲単体ではなくパッケージ全体として語られることが増えた。楽曲、MV、写真、制服、ロゴ、UI、スマートフォン上の見え方、ファンが保存する画像の比率。すべてが一つの感触として届く。重要なのは、曲の外側にあるデザインが、曲の意味を補足しているのではなく、曲そのものの一部として機能していることだ。",
-              "このパッケージ感は、2000年代のCD文化とも少し違う。CDジャケットは所有される物だったが、現在のポップのパッケージは、スクリーン上で何度も切り抜かれ、保存され、再投稿される。そこでは「公式の完成品」よりも、「使われやすい質感」が重要になる。少し余白があること。日常写真のように見えること。過剰に説明しないこと。ファンが自分の記憶に貼り付けられること。",
-              "ポップは、もはや曲が始まった瞬間に始まるのではない。サムネイルを見た瞬間、ティザーの色を見た瞬間、ロゴの角丸を見た瞬間、すでに始まっている。逆に、曲が終わっても終わらない。写真フォルダ、SNS、プレイリスト、友人との会話の中で続いていく。NewJeans以後のパッケージ感とは、ポップが一つの作品ではなく、生活の中に侵入する小さなUIになったことの名前である。"
+              "NewJeans以後、ポップミュージックの届き方は、曲単体ではなくパッケージ全体として語られることが増えた。楽曲、MV、写真、制服、ロゴ、UI、スマートフォン上の見え方。すべてが一つの感触として届く。",
+              "このパッケージ感は、2000年代のCD文化とも少し違う。現在のポップのパッケージは、スクリーン上で何度も切り抜かれ、保存され、再投稿される。重要なのは「完成品」よりも、「使われやすい質感」である。",
+              "ポップは、もはや曲が始まった瞬間に始まるのではない。サムネイルを見た瞬間、ティザーの色を見た瞬間、ロゴの角丸を見た瞬間、すでに始まっている。"
             ]
           },
           {
             id: "article-07",
             side: "right",
             number: "07",
-            category: "MV Essay",
+            category: "ESSAY",
+            label: "POP",
             title: "アイドルMVと日常映像",
             teaser: "学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。",
-            meta: "Idol / Music Video / Everyday / Fiction",
+            meta: "IDOL / MUSIC VIDEO / EVERYDAY / FICTION",
             lead: "学校、廊下、体育館、駅前。日常っぽさは、どのように演出されるのか。",
             body: [
-              "アイドルMVにおける「日常っぽさ」は、実際の日常そのものではない。学校の廊下、体育館、放課後の駅前、コンビニの光、友人同士の何気ない表情。そうした要素は、自然に撮られているように見えて、かなり精密に組み立てられている。日常らしさとは、加工されていないことではなく、加工が見えにくいことによって生まれる。",
-              "特に重要なのは、演技と偶然の境界である。笑っているのか、笑わされているのか。ふざけているのか、ふざける演技をしているのか。アイドルMVは、この曖昧さを利用する。観客は、完成されたスターを見ると同時に、素の本人を見たような気分になる。そこに親密さが生まれる。しかしその親密さは、画面の中で作られた距離の演出でもある。",
-              "日常映像の強さは、物語を大げさに語らなくても、時間の質感を伝えられるところにある。誰かが走る。誰かが窓の外を見る。誰かが何かを言いかけてやめる。それだけで、観客はその空間に自分の記憶を重ねる。アイドルMVにおける日常とは、現実の記録ではなく、観客が入り込める余白である。そこにこそ、ポップの新しいリアリティがある。"
+              "アイドルMVにおける「日常っぽさ」は、実際の日常そのものではない。学校の廊下、体育館、放課後の駅前。そうした要素は、自然に撮られているように見えて、かなり精密に組み立てられている。",
+              "特に重要なのは、演技と偶然の境界である。笑っているのか、笑わされているのか。アイドルMVは、この曖昧さを利用する。観客は、完成されたスターを見ると同時に、素の本人を見たような気分になる。",
+              "日常映像の強さは、物語を大げさに語らなくても、時間の質感を伝えられるところにある。アイドルMVにおける日常とは、現実の記録ではなく、観客が入り込める余白である。"
             ]
           }
         ]
@@ -1661,7 +1521,7 @@
         id: "floor-2",
         className: "floor-2",
         floor: "2F",
-        meta: "Internet / Fashion",
+        meta: "INTERNET / FASHION FLOOR",
         title: "インターネットと服のフロア",
         lead: "懐かしさの速度、スカート丈、SNS、平成リバイバル。身体と記憶の中層階。",
         articles: [
@@ -1669,30 +1529,32 @@
             id: "article-08",
             side: "left",
             number: "08",
-            category: "Column",
+            category: "COLUMN",
+            label: "COLUMN",
             title: "コラム「2001年問題」",
             teaser: "2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。",
-            meta: "Column / Generation / Internet / Memory",
+            meta: "COLUMN / GENERATION / INTERNET / MEMORY",
             lead: "2001年生まれは、いつから“昔”を語れるのか。記憶が古びる速度について。",
             body: [
-              "2001年生まれという言葉には、妙な響きがある。20世紀ではなく、21世紀の側に置かれた最初期の世代。インターネットはすでにあり、携帯電話もあり、アニメや音楽やゲームは大量に流通していた。けれど、スマートフォンがすべてを飲み込む前の時間も、まだ少しだけ残っていた。だから2001年生まれは、デジタルネイティブでありながら、どこかアナログの残響も知っている。",
-              "この世代が抱える問題は、自分たちの「懐かしさ」が早く古びすぎることだ。小学生の頃に触れた動画サイト、ガラケーとスマホの切り替わり、CDショップの残り香、初期SNS、ニコニコ動画、YouTube、K-POP、ボカロ、深夜アニメ、ファストファッション。全部がそれほど昔ではないのに、すでに別の時代のものとして語られ始めている。",
-              "だから「2001年問題」とは、年齢の問題ではなく、記憶の速度の問題だ。自分が大人になる前に、自分の子ども時代がコンテンツとして整理されてしまう。懐かしいと感じる前に、誰かがその時代をパッケージ化する。そこで必要なのは、ただ昔を美化することではない。自分たちがどんなメディアの切れ目を生きてきたのかを、少し冷静に見ることだ。"
+              "2001年生まれという言葉には、妙な響きがある。21世紀の側に置かれた最初期の世代。インターネットはすでにあり、携帯電話もあり、アニメや音楽やゲームは大量に流通していた。",
+              "この世代が抱える問題は、自分たちの「懐かしさ」が早く古びすぎることだ。スマートフォンがすべてを飲み込む前の時間も、まだ少しだけ残っていた。そのため自分が大人になる前に、自分の子ども時代がコンテンツとして整理されてしまう。",
+              "だから「2001年問題」とは、年齢の問題ではなく、記憶の速度の問題だ。必要なのは、ただ昔を美化することではない。自分たちがどんなメディアの切れ目を生きてきたのかを、少し冷静に見ることだ。"
             ]
           },
           {
             id: "article-09",
             side: "right",
             number: "09",
-            category: "Fashion",
+            category: "FASHION",
+            label: "FASHION",
             title: "平成リバイバルとスカート丈",
             teaser: "服の長さは、時代の気分をどのように記録しているのか。",
-            meta: "Fashion / Heisei Revival / Body / Archive",
+            meta: "FASHION / HEISEI REVIVAL / BODY / ARCHIVE",
             lead: "服の長さは、時代の気分をどのように記録しているのか。",
             body: [
-              "スカート丈は、単なる流行の長短ではない。膝上、膝下、ミニ、ロング、プリーツ、タイト。その長さは、身体の見せ方、歩き方、写真の撮られ方、街の空気と結びついている。平成リバイバルを考えるとき、ロゴや色や髪型だけでなく、スカート丈の変化を見ると、その時代の身体感覚が少し見えてくる。",
-              "平成的なミニ丈は、単に露出が多いという話ではない。そこには、制服文化、ギャル、アイドル、ファストファッション、プリクラ、雑誌スナップの影響が重なっている。写真に撮られる身体、友達と並ぶ身体、駅前を歩く身体。スカート丈は、個人の選択であると同時に、メディアが作った見られ方の形式でもある。",
-              "現代のリバイバルは、過去をそのまま再現しているわけではない。過去の丈感を、スマートフォンの画面、SNSの縦長比率、現代のジェンダー感覚、古着の流通の中で再編集している。だから平成リバイバルは懐古ではなく、アーカイブの再配置である。服の長さは、時代の気分を記録する。そしてリバイバルは、その記録をもう一度、別の身体で再生することなのだ。"
+              "スカート丈は、単なる流行の長短ではない。膝上、膝下、ミニ、ロング。その長さは、身体の見せ方、歩き方、写真の撮られ方、街の空気と結びついている。",
+              "平成的なミニ丈は、単に露出が多いという話ではない。そこには、制服文化、ギャル、アイドル、ファストファッション、プリクラ、雑誌スナップの影響が重なっている。",
+              "現代のリバイバルは、過去をそのまま再現しているわけではない。過去の丈感を、スマートフォンの画面、SNSの縦長比率、現代のジェンダー感覚の中で再編集している。"
             ]
           }
         ]
@@ -1701,7 +1563,7 @@
         id: "floor-1",
         className: "floor-1",
         floor: "1F",
-        meta: "Food / Exit Floor",
+        meta: "FOOD / EXIT FLOOR",
         title: "フードと出口のフロア",
         lead: "最後は食べ物へ。映画や音楽のあと、都市へ戻る身体のための一皿。",
         articles: [
@@ -1709,15 +1571,16 @@
             id: "article-10",
             side: "left",
             number: "10",
-            category: "Food",
+            category: "FOOD",
+            label: "FOOD",
             title: "フードコートの孤独",
             teaser: "ひとりで食べることを、都市の中で最も自然にしてくれる場所について。",
-            meta: "Food / Mall / City / Solitude",
+            meta: "FOOD / MALL / CITY / SOLITUDE",
             lead: "ひとりで食べることを、都市の中で最も自然にしてくれる場所について。",
             body: [
-              "レストランでひとりで食べると、少しだけ自分の存在が強調されることがある。席に案内され、注文し、料理を待つ。その一連の流れの中で、ひとりであることが形を持つ。だがフードコートでは、その輪郭が少し薄まる。誰もがトレーを持ち、席を探し、短い時間だけ滞在している。家族連れも、会社員も、学生も、買い物帰りの人も、ひとり客も、同じざわめきの中に混ざる。",
-              "フードコートの孤独は、寂しさではない。むしろ、都市の中で他人に紛れるための技術である。誰かと話してもいいし、話さなくてもいい。スマホを見てもいいし、ただ食べてもいい。料理のジャンルもばらばらで、同じテーブルにラーメン、カレー、サラダ、クレープが並ぶこともある。その雑多さが、食事を少しだけ自由にする。",
-              "カルチャーにおいても、フードコート的な場所は必要だと思う。高級な批評だけではなく、軽く食べられる文章。ジャンルが揃っていなくても、同じ空間に置かれていることで成立する編集。映画レビューの隣にフードコラムがあってもいい。音楽論のあとにレシピがあってもいい。NOISEの1Fに食べ物の記事を置くのは、読み終わった身体を都市に戻すためである。最後は、何かを食べたくなるくらいがちょうどいい。"
+              "レストランでひとりで食べると、少しだけ自分の存在が強調されることがある。だがフードコートでは、その輪郭が少し薄まる。誰もがトレーを持ち、席を探し、短い時間だけ滞在している。その雑多さが、食事を少しだけ自由にする。",
+              "フードコートの孤独は、寂しさではない。むしろ、都市の中で他人に紛れるための技術である。誰かと話してもいいし、話さなくてもいい。スマホを見てもいいし、ただ食べてもいい。",
+              "カルチャーにおいても、フードコート的な場所は必要だと思う。高級な批評だけではなく、軽く食べられる文章。映画レビューの隣にフードコラムがあってもいい。最後は、何かを食べたくなるくらいがちょうどいい。"
             ]
           }
         ]
@@ -1740,23 +1603,38 @@
       <section class="floor ${escapeHTML(floor.className)}" id="${escapeHTML(floor.id)}">
         <div class="floor-shell">
           <header class="floor-header">
-            <div class="floor-meta">
-              <span>${escapeHTML(floor.floor)}</span>
-              <span>${escapeHTML(floor.meta)}</span>
+            <div class="floor-header-top">
+              <div class="floor-no">${escapeHTML(floor.floor)}</div>
+              <div class="floor-meta">${escapeHTML(floor.meta)}</div>
             </div>
-            <h2>${escapeHTML(floor.title)}</h2>
-            <p>${escapeHTML(floor.lead)}</p>
+
+            <div class="floor-header-bottom">
+              <div class="floor-text">
+                <h2>${escapeHTML(floor.title)}</h2>
+                <p>${escapeHTML(floor.lead)}</p>
+              </div>
+              <div class="floor-color"></div>
+            </div>
           </header>
 
           ${floor.articles.map(article => `
             <div class="article-row ${escapeHTML(article.side)}">
               <button class="article-card" type="button" data-panel-target="${escapeHTML(article.id)}" aria-controls="${escapeHTML(article.id)}" aria-expanded="false">
                 <div class="article-door">
-                  <div class="article-visual"><span>sweet package</span></div>
-                  <div class="article-sign"><strong>${escapeHTML(article.number)}</strong> ${escapeHTML(article.category)}</div>
-                  <h3>${escapeHTML(article.title)}</h3>
-                  <p>${escapeHTML(article.teaser)}</p>
-                  <div class="article-enter">Tap to read</div>
+                  <div class="article-topline">
+                    <div class="article-no">${escapeHTML(article.number)}</div>
+                    <div class="article-cat">${escapeHTML(article.category)}</div>
+                    <div class="article-enter">TAP TO ENTER</div>
+                  </div>
+
+                  <div class="article-visual">
+                    <div class="article-visual-label">${escapeHTML(article.label)}</div>
+                  </div>
+
+                  <div class="article-body-brief">
+                    <h3>${escapeHTML(article.title)}</h3>
+                    <p>${escapeHTML(article.teaser)}</p>
+                  </div>
                 </div>
               </button>
             </div>
@@ -1768,29 +1646,50 @@
     panelsRoot.innerHTML = floors.flatMap(floor =>
       floor.articles.map(article => `
         <article id="${escapeHTML(article.id)}" class="article-panel from-${escapeHTML(article.side)}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="${escapeHTML(article.id)}-title">
-          <div class="panel-topbar">
-            <div class="panel-location">${escapeHTML(floor.floor)} / ${escapeHTML(article.category)} / Article ${escapeHTML(article.number)}</div>
-          </div>
+          <div class="panel-shell">
+            <div class="panel-topbar">
+              ${escapeHTML(floor.floor)} / ${escapeHTML(article.category)} / ARTICLE ${escapeHTML(article.number)}
+            </div>
 
-          <div class="panel-scroll">
-            <div class="panel-inner">
-              <div class="panel-surface">
-                <div class="panel-hero">
-                  <div class="panel-badge">Article ${escapeHTML(article.number)} / ${escapeHTML(article.category)}</div>
-                  <h1 id="${escapeHTML(article.id)}-title">${escapeHTML(article.title)}</h1>
-                  <p>${escapeHTML(article.lead)}</p>
+            <div class="panel-scroll">
+              <div class="panel-hero">
+                <div class="panel-hero-side">
+                  <p class="panel-article-no">${escapeHTML(article.number)}</p>
+                  <div class="panel-rule"></div>
+                  <div class="panel-side-text">
+                    <span>${escapeHTML(article.category)}</span>
+                    <span>${escapeHTML(article.label)}</span>
+                    <span>NOISE</span>
+                    <span>ISSUE 001</span>
+                  </div>
                 </div>
 
-                <div class="panel-body">
-                  <div class="article-meta-box">
-                    <p>${escapeHTML(article.meta)}</p>
+                <div class="panel-hero-main">
+                  <div class="panel-kicker-row">
+                    <div class="panel-kicker">${escapeHTML(article.label)}</div>
                   </div>
 
-                  <div class="article-body">
-                    ${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join("")}
+                  <div class="panel-title-row">
+                    <h1 id="${escapeHTML(article.id)}-title">${escapeHTML(article.title)}</h1>
                   </div>
 
-                  <div class="panel-end">End of Article ${escapeHTML(article.number)} / Tap here to return</div>
+                  <div class="panel-leadbox">
+                    ${escapeHTML(article.lead)}
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-body">
+                <div class="article-meta-box">
+                  <p>${escapeHTML(article.meta)}</p>
+                </div>
+
+                <div class="article-body">
+                  ${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join("")}
+                </div>
+
+                <div class="panel-end">
+                  END OF ARTICLE ${escapeHTML(article.number)} / TAP HERE TO RETURN
                 </div>
               </div>
             </div>
