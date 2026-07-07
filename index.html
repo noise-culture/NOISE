@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAKANAWA COVE WALK</title>
+  <title>NOISE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,21 +11,23 @@
 
   <style>
     :root {
-      --ink: #171d1d;
-      --soft-ink: rgba(23,29,29,0.72);
-      --muted: rgba(23,29,29,0.52);
-      --stone: #d8d2c5;
-      --stone-light: #f4f0e7;
-      --paper: #f7f3ea;
-      --glass: rgba(255,255,255,0.62);
-      --white-glass: rgba(255,255,255,0.76);
-      --metal: #8a9694;
-      --dark: #151b1b;
-      --line: rgba(23,29,29,0.16);
-      --shadow: 0 26px 80px rgba(14,20,20,0.18);
-      --radius-xl: 34px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
+      --ink: #151919;
+      --soft-ink: rgba(21,25,25,0.72);
+      --muted: rgba(21,25,25,0.5);
+      --paper: #f8f3e8;
+      --cream: #fbf6ea;
+      --glass: rgba(255,255,255,0.68);
+      --line: rgba(21,25,25,0.14);
+      --dark: #151919;
+      --shadow: 0 26px 80px rgba(10,18,18,0.18);
+
+      --mint: #cfe8df;
+      --butter: #f5e7a8;
+      --coral: #ff7b67;
+      --sky: #b8def0;
+      --lilac: #d8c7ee;
+      --stone: #d8d1c4;
+      --wood: #d6c1a3;
     }
 
     * {
@@ -40,23 +42,23 @@
       margin: 0;
       color: var(--ink);
       font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: #d9d4c8;
+      background: #d8d3c8;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      overflow-x: hidden;
     }
 
     body.panel-open {
       overflow: hidden;
     }
 
-    button {
-      font-family: inherit;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .site-nav {
@@ -65,17 +67,17 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 500;
-      width: min(640px, calc(100vw - 24px));
+      width: min(680px, calc(100vw - 24px));
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 10px;
       align-items: center;
       padding: 9px 10px 9px 14px;
-      border: 1px solid rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.78);
       border-radius: 999px;
-      background: rgba(246,243,235,0.72);
+      background: rgba(248,245,236,0.74);
       backdrop-filter: blur(22px);
-      box-shadow: 0 18px 60px rgba(15,20,20,0.14);
+      box-shadow: 0 18px 58px rgba(10,18,18,0.14);
     }
 
     .brand {
@@ -83,26 +85,27 @@
       align-items: center;
       gap: 9px;
       min-width: 0;
-      font-size: 11px;
+      font-size: 16px;
+      line-height: 1;
       font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: -0.08em;
+      text-transform: lowercase;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .brand-mark {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       flex: 0 0 auto;
       border-radius: 999px;
       background:
-        radial-gradient(circle at 34% 32%, rgba(255,255,255,0.95) 0 18%, transparent 19%),
-        conic-gradient(from 210deg, #8fa69c, #d9c7ab, #b8c8c0, #879997, #8fa69c);
+        radial-gradient(circle at 34% 32%, #fff 0 17%, transparent 18%),
+        conic-gradient(from 210deg, var(--mint), var(--butter), var(--coral), var(--sky), var(--mint));
       box-shadow:
-        inset 0 0 0 1px rgba(23,29,29,0.16),
-        0 10px 28px rgba(23,29,29,0.14);
+        inset 0 0 0 1px rgba(21,25,25,0.16),
+        0 12px 28px rgba(21,25,25,0.16);
     }
 
     .nav-floors {
@@ -119,12 +122,12 @@
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.05em;
-      color: rgba(23,29,29,0.6);
+      color: rgba(21,25,25,0.6);
       transition: background 0.18s ease, color 0.18s ease;
     }
 
     .nav-floors a:hover {
-      background: rgba(23,29,29,0.08);
+      background: rgba(21,25,25,0.08);
       color: var(--ink);
     }
 
@@ -133,13 +136,13 @@
       min-height: 100svh;
       display: flex;
       align-items: flex-end;
-      padding: 104px 18px 72px;
+      padding: 108px 18px 78px;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(255,255,255,0.3) 1px, transparent 1px),
-        linear-gradient(180deg, #efeee8 0%, #d8d3c7 52%, #c6c1b5 100%);
-      background-size: 96px 96px, 96px 96px, auto;
+        radial-gradient(circle at 18% 18%, rgba(207,232,223,0.95), transparent 32%),
+        radial-gradient(circle at 82% 20%, rgba(245,231,168,0.86), transparent 30%),
+        radial-gradient(circle at 62% 78%, rgba(255,123,103,0.18), transparent 34%),
+        linear-gradient(180deg, #f3f1ea 0%, #d9d4c8 60%, #c8c2b7 100%);
     }
 
     .hero::before {
@@ -147,28 +150,33 @@
       position: absolute;
       left: 50%;
       top: 0;
-      width: min(420px, 78vw);
+      width: min(420px, 76vw);
       height: 100%;
       transform: translateX(-50%);
       background:
-        linear-gradient(90deg, transparent 0 17%, rgba(255,255,255,0.52) 17% 18%, transparent 18% 82%, rgba(255,255,255,0.52) 82% 83%, transparent 83%),
+        linear-gradient(90deg, transparent 0 17%, rgba(255,255,255,0.56) 17% 18%, transparent 18% 82%, rgba(255,255,255,0.56) 82% 83%, transparent 83%),
         repeating-linear-gradient(
           180deg,
-          rgba(23,29,29,0.08) 0 12px,
-          rgba(255,255,255,0.45) 12px 24px
+          rgba(21,25,25,0.075) 0 12px,
+          rgba(255,255,255,0.46) 12px 24px
         );
       opacity: 0.72;
       animation: escalatorSteps 1.2s linear infinite;
     }
 
     .hero::after {
-      content: "";
+      content: "NOISE / culture web magazine / tap tenant entrance";
       position: absolute;
-      inset: auto 0 0;
-      height: 28vh;
-      background:
-        radial-gradient(ellipse at 50% 100%, rgba(23,29,29,0.16), transparent 64%);
-      pointer-events: none;
+      right: 18px;
+      bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(21,25,25,0.82);
+      color: #fffaf0;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .hero-inner {
@@ -181,66 +189,70 @@
     .hero-label {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       margin-bottom: 18px;
       padding: 9px 12px;
-      border: 1px solid rgba(23,29,29,0.14);
+      border: 1px solid rgba(21,25,25,0.13);
       border-radius: 999px;
-      background: rgba(255,255,255,0.54);
-      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.58);
+      backdrop-filter: blur(18px);
       font-size: 10px;
       font-weight: 900;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.68);
+      color: rgba(21,25,25,0.66);
     }
 
     .hero-label::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #789a8e;
-      box-shadow: 0 0 0 5px rgba(120,154,142,0.16);
+      content: "✦";
+      color: var(--coral);
+      font-size: 12px;
     }
 
     .hero h1 {
       margin: 0;
-      max-width: 1040px;
-      font-size: clamp(48px, 14vw, 126px);
-      line-height: 0.92;
-      letter-spacing: -0.09em;
+      max-width: 1060px;
+      font-size: clamp(56px, 18vw, 148px);
+      line-height: 0.78;
+      letter-spacing: -0.13em;
       font-weight: 900;
+      text-transform: lowercase;
     }
 
     .hero h1 span {
       display: block;
-      color: rgba(23,29,29,0.52);
+      margin-top: 16px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(24px, 6.2vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -0.08em;
+      color: rgba(21,25,25,0.62);
+      text-transform: none;
     }
 
     .hero-copy {
-      max-width: 720px;
-      margin: 24px 0 0;
+      max-width: 760px;
+      margin: 26px 0 0;
       font-size: 15px;
       line-height: 1.9;
       font-weight: 700;
-      color: rgba(23,29,29,0.74);
+      color: rgba(21,25,25,0.74);
     }
 
     .start-chip {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 26px;
+      margin-top: 28px;
       padding: 13px 16px;
       border-radius: 999px;
-      background: rgba(23,29,29,0.86);
+      background: rgba(21,25,25,0.86);
       color: #fffaf0;
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      box-shadow: 0 18px 50px rgba(23,29,29,0.2);
+      box-shadow: 0 18px 50px rgba(21,25,25,0.2);
     }
 
     .start-chip::after {
@@ -251,13 +263,13 @@
 
     .corridor {
       position: relative;
-      background: #d5d0c5;
+      background: #d6d0c3;
     }
 
     .floor {
       position: relative;
       min-height: 112svh;
-      padding: 92px 16px 106px;
+      padding: 92px 16px 108px;
       overflow: hidden;
       isolation: isolate;
     }
@@ -285,12 +297,12 @@
         linear-gradient(90deg, rgba(255,255,255,0.42), rgba(255,255,255,0.12)),
         repeating-linear-gradient(
           180deg,
-          rgba(23,29,29,0.1) 0 11px,
+          rgba(21,25,25,0.1) 0 11px,
           rgba(255,255,255,0.5) 11px 22px
         );
       box-shadow:
         inset 18px 0 38px rgba(255,255,255,0.18),
-        inset -18px 0 38px rgba(23,29,29,0.06);
+        inset -18px 0 38px rgba(21,25,25,0.06);
       animation: escalatorSteps 1.1s linear infinite;
     }
 
@@ -304,14 +316,14 @@
       position: sticky;
       top: 76px;
       z-index: 40;
-      width: min(500px, 100%);
+      width: min(520px, 100%);
       margin: 0 auto 58px;
       padding: 14px 16px;
-      border: 1px solid rgba(255,255,255,0.66);
-      border-radius: 24px;
-      background: rgba(247,244,236,0.7);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 26px;
+      background: rgba(248,245,236,0.74);
       backdrop-filter: blur(22px);
-      box-shadow: 0 16px 48px rgba(23,29,29,0.11);
+      box-shadow: 0 16px 48px rgba(21,25,25,0.11);
     }
 
     .floor-meta {
@@ -322,9 +334,9 @@
       margin-bottom: 10px;
       font-size: 10px;
       font-weight: 900;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.54);
+      color: rgba(21,25,25,0.54);
     }
 
     .floor-header h2 {
@@ -340,7 +352,7 @@
       font-size: 12px;
       line-height: 1.65;
       font-weight: 700;
-      color: rgba(23,29,29,0.62);
+      color: rgba(21,25,25,0.62);
     }
 
     .tenant-row {
@@ -363,7 +375,7 @@
     .tenant-card {
       position: relative;
       width: min(100%, 360px);
-      min-height: 228px;
+      min-height: 230px;
       border: 0;
       padding: 0;
       text-align: left;
@@ -374,20 +386,20 @@
     }
 
     .tenant-card:focus-visible {
-      outline: 3px solid rgba(23,29,29,0.48);
+      outline: 3px solid rgba(21,25,25,0.44);
       outline-offset: 5px;
-      border-radius: 28px;
+      border-radius: 30px;
     }
 
     .tenant-door {
       position: relative;
-      min-height: 228px;
+      min-height: 230px;
       padding: 18px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.74);
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.38)),
-        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(23,29,29,0.04));
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(255,255,255,0.42)),
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(21,25,25,0.04));
       backdrop-filter: blur(24px);
       box-shadow: var(--shadow);
       overflow: hidden;
@@ -396,7 +408,7 @@
 
     .tenant-card:active .tenant-door {
       transform: scale(0.985);
-      box-shadow: 0 16px 46px rgba(14,20,20,0.16);
+      box-shadow: 0 16px 46px rgba(10,18,18,0.16);
     }
 
     .tenant-door::before {
@@ -404,8 +416,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, transparent 0 18%, rgba(255,255,255,0.34) 18% 18.5%, transparent 18.5% 100%),
-        linear-gradient(0deg, transparent 0 68%, rgba(255,255,255,0.34) 68% 68.5%, transparent 68.5% 100%);
+        linear-gradient(90deg, transparent 0 18%, rgba(255,255,255,0.38) 18% 18.5%, transparent 18.5% 100%),
+        linear-gradient(0deg, transparent 0 68%, rgba(255,255,255,0.38) 68% 68.5%, transparent 68.5% 100%);
       pointer-events: none;
     }
 
@@ -416,7 +428,7 @@
       bottom: 14px;
       padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(23,29,29,0.84);
+      background: rgba(21,25,25,0.84);
       color: #fffaf0;
       font-size: 9px;
       font-weight: 900;
@@ -425,11 +437,11 @@
     }
 
     .tenant-row.left .tenant-door {
-      border-top-left-radius: 8px;
+      border-top-left-radius: 9px;
     }
 
     .tenant-row.right .tenant-door {
-      border-top-right-radius: 8px;
+      border-top-right-radius: 9px;
     }
 
     .tenant-sign {
@@ -438,14 +450,14 @@
       gap: 8px;
       padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.54);
-      border: 1px solid rgba(23,29,29,0.1);
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(21,25,25,0.1);
       font-size: 10px;
       line-height: 1;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.6);
+      color: rgba(21,25,25,0.6);
     }
 
     .tenant-sign strong {
@@ -455,7 +467,7 @@
     .tenant-card h3 {
       position: relative;
       margin: 26px 0 12px;
-      font-size: 25px;
+      font-size: 24px;
       line-height: 1.12;
       letter-spacing: -0.06em;
       font-weight: 900;
@@ -464,11 +476,11 @@
     .tenant-copy {
       position: relative;
       margin: 0;
-      max-width: 260px;
+      max-width: 270px;
       font-size: 12px;
       line-height: 1.7;
       font-weight: 700;
-      color: rgba(23,29,29,0.62);
+      color: rgba(21,25,25,0.62);
     }
 
     .tenant-number {
@@ -479,7 +491,7 @@
       line-height: 0.85;
       letter-spacing: -0.1em;
       font-weight: 900;
-      color: rgba(23,29,29,0.1);
+      color: rgba(21,25,25,0.1);
     }
 
     .tenant-row.left::after,
@@ -489,8 +501,8 @@
       top: 50%;
       width: 18%;
       height: 1px;
-      background: rgba(255,255,255,0.62);
-      box-shadow: 0 1px 0 rgba(23,29,29,0.08);
+      background: rgba(255,255,255,0.65);
+      box-shadow: 0 1px 0 rgba(21,25,25,0.08);
     }
 
     .tenant-row.left::after {
@@ -503,106 +515,78 @@
 
     .floor-5 {
       background:
-        radial-gradient(circle at 12% 10%, rgba(198,218,202,0.92), transparent 28%),
-        radial-gradient(circle at 86% 18%, rgba(249,241,219,0.92), transparent 26%),
-        linear-gradient(180deg, #edf1e8 0%, #d6e0d4 100%);
-    }
-
-    .floor-5::before {
-      background:
-        linear-gradient(120deg, transparent 0 66%, rgba(112,142,122,0.13) 66% 67%, transparent 67%),
-        radial-gradient(circle at 18% 74%, rgba(87,126,98,0.24), transparent 22%),
-        radial-gradient(circle at 82% 74%, rgba(87,126,98,0.18), transparent 18%);
+        radial-gradient(circle at 12% 10%, rgba(207,232,223,0.96), transparent 29%),
+        radial-gradient(circle at 86% 18%, rgba(245,231,168,0.9), transparent 27%),
+        linear-gradient(180deg, #eef3ec 0%, #d7e2d7 100%);
     }
 
     .floor-4 {
       background:
+        radial-gradient(circle at 14% 20%, rgba(255,123,103,0.22), transparent 24%),
+        radial-gradient(circle at 86% 64%, rgba(216,199,238,0.3), transparent 26%),
         linear-gradient(90deg, rgba(255,255,255,0.28) 1px, transparent 1px),
         linear-gradient(0deg, rgba(255,255,255,0.25) 1px, transparent 1px),
-        linear-gradient(180deg, #e7ddcc 0%, #d3c1aa 100%);
-      background-size: 74px 74px, 74px 74px, auto;
-    }
-
-    .floor-4::before {
-      background:
-        linear-gradient(90deg, transparent 0 8%, rgba(122,92,62,0.1) 8% 18%, transparent 18% 34%, rgba(122,92,62,0.08) 34% 42%, transparent 42%),
-        radial-gradient(circle at 18% 28%, rgba(170,105,70,0.2), transparent 24%),
-        radial-gradient(circle at 82% 78%, rgba(81,118,110,0.16), transparent 24%);
+        linear-gradient(180deg, #e9dfce 0%, #d3c1aa 100%);
+      background-size: auto, auto, 74px 74px, 74px 74px, auto;
     }
 
     .floor-3 {
       background:
+        radial-gradient(circle at 80% 18%, rgba(184,222,240,0.44), transparent 24%),
         linear-gradient(90deg, rgba(98,74,48,0.1) 1px, transparent 1px),
         linear-gradient(180deg, #e4dccd 0%, #cfc0aa 100%);
-      background-size: 42px 100%, auto;
-    }
-
-    .floor-3::before {
-      background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.46), transparent 24%),
-        radial-gradient(circle at 88% 64%, rgba(100,76,55,0.18), transparent 22%);
+      background-size: auto, 42px 100%, auto;
     }
 
     .floor-2 {
       background:
         radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.62), transparent 30%),
-        radial-gradient(circle at 16% 18%, rgba(202,224,221,0.9), transparent 32%),
-        radial-gradient(circle at 84% 26%, rgba(246,238,222,0.88), transparent 28%),
+        radial-gradient(circle at 16% 18%, rgba(184,222,240,0.78), transparent 32%),
+        radial-gradient(circle at 84% 26%, rgba(245,231,168,0.72), transparent 28%),
         linear-gradient(180deg, #e7ede9 0%, #cdd9d5 100%);
-    }
-
-    .floor-2::before {
-      background:
-        radial-gradient(ellipse at 50% 22%, transparent 0 28%, rgba(255,255,255,0.52) 28.2% 29%, transparent 29.2%),
-        radial-gradient(ellipse at 50% 58%, transparent 0 30%, rgba(255,255,255,0.36) 30.2% 31%, transparent 31.2%);
     }
 
     .floor-1 {
       background:
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.54), transparent 24%),
         linear-gradient(90deg, rgba(255,255,255,0.32) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(23,29,29,0.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(21,25,25,0.06) 1px, transparent 1px),
         linear-gradient(180deg, #dfddd4 0%, #c8c3b7 100%);
-      background-size: 118px 118px, 118px 118px, auto;
-    }
-
-    .floor-1::before {
-      background:
-        linear-gradient(112deg, transparent 0 18%, rgba(255,255,255,0.6) 18.2% 18.7%, transparent 19%),
-        linear-gradient(70deg, transparent 0 64%, rgba(255,255,255,0.46) 64.2% 64.7%, transparent 65%);
+      background-size: auto, 118px 118px, 118px 118px, auto;
     }
 
     .floor-5 .tenant-door,
     .panel-5 .panel-surface {
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.78), rgba(233,241,228,0.58)),
-        linear-gradient(180deg, rgba(137,166,143,0.16), rgba(255,255,255,0));
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(232,242,232,0.62)),
+        linear-gradient(180deg, rgba(116,160,135,0.15), rgba(255,255,255,0));
     }
 
     .floor-4 .tenant-door,
     .panel-4 .panel-surface {
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.76), rgba(231,219,203,0.58)),
-        linear-gradient(180deg, rgba(163,105,72,0.12), rgba(255,255,255,0));
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(237,222,205,0.62)),
+        linear-gradient(180deg, rgba(255,123,103,0.12), rgba(255,255,255,0));
     }
 
     .floor-3 .tenant-door,
     .panel-3 .panel-surface {
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.76), rgba(224,211,194,0.58)),
+        linear-gradient(135deg, rgba(255,255,255,0.8), rgba(226,212,194,0.64)),
         linear-gradient(180deg, rgba(103,78,53,0.12), rgba(255,255,255,0));
     }
 
     .floor-2 .tenant-door,
     .panel-2 .panel-surface {
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.78), rgba(226,239,237,0.6)),
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(226,239,237,0.64)),
         linear-gradient(180deg, rgba(112,151,148,0.14), rgba(255,255,255,0));
     }
 
     .floor-1 .tenant-door,
     .panel-1 .panel-surface {
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.78), rgba(226,222,213,0.62)),
+        linear-gradient(135deg, rgba(255,255,255,0.82), rgba(226,222,213,0.66)),
         linear-gradient(180deg, rgba(68,73,72,0.1), rgba(255,255,255,0));
     }
 
@@ -613,10 +597,12 @@
       display: grid;
       grid-template-rows: auto 1fr;
       background:
+        radial-gradient(circle at 14% 12%, rgba(207,232,223,0.5), transparent 28%),
+        radial-gradient(circle at 86% 16%, rgba(245,231,168,0.42), transparent 26%),
         linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(23,29,29,0.05) 1px, transparent 1px),
-        #f3eee3;
-      background-size: 86px 86px, 86px 86px, auto;
+        linear-gradient(0deg, rgba(21,25,25,0.05) 1px, transparent 1px),
+        #f4efe4;
+      background-size: auto, auto, 86px 86px, 86px 86px, auto;
       transform: translateX(110%);
       transition: transform 0.56s cubic-bezier(.18,.82,.2,1);
       box-shadow: -24px 0 80px rgba(0,0,0,0.24);
@@ -640,22 +626,21 @@
       gap: 12px;
       align-items: center;
       padding: 14px;
-      border-bottom: 1px solid rgba(23,29,29,0.12);
-      background: rgba(247,244,236,0.8);
+      border-bottom: 1px solid rgba(21,25,25,0.12);
+      background: rgba(248,245,236,0.82);
       backdrop-filter: blur(22px);
     }
 
     .close-panel {
-      min-width: 110px;
+      min-width: 112px;
       height: 42px;
-      border: 1px solid rgba(23,29,29,0.16);
+      border: 1px solid rgba(21,25,25,0.16);
       border-radius: 999px;
-      background: rgba(23,29,29,0.88);
+      background: rgba(21,25,25,0.88);
       color: #fffaf0;
       font-size: 11px;
       font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: 0.08em;
       cursor: pointer;
     }
 
@@ -666,7 +651,7 @@
       font-weight: 900;
       letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.56);
+      color: rgba(21,25,25,0.56);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -698,18 +683,18 @@
       gap: 16px;
       margin-bottom: 22px;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(23,29,29,0.14);
+      border-bottom: 1px solid rgba(21,25,25,0.14);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.56);
+      color: rgba(21,25,25,0.56);
     }
 
     .panel-surface h1 {
       margin: 0 0 24px;
-      font-size: clamp(34px, 9.5vw, 62px);
-      line-height: 1.02;
+      font-size: clamp(32px, 9vw, 62px);
+      line-height: 1.03;
       letter-spacing: -0.08em;
       font-weight: 900;
     }
@@ -718,13 +703,13 @@
       margin: 0 0 24px;
       padding: 16px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.56);
-      border: 1px solid rgba(23,29,29,0.1);
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(21,25,25,0.1);
       font-size: 17px;
       line-height: 1.75;
       letter-spacing: -0.03em;
       font-weight: 800;
-      color: rgba(23,29,29,0.78);
+      color: rgba(21,25,25,0.78);
     }
 
     .article-body p {
@@ -732,23 +717,23 @@
       font-size: 15px;
       line-height: 2.02;
       font-weight: 600;
-      color: rgba(23,29,29,0.82);
+      color: rgba(21,25,25,0.82);
     }
 
     .panel-end {
       margin-top: 32px;
       padding-top: 18px;
-      border-top: 1px solid rgba(23,29,29,0.14);
+      border-top: 1px solid rgba(21,25,25,0.14);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(23,29,29,0.52);
+      color: rgba(21,25,25,0.52);
     }
 
     .exit {
       padding: 92px 18px 110px;
-      background: #151b1b;
+      background: #151919;
       color: #f7f3ea;
     }
 
@@ -763,6 +748,7 @@
       line-height: 0.96;
       letter-spacing: -0.08em;
       font-weight: 900;
+      text-transform: lowercase;
     }
 
     .exit p {
@@ -783,7 +769,7 @@
       height: 48px;
       border-radius: 999px;
       background: #f7f3ea;
-      color: #151b1b;
+      color: #151919;
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.12em;
@@ -805,8 +791,12 @@
         top: 22px;
       }
 
+      .brand {
+        font-size: 18px;
+      }
+
       .hero {
-        padding: 130px 34px 96px;
+        padding: 132px 34px 98px;
       }
 
       .hero-copy {
@@ -822,7 +812,7 @@
       }
 
       .floor-header {
-        width: min(760px, 100%);
+        width: min(780px, 100%);
         top: 96px;
       }
 
@@ -843,7 +833,7 @@
       }
 
       .tenant-door {
-        min-height: 280px;
+        min-height: 282px;
         padding: 26px;
       }
 
@@ -943,7 +933,7 @@
   <header class="site-nav">
     <a class="brand" href="#top">
       <span class="brand-mark"></span>
-      <span>Takanawa Cove Walk</span>
+      <span>noise</span>
     </a>
 
     <nav class="nav-floors" aria-label="floor navigation">
@@ -958,14 +948,13 @@
   <main>
     <section id="top" class="hero">
       <div class="hero-inner">
-        <div class="hero-label">Shopping Mall Walk / Tap Tenant Entrance</div>
+        <div class="hero-label">Culture Web Magazine / Mall Walk Issue</div>
         <h1>
-          5Fから1Fへ、<br>
-          店の入口を覗きながら降りる。
-          <span>Tap, slide, enter.</span>
+          noise
+          <span>5Fから1Fへ、記事の入口を覗きながら降りる。</span>
         </h1>
         <p class="hero-copy">
-          これは記事一覧ではなく、縦に伸びた商業施設の通路です。左右に互い違いに現れるテナント入口をタップすると、記事全文が横からスライドして画面全体に現れます。リンクをクリックして移動するのではなく、気になった店の中へ一歩入ってみる感覚をWeb上で再現します。
+          NOISEは、映画、音楽、文学、ファッション、食を扱うカルチャーWebマガジンです。この号では、記事を一覧から選ぶのではなく、ショッピングモールの通路を歩くように読む。左右に互い違いに現れるテナント入口をタップすると、記事全文が横からスライドして画面全体に現れます。
         </p>
         <div class="start-chip">Start from 5F</div>
       </div>
@@ -977,19 +966,19 @@
           <header class="floor-header">
             <div class="floor-meta">
               <span>5F</span>
-              <span>Garden / Open Air</span>
+              <span>Cinema / Upper Garden</span>
             </div>
-            <h2>外光と余白のフロア</h2>
-            <p>上層階から入る。植栽、テラス、光の抜け。ここでは買い物より先に、都市の速度を少し落とす。</p>
+            <h2>映画のフロア</h2>
+            <p>上層階の明るい余白に、スターとおもちゃの映画を置く。大きな物語を、館内の吹き抜けから見下ろすように読む。</p>
           </header>
 
           <div class="tenant-row left">
             <button class="tenant-card" type="button" data-panel-target="article-01" aria-controls="article-01" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>01</strong> 5F / Garden</div>
+                <div class="tenant-sign"><strong>01</strong> 5F / Cinema</div>
                 <div class="tenant-number">01</div>
-                <h3>屋上庭園的な場所で、都市は少しだけ解除される</h3>
-                <p class="tenant-copy">人工の自然が、都市の緊張を一段だけ下げる。</p>
+                <h3>映画『マイケル』レビュー</h3>
+                <p class="tenant-copy">スターは誰の視線によって作られるのか。</p>
               </div>
             </button>
           </div>
@@ -997,10 +986,10 @@
           <div class="tenant-row right">
             <button class="tenant-card" type="button" data-panel-target="article-02" aria-controls="article-02" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>02</strong> 5F / Exit</div>
+                <div class="tenant-sign"><strong>02</strong> 5F / Animation</div>
                 <div class="tenant-number">02</div>
-                <h3>出口ではなく、もう一度歩きたくなる終わり方</h3>
-                <p class="tenant-copy">良い商業施設は、終わりを少しだけ延期する。</p>
+                <h3>映画『トイ・ストーリー5』レビュー</h3>
+                <p class="tenant-copy">スクリーン時代に、おもちゃはまだ必要か。</p>
               </div>
             </button>
           </div>
@@ -1012,19 +1001,19 @@
           <header class="floor-header">
             <div class="floor-meta">
               <span>4F</span>
-              <span>Market / Pop-up</span>
+              <span>America / Music</span>
             </div>
-            <h2>店と人の密度が上がるフロア</h2>
-            <p>短い区画、棚、ポップアップ、期間限定の島。視線が細かく切り替わり、歩く速度が少し揺れる。</p>
+            <h2>アメリカと音楽のフロア</h2>
+            <p>ポップアップの密度で、アメリカ、Ye、RAYEを並べる。国家、ノイズ、歌声が同じ売場に置かれる。</p>
           </header>
 
           <div class="tenant-row left">
             <button class="tenant-card" type="button" data-panel-target="article-03" aria-controls="article-03" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>03</strong> 4F / Pop-up</div>
+                <div class="tenant-sign"><strong>03</strong> 4F / Feature</div>
                 <div class="tenant-number">03</div>
-                <h3>ポップアップショップは、常設店よりも記憶に残る</h3>
-                <p class="tenant-copy">消えることを前提にした店は、なぜ強く残るのか。</p>
+                <h3>特集「アメリカ」</h3>
+                <p class="tenant-copy">ポップカルチャーは、なぜいつもアメリカを通ってくるのか。</p>
               </div>
             </button>
           </div>
@@ -1032,10 +1021,21 @@
           <div class="tenant-row right">
             <button class="tenant-card" type="button" data-panel-target="article-04" aria-controls="article-04" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>04</strong> 4F / Shelf</div>
+                <div class="tenant-sign"><strong>04</strong> 4F / Music</div>
                 <div class="tenant-number">04</div>
-                <h3>棚を見ること、商品を見ること、世界観を見ること</h3>
-                <p class="tenant-copy">棚は商品置き場ではなく、小さな編集面である。</p>
+                <h3>Ye『Bully』レビュー</h3>
+                <p class="tenant-copy">過去作の断片が、もう一度商品棚に並べられる。</p>
+              </div>
+            </button>
+          </div>
+
+          <div class="tenant-row left">
+            <button class="tenant-card" type="button" data-panel-target="article-05" aria-controls="article-05" aria-expanded="false">
+              <div class="tenant-door">
+                <div class="tenant-sign"><strong>05</strong> 4F / R&B</div>
+                <div class="tenant-number">05</div>
+                <h3>RAYE『This Music May Contain Hope』レビュー</h3>
+                <p class="tenant-copy">過剰なほど演劇的な歌が、希望の形を探す。</p>
               </div>
             </button>
           </div>
@@ -1047,30 +1047,19 @@
           <header class="floor-header">
             <div class="floor-meta">
               <span>3F</span>
-              <span>Lounge / Stay</span>
+              <span>Fashion / Lounge</span>
             </div>
-            <h2>買わない時間のフロア</h2>
-            <p>木、布、ベンチ、低い照明。買うことから少し外れた時間が、施設全体の滞在性を支えている。</p>
+            <h2>ファッションのフロア</h2>
+            <p>服は商品である前に、身体の速度を変える。ベンチに座って紙袋を置く、その一瞬のためのレビュー。</p>
           </header>
 
           <div class="tenant-row left">
-            <button class="tenant-card" type="button" data-panel-target="article-05" aria-controls="article-05" aria-expanded="false">
-              <div class="tenant-door">
-                <div class="tenant-sign"><strong>05</strong> 3F / Bench</div>
-                <div class="tenant-number">05</div>
-                <h3>ベンチ、植栽、余白——買わない時間のデザイン</h3>
-                <p class="tenant-copy">何も売っていない場所が、売場を歩き続けさせる。</p>
-              </div>
-            </button>
-          </div>
-
-          <div class="tenant-row right">
             <button class="tenant-card" type="button" data-panel-target="article-06" aria-controls="article-06" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>06</strong> 3F / Lounge</div>
+                <div class="tenant-sign"><strong>06</strong> 3F / Fashion</div>
                 <div class="tenant-number">06</div>
-                <h3>カフェではなく、ラウンジとしての都市</h3>
-                <p class="tenant-copy">購入と滞在の関係が、少しだけゆるむ場所。</p>
+                <h3>「服を見る」ことのレビュー</h3>
+                <p class="tenant-copy">ファッションは、買う前の視線の中で始まっている。</p>
               </div>
             </button>
           </div>
@@ -1082,19 +1071,19 @@
           <header class="floor-header">
             <div class="floor-meta">
               <span>2F</span>
-              <span>Cove / Atrium</span>
+              <span>Literature / Column</span>
             </div>
-            <h2>入江のように曲がる回廊</h2>
-            <p>まっすぐ進ませるのではなく、少し迷わせる。吹き抜けと湾曲した動線が、次の角へ身体を誘導する。</p>
+            <h2>文学と記憶のフロア</h2>
+            <p>入江のように曲がる通路に、小説と世代論を置く。記憶、年齢、出口のない時間について。</p>
           </header>
 
           <div class="tenant-row left">
             <button class="tenant-card" type="button" data-panel-target="article-07" aria-controls="article-07" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>07</strong> 2F / Circulation</div>
+                <div class="tenant-sign"><strong>07</strong> 2F / Book</div>
                 <div class="tenant-number">07</div>
-                <h3>ショッピングモールはなぜ“迷える”ように作られるのか</h3>
-                <p class="tenant-copy">便利すぎないことが、回遊の快楽を作る。</p>
+                <h3>村上春樹『夏帆』レビュー</h3>
+                <p class="tenant-copy">出口を探す物語は、なぜまた入口に戻ってくるのか。</p>
               </div>
             </button>
           </div>
@@ -1102,10 +1091,10 @@
           <div class="tenant-row right">
             <button class="tenant-card" type="button" data-panel-target="article-08" aria-controls="article-08" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>08</strong> 2F / Atrium</div>
+                <div class="tenant-sign"><strong>08</strong> 2F / Column</div>
                 <div class="tenant-number">08</div>
-                <h3>吹き抜けを見ると、人はなぜ少し立ち止まるのか</h3>
-                <p class="tenant-copy">上下の移動が見えると、空間は小さな劇場になる。</p>
+                <h3>コラム「2001年問題」</h3>
+                <p class="tenant-copy">2001年生まれは、いつから“昔”を語れるのか。</p>
               </div>
             </button>
           </div>
@@ -1117,19 +1106,19 @@
           <header class="floor-header">
             <div class="floor-meta">
               <span>1F</span>
-              <span>Gate / Station</span>
+              <span>Food / Recipe</span>
             </div>
-            <h2>駅前の入口へ戻るフロア</h2>
-            <p>ガラス、石、案内板、駅への接続。モールの中の時間が、都市の時間へ戻っていく。</p>
+            <h2>フードと出口のフロア</h2>
+            <p>最後は食べ物へ。都市の入口であり出口でもある1Fに、軽いコラムと実用的なレシピを置く。</p>
           </header>
 
           <div class="tenant-row left">
             <button class="tenant-card" type="button" data-panel-target="article-09" aria-controls="article-09" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>09</strong> 1F / Gate</div>
+                <div class="tenant-sign"><strong>09</strong> 1F / Food</div>
                 <div class="tenant-number">09</div>
-                <h3>駅から商業施設へ、気分が切り替わる瞬間</h3>
-                <p class="tenant-copy">入口とは、情報ではなく身体の速度を変える装置である。</p>
+                <h3>フードコラム：フードコートの孤独</h3>
+                <p class="tenant-copy">ひとりで食べる場所は、なぜこんなに都市的なのか。</p>
               </div>
             </button>
           </div>
@@ -1137,10 +1126,10 @@
           <div class="tenant-row right">
             <button class="tenant-card" type="button" data-panel-target="article-10" aria-controls="article-10" aria-expanded="false">
               <div class="tenant-door">
-                <div class="tenant-sign"><strong>10</strong> 1F / Signage</div>
+                <div class="tenant-sign"><strong>10</strong> 1F / Recipe</div>
                 <div class="tenant-number">10</div>
-                <h3>案内板を見ないで歩くことについて</h3>
-                <p class="tenant-copy">良い空間は、サインを読む前に身体が理解している。</p>
+                <h3>レシピ：夜のモール帰りのバター醤油うどん</h3>
+                <p class="tenant-copy">疲れていても作れる、出口のあとに食べる一皿。</p>
               </div>
             </button>
           </div>
@@ -1150,9 +1139,9 @@
 
     <section class="exit">
       <div class="exit-inner">
-        <h2>Back to the city.</h2>
+        <h2>noise</h2>
         <p>
-          5Fから1Fまで降りてきた。記事をクリックして読んだのではなく、通路を歩き、テナントの入口を覗き、気になった店に入った。ページではなく、床。リンクではなく、入口。ここでサイトは終わるが、出口はまた次の入口でもある。
+          5Fから1Fまで降りてきた。記事をクリックしたのではなく、通路を歩き、入口を覗き、気になったテナントに入った。NOISEは、読むためのサイトであると同時に、歩くためのカルチャーWebマガジンである。
         </p>
         <a class="ride-again" href="#top">Ride again</a>
       </div>
@@ -1162,20 +1151,20 @@
   <article id="article-01" class="article-panel from-left panel-5" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-01-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">5F / Garden / Article 01</div>
+      <div class="panel-location">5F / Cinema / Article 01</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 01</span><span>Garden</span></div>
-          <h1 id="article-01-title">屋上庭園的な場所で、都市は少しだけ解除される</h1>
-          <p class="panel-lead">商業施設の上層階にある庭園は、自然そのものではない。けれど、都市の中で身体を休ませるには、完全な自然よりもよく調整された半自然が必要なことがある。</p>
+          <div class="panel-kicker"><span>Article 01</span><span>Film Review</span></div>
+          <h1 id="article-01-title">映画『マイケル』レビュー</h1>
+          <p class="panel-lead">『マイケル』は、スターの伝記映画であると同時に、「スターが誰の視線によって作られるのか」をめぐる映画である。</p>
           <div class="article-body">
-            <p>屋上庭園や高層階のテラスに出ると、店の音、照明、看板、商品の密度から一度だけ距離を取れる。そこには土も植物も水もあるが、それらはすべて選ばれ、管理され、配置されたものだ。つまり自然ではなく、自然の形式を借りた都市設備である。けれど、その人工性を理由に価値が低いとは言えない。都市で人が休むためには、荒々しい自然ではなく、むしろ温度や視線や動線を調整された場所の方が必要になる。</p>
-            <p>庭園的な場所の役割は、都市を否定することではない。都市の強度を一段だけ下げることである。ビルの輪郭も、電車の音も、ガラス越しの反射も残っている。ただし、それらは少し遠くに置かれる。人はベンチに座り、スマートフォンを見て、紙袋を足元に置き、友人を待つ。買い物の途中にいるのに、買い物から一時的に外れた顔でいられる。この短い解除感が、商業施設を単なる売場ではなく、滞在できる街に変えている。</p>
-            <p>Webサイトにも同じ場所を作れる。記事と記事を隙間なく並べるのではなく、画面の中に少しだけ呼吸できる空白を置く。読者がスクロールを止めても、すぐに次の行動を迫られない状態を作る。情報を詰めるだけならページは棚になるが、余白があるとページは床になる。屋上庭園的なものは、コンテンツの外側にある装飾ではなく、回遊を続けるための休符である。</p>
+            <p>『マイケル』を見ていてまず感じるのは、映画がマイケル・ジャクソンの内面を深く掘り下げようとしているというより、彼がどのような視線に晒され、どのような視線を拒み、どの瞬間にこちらを見返すのかを追っているということだ。父、兄弟、母、プロデューサー、観客、メディア。彼の周囲には常に誰かの目がある。だから本作のマイケルは、ひとりの人物というよりも、複数の視線の交差点として立ち上がる。</p>
+            <p>伝記映画としては、説明が足りない部分もある。彼の矛盾や不穏さを、もっと厳しく扱うべきだと感じる人もいるだろう。だが、映画が最も強くなるのは、倫理的な判断を一度保留し、パフォーマンスの身体を見せる瞬間である。歌が始まり、リズムが鳴り、衣装の白さや靴の角度が画面を支配すると、観客は意味を理解する前に反応してしまう。マイケルという存在の怖さは、まさにそこにある。考えるより先に、見てしまう。距離を取る前に、身体が少し動いてしまう。</p>
+            <p>この映画は、彼を完全に説明することには成功していない。むしろ説明できなさを、スターの輪郭として残している。誰が彼を作ったのか。家族か、音楽産業か、観客か、メディアか、それとも彼自身か。おそらく答えは一つではない。『マイケル』は、その複数のフェーダーを調整しながら、2026年にもう一度「マイケル・ジャクソン」という音像をミックスし直した映画である。美しく、危うく、どこか片づかなさを残す。その片づかなさこそが、本作の批評的な余韻だ。</p>
           </div>
-          <div class="panel-end">End of Tenant 01 / Return to corridor</div>
+          <div class="panel-end">End of Article 01 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1184,20 +1173,20 @@
   <article id="article-02" class="article-panel from-right panel-5" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-02-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">5F / Exit / Article 02</div>
+      <div class="panel-location">5F / Animation / Article 02</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 02</span><span>Ending</span></div>
-          <h1 id="article-02-title">出口ではなく、もう一度歩きたくなる終わり方</h1>
-          <p class="panel-lead">ショッピングモールの面白さは、出口が必ずしも終点ではないところにある。帰ろうと思った瞬間に、まだ見ていない通路が見えてしまう。</p>
+          <div class="panel-kicker"><span>Article 02</span><span>Film Review</span></div>
+          <h1 id="article-02-title">映画『トイ・ストーリー5』レビュー</h1>
+          <p class="panel-lead">『トイ・ストーリー5』は、スクリーンに奪われた子ども時間を前に、おもちゃたちがもう一度自分たちの居場所を問い直す映画である。</p>
           <div class="article-body">
-            <p>商業施設では、帰るつもりになったあとも歩いてしまうことがある。出口へ向かっているはずなのに、下の階へ降りるエスカレーターが目に入る。曲がり角の先に別の光がある。さっきは気づかなかった小さな店が、帰り道の角度から急に見える。そこで人は、予定していなかった数分を施設に渡す。回遊性とは、目的地を増やすことではなく、終わりを少しずつ延期する技術である。</p>
-            <p>良い終わり方は、強く引き止めない。もう一軒見ていきませんか、と声をかけるのではなく、視界の端に次の場所を置く。人は自分で選んだように感じながら、少しだけ導かれている。商業施設の出口は、退場口というよりも、もう一度入る可能性を残す場所だ。外へ出る直前に、施設全体の記憶が一度まとまる。何を買ったかより、どの順番で歩いたかが残る。</p>
-            <p>Webサイトの終わりも同じように考えられる。記事を読み終えた読者に、機械的な関連記事を並べるだけでは、体験は情報処理に戻ってしまう。むしろ、次の床の気配を見せる。色が変わる。余白が伸びる。違う階の入口が遠くに見える。読者はリンクを選ぶのではなく、足元につられて進む。出口とは離脱を防ぐための罠ではなく、歩いた時間をもう一度思い出させるための余韻である。</p>
+            <p>『トイ・ストーリー』シリーズは、常に「持ち主に忘れられること」の恐怖を描いてきた。だが『5』でその恐怖は、もっと現代的な形を取る。おもちゃのライバルは、別のおもちゃではない。子どもの注意を吸い込むスクリーンであり、タブレットであり、終わりなく流れてくる画面の光である。ウッディやバズがかつて戦っていたのは、子どもの想像力の中での主役争いだった。しかし今回は、想像力そのものが別の装置に移されている。</p>
+            <p>この設定は、かなり露骨でもある。映画はときに、現代の子どもとテクノロジーの関係をわかりやすく語りすぎる。だが、そのわかりやすさがシリーズの素朴さと衝突しているところに、逆に面白さがある。『トイ・ストーリー』はそもそも、プラスチックの人形に魂を見出す映画だった。だとすれば、画面の中のキャラクターにも魂があるのか。あるいは、手で触れられる物だけが、子どもの記憶に残るのか。本作はそこを単純には割り切らない。</p>
+            <p>最も良いのは、ノスタルジーに沈みきらないところだ。シリーズは過去の感情に頼ればいくらでも泣かせられる。しかし『5』は、おもちゃたちに老いを背負わせながら、それでも新しい遊び方を探させる。昔はよかった、では終わらない。おもちゃは子どもに必要か、という問いは、実は映画そのものへの問いでもある。画面の時代に、映画はまだ子どもの想像力を動かせるのか。『トイ・ストーリー5』は、その問いに対して、少し不器用だが誠実に答えようとしている。</p>
           </div>
-          <div class="panel-end">End of Tenant 02 / Return to corridor</div>
+          <div class="panel-end">End of Article 02 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1206,20 +1195,20 @@
   <article id="article-03" class="article-panel from-left panel-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-03-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">4F / Pop-up / Article 03</div>
+      <div class="panel-location">4F / Feature / Article 03</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 03</span><span>Pop-up</span></div>
-          <h1 id="article-03-title">ポップアップショップは、常設店よりも記憶に残る</h1>
-          <p class="panel-lead">ポップアップショップは、最初から消えることを前提にしている。だからこそ、常設店よりも強く記憶に残ることがある。</p>
+          <div class="panel-kicker"><span>Article 03</span><span>Feature</span></div>
+          <h1 id="article-03-title">特集「アメリカ」</h1>
+          <p class="panel-lead">アメリカは、国である前に、ポップカルチャーの巨大な編集装置である。</p>
           <div class="article-body">
-            <p>常設店は安定している。そこに行けばいつでも同じブランドがあり、同じ棚があり、同じ入口がある。その安心感は大きい。一方で、ポップアップショップは最初から仮設である。一定期間が過ぎれば、壁も什器もサインも撤去される。だから、そこに入る体験には時間の圧力がかかる。見逃したら次はないかもしれないという感覚が、商品そのもの以上に人を引き寄せる。</p>
-            <p>この形式は、現代のカルチャーの届き方に近い。音楽も映画も服も、ずっと同じ棚に置かれているというより、短い期間だけ強く露出し、フィードを流れ、誰かの投稿に写り、次の話題へ移っていく。ポップアップ的な売場は、その流れを空間化したものだ。通路の途中に突然現れる小さな島。そこではブランドの歴史よりも、いまここにしかない感じが優先される。</p>
-            <p>Webの中にもポップアップショップ的な記事の見せ方は作れる。常に一覧に固定された記事ではなく、通路の途中に仮設の入口のように現れる記事。読者は計画的に選ぶのではなく、偶然見つけたようにタップする。重要なのは、記事がただ置かれているのではなく、期間限定の店のような表情を持つことだ。コンテンツは情報である前に、出会い方のデザインでもある。</p>
+            <p>日本でカルチャーについて話すとき、アメリカはいつも少し遅れて、しかし確実に現れる。映画、R&B、ヒップホップ、スニーカー、ファストフード、郊外、ロードムービー、スポーツ中継、テレビドラマ。私たちはアメリカそのものを知っているわけではない。断片としてのアメリカを、輸入された形式として、字幕付きの映像として、雑誌の特集として、アルバムのジャケットとして受け取ってきた。</p>
+            <p>だからアメリカは、実体よりも先にイメージとして存在する。自由、暴力、成功、孤独、家族、移動、宗教、資本、郊外、荒野。これらの言葉は、どれもアメリカを説明するようでいて、同時にアメリカ映画やアメリカ音楽が作り出した物語でもある。私たちは「本当のアメリカ」を見る前に、すでに編集されたアメリカを何度も見ている。その意味で、アメリカとは地理ではなく、再生され続けるフォーマットである。</p>
+            <p>この特集で扱いたいのは、アメリカを好きか嫌いかではない。むしろ、私たちの感覚がどれほどアメリカ的な形式を通って作られているのかという問題だ。ヒーローはなぜ孤独なのか。成功物語はなぜ破滅と隣り合うのか。ポップスターはなぜ神話化されるのか。家族映画はなぜ国家の寓話になってしまうのか。アメリカを考えることは、遠くの国を考えることではない。自分の中にある、輸入された感情の形を点検することである。</p>
           </div>
-          <div class="panel-end">End of Tenant 03 / Return to corridor</div>
+          <div class="panel-end">End of Article 03 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1228,64 +1217,64 @@
   <article id="article-04" class="article-panel from-right panel-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-04-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">4F / Shelf / Article 04</div>
+      <div class="panel-location">4F / Music / Article 04</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 04</span><span>Shelf</span></div>
-          <h1 id="article-04-title">棚を見ること、商品を見ること、世界観を見ること</h1>
-          <p class="panel-lead">棚を見るとき、人は商品だけを見ているわけではない。並び方、余白、照明、説明文まで同時に読んでいる。</p>
+          <div class="panel-kicker"><span>Article 04</span><span>Album Review</span></div>
+          <h1 id="article-04-title">Ye『Bully』レビュー</h1>
+          <p class="panel-lead">『Bully』は、Yeの過去作の断片をもう一度棚に並べるアルバムである。だが、その棚は整っているようで、どこか不穏に傾いている。</p>
           <div class="article-body">
-            <p>棚とは、小さな編集面である。雑誌のページが写真、見出し、本文、余白を組み合わせてひとつの気分を作るように、棚も複数の商品を並べることでひとつの世界観を作る。商品そのものは独立して存在しているように見えるが、実際には隣に何が置かれているかによって意味が変わる。高く積まれているのか、ひとつだけ余白を持って置かれているのかでも、受け取り方は違う。</p>
-            <p>良い棚は、買うべきものを大声で命令しない。むしろ、何となく手に取りたくなる距離を作る。整いすぎていると緊張するし、雑すぎると信頼できない。その中間に、少しだけ触ってもいい感じがある。商業施設の棚は、物の保管場所ではなく、視線のリズムを作る装置である。左から右へ、上から下へ、近くから遠くへ。人は棚の前で小さなスクロールをしている。</p>
-            <p>Webの記事カードも棚として設計できる。ただタイトルを並べるだけでは、読者は情報を選ぶだけになる。けれど、カードの大きさ、左右の位置、背景との距離、タップしたときの動きまで含めると、記事は商品ではなくテナントになる。読む前に、入口の雰囲気を感じる。本文を開く前に、少しだけ中を覗いた気になる。棚を見ることと記事を選ぶことは、思っている以上に近い。</p>
+            <p>『Bully』を聴くと、まず耳に入るのは既視感である。オートチューンの揺れ、ざらついたビート、ソウルサンプルの断片、かつての巨大な自己神話を思わせるフレーズ。Yeはここで、新しい建物を建てるというより、過去の部材を再利用して仮設の売場を作っている。『808s』的な孤独、『Yeezus』的な金属音、『Graduation』的な祝祭感。そのすべてが、完全には統合されないまま並んでいる。</p>
+            <p>その意味で、本作は強い復活作というより、復活という形式そのものを商品化した作品に近い。リスナーは新しいYeを聴いているというより、自分がかつて好きだったYeの面影を探している。アルバムはそれをよく理解しているように見える。だからこそ、ところどころで意図的に過去作の記憶を刺激する。しかし、刺激された記憶は必ずしも幸福ではない。そこには近年の発言や振る舞いによって壊れた信頼も一緒に戻ってくる。</p>
+            <p>音楽的には、まだ惹きつける瞬間がある。サンプルの切り方、声の置き方、荒い輪郭の中に急に現れる美しいコード。Yeの耳は、完全には失われていない。だが、問題はその才能がどこへ向かっているのかである。『Bully』は、自分の神話を修復しようとするアルバムでありながら、修復という行為の限界も露呈している。壊れた看板を磨き直しても、店の中の空気まで元通りになるわけではない。本作の面白さと苦さは、そこにある。</p>
           </div>
-          <div class="panel-end">End of Tenant 04 / Return to corridor</div>
+          <div class="panel-end">End of Article 04 / Return to corridor</div>
         </div>
       </div>
     </div>
   </article>
 
-  <article id="article-05" class="article-panel from-left panel-3" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-05-title">
+  <article id="article-05" class="article-panel from-left panel-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-05-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">3F / Bench / Article 05</div>
+      <div class="panel-location">4F / R&B / Article 05</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 05</span><span>Bench</span></div>
-          <h1 id="article-05-title">ベンチ、植栽、余白——買わない時間のデザイン</h1>
-          <p class="panel-lead">商業施設におけるベンチは、単なる休憩用の家具ではない。購買行動から外れた時間を受け止める場所である。</p>
+          <div class="panel-kicker"><span>Article 05</span><span>Album Review</span></div>
+          <h1 id="article-05-title">RAYE『This Music May Contain Hope』レビュー</h1>
+          <p class="panel-lead">RAYEの新作は、過剰なほど演劇的で、過剰なほど感情的で、過剰なほど自分自身を信じようとするアルバムである。</p>
           <div class="article-body">
-            <p>ベンチに座る人は、買い物を一時停止している。誰かを待っている。次にどの店へ行くかを相談している。紙袋の中身を確認している。あるいは何もせず、ただ人の流れを眺めている。ベンチは、客を客であり続けさせるためのものではない。むしろ、客であることから一度だけ降りるための場所である。だから、ベンチが少ない商業施設は疲れる。ずっと買う人として振る舞わなければならないからだ。</p>
-            <p>植栽や余白も同じ役割を持つ。売場面積だけを最大化すれば、多くの商品を置ける。しかし、人は商品だけの空間には長くいられない。何も売っていない場所があるから、売っている場所にも戻れる。余白は無駄ではなく、回遊を持続させるための呼吸である。商業施設の滞在性は、売場の魅力だけではなく、売場ではない場所の質によって決まる。</p>
-            <p>Webページでも、読者をずっと記事へ向かわせ続けると疲れる。次の記事、次のカード、次のCTA。すべてが行動を要求してくると、ページは狭くなる。必要なのは、何も押さなくてもいい時間である。スクロールの途中に、床のような余白を置く。テナント入口と入口の間に、少しだけ無目的な距離を作る。その距離があるから、タップは命令ではなく、寄り道になる。</p>
+            <p>『This Music May Contain Hope』は、控えめなアルバムではない。声、ストリングス、ジャズ、R&B、オーケストラルな展開、語りのパート、劇場的な間合い。RAYEはここで、感情を小さく整えるのではなく、むしろステージいっぱいに広げる。傷ついたこと、立ち直りたいこと、自分の声を取り戻したいこと。それらが、洗練されたポップソングというより、一幕ごとの演劇のように現れる。</p>
+            <p>この過剰さは、弱点でもある。すべてを歌い、すべてを語り、すべてを演出しようとするため、時に距離が近すぎる。リスナーが感情を受け取る前に、作品の方が自分の意味を説明してしまう瞬間がある。だが、その説明しすぎる感じも含めて、RAYEの現在地なのだと思う。彼女はクールに見せることよりも、壊れそうなほど誠実に差し出すことを選んでいる。</p>
+            <p>最も魅力的なのは、声が常に物語を引き受けていることだ。大きなアレンジに飲み込まれそうになっても、RAYEの声は中心に戻ってくる。そこには、ただ上手い歌手という以上の説得力がある。希望は軽い言葉ではない。本作における希望は、明るい結論ではなく、何度も大げさに歌い直すことでようやく見えてくる仮の出口である。少し長く、少し重く、少し美しすぎる。だからこそ、このアルバムは簡単には聴き流せない。</p>
           </div>
-          <div class="panel-end">End of Tenant 05 / Return to corridor</div>
+          <div class="panel-end">End of Article 05 / Return to corridor</div>
         </div>
       </div>
     </div>
   </article>
 
-  <article id="article-06" class="article-panel from-right panel-3" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-06-title">
+  <article id="article-06" class="article-panel from-left panel-3" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-06-title">
     <div class="panel-topbar">
-      <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">3F / Lounge / Article 06</div>
+      <button class="close-panel" type="button">← 通路へ戻る</button>
+      <div class="panel-location">3F / Fashion / Article 06</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 06</span><span>Lounge</span></div>
-          <h1 id="article-06-title">カフェではなく、ラウンジとしての都市</h1>
-          <p class="panel-lead">都市には、座るためだけの場所が少ない。多くの場合、座るには何かを買う必要がある。</p>
+          <div class="panel-kicker"><span>Article 06</span><span>Fashion Review</span></div>
+          <h1 id="article-06-title">「服を見る」ことのレビュー</h1>
+          <p class="panel-lead">服は、買った瞬間に始まるのではない。店の外から眺め、布の落ち方を見て、着た自分を想像する時点で、すでにファッションは始まっている。</p>
           <div class="article-body">
-            <p>カフェで飲み物を買い、レストランで食事をし、映画館でチケットを買う。都市で座ることは、しばしば購入と結びついている。もちろんそれは悪いことではない。ただ、商業施設のラウンジ的な場所には、もう少し曖昧な可能性がある。そこでは、購入と滞在の関係が少し緩む。何かを買った人も、まだ買っていない人も、同じベンチに座ることができる。</p>
-            <p>この曖昧さは、都市にとって重要である。完全な公共空間ではないが、完全な店舗でもない。誰かの所有物でありながら、誰かが少しのあいだ自分の場所のように使える。ラウンジとしての都市とは、そのような半公共的な居場所の連なりだ。雨を避ける、充電する、待ち合わせる、荷物を整える、ただ人を見る。商業施設の中には、買わない都市経験も確かに存在している。</p>
-            <p>Webにもラウンジは必要だ。情報を消費するだけではなく、画面の中に一度居られる場所。すぐに読ませず、すぐに選ばせず、少し眺めさせる場所。テナント入口が左右に現れるこのサイトでは、記事はすぐ全文を見せない。まず入口として見える。気になったら入る。入らなくても通路は続く。この距離感が、Webをラウンジのようにする。</p>
+            <p>ファッションレビューというと、ブランド名、シルエット、素材、価格、トレンドを語るものだと思われがちだ。もちろんそれらは重要である。だが、実際に商業施設で服を見るとき、人はもっと曖昧な情報を受け取っている。ハンガーの間隔、照明の温度、鏡の位置、店員との距離、試着室へ入るまでの緊張。服そのものだけでなく、服に近づくまでの導線が、購買以前の感情を作っている。</p>
+            <p>良い服は、遠目に見たときと近くで見たときで印象が変わる。遠くでは色や輪郭として目に入り、近くでは布の厚みや縫い目、ボタンの重さが現れる。さらに試着すると、服は商品から身体の一部へ移る。似合うかどうか以前に、その服を着たときの歩幅、姿勢、視線の高さが変わる。ファッションとは、見た目の問題であると同時に、身体の速度を変えるメディアである。</p>
+            <p>だから服を見ることは、将来の自分を短く試写する行為に近い。買うかどうかは、そのあとに来る。店先で一瞬足を止める。ラックの端を触る。鏡の前に立つ。買わなかった服のことを、帰り道にまだ考えている。その時点で、服はすでに生活に入っている。ファッションレビューは、所有した服だけを語るのではなく、所有しなかった服が残した気配も扱うべきなのだと思う。</p>
           </div>
-          <div class="panel-end">End of Tenant 06 / Return to corridor</div>
+          <div class="panel-end">End of Article 06 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1294,20 +1283,20 @@
   <article id="article-07" class="article-panel from-left panel-2" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-07-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">2F / Circulation / Article 07</div>
+      <div class="panel-location">2F / Book / Article 07</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 07</span><span>Circulation</span></div>
-          <h1 id="article-07-title">ショッピングモールはなぜ“迷える”ように作られるのか</h1>
-          <p class="panel-lead">商業施設は完全に分かりやすい方が便利なはずだ。けれど実際には、少しだけ迷えるように作られている。</p>
+          <div class="panel-kicker"><span>Article 07</span><span>Book Review</span></div>
+          <h1 id="article-07-title">村上春樹『夏帆』レビュー</h1>
+          <p class="panel-lead">『夏帆』は、出口を探す小説である。だが村上春樹の小説において、出口はいつも入口とよく似た形をしている。</p>
           <div class="article-body">
-            <p>入口から目的の店まで一直線で行けて、帰り道もすぐ分かる。理屈だけで考えれば、それが最も便利な商業施設である。けれど実際のモールでは、通路が曲がり、吹き抜けがあり、エスカレーターの位置がずれ、店の見え方が角度によって変わる。これは不親切というより、歩く理由を作るための設計である。少し迷うことによって、予定していなかった店が視界に入る。</p>
-            <p>ただし、良い迷いには限度がある。完全に方向感覚を失うと、人は不安になる。だからモールの迷いやすさは、いつでも戻れる安心感とセットでなければならない。吹き抜けから下の階が見える。遠くにサインがある。エスカレーターの光が見える。迷っているが、閉じ込められてはいない。この状態が、回遊の快楽を作る。</p>
-            <p>Webサイトでも同じだ。すべてをメニューで説明しすぎると、読む体験はただの選択肢処理になる。逆に、どこに何があるか分からなすぎると離脱する。必要なのは、少し迷えるが、戻れること。記事をカードとして左右にずらし、タップすれば全文が出て、戻れば同じ通路に復帰する。この構造は、情報を迷路にするのではなく、寄り道できる通路にするためのものだ。</p>
+            <p>『夏帆』を読むと、まず「主人公が女性であること」が話題になる。しかし、それだけで作品を読んでしまうと、少し狭い。重要なのは、夏帆という人物が、村上春樹的な世界の中でどのように迷い、どのように言葉を受け取り、どのように自分の出口を探すのかである。彼女は強いヒロインとして世界を切り開くというより、奇妙な出来事に巻き込まれながら、自分の感覚を少しずつ確かめていく。</p>
+            <p>村上春樹の小説では、現実の薄い膜の向こうに、別の層がある。井戸、壁、地下、森、夢、名前のない場所。『夏帆』でも、その「別の層」へ向かう感覚は健在である。ただし本作では、それが大きな神話へ一気に接続するというより、もっと身体的で、もっと不安定な違和感として現れる。誰かに言われた言葉が、いつまでも皮膚の上に残る。見知らぬ動物や人影が、世界のルールを少しずつずらす。</p>
+            <p>読後に残るのは、解決よりも移動の感覚だ。夏帆はどこから出ようとしているのか。自分の人生からか、他人の言葉からか、あるいは「自分はこういう人間である」という固定された輪郭からか。村上春樹の小説は、出口を探す過程で、結局もう一度入口に戻ってくることがある。だが戻ってきたとき、同じ場所は同じ場所ではない。『夏帆』の面白さは、そのわずかなズレにある。</p>
           </div>
-          <div class="panel-end">End of Tenant 07 / Return to corridor</div>
+          <div class="panel-end">End of Article 07 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1316,20 +1305,20 @@
   <article id="article-08" class="article-panel from-right panel-2" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-08-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">2F / Atrium / Article 08</div>
+      <div class="panel-location">2F / Column / Article 08</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 08</span><span>Atrium</span></div>
-          <h1 id="article-08-title">吹き抜けを見ると、人はなぜ少し立ち止まるのか</h1>
-          <p class="panel-lead">吹き抜けは、商品から最も離れた場所に見える。けれど、商業施設の中心的な装置でもある。</p>
+          <div class="panel-kicker"><span>Article 08</span><span>Column</span></div>
+          <h1 id="article-08-title">コラム「2001年問題」</h1>
+          <p class="panel-lead">2001年生まれは、21世紀の子どもだったはずなのに、いつの間にか“昔”を語り始めている。</p>
           <div class="article-body">
-            <p>吹き抜けには棚もレジもない。あるのは上下に抜けた空間、手すり、反対側の通路、下の階を歩く人の小さな動きである。けれど、人は吹き抜けの前で一度立ち止まる。自分がどの高さにいるのかを確認し、下の階の音を聞き、向こう側に見える店を眺める。現在地が平面ではなく立体として理解される瞬間である。</p>
-            <p>吹き抜けが作るのは、単なる開放感ではない。それは、自分以外の移動を見る感覚である。下の階の人、向こう側の人、上の階へ行く人、エスカレーターで降りてくる人。複数の時間が同時に見える。だから吹き抜けは、商業施設の中の小さな劇場でもある。自分も歩いているが、他人が歩いている様子も見ている。</p>
-            <p>Webページにおける吹き抜けは、次のセクションが少し見える余白かもしれない。まだ読んでいない階の色が、いまいる場所に差し込む。下へスクロールすると、別の素材、別の光、別の入口が見える。すべてを一画面に収めるのではなく、上下に気配を残す。読者は現在地を読みながら、次の階の存在を感じる。それが縦長サイトにおける吹き抜けである。</p>
+            <p>2001年生まれという言葉には、妙な響きがある。20世紀ではなく、21世紀の側に置かれた最初期の世代。インターネットはすでにあり、携帯電話もあり、アニメや音楽やゲームは大量に流通していた。けれど、スマートフォンがすべてを飲み込む前の時間も、まだ少しだけ残っていた。だから2001年生まれは、デジタルネイティブでありながら、どこかアナログの残響も知っている。</p>
+            <p>この世代が抱える問題は、自分たちの「懐かしさ」が早く古びすぎることだ。小学生の頃に触れた動画サイト、ガラケーとスマホの切り替わり、CDショップの残り香、初期SNS、ニコニコ動画、YouTube、K-POP、ボカロ、深夜アニメ、ファストファッション。全部がそれほど昔ではないのに、すでに別の時代のものとして語られ始めている。2001年生まれは、青春がアーカイブ化される速度をほとんどリアルタイムで見てきた世代である。</p>
+            <p>だから「2001年問題」とは、年齢の問題ではなく、記憶の速度の問題だ。自分が大人になる前に、自分の子ども時代がコンテンツとして整理されてしまう。懐かしいと感じる前に、誰かがその時代をパッケージ化する。そこで必要なのは、ただ昔を美化することではない。自分たちがどんなメディアの切れ目を生きてきたのかを、少し冷静に見ることだ。2001年生まれは、21世紀の入口に立っていた世代であり、同時に、古くなる速度を最初から知っていた世代でもある。</p>
           </div>
-          <div class="panel-end">End of Tenant 08 / Return to corridor</div>
+          <div class="panel-end">End of Article 08 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1338,20 +1327,20 @@
   <article id="article-09" class="article-panel from-left panel-1" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-09-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">← 通路へ戻る</button>
-      <div class="panel-location">1F / Gate / Article 09</div>
+      <div class="panel-location">1F / Food / Article 09</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 09</span><span>Gate</span></div>
-          <h1 id="article-09-title">駅から商業施設へ、気分が切り替わる瞬間</h1>
-          <p class="panel-lead">駅から商業施設へ入る瞬間、人の気分はほとんど無意識に切り替わる。入口は、身体のテンポを変える装置である。</p>
+          <div class="panel-kicker"><span>Article 09</span><span>Food Column</span></div>
+          <h1 id="article-09-title">フードコラム：フードコートの孤独</h1>
+          <p class="panel-lead">フードコートは、ひとりで食べることを都市の中で最も自然にしてくれる場所である。</p>
           <div class="article-body">
-            <p>改札を出たばかりの身体は、まだ移動のリズムを持っている。電車の時間、乗り換え、人の流れ、ホームの音。そのままガラスの入口を抜けると、照明が変わり、床の素材が変わり、空気の温度が少し安定する。都市の速度から、商業施設の速度へ移る。入口の役割は、店を見せることだけではない。身体の速度を変えることだ。</p>
-            <p>良い入口は、いきなり商品を押しつけない。まず天井の高さ、奥行き、案内板、エスカレーターの位置、待ち合わせできそうな余白を見せる。人はそこで、自分がどのように歩けばいいのかを判断する。商業施設の入口は、施設全体の読み方を伝える最初の編集面である。どの方向へ流れるのか、どこで立ち止まれるのか、どこから上へ行けるのか。身体はそれを一瞬で読んでいる。</p>
-            <p>Webサイトのトップページも同じである。すぐに記事を並べるのではなく、この場所がどのような速度で読まれるべきかを知らせる必要がある。入口は情報の一覧ではなく、気分の変換装置である。今回のサイトで最初に長いヒーローを置き、その後に左右のテナント入口を出すのは、読者の速度を変えるためだ。駅前からモールへ入る一歩には、すでにデザインがある。</p>
+            <p>レストランでひとりで食べると、少しだけ自分の存在が強調されることがある。席に案内され、注文し、料理を待つ。その一連の流れの中で、ひとりであることが形を持つ。だがフードコートでは、その輪郭が少し薄まる。誰もがトレーを持ち、席を探し、短い時間だけ滞在している。家族連れも、会社員も、学生も、買い物帰りの人も、ひとり客も、同じざわめきの中に混ざる。</p>
+            <p>フードコートの孤独は、寂しさではない。むしろ、都市の中で他人に紛れるための技術である。誰かと話してもいいし、話さなくてもいい。スマホを見てもいいし、ただ食べてもいい。料理のジャンルもばらばらで、同じテーブルにラーメン、カレー、サラダ、クレープが並ぶこともある。その雑多さが、食事を少しだけ自由にする。正式な食卓ではなく、仮設の食卓であることが救いになる。</p>
+            <p>カルチャーにおいても、フードコート的な場所は必要だと思う。高級な批評だけではなく、軽く食べられる文章。ジャンルが揃っていなくても、同じ空間に置かれていることで成立する編集。映画レビューの隣にレシピがあってもいい。音楽論のあとにフードコラムがあってもいい。NOISEの1Fに食べ物の記事を置くのは、読み終わった身体を都市に戻すためである。最後は、何かを食べたくなるくらいがちょうどいい。</p>
           </div>
-          <div class="panel-end">End of Tenant 09 / Return to corridor</div>
+          <div class="panel-end">End of Article 09 / Return to corridor</div>
         </div>
       </div>
     </div>
@@ -1360,20 +1349,20 @@
   <article id="article-10" class="article-panel from-right panel-1" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="article-10-title">
     <div class="panel-topbar">
       <button class="close-panel" type="button">通路へ戻る →</button>
-      <div class="panel-location">1F / Signage / Article 10</div>
+      <div class="panel-location">1F / Recipe / Article 10</div>
     </div>
     <div class="panel-scroll">
       <div class="panel-inner">
         <div class="panel-surface">
-          <div class="panel-kicker"><span>Article 10</span><span>Wayfinding</span></div>
-          <h1 id="article-10-title">案内板を見ないで歩くことについて</h1>
-          <p class="panel-lead">商業施設で案内板を見る前に、私たちはすでに多くの情報を読んでいる。人の流れ、床、光、エスカレーターの向き。</p>
+          <div class="panel-kicker"><span>Article 10</span><span>Recipe</span></div>
+          <h1 id="article-10-title">レシピ：夜のモール帰りのバター醤油うどん</h1>
+          <p class="panel-lead">買い物のあと、映画のあと、少し歩き疲れた夜に作る。包丁をほとんど使わず、10分で食べられる一皿。</p>
           <div class="article-body">
-            <p>案内板を見るのは、目的地があるときだけではない。むしろ案内板を見る前に、私たちはすでに多くの情報を読んでいる。人の流れ、エスカレーターの向き、明るい方角、店の開口部、床の切り替わり、天井の高さ。案内板はその確認にすぎないことも多い。良い空間は、サインを読まなくても何となく進める。道が身体に伝わる。</p>
-            <p>もちろん、案内板は必要だ。迷った人を助け、目的地までの距離を示し、施設全体を理解させる。ただ、サインだけに頼る空間は弱い。矢印がなければ動けない場所は、歩く楽しさを失っている。回遊の気持ちよさは、明確な指示と曖昧な誘導のあいだにある。読まなくても分かるが、読めばさらに分かる。その二重性が、安心感と発見を両立させる。</p>
-            <p>Webサイトでも、メニューやボタンだけで読者を誘導すると、ページは地図になりすぎる。大切なのは、読者が案内を読まなくても次へ進みたくなることだ。色の変化、余白、見出しの位置、スクロールした先に見える次の床。テナント入口をタップすれば、記事が横から入ってくる。閉じれば同じ通路に戻る。案内板を見ないで歩けるサイトは、読む場所ではなく、歩ける場所になる。</p>
+            <p>材料は、冷凍うどん1玉、バター10g、醤油小さじ2、めんつゆ小さじ1、卵1個、刻みのり、ねぎ、あれば黒こしょう。まず冷凍うどんを電子レンジで表示通り温める。フライパンを弱めの中火にかけ、バターを溶かす。うどんを入れ、醤油とめんつゆを回しかける。焦がしすぎない程度に全体を混ぜ、香りが立ったら火を止める。</p>
+            <p>器に盛り、真ん中に卵を落とす。刻みのり、ねぎ、黒こしょうをのせる。余裕があれば、仕上げにもう少しだけバターを足してもいい。味はかなりシンプルだが、疲れた夜にはこれくらいがちょうどいい。買い物帰りに持っている紙袋、見た映画の余韻、駅から家までの短い道。そのすべてを受け止めるには、複雑な料理よりも、すぐ作れて温かいものが向いている。</p>
+            <p>ポイントは、醤油を入れすぎないこと。バターの重さと卵の丸さがあるので、味を濃くしすぎると一気に疲れる。少し足りないくらいで止めて、のりや黒こしょうで輪郭を出すといい。フードコートで何か食べようか迷ったけれど結局帰ってきた夜、あるいは映画を見たあとにまだ少し現実へ戻りきれていない夜。このうどんは、出口のあとにある小さなエンディングである。</p>
           </div>
-          <div class="panel-end">End of Tenant 10 / Return to corridor</div>
+          <div class="panel-end">End of Article 10 / Return to corridor</div>
         </div>
       </div>
     </div>
