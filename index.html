@@ -363,6 +363,16 @@
       padding: 12px;
       border: 2px solid var(--black);
       background: #fffdf3;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .floor-map-item:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0 var(--black);
     }
 
     .floor-map-item:nth-child(1) { background: var(--blue); }
@@ -685,11 +695,10 @@
       border: 3px solid var(--black);
       border-bottom: 0;
       background: rgba(255,248,232,0.94);
-      transform: scale(0.9) translateY(22px);
       opacity: 0;
       transition:
-        transform 0.38s cubic-bezier(.18,.82,.2,1),
-        opacity 0.22s ease;
+        transform 0.46s cubic-bezier(.18,.82,.2,1),
+        opacity 0.2s ease;
     }
 
     .panel-scroll {
@@ -700,27 +709,26 @@
       -webkit-overflow-scrolling: touch;
       border: 3px solid var(--black);
       background: var(--paper2);
-      transform: scale(0.9) translateY(22px);
       opacity: 0;
       transition:
-        transform 0.38s cubic-bezier(.18,.82,.2,1),
-        opacity 0.22s ease;
+        transform 0.46s cubic-bezier(.18,.82,.2,1),
+        opacity 0.2s ease;
       box-shadow: 10px 10px 0 var(--black);
     }
 
     .article-panel.from-left .panel-topbar,
     .article-panel.from-left .panel-scroll {
-      transform-origin: left center;
+      transform: translateX(-112vw);
     }
 
     .article-panel.from-right .panel-topbar,
     .article-panel.from-right .panel-scroll {
-      transform-origin: right center;
+      transform: translateX(112vw);
     }
 
     .article-panel.is-open .panel-topbar,
     .article-panel.is-open .panel-scroll {
-      transform: scale(1) translateY(0);
+      transform: translateX(0);
       opacity: 1;
     }
 
@@ -1176,30 +1184,34 @@
       <div class="floor-map-inner">
         <div class="floor-map-top">
           <strong>Issue Map</strong>
-          <span>Zero click / tap to read</span>
+          <span>Tap floor to jump</span>
         </div>
 
         <div class="floor-map-grid">
-          <div class="floor-map-item">
+          <a class="floor-map-item" href="#floor-5">
             <strong>5F</strong>
             <p>Film / 大きなスクリーンとスターのフロア</p>
-          </div>
-          <div class="floor-map-item">
+          </a>
+
+          <a class="floor-map-item" href="#floor-4">
             <strong>4F</strong>
             <p>Music / ノイズ、声、アルバムのフロア</p>
-          </div>
-          <div class="floor-map-item">
+          </a>
+
+          <a class="floor-map-item" href="#floor-3">
             <strong>3F</strong>
             <p>Idol & Pop / MV、パッケージ、身体のフロア</p>
-          </div>
-          <div class="floor-map-item">
+          </a>
+
+          <a class="floor-map-item" href="#floor-2">
             <strong>2F</strong>
             <p>Internet & Fashion / 記憶、服、世代のフロア</p>
-          </div>
-          <div class="floor-map-item">
+          </a>
+
+          <a class="floor-map-item" href="#floor-1">
             <strong>1F</strong>
             <p>Food / 街へ戻る前のフードコート</p>
-          </div>
+          </a>
         </div>
       </div>
     </section>
